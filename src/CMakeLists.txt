@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(fraction C) # à renommée, on fait un vote ?
 
 #Liste exécutables
-add_executable(test-parseur parseur.c)
+add_executable(test-parseur test-parseur.c parseur.c parseur.h)
 
 #Autorisation tests
 enable_testing()
