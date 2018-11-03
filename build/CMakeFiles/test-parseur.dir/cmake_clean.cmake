@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/test-parseur.dir/test-parseur.c.o"
   "CMakeFiles/test-parseur.dir/parseur.c.o"
   "test-parseur.pdb"
   "test-parseur"
