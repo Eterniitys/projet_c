@@ -1,5 +1,5 @@
 #!/bin/bash
-directories=("parseur")
+directories=("parseur" "rime" "arbre_syll")
 for dir in "${directories[@]}"; do
 	echo "Nettoyage du dossier build pour $dir"
 	rm -rf "$dir"/build
