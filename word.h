@@ -16,3 +16,4 @@ extern Mot decoupe_Mot(char Mot a);
 extern Mot Mot_rime(char Mot c);
 
 #endif
+
