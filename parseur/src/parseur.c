@@ -60,6 +60,24 @@ void afficherFichier(char * nom){
 		// on place tout ca dans le buffer       
 		fread(buffer,sizeFichier,1,fichier); 
 
+		//(Fonction nbLignes qui retourne le nombre de lignes du buffer pour créer un autre buffer avec le bon nombre de lignes
+		//---> vérifier avec n-1 si la ligne n'a pas déjà était insérée
+		public int nbLignes(char* buffer){
+			int i = 0;
+			cpt = 0;
+			FILE * fichier;
+			sizeFichier = size_file(fichier);
+			fichier=fopen(nom,"r");
+
+				while (i != sizeFichier-1){
+				if ( buffer[i] == '\n') {
+				cpt = cpt+1;
+				}		
+				i++;
+				}
+			return cpt;
+		}
+
 
 
 		// ici on print le fichier dans le terminal 
