@@ -3,11 +3,28 @@
 #include <stdlib.h>
 
 void* list_get(List* list, int index) {
-	//TODO lel
+	if (index < 0 || index >= list->_count)
+		return NULL;
+	return list->_data[index];
 }
 
-void list_add(List* list, void* pointer) {
-	//TODO lel
+List* list_add(List* list, void* pointer) {
+	// list is full, need realloc
+	if (list->_count == list->_size) {
+		int new_size = list->_size > 1024 ? list->_size+1024 : list->_size*2;
+		// do not write to list->data to not erase the data in case
+		// realloc fails
+		void* temp = realloc(list->_data, new_size);
+
+		if (temp) {
+			list->_data = temp;
+			list->_size = new_size;
+		} else
+			return NULL;
+	}
+	list->_data[list->_count] = pointer;
+	list->_count++;
+	return list;
 }
 
 int list_count(List* list) {

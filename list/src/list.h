@@ -11,7 +11,7 @@ struct _List {
 
 extern void* list_get(List* list, int index);
 
-extern void list_add(List* list, void* pointer);
+extern List* list_add(List* list, void* pointer);
 
 extern int list_count(List* list);
 
