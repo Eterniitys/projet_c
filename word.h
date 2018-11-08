@@ -5,7 +5,7 @@ typedef struct _Mot Mot;
 
 struct _Mot {
   char* mot;
-  char* syllabes;
+  char** syllabes;
   char* phonetique;
   char* phonetique_syllabes;
 };
