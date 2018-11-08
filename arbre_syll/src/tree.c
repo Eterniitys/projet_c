@@ -65,5 +65,3 @@ Tree * addBranch(Tree *root, Tree *branch){
 void * getBranch(Tree *root,int nb){
 	return list_get(root->children,nb);
 }
-
-
