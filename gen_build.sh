@@ -6,7 +6,7 @@ for dir in "${directories[@]}"; do
 	mkdir "$dir"/build
 	echo "Génération fichiers build pour $dir"
 	cd "$dir"/build/
-	cmake ../src
+	cmake -DCMAKE_BUILD_TYPE=Debug ../src
 	cd ../..
 done
 
