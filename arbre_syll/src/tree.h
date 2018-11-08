@@ -5,7 +5,7 @@
 
 struc Tree {
 	void * struc;
-	Tree **childs;
+	Tree **children;
 };
 
 #endif
