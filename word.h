@@ -6,7 +6,8 @@ typedef struct _Mot Mot;
 struct _Mot {
   char* mot;
   char* syllabes;
-  char* phonetique;    
+  char* phonetique;
+  char* phonetique_syllabes;
 };
 
 extern Mot Mot_syllabes(char Mot a);
