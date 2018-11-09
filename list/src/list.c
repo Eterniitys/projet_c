@@ -2,6 +2,8 @@
 
 #include <stdlib.h>
 
+#define PSIZE sizeof(void*)
+
 void* list_get(List* list, int index) {
 	if (index < 0 || index >= list->_count)
 		return NULL;
@@ -10,20 +12,20 @@ void* list_get(List* list, int index) {
 
 List* list_add(List* list, void* pointer) {
 	// list is full, need realloc
-	if (list->_count == list->_size) {
-		int new_size = list->_size > 1024 ? list->_size+1024 : list->_size*2;
-		// do not write to list->data to not erase the data in case
+	if (list->_count >= list->_size) {
+		int new_size = list->_size > 256 ? list->_size+256 : list->_size*2;
+
 		// realloc fails
-		void* temp = realloc(list->_data, new_size);
+		void* temp = realloc(list->_data, new_size*PSIZE);
 
 		if (temp) {
 			list->_data = temp;
 			list->_size = new_size;
-		} else
+		} else {
 			return NULL;
+		}
 	}
-	list->_data[list->_count] = pointer;
-	list->_count++;
+	list->_data[list->_count++] = pointer;
 	return list;
 }
 
@@ -38,8 +40,8 @@ void list_destroy(List* list) {
 
 static List* _list_init(List* list) {
 	list->_count = 0;
-	list->_size = 64;
-	list->_data = malloc(sizeof(void**)*64);
+	list->_size = 16;
+	list->_data = malloc(list->_size * PSIZE);
 	if (list->_data)
 		return list;
 	return NULL;

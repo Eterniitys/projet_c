@@ -1,18 +1,24 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <assert.h>
 
 #include "./list.h"
 
 int main(void) {
+	setbuf(stdout, NULL);
+
+
 	List* list = list_new();
 	assert(list != NULL);
 	assert(list_count(list) == 0);
 
 	int* val = malloc(sizeof(int));
-	*val = 10;
+	*val = 0;
 	list_add(list, val);
 
 	assert(list_count(list) == 1);
+
+	int n = 17; // 66
 
 	assert(list_get(list,0) == val);
 	assert(list_get(list,1) == NULL);
@@ -20,11 +26,22 @@ int main(void) {
 
 	//test realloc
 	int i;
-	// reach 65 to force list realloc
-	for (i=1; i<66; i++) {
-		assert(list_add(list, val) == list);
+	// force list realloc
+	for (i=1; i<n; i++) {
+		val = malloc(sizeof(int));
+		assert(val != NULL);
+		*val = i;
+		assert(list_add(list, val) != NULL);
+		assert(list_count(list) == i+1);
+		assert(list_get(list,i) == val);
 	}
-	assert(list->_size == 128);
+
+	// check values;
+	int* t;
+	for (i=0; i<n; i++) {
+		t = list_get(list, i);
+		assert(*t == i);
+	}
 
 	list_destroy(list);
 	return EXIT_SUCCESS;
