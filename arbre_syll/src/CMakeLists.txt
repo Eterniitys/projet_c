@@ -27,13 +27,28 @@ add_library(tree SHARED tree.c tree.h)
 #la librairie tree utilise la librairie list
 target_link_libraries(tree list)
 
+#fichiers de destination
+install(
+	TARGETS tree
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+	RUNTIME DESTINATION bin
+)
+
+install(
+	FILES tree.h
+	DESTINATION include
+)
+
 #Liste exécutables
-#add_executable(test-arbre test-arbre.c arbre.c arbre.h)
+add_executable(test-tree test-tree.c tree.c tree.h)
+add_dependencies(test-tree tree)
+target_link_libraries(test-tree tree)
 
 #Autorisation tests
 enable_testing()
 
 #Liste tests
-#add_test(test-arbre ./test-arbre)
+add_test(test-tree ./test-tree)
 
 

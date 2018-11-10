@@ -9,4 +9,14 @@ struct _Tree {
 	List * children;
 };
 
-#endif
+extern Tree * newTree(void *struc);
+
+extern Tree * createTree();
+
+extern void * getNode(Tree *root);
+
+extern Tree * addBranch(Tree *root, Tree *branch);
+
+extern void * getBranch(Tree *root,int nb);
+
+#endif /* _TREE_H_ */
