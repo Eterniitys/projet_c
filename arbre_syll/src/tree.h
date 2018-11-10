@@ -1,11 +1,12 @@
 #ifndef _TREE_H_
 #define _TREE_H_
 
-#include <stdbool.h>
+#include <list.h>
 
-struc Tree {
+typedef struct _Tree Tree;
+struct _Tree {
 	void * struc;
-	Tree **children;
+	List * children;
 };
 
 #endif
