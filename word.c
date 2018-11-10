@@ -26,9 +26,8 @@ Mot *_fill ( Mot *mot, char** syllabes, char** phonetique )
 
 Mot decoupe_Mot(char Mot a)
 {
-
-
-
+	//TODO
+	return a;
 }
 
 

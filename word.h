@@ -12,8 +12,8 @@ struct _Mot {
 };
 
 extern Mot creer_Mot (char* mot, char** syllabes, char** phonetique);
-extern Mot decoupe_Mot(char Mot a);
-extern Mot Mot_rime(char Mot c);
+extern Mot decoupe_Mot(char Mot);
+extern Mot Mot_rime(char Mot);
 
 #endif
 
