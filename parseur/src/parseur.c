@@ -12,6 +12,8 @@
 // fscanf
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include "word.h"
 
 // FONCTION DE TAILLE SUR POINTEUR DE FICHIER QUI IDENTIFIE LE FLUX
 long size_file(FILE * fichier){
@@ -20,6 +22,10 @@ long size_file(FILE * fichier){
 	sizeFichier = ftell (fichier); // donne la position actuel du curseur / pointeur : <->pointeur a la fin --> la taille du fichier
 
 	return sizeFichier;
+}
+
+void afficherMot(Mot* motstruct){
+	printf("%s\n%s\n%s\n",motstruct->mot,motstruct->syllabes,motstruct->phonetique);
 }
 
 void afficherFichier(char * nom){
@@ -62,9 +68,9 @@ void afficherFichier(char * nom){
 
 		//(Fonction nbLignes qui retourne le nombre de lignes du buffer pour créer un autre buffer avec le bon nombre de lignes
 		//---> vérifier avec n-1 si la ligne n'a pas déjà était insérée
-		public int nbLignes(char* buffer){
+		int nbLignes(char* buffer){
 			int i = 0;
-			cpt = 0;
+			int cpt = 0;
 			FILE * fichier;
 			sizeFichier = size_file(fichier);
 			fichier=fopen(nom,"r");
@@ -93,49 +99,116 @@ void afficherFichier(char * nom){
 		 */
 
 		int i=0;
+		int cmtpTab=0;
+	
+		char* motLex;
+		motLex=malloc(sizeof(char)*30);
+		
+		int cmptindex=0;
+		
+		Mot* monMot;
+		monMot=malloc(sizeof(Mot));
+
+
+		
+		Mot** Tab;
+		Tab=malloc(sizeof(Mot)*(sizeFichier));
 		// forme= premier element de la strucuture : mot 
 
 		// on parcours tout le fichier
-		while (i!=sizeFichier-1){
+		while (i!=sizeFichier){
 
-			// change pas de mot 
 			if (buffer[i] != '\n'){
-
-				// change de forme de mot
+				
 				if (buffer[i]=='\t'){
-
-					// si forme==mot -> forme = prononciation
-					// si forme==prononciation -> forme = syllabe
-					// si forme == syllabe -> forme = phonetique
-
-					printf("%cform suivante : ",buffer[i]);
-					// valeur a stocké dans le forme adequat de la structure
+					
+					
+					
+					cmtpTab++;
+					
+					if (cmtpTab==1){
+						
+						
+					
+						
+						//printf("%d\n",sizeof(motLex));
+						
+						//printf("%p\n",&monMot->mot);
+						//printf("%d\n",sizeof(motLex));
+						//printf("%p\n",&monMot->mot);
+				
+						motLex[cmptindex]='\0';
+						cmptindex=0;
+				
+						monMot->mot=malloc(sizeof(char*)*sizeof(motLex));
+						printf("%p\n",&monMot->mot);
+						strcpy(&monMot->mot,motLex);
+						
+						snprintf(motLex,sizeof(Mot),"%s","");
+					}
+					else if (cmtpTab==2){
+					   
+						cmptindex=0;
+						snprintf(motLex,sizeof(Mot),"%s","");
+					
+					}
+					else if (cmtpTab==3){
+						monMot->syllabes=malloc(sizeof(char*)*sizeof(motLex));
+						printf("%p\n",&monMot->syllabes);
+					
+						motLex[cmptindex]='\0';
+						cmptindex=0;
+						
+						strcpy(&monMot->syllabes,motLex);
+						//printf("%p\n",&monMot->syllabes);
+						snprintf(motLex,sizeof(Mot),"%s","");
+						
+					}
+				
+					 
 
 				}
 				// on est sur la meme forme de mot
 				else {	
-					if(i==0){
-						printf("Premiere forme : %c", buffer[i]);
-						// valeur a stocké dans le forme adequat de la structure
-					}
-					else {
-						printf("%c", buffer[i]);  
-						// valeur a stocké dans le forme adequat de la structure 			
-					}
+					
+					motLex[cmptindex]=buffer[i];
+					cmptindex++;
+					
 				}
+				
+				
+				
+	
+				
 			}
 			// change de mot 
 			else {
-				printf("\nMot suivant : ");
-				// valeur a stocké dans le forme adequat de la structure
+				
+				printf("%s\n",&monMot->mot);
+				
+				strcpy(&monMot->phonetique,motLex);
+				snprintf(motLex,sizeof(Mot),"%s","");
+				
+				cmtpTab=0;
+				cmptindex=0;
+				
+				
+				
+				Tab[i]=monMot;
+			
+			
+			
+				free(monMot);
+				Mot* monMot=malloc(sizeof(Mot));
+		
 			}
 
-
+			
 			i++;
 
 		}
-		printf("\n");
-
+	
+		
 		// FERMETURE  DU FLUX
 		fclose(fichier);
 
