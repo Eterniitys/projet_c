@@ -15,6 +15,9 @@
 #include <string.h>
 #include "word.h"
 
+
+
+
 // FONCTION DE TAILLE SUR POINTEUR DE FICHIER QUI IDENTIFIE LE FLUX
 long size_file(FILE * fichier){
 	long sizeFichier;
@@ -24,41 +27,37 @@ long size_file(FILE * fichier){
 	return sizeFichier;
 }
 
-void afficherMot(Mot* motstruct){
-	printf("%s\n%s\n%s\n",motstruct->mot,motstruct->syllabes,motstruct->phonetique);
+
+int nbLignes(char* buffer,int sizeFichier){
+	int i = 0;
+	int cpt = 0;
+
+	while (i != sizeFichier-1){
+		if ( buffer[i] == '\n') {
+			cpt = cpt+1;
+		}		
+		i++;
+	}
+	return cpt;
 }
-
-void afficherFichier(char * nom){
-
-
+		
+Mot** tableau (){
+	
 	// fichier = POINTEUR DE FICHIER QUI IDENTIFIE LE FLUX
 	FILE * fichier;
 
 	// OUVERTURE DU FLUX 
-	fichier=fopen(nom,"r");
-
-
+	fichier=fopen("Lexique382.csv","r");
+	
 	long sizeFichier;
-
+	// APPEL A LA FONCTION TAILLE
+	sizeFichier=size_file(fichier);
 
 	if(fichier == NULL){
-		printf("Le fichier n'existe pas\n");
+		return NULL;
 	}
 	else {
-		printf("le fichier existe\n");
-
-		// APPEL A LA FONCTION TAILLE
-		sizeFichier=size_file(fichier);
-
-
-
-		//AFFICHAGE
-		printf("%ld bytes = %ld Mio\n",sizeFichier,sizeFichier/1024/1024);
-
-
-
 		char buffer[sizeFichier]; // tableau qui contiendra tout le texte 
-
 		fseek(fichier, 0, SEEK_SET); // placement du curseur/pointeur au debut
 
 		// on lit le fichier Lexique avec le flux fichier, 
@@ -66,154 +65,112 @@ void afficherFichier(char * nom){
 		// on place tout ca dans le buffer       
 		fread(buffer,sizeFichier,1,fichier); 
 
-		//(Fonction nbLignes qui retourne le nombre de lignes du buffer pour créer un autre buffer avec le bon nombre de lignes
-		//---> vérifier avec n-1 si la ligne n'a pas déjà était insérée
-		int nbLignes(char* buffer){
-			int i = 0;
-			int cpt = 0;
-			FILE * fichier;
-			sizeFichier = size_file(fichier);
-			fichier=fopen(nom,"r");
 
-				while (i != sizeFichier-1){
-				if ( buffer[i] == '\n') {
-				cpt = cpt+1;
-				}		
-				i++;
-				}
-			return cpt;
-		}
-
-
-
-		// ici on print le fichier dans le terminal 
-		// TODO : stocker les mots et leur forme dans la structure de mot 
-		// TODO : a capella	: mot akapEla : prononciation	a ca-pel-la : syllabe	a-ka-pE-la : phonetique
-		// TODO : syllabe et phonetique sont a stocké dans des char ** pour recuperer les syllables : [[a][ca][pel][la]] / [[a][ka][pE][la]] 
-
-		/* FORME de la structure : 
-		   char * mot;
-		   char * prononciation;
-		   char ** syllabe;
-		   char ** phonetique;
-		 */
-
+		// compteur de ligne du fichier
 		int i=0;
+		
+		// compteur de tabulation au sein d une ligne
 		int cmtpTab=0;
 	
+		// compteur de l index du mot à copier --> index des char du mot
+		int cmptindex=0;
+		
+		// compteur d indice du tableau 
+		int compteurTableau=0;
+		
+		// declaration du mot qui sera copié dans la structure
 		char* motLex;
 		motLex=malloc(sizeof(char)*30);
 		
-		int cmptindex=0;
 		
+		// declaration du mot 
 		Mot* monMot;
 		monMot=malloc(sizeof(Mot));
 
-
-		
+		// declaration du tableau de Mot* qui contiendra toutes les structures de mot du fichier
 		Mot** Tab;
-		Tab=malloc(sizeof(Mot)*(sizeFichier));
-		// forme= premier element de la strucuture : mot 
-
+		Tab=malloc(sizeof(Mot)*nbLignes(buffer,sizeFichier)+1);
+		
+	
+		
 		// on parcours tout le fichier
 		while (i!=sizeFichier){
-
+			
+			// nouvelle ligne
 			if (buffer[i] != '\n'){
-				
+				// nouvelle tab
 				if (buffer[i]=='\t'){
-					
-					
-					
 					cmtpTab++;
-					
+	
 					if (cmtpTab==1){
 						
-						
-					
-						
-						//printf("%d\n",sizeof(motLex));
-						
-						//printf("%p\n",&monMot->mot);
-						//printf("%d\n",sizeof(motLex));
-						//printf("%p\n",&monMot->mot);
-				
+						// on rajoute le caractere de fin de mot 
 						motLex[cmptindex]='\0';
+						// reinitialisation du compteur
 						cmptindex=0;
-				
-						monMot->mot=malloc(sizeof(char*)*sizeof(motLex));
-						printf("%p\n",&monMot->mot);
-						strcpy(&monMot->mot,motLex);
 						
-						snprintf(motLex,sizeof(Mot),"%s","");
+						// la valeur : mot de la structure prend une taille de la taille du mot a y mettre + 1 -> '\0'
+						monMot->mot=malloc(strlen(motLex)+1);
+						// on copie dans la structure->mot le mot
+						strcpy(monMot->mot,motLex);
+						// reinitialise le mot à copier
+						
+						// sans malloc
+						snprintf(motLex,sizeof(char)*30,"%s","");
+						
+						// avec malloc 
+						//motLex=malloc(sizeof(char)*30);
 					}
 					else if (cmtpTab==2){
-					   
+					   	// on ne recupere pas la prononciation
 						cmptindex=0;
-						snprintf(motLex,sizeof(Mot),"%s","");
+						snprintf(motLex,sizeof(char)*30,"%s","");
 					
 					}
 					else if (cmtpTab==3){
-						monMot->syllabes=malloc(sizeof(char*)*sizeof(motLex));
-						printf("%p\n",&monMot->syllabes);
-					
 						motLex[cmptindex]='\0';
 						cmptindex=0;
 						
-						strcpy(&monMot->syllabes,motLex);
-						//printf("%p\n",&monMot->syllabes);
-						snprintf(motLex,sizeof(Mot),"%s","");
+						monMot->syllabes=malloc(strlen(motLex)+1);
+						strcpy(monMot->syllabes,motLex);
+						snprintf(motLex,sizeof(char)*30,"%s","");
 						
 					}
-				
-					 
-
 				}
+				
 				// on est sur la meme forme de mot
 				else {	
-					
+					// on donne au mot a copier les cara un par un
 					motLex[cmptindex]=buffer[i];
 					cmptindex++;
 					
 				}
-				
-				
-				
 	
-				
 			}
 			// change de mot 
 			else {
 				
-				printf("%s\n",&monMot->mot);
-				
-				strcpy(&monMot->phonetique,motLex);
-				snprintf(motLex,sizeof(Mot),"%s","");
+				monMot->phonetique=malloc(strlen(motLex)+1);	
+				strcpy(monMot->phonetique,motLex);
+				snprintf(motLex,sizeof(char)*30,"%s","");
 				
 				cmtpTab=0;
 				cmptindex=0;
 				
-				
-				
-				Tab[i]=monMot;
-			
-			
-			
-				free(monMot);
-				Mot* monMot=malloc(sizeof(Mot));
-		
+				// on stock dans un taleau de Mot* le mot
+				Tab[compteurTableau]=monMot;
+				compteurTableau++;
+				// on malloc a nouveau le mot pour ne pas ecraser les anciennes valeurs
+				monMot=malloc(sizeof(Mot));
+	
 			}
-
 			
 			i++;
-
 		}
-	
 		
 		// FERMETURE  DU FLUX
 		fclose(fichier);
-
+	
+		return Tab;
 	}
 }
-
-
-

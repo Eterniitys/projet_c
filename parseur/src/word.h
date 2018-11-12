@@ -10,7 +10,7 @@ struct _Mot {
   char* phonetique;
  
 };
-extern void afficherMot(Mot* motstruct);
+//extern void afficherMot(Mot* motstruct);
 /*
 extern Mot creer_Mot (char* mot, char** syllabes, char** phonetique);
 extern Mot decoupe_Mot(char Mot a);
