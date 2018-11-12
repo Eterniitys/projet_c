@@ -19,6 +19,8 @@ extern List* list_add(List* list, void* pointer);
 
 extern int list_count(List* list);
 
+extern void* list_find(List* list, void* pointer);
+
 extern void list_lock(List* list);
 
 extern void list_unlock(List* list);
