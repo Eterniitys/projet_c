@@ -9,7 +9,7 @@ void* list_find(List* list, void* object) {
 	//TODO dicho search if locked
 	void* output = NULL;
 	int index = 0;
-	while (index < list->_size && !output) {
+	while (index < list->_count && !output) {
 		if (list->_compare(list->_data[index], object) == 0)
 			output = list->_data[index];
 		index++;

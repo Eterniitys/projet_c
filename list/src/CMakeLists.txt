@@ -55,3 +55,8 @@ add_dependencies(test-lock list)
 target_link_libraries(test-lock list)
 add_test(test-lock ./test-lock)
 
+add_executable(test-find test-find.c)
+add_dependencies(test-find list)
+target_link_libraries(test-find list)
+add_test(test-find ./test-find)
+
