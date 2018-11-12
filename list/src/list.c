@@ -1,6 +1,7 @@
 #include "./list.h"
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define PSIZE sizeof(void*)
 
@@ -11,6 +12,9 @@ void* list_get(List* list, int index) {
 }
 
 List* list_add(List* list, void* pointer) {
+	if (list->_lock)
+		return NULL;
+
 	// list is full, need realloc
 	if (list->_count >= list->_size) {
 		int new_size = list->_size > 256 ? list->_size+256 : list->_size*2;
@@ -33,6 +37,19 @@ int list_count(List* list) {
 	return list->_count;
 }
 
+void list_lock(List* list) {
+	list->_lock = true;
+	//TODO QuickSort, realloc to minimum size
+}
+
+void list_unlock(List* list) {
+	list->_lock = false;
+}
+
+bool list_is_locked(List* list) {
+	return list->_lock;
+}
+
 void list_destroy(List* list) {
 	free(list->_data);
 	free(list);
@@ -42,6 +59,7 @@ static List* _list_init(List* list) {
 	list->_count = 0;
 	list->_size = 16;
 	list->_data = malloc(list->_size * PSIZE);
+	list->_lock = false;
 	if (list->_data)
 		return list;
 	return NULL;
