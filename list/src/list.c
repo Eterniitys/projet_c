@@ -65,11 +65,12 @@ static List* _list_init(List* list) {
 	return NULL;
 }
 
-List* list_new() {
+List* list_new(_compFunc function) {
 	List* list = malloc(sizeof(List));
 	if (list) {
 		List* filled = _list_init(list);
 		if (filled)
+			list->_compare = function;
 			return list;
 		// could not init the list, free the memory
 		free(list);

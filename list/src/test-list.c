@@ -8,7 +8,7 @@ int main(void) {
 	setbuf(stdout, NULL);
 
 
-	List* list = list_new();
+	List* list = list_new(NULL);
 	assert(list != NULL);
 	assert(list_count(list) == 0);
 

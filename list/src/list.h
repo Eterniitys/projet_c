@@ -3,11 +3,13 @@
 #include <stdbool.h>
 
 typedef struct _List List;
+typedef int (*_compFunc)(void*, void*);
 
 struct _List {
 	int _count;
 	int _size;
 	bool _lock;
+	_compFunc _compare;
 	void** _data;
 };
 
@@ -25,7 +27,7 @@ extern bool list_is_locked(List* list);
 
 extern void list_destroy(List* list);
 
-extern List* list_new();
+extern List* list_new(_compFunc);
 
 #endif /* _LIST_H_ */ 
 
