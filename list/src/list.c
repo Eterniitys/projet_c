@@ -39,7 +39,18 @@ int list_count(List* list) {
 
 void list_lock(List* list) {
 	list->_lock = true;
-	//TODO QuickSort, realloc to minimum size
+
+	// if count < size, reduce size in memory
+	if (list->_count < list->_size) {
+		int new_size = list->_count > 0 ? list->_count : 1;
+		void* temp = realloc(list->_data, new_size*PSIZE);
+
+		if (temp) {
+			list->_data = temp;
+			list->_size = new_size;
+		}
+	}
+	//TODO QuickSort
 }
 
 void list_unlock(List* list) {

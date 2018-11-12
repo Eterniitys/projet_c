@@ -50,3 +50,8 @@ add_dependencies(test-list list)
 target_link_libraries(test-list list)
 add_test(test-list ./test-list)
 
+add_executable(test-lock test-lock.c)
+add_dependencies(test-lock list)
+target_link_libraries(test-lock list)
+add_test(test-lock ./test-lock)
+
