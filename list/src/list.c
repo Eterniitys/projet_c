@@ -49,6 +49,31 @@ int list_count(List* list) {
 	return list->_count;
 }
 
+void _list_qs(List* list, int A, int B) {
+	if (B - A <= 1)
+		return;
+	int watchA = A;
+	int watchB = B;
+	void* pivot = list->_data[(A + B) / 2];
+
+	while (list->_data[watchA] != pivot || list->_data[watchB] != pivot) {
+		if (list->_compare(list->_data[watchA], pivot) < 0)
+			watchA++;
+		if (list->_compare(list->_data[watchB], pivot) > 0)
+			watchB--;
+
+		if (list->_compare(list->_data[watchA], pivot) >= 0 &&
+				list->_compare(list->_data[watchB], pivot) <= 0)
+		{
+			void* temp = list->_data[watchA];
+			list->_data[watchA] = list->_data[watchB];
+			list->_data[watchB] = temp;
+		}
+	}
+	_list_qs(list, A, watchA);
+	_list_qs(list, watchB, B);
+}
+
 void list_lock(List* list) {
 	list->_lock = true;
 
@@ -62,7 +87,7 @@ void list_lock(List* list) {
 			list->_size = new_size;
 		}
 	}
-	//TODO QuickSort
+	_list_qs(list, 0, list->_count-1);
 }
 
 void list_unlock(List* list) {
