@@ -15,7 +15,7 @@
 #include "tree.h"
 
 /**
- * \fn Tree * newTree(void *)
+ * \fn Tree * newTreevoid *struc)
  *
  * \return seed - return a new pointer of tree.
  */
@@ -39,7 +39,7 @@ Tree * createTree(){
 }
 
 /**
- * \fn Tree * createTree()
+ * \fn void * getNode(Tree *root)
  *
  * \return root->struc - return the node.
  */
@@ -48,7 +48,7 @@ void * getNode(Tree *root){
 }
 
 /**
-*\fn Tree * addBranch(Tree *, Tree *)
+*\fn Tree * addBranch(Tree *root, Tree *branch)
 *
 * Allows the addition of the child 'branch' to the 'root'
 */
@@ -58,7 +58,7 @@ Tree * addBranch(Tree *root, Tree *branch){
 }
 
 /**
-*\fn Tree * getBranch(Tree *,int)
+*\fn Tree * getBranch(Tree *root,int nb)
 *
 * Allows the getter of the child 'branch' to the 'root'
 */

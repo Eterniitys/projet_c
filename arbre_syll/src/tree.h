@@ -1,6 +1,6 @@
 /**
  * \file tree.h
- * \brief testing program
+ * \struct Tree tree.h "Definition"
  * \author Johan
  * \version 0.1
  * \date 15 november 2018

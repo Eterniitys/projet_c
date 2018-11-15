@@ -1,9 +1,22 @@
-#include "./list.h"
+/**
+ * \file list.c
+ * \class list
+ * \author Kilian
+ * \version 0.1
+ * \date 15 november 2018
+ */
 
+#include "./list.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
 #define PSIZE sizeof(void*)
+
+/**
+ * \fn void* list_find(List* list, void* object)
+ *
+ * \return output - return a list who contain 'object' type.
+ */
 
 void* list_find(List* list, void* object) {
 	void* output = NULL;
@@ -37,11 +50,23 @@ void* list_find(List* list, void* object) {
 	return output;
 }
 
+/**
+ * \fn void* list_get(List* list, int index)
+ *
+ * \return seed - return the list who has 'index' position.
+ */
+
 void* list_get(List* list, int index) {
 	if (index < 0 || index >= list->_count)
 		return NULL;
 	return list->_data[index];
 }
+
+/**
+ * \fn List* list_add(List* list, void* pointer)
+ *
+ * \return list - add 'pointer' at the end of the list unless the list is lock
+ */
 
 List* list_add(List* list, void* pointer) {
 	if (list->_lock)
@@ -65,9 +90,21 @@ List* list_add(List* list, void* pointer) {
 	return list;
 }
 
+/**
+ * \fn int list_count(List* list)
+ *
+ * \return list->count - return the counter
+ */
+
 int list_count(List* list) {
 	return list->_count;
 }
+
+/**
+ * \fn void _list_qs(List* list, int A, int B)
+ *
+ * \return  - if the list is lock, sort it in its place
+ */
 
 void _list_qs(List* list, int A, int B) {
 	if (B - A <= 1)
@@ -94,6 +131,12 @@ void _list_qs(List* list, int A, int B) {
 	_list_qs(list, watchB, B);
 }
 
+/**
+ * \fn void list_lock(List* list)
+ *
+ * \return  - lock the list size to his actual size
+ */
+
 void list_lock(List* list) {
 	list->_lock = true;
 
@@ -110,18 +153,42 @@ void list_lock(List* list) {
 	_list_qs(list, 0, list->_count-1);
 }
 
+/**
+ * \fn void list_lock(List* list)
+ *
+ * \return  - unlock the list size
+ */
+
 void list_unlock(List* list) {
 	list->_lock = false;
 }
+
+/**
+ * \fn bool list_is_locked(List* list)
+ *
+ * \return list->lock - return true if the the list is lock and false if not
+ */
 
 bool list_is_locked(List* list) {
 	return list->_lock;
 }
 
+/**
+ * \fn void list_destroy(List* list)
+ *
+ * \return  - free the list
+ */
+
 void list_destroy(List* list) {
 	free(list->_data);
 	free(list);
 }
+
+/**
+ * \fn static List* _list_init(List* list)
+ *
+ * \return list - init the list (variable, malloc the list)
+ */
 
 static List* _list_init(List* list) {
 	list->_count = 0;
@@ -132,6 +199,12 @@ static List* _list_init(List* list) {
 		return list;
 	return NULL;
 }
+
+/**
+ * \fn sList* list_new(_compFunc function)
+ *
+ * \return list - return pointer on empty list
+ */
 
 List* list_new(_compFunc function) {
 	List* list = malloc(sizeof(List));

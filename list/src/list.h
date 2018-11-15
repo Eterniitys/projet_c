@@ -1,3 +1,11 @@
+/**
+ * \file test-lock.c
+ * \struct List list.h "Définition" 
+ * \author Kilian
+ * \version 0.1
+ * \date 15 november 2018
+ */
+
 #ifndef _LIST_H_
 #define _LIST_H_
 #include <stdbool.h>

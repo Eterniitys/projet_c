@@ -1,3 +1,11 @@
+/**
+ * \file test-list.c
+ * \brief testing program 
+ * \author Kilian
+ * \version 0.1
+ * \date 15 november 2018
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
