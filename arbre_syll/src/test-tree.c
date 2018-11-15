@@ -1,3 +1,11 @@
+/**
+ * \file test-tree.c
+ * \brief testing program
+ * \author Johan
+ * \version 0.1
+ * \date 15 november 2018
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -8,7 +16,7 @@
 
 int main(void){
 	
-	//test sur les arbre, valider les listes avant de valider les arbre
+	//test on the trees, validate the lists before validating the tree
 	
 	int * un   = malloc(sizeof(int)); *un   = 1 ;
 	int * deux = malloc(sizeof(int)); *deux = 2 ;

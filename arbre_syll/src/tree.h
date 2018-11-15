@@ -1,3 +1,11 @@
+/**
+ * \file tree.h
+ * \brief testing program
+ * \author Johan
+ * \version 0.1
+ * \date 15 november 2018
+ */
+
 #ifndef _TREE_H_
 #define _TREE_H_
 
