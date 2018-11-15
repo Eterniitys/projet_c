@@ -14,7 +14,7 @@
 typedef int (*_compare_funct)(void*,void*);
 
 typedef struct _Tree {
-	void * struc;
+		void * struc;
 	List * children;
 	_compare_funct funct;
 } Tree;

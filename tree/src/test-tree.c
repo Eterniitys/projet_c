@@ -39,5 +39,14 @@ int main(void){
 	assert(tree_get_branch(root,0)==t1);
 	assert(*(int*)tree_get_node(tree_get_branch(tree_get_branch(root,0),1))==3);
 
+	assert(tree_count_children(t1)==2);
+
+	return 0;
 }
+
+
+
+
+
+
 
