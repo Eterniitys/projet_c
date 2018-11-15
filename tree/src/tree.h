@@ -11,20 +11,32 @@
 
 #include <list.h>
 
-typedef struct _Tree Tree;
-struct _Tree {
+typedef int (*_compare_funct)(void*,void*);
+
+typedef struct _Tree {
 	void * struc;
 	List * children;
-};
+	_compare_funct funct;
+} Tree;
 
-extern Tree * newTree(void *struc);
+extern Tree * tree_create(_compare_funct);
 
-extern Tree * createTree();
+extern void tree_destroy(Tree * tree);
 
-extern void * getNode(Tree *root);
+extern Tree * tree_new_node(void *struc);
 
-extern Tree * addBranch(Tree *root, Tree *branch);
+extern void * tree_get_node(Tree *root);
 
-extern void * getBranch(Tree *root,int nb);
+extern Tree * tree_add_branch(Tree *root, Tree *branch);
+
+extern Tree * tree_get_branch(Tree *root,int nb);
+
+extern int tree_count_children(Tree *tree);
+
+extern void tree_lock(Tree *tree);
+
+extern void tree_unlock(Tree *tree);
+
+extern void * find_child(Tree *tree,void *child);
 
 #endif /* _TREE_H_ */

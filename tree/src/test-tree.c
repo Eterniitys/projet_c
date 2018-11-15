@@ -11,13 +11,13 @@
 #include <assert.h>
 
 #include "tree.h"
-#include "../../word.h"
+#include "../../word/src/word.h"
 
 
 int main(void){
-	
+
 	//test on the trees, validate the lists before validating the tree
-	
+
 	int * un   = malloc(sizeof(int)); *un   = 1 ;
 	int * deux = malloc(sizeof(int)); *deux = 2 ;
 	int * tro  = malloc(sizeof(int)); *tro  = 3 ;
@@ -25,19 +25,19 @@ int main(void){
 	int * cin  = malloc(sizeof(int)); *cin  = 5 ;
 	int * sic  = malloc(sizeof(int)); *sic  = 6 ;
 	int * sept = malloc(sizeof(int)); *sept = 7 ;
-	
-	Tree *root = createTree();
-	Tree *t1 = newTree(un);
-	Tree *t2 = newTree(deux);
-	Tree *t3 = newTree(tro);
-	
-	addBranch(t1,t2);
-	addBranch(t1,t3);
-	addBranch(root,t1);
-	
-	assert(*(int*)getNode(t1)==*un);
-	assert(getBranch(root,0)==t1);
-	assert(*(int*)getNode(getBranch(getBranch(root,0),1))==3);
-	
+
+	Tree *root = tree_create(NULL);
+	Tree *t1 = tree_new_node(un);
+	Tree *t2 = tree_new_node(deux);
+	Tree *t3 = tree_new_node(tro);
+
+	tree_add_branch(t1,t2);
+	tree_add_branch(t1,t3);
+	tree_add_branch(root,t1);
+
+	assert(*(int*)tree_get_node(t1)==*un);
+	assert(tree_get_branch(root,0)==t1);
+	assert(*(int*)tree_get_node(tree_get_branch(tree_get_branch(root,0),1))==3);
+
 }
 
