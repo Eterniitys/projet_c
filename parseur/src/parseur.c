@@ -1,24 +1,21 @@
-// fonction de lecture : fopen --> déclaration : FILE* fopen (const char *filename, const char *mode)
-// filename : nom du fichier a ouvrir 
-// mode : type d ouverture : "r"->read (le fichier doit exister) "w"->cree un fichier vide pour ecriture (ecrase si fichier deja existant)
-// "a"-> ajout de donnée a la fin d un fichier celui ci est creee si il nexiste pas 
-// "r+"-> ouvre fichier en ecriture + lecture (le fichier doit exister)
-// "w+"-> creer un fichier vide en lecture + ecriture
-// "a+"->  ouvre fichier en lecture + modification
-// DOC : http://www.tutorialspoint.com/c_standard_library/c_function_ftell.htm
-// fscanf
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <word.h>
-// FONCTION DE TAILLE SUR POINTEUR DE FICHIER QUI IDENTIFIE LE FLUX
+
+
+/**
+ * function who return the size of ths stream file (Bytes)
+ */ 
 long size_file(FILE * fichier){
 	long sizeFichier;
-	fseek (fichier , 0 , SEEK_END); // initialise le pointeur d ecriture a la position 0 en partant de la fin ( place le curseur a la fin)
-	sizeFichier = ftell (fichier); // donne la position actuel du curseur / pointeur : <->pointeur a la fin --> la taille du fichier
+	fseek (fichier , 0 , SEEK_END); 
+	sizeFichier = ftell (fichier);
 	return sizeFichier;
 }
-int nbLignes(char* buffer,int sizeFichier){
+
+// function who return the number of line of a buffer
+int numbers_lines(char* buffer,int sizeFichier){ 
 	int i = 0;
 	int cpt = 0;
 	while (i != sizeFichier-1){
@@ -29,150 +26,166 @@ int nbLignes(char* buffer,int sizeFichier){
 	}
 	return cpt;
 }
-	
-Mot** tableau (){
-		// fichier = POINTEUR DE FICHIER QUI IDENTIFIE LE FLUX
+
+/**
+ * Function who read and sort in a structure a file
+ */
+Mot** parseur_read(const char * PATH){
+
 	FILE * fichier;
-	// OUVERTURE DU FLUX 
-	fichier=fopen("Lexique382.csv","r");
+	fichier=fopen(PATH,"r");
+
 	long sizeFichier;
-	// APPEL A LA FONCTION TAILLE
 	sizeFichier=size_file(fichier);
+
+
 	if(fichier == NULL){
 		return NULL;
 	}
 	else {
-		char buffer[sizeFichier]; // tableau qui contiendra tout le texte 
-		fseek(fichier, 0, SEEK_SET); // placement du curseur/pointeur au debut
-			// on lit le fichier Lexique avec le flux fichier, 
-		//on indique le nombre de caractere avec la taille du fichier => 1 caractere = 1 octet 
-		// on place tout ca dans le buffer       
+
+		/* READ FILE */ 
+		char buffer[sizeFichier];
+		fseek(fichier, 0, SEEK_SET);
 		fread(buffer,sizeFichier,1,fichier); 
-			// compteur de ligne du fichier
+
+		/* COUNTER */
+
+		// counter of ligne of the file 
 		int i=0;
-			// compteur de tabulation au sein d une ligne
+		// counter of tab in a line
 		int cmtpTab=0;
-			// compteur de l index du mot à copier --> index des char du mot
+		// counter of index for a word in locurence motLex
 		int cmptindex=0;
-			// compteur d indice du tableau 
+		// counter of index for tabs of results 
 		int compteurTableau=0;
-			// declaration du mot qui sera copié dans la structure
+
+		/* DECLARATION */ 
+		// word who will be copy in the structure word->mot
 		char* motLex;
 		motLex=malloc(sizeof(char)*30);
-		// declaration du mot 
-		
+
+		// char ** who will be copy in the structure word->syllabes
 		char** motSyllabes;
 		motSyllabes=malloc(50);
+
+		// char ** who will be copy in the structure word->phonetique
 		char** motPhonetiques;
 		motPhonetiques=malloc(50);
-		
+
+		// from strtok -> explode a word whith delim 
 		char * token;
+		// delim
 		char comp[3]="- ";
-		
+
+		// word structure 
 		Mot* monMot;
 		monMot=malloc(sizeof(Mot));
-			// declaration du tableau de Mot* qui contiendra toutes les structures de mot du fichier
+
+
+		// Big tab who will contain all the word structure of the file
 		Mot** Tab;
-		Tab=malloc(sizeof(Mot)*nbLignes(buffer,sizeFichier)+1);
-			// on parcours tout le fichier
+		Tab=malloc(sizeof(Mot)*numbers_lines(buffer,sizeFichier)+1);
+
+		/* CROSS THE FILE */
 		while (i!=sizeFichier){
-			// nouvelle ligne
-		if (buffer[i] != '\n'){
-			// nouvelle tab
-			if (buffer[i]=='\t'){
-				cmtpTab++;
-				if (cmtpTab==1){
-					// on rajoute le caractere de fin de mot 
-				motLex[cmptindex]='\0';
-				// reinitialisation du compteur
-				cmptindex=0;
-					// la valeur : mot de la structure prend une taille de la taille du mot a y mettre + 1 -> '\0'
-				monMot->mot=malloc(strlen(motLex)+1);
-				// on copie dans la structure->mot le mot
-				strcpy(monMot->mot,motLex);
-				// reinitialise le mot à copier
-					// sans malloc
-				motLex=malloc(sizeof(char)*30);
-					// avec malloc 
-				//motLex=malloc(sizeof(char)*30);
+
+			// new lign <-> new word 
+			if (buffer[i] != '\n'){
+
+				// new tabulation <-> new type of word 
+				if (buffer[i]=='\t'){
+
+					cmtpTab++;
+
+					// mot 
+					if (cmtpTab==1){
+
+						motLex[cmptindex]='\0';
+						cmptindex=0;
+
+						monMot->mot=motLex; // TODO : fonction qui stock les mots dans la structure
+						motLex=malloc(sizeof(char)*30);
+					}
+
+					// not use
+					else if (cmtpTab==2){
+						cmptindex=0;
+						motLex=malloc(sizeof(char)*30);
+					}
+
+					// syllabes
+					else if (cmtpTab==3){
+
+						motLex[cmptindex]='\0';
+						cmptindex=0;
+
+						int j=0;
+						token=malloc(sizeof(char*));
+
+						token=strtok(motLex,comp);
+						while (token != NULL){
+							motSyllabes[j]=token;
+							token=malloc(sizeof(char*));
+							token=strtok(NULL,comp);
+							j++;
+						}
+
+						monMot->syllabes=motSyllabes; // TODO : fonction qui stock les mots dans la structure
+						motLex=malloc(sizeof(char)*30);
+
+					}
+				}
+				else {	
+					// word who cross the file
+					motLex[cmptindex]=buffer[i];
+					cmptindex++;
+				}
 			}
-			else if (cmtpTab==2){
-			// on ne recupere pas la prononciation
-				cmptindex=0;
-				motLex=malloc(sizeof(char)*30);
-			}
-			else if (cmtpTab==3){
-				motLex[cmptindex]='\0';
-				cmptindex=0;
-	
-				
+			// other word 
+			else {
+
+				// phonetique
 				int j=0;
-				
-				token=malloc(sizeof(char*));
-				
+				token=malloc(sizeof(char*));	
+
 				token=strtok(motLex,comp);
-				
 				while (token != NULL){
-		
-					motSyllabes[j]=token;
-					
+					motPhonetiques[j]=token;
 					token=malloc(sizeof(char*));
 					token=strtok(NULL,comp);
 					j++;
 				}
-				
-				monMot->syllabes=motSyllabes;
-				
-				
-				//snprintf(motLex,sizeof(char)*30,"%s","");
+
+				monMot->phonetique=motPhonetiques; // TODO : fonction qui stock les mots dans la structure
 				motLex=malloc(sizeof(char)*30);
-				
-			}
-		}
-		// on est sur la meme forme de mot
-		else {	
-			// on donne au mot a copier les cara un par un
-			motLex[cmptindex]=buffer[i];
-			cmptindex++;
-			}
-		}
-		// change de mot 
-		else {
-			
-			int j=0;
-			
-			token=malloc(sizeof(char*));	
-			
-			token=strtok(motLex,comp);
-			while (token != NULL){
-				motPhonetiques[j]=token;
-				token=malloc(sizeof(char*));
-				token=strtok(NULL,comp);
-				j++;
-			}
-			monMot->phonetique=motPhonetiques;
-		
-			motLex=malloc(sizeof(char)*30);
-			
-			
-			cmtpTab=0;
-			cmptindex=0;
-			
-			
-			
-				// on stock dans un taleau de Mot* le mot
-			Tab[compteurTableau]=monMot;
-			compteurTableau++;
-			// on malloc a nouveau le mot pour ne pas ecraser les anciennes valeurs
-			monMot=malloc(sizeof(Mot));
-			motSyllabes=malloc(sizeof(motSyllabes));
-			motPhonetiques=malloc(sizeof(motPhonetiques));
+
+
+				cmtpTab=0;
+				cmptindex=0;
+
+
+				// stock the structure monMot in the big tab
+				Tab[compteurTableau]=monMot;
+				compteurTableau++;
+
+				// reset
+				monMot=malloc(sizeof(Mot));
+				motSyllabes=malloc(sizeof(motSyllabes));
+				motPhonetiques=malloc(sizeof(motPhonetiques));
 			}
 			i++;
 		}
-			// FERMETURE  DU FLUX
-			
-			fclose(fichier);
-			return Tab;
-		}
+
+		/* CLOSE THE STREAM */
+
+		fclose(fichier);
+		return Tab;
 	}
+}
+
+
+
+
+
+
