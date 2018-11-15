@@ -2,7 +2,7 @@
 #define _PARSEUR_H_
 
 #include <stdio.h>
-#include "word.h"
+#include <word.h>
 
 //extern void ajoutMotTab(Mot*);
 extern long size_file(FILE * fichier);

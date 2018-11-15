@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.5)
 
 project(tree C)
 
-# Important, il faut initialisé le path d'installation des lib soit la variable
-# CMAKE_INSTALL_PREFIX
 find_file(LIST_H "list.h")
 
 if(LIST_H)
