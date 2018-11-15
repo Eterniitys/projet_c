@@ -15,7 +15,7 @@
 #include "tree.h"
 
 /**
- * \fn Tree * newTreevoid *struc)
+ * \fn Tree * newTree(void *struc)
  *
  * \return seed - return a new pointer of tree.
  */

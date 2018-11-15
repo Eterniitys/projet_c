@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.5)
 project (Symphonie C)
 
-foreach(dir IN ITEMS list arbre_syll word parseur rhyme)
+foreach(dir IN ITEMS list tree word parseur rhyme)
 	include_directories ("${PROJECT_SOURCE_DIR}/${dir}/src")
 	add_subdirectory (${dir}/src) 
 endforeach(dir)
