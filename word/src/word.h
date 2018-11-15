@@ -10,10 +10,11 @@ struct _Mot {
   char** phonetique;
  
 };
-
-extern Mot creer_Mot (char* mot, char** syllabes, char** phonetique);
-extern Mot decoupe_Mot(char Mot);
-extern Mot Mot_rime(char Mot);
-
+/*
+extern Mot *creer_Mot (char* mot, char** syllabes, char** phonetique);
+extern Mot *word_fill ( Mot *mot, char** syllabes, char** phonetique );
+extern Mot *decoupe_Mot(Mot *a);
+extern Mot Mot_rime(Mot *m);
+*/
 #endif
 

@@ -1,21 +1,20 @@
-include "word.h"
+#include "word.h"
+#include <stdlib.h>
 
-Mot creer_Mot (char* mot, char** syllabes, char** phonetique)
+/*Mot *creer_Mot (char* mot, char** syllabes, char** phonetique)
 {
 
-	Mot *mot = malloc(sizeof(Mot));
+	mot = malloc(sizeof(Mot));
 
-	if (mot) 
-	{
-	 return _fill(mot, syllabes, phonetique);
+	if (mot){
+		return _fill(mot, syllabes, phonetique);
 	} else {
 		return NULL;
 	}
 
 }
 
-Mot *_fill ( Mot *mot, char** syllabes, char** phonetique )
-{
+Mot *word_fill ( Mot *mot, char** syllabes, char** phonetique ){
 
 	mot->syllabes = syllabes;
 	mot->phonetique = phonetique;
@@ -24,13 +23,15 @@ Mot *_fill ( Mot *mot, char** syllabes, char** phonetique )
 }
 
 
-Mot decoupe_Mot(char Mot a)
+Mot* decoupe_Mot(Mot *a)
 {
 	//TODO
 	return a;
 }
 
+Mot Mot_rime(Mot *m);
 
 
 
 
+*/
