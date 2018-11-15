@@ -6,7 +6,7 @@ typedef struct _Mot Mot;
 struct _Mot {
   
   char* mot;
-  char** syllabes;
+  char** syllabes; //Cette structure n'est actuellement pas utilisé par le parseur.
   char** phonetique;
  
 };
