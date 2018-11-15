@@ -1,6 +1,7 @@
 ## CUSTOM
 */build/
 .DS_Store
+build/
 
 # Prerequisites
 *.d
