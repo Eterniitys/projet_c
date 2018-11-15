@@ -6,13 +6,33 @@
 #define PSIZE sizeof(void*)
 
 void* list_find(List* list, void* object) {
-	//TODO dicho search if locked
 	void* output = NULL;
-	int index = 0;
-	while (index < list->_count && !output) {
-		if (list->_compare(list->_data[index], object) == 0)
-			output = list->_data[index];
-		index++;
+	if (!list->_lock) {
+		int index = 0;
+		while (index < list->_count && !output) {
+			if (list->_compare(list->_data[index], object) == 0)
+				output = list->_data[index];
+			index++;
+		}
+	} else {
+		int a = 0;
+		int b = list->_count;
+		int med = (a+b)/2;
+		int comp = 0;
+		while (b - a >= 1 && !output) {
+			comp = list->_compare(list->_data[med], object);
+			if (comp < 0) {
+				a = med;
+			} else if (comp > 0) {
+				b = med;
+			} else {
+				output = list->_data[med];
+			}
+			med = (a+b)/2;
+		}
+		if (list->_compare(list->_data[med], object) == 0) {
+			output = list->_data[med];
+		}
 	}
 	return output;
 }

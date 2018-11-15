@@ -30,7 +30,13 @@ int main(void) {
 
 	*tofind = *(int*)list_get(list, 24);
 	int* found = list_find(list,tofind);
-	assert(list_get(list, 24) == found);
+	assert(*(int*)list_get(list, 24) == *found);
+
+	// find again, but with sorted list
+	list_lock(list);
+	found = list_find(list,tofind);
+	assert(*tofind == *found);
+
 
 	list_destroy(list);
 	return EXIT_SUCCESS;
