@@ -9,7 +9,7 @@
 int main (void){
 
 	Mot** tab=tableau();
-	printf("%s\n",tab[142682]->syllabes[10]);
+	printf("%s\n",tab[142682]->syllabes[1]);
 	//printf("%s\n",tab[3]->syllabes[0]);
 	
 	

@@ -18,14 +18,31 @@ if(WORD_LIB)
 	link_directories("${WORD_LIB_DIR}")
 endif(WORD_LIB)
 
-add_executable(test-parseur test-parseur.c parseur.c parseur.h)
-#add_dependencies(test-parseur word)
-target_link_libraries(test-parseur word)
+#ajout de la librairie parseur
+add_library(parseur SHARED parseur.c parseur.h)
+#la librairie parseur utilise la librairie word
+target_link_libraries(parseur word)
+
+#fichiers de destination
+install(
+	TARGETS parseur
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+	RUNTIME DESTINATION bin
+)
+install(
+	FILES parseur.h
+	DESTINATION include
+)
+
+
+add_executable(test-parseur test-parseur.c)
+add_dependencies(test-parseur parseur)
+target_link_libraries(test-parseur parseur)
 
 #Autorisation tests
 enable_testing()
 
-#Liste tests
 add_test(test-parseur ./test-parseur)
 
 
