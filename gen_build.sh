@@ -32,3 +32,5 @@ for dir in "${directories[@]}"; do
 	cd ../..
 done
 
+cp Lexique382.csv parseur/build/
+
