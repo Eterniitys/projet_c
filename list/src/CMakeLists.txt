@@ -45,23 +45,10 @@ install(
 
 enable_testing()
 
-add_executable(test-list test-list.c)
-add_dependencies(test-list list)
-target_link_libraries(test-list list)
-add_test(test-list ./test-list)
-
-add_executable(test-lock test-lock.c)
-add_dependencies(test-lock list)
-target_link_libraries(test-lock list)
-add_test(test-lock ./test-lock)
-
-add_executable(test-find test-find.c)
-add_dependencies(test-find list)
-target_link_libraries(test-find list)
-add_test(test-find ./test-find)
-
-add_executable(test-lock_qs test-lock_qs.c)
-add_dependencies(test-lock_qs list)
-target_link_libraries(test-lock_qs list)
-add_test(test-lock_qs ./test-lock_qs)
+foreach(name IN ITEMS list lock find lock_qs)
+	add_executable("test-${name}" "test-${name}.c")
+	add_dependencies("test-${name}" list)
+	target_link_libraries("test-${name}" list)
+	add_test("test-${name}" "./test-${name}")
+endforeach(name)
 
