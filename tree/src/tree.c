@@ -23,6 +23,7 @@ Tree * tree_create(_compare_funct funct){
 	Tree *seed = malloc(sizeof(Tree));
 	seed->struc = seed;
 	seed->children = list_new(funct);
+	seed->funct=funct;
 	return seed;
 }
 
@@ -32,21 +33,11 @@ Tree * tree_create(_compare_funct funct){
  * Allows Tree's structure freeing.
  */
 void tree_destroy(Tree * tree){
+	for (int i=0; i<tree_count_children(tree);i++){
+		free(list_get(tree->children, i));
+	}
 	list_destroy(tree->children);
-	free(tree->struc);
 	free(tree);
-}
-
-/**
- * \fn Tree * tree_new_node(void *struc)
- *
- * \return seed - return a new pointer of tree.
- */
-Tree * tree_new_node(void *struc){
-	Tree *seed = malloc(sizeof(Tree));
-	seed->struc = struc;
-	seed->children = list_new(NULL);
-	return seed;
 }
 
 /**
@@ -59,21 +50,33 @@ void * tree_get_node(Tree *root){
 }
 
 /**
-*\fn Tree * tree_add_branch(Tree *root, Tree *branch)
-*
-* Allows the addition of the child 'branch' to the 'root'
-*/
-Tree * tree_add_branch(Tree *root, Tree *branch){
-	branch->funct = root->funct;
+ * \fn Tree * _tree_new_node(Tree *root,void *struc)
+ *
+ * \return node - return a new pointer of tree.
+ */
+Tree * _tree_new_node(Tree *root,void *struc){
+	Tree *node = malloc(sizeof(Tree));
+	node->struc = struc;
+	node->children = list_new(root->funct);
+	return node;
+}
+
+/**
+ *\fn Tree * tree_add_node(Tree *root, void *node)
+ *
+ * Allows the addition of the child 'node' to the 'root'
+ */
+Tree * tree_add_node(Tree *root, void *node){
+	Tree *branch = _tree_new_node(root,node);
 	list_add(root->children, branch);
 	return root;
 }
 
 /**
-*\fn Tree * tree_get_branch(Tree *root,int nb)
-*
-* Allows the getter of the child 'branch' to the 'root'
-*/
+ *\fn Tree * tree_get_branch(Tree *root,int nb)
+ *
+ * Allows the getter of the child 'branch' to the 'root'
+ */
 Tree * tree_get_branch(Tree *root,int nb){
 	return list_get(root->children,nb);
 }
@@ -109,11 +112,13 @@ void tree_unlock(Tree *tree){
 /**
  *\fn Tree * find_child(Tree *tree)
  *
- *
+ * Call list_find on tree->children
+ * Seeking *child in list
  */
 void * find_child(Tree *tree,void *child){
 	return list_find(tree->children,child);
 }
+
 
 
 

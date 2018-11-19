@@ -17,16 +17,20 @@
 
 int main(void){
 
-	Mot ** tableau = parseur_read("../../Lexique382.csv");
+	int compare_int (void * nb1,void * nb2){
+		return *(int*)nb1-*(int*)nb2;
+	}
 
-	Tree *root = tree_create(NULL);
-
-	//tree_add_branch(t1,t2);
-
-	assert(1 == 1);
-	assert(2 == 2);
-	assert(3 == 3);
-
+	Tree *root1 = tree_create(NULL);	
+	Tree *root2 = tree_create(compare_int);
+	
+	//assert(tree_destroy(root1) == NULL);
+	//assert(tree_destroy(root2) == NULL);
+	
+	//printf("%p\n",root1);
+	//assert(root1 == NULL);
+	//assert(root2 == NULL);
+	
 	return 0;
 }
 

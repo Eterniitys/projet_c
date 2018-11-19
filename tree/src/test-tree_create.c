@@ -17,15 +17,22 @@
 
 int main(void){
 
-	Mot ** tableau = parseur_read("../../Lexique382.csv");
+	int compare_int (void * nb1,void * nb2){
+		return *(int*)nb1-*(int*)nb2;
+	}
 
-	Tree *root = tree_create(NULL);
-
-	//tree_add_branch(t1,t2);
-
-	assert(1 == 1);
-	assert(2 == 2);
-	assert(3 == 3);
+	Tree *root1 = tree_create(NULL);
+	assert(sizeof(root1->struc) == sizeof(void*));
+	assert(sizeof(root1->children) == sizeof(List*));
+	assert(sizeof(root1->funct) == sizeof(NULL));
+	
+	Tree *root2 = tree_create(compare_int);
+	assert(sizeof(root2->struc) == sizeof(void*));
+	assert(sizeof(root2->children) == sizeof(List*));
+	assert(sizeof(root2->funct) == sizeof(_compare_funct));
+	
+	tree_destroy(root1);
+	tree_destroy(root2);
 
 	return 0;
 }

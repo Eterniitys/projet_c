@@ -17,7 +17,6 @@
 
 int main(void){
 
-	Mot ** tableau = parseur_read("../../Lexique382.csv");
 
 	Tree *root = tree_create(NULL);
 

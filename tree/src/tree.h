@@ -14,7 +14,7 @@
 typedef int (*_compare_funct)(void*,void*);
 
 typedef struct _Tree {
-		void * struc;
+	void * struc;
 	List * children;
 	_compare_funct funct;
 } Tree;
@@ -23,11 +23,9 @@ extern Tree * tree_create(_compare_funct);
 
 extern void tree_destroy(Tree * tree);
 
-extern Tree * tree_new_node(void *struc);
-
 extern void * tree_get_node(Tree *root);
 
-extern Tree * tree_add_branch(Tree *root, Tree *branch);
+extern Tree * tree_add_node(Tree *root, void *node);
 
 extern Tree * tree_get_branch(Tree *root,int nb);
 

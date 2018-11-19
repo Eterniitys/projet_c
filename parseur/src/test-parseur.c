@@ -8,7 +8,7 @@
 
 int main (void){
 
-	Mot** tab=parseur_read("Lexique382.csv");
+	Mot** tab=parseur_read("../../Lexique382.csv");
 
 	printf("Mot : %s\n",tab[3]->mot);
 	printf("Syllabes : \n%s\n",tab[3]->syllabes[0]);
