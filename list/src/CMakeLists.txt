@@ -50,5 +50,6 @@ foreach(name IN ITEMS list lock find lock_qs)
 	add_dependencies("test-${name}" list)
 	target_link_libraries("test-${name}" list)
 	add_test("test-${name}" "./test-${name}")
+	add_test("test-${name}-valgrind" "/usr/bin/valgrind" "--error-exitcode=42" "--leak-check=full" "./test-${name}")
 endforeach(name)
 
