@@ -21,6 +21,7 @@ int main(void){
 	int * un   = malloc(sizeof(int)); *un   = 1 ;
 	int * deux = malloc(sizeof(int)); *deux = 2 ;
 	int * tro  = malloc(sizeof(int)); *tro  = 3 ;
+	int * qua  = malloc(sizeof(int)); *qua  = 4 ;
 
 	/**
 	 * Function to compare int (local)
@@ -29,17 +30,25 @@ int main(void){
 		return *(int*)nb1-*(int*)nb2;
 	}
 
-	Tree *root = tree_create(compare_int);
+	Tree *root = tree_new_node(un,compare_int);
+	Tree *t2 = tree_new_node(deux,NULL);
+	Tree *t3 = tree_new_node(tro,NULL);
+	Tree *t4 = tree_new_node(qua,NULL);
 
-	tree_add_node(root,un);
-	tree_add_node(tree_get_branch(root,0),deux);
-	tree_add_node(tree_get_branch(root,0),tro);
+	tree_add_node(root,t2);
+	tree_add_node(t2,t3);
+	tree_add_node(t2,t4);
 
-	assert(tree_get_node(tree_get_branch(root,0))==un);
-	assert(tree_get_node(tree_get_branch(tree_get_branch(root,0),0))==deux);
-	assert(tree_get_node(tree_get_branch(tree_get_branch(root,0),1))==tro);
+	assert(root->struc==un);
+	assert(t2->struc==deux);
+	assert(t3->struc==tro);
+	assert(t4->struc==qua);
+	
+	assert(list_get(root->children,0)==t2);
+	assert(list_get(t2->children,0)==t3);
+	assert(list_get(t2->children,1)==t4);
 
-	free(un);free(deux);free(tro);
+	//free(un);free(deux);free(tro);
 	tree_destroy(root);
 
 	return 0;

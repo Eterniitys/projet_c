@@ -12,19 +12,16 @@
 
 #include "tree.h"
 #include <word.h>
-#include <parseur.h>
+#include <stdbool.h>
 
 
 int main(void){
 
+	Tree *root = tree_new_node(NULL,NULL);
 
-	Tree *root = tree_create(NULL);
-
-	//tree_add_branch(t1,t2);
-
-	assert(1 == 1);
-	assert(2 == 2);
-	assert(3 == 3);
+	tree_lock(root);
+	
+	assert(list_is_locked(root->children)==true);
 
 	return 0;
 }

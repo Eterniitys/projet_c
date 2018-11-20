@@ -14,31 +14,7 @@
 
 #include "tree.h"
 
-/**
- * \fn Tree * tree_create(int (*_compare_funct)(void*,void*))
- *
- * \return seed - return a new pointer of tree.
- */
-Tree * tree_create(_compare_funct funct){
-	Tree *seed = malloc(sizeof(Tree));
-	seed->struc = seed;
-	seed->children = list_new(funct);
-	seed->funct=funct;
-	return seed;
-}
 
-/**
- * \fn Tree * tree_destroy()
- *
- * Allows Tree's structure freeing.
- */
-void tree_destroy(Tree * tree){
-	for (int i=0; i<tree_count_children(tree);i++){
-		free(list_get(tree->children, i));
-	}
-	list_destroy(tree->children);
-	free(tree);
-}
 
 /**
  * \fn void * tree_get_node(Tree *root)
@@ -50,15 +26,29 @@ void * tree_get_node(Tree *root){
 }
 
 /**
- * \fn Tree * _tree_new_node(Tree *root,void *struc)
+ * \fn Tree * tree_new_node(Tree *root,void *struc)
  *
  * \return node - return a new pointer of tree.
  */
-Tree * _tree_new_node(Tree *root,void *struc){
+Tree * tree_new_node(void *struc,_compare_funct funct){
 	Tree *node = malloc(sizeof(Tree));
 	node->struc = struc;
-	node->children = list_new(root->funct);
+	node->funct=funct;
+	node->children = list_new(funct);
 	return node;
+}
+
+/**
+ * \fn Tree * tree_destroy()
+ *
+ * Allows Tree's structure freeing.
+ */
+void tree_destroy(Tree * tree){
+	for (int i=0; i<tree_count_children(tree);i++){
+		tree_destroy(list_get(tree->children, i));
+	}
+	list_destroy(tree->children);
+	free(tree);
 }
 
 /**
@@ -66,9 +56,10 @@ Tree * _tree_new_node(Tree *root,void *struc){
  *
  * Allows the addition of the child 'node' to the 'root'
  */
-Tree * tree_add_node(Tree *root, void *node){
-	Tree *branch = _tree_new_node(root,node);
-	list_add(root->children, branch);
+Tree * tree_add_node(Tree *root, Tree *node){
+	node->children->_compare=root->funct;
+	node->funct=root->funct;
+	list_add(root->children, node);
 	return root;
 }
 
@@ -110,12 +101,12 @@ void tree_unlock(Tree *tree){
 
 
 /**
- *\fn Tree * find_child(Tree *tree)
+ *\fn Tree * tree_find_child(Tree *tree)
  *
  * Call list_find on tree->children
  * Seeking *child in list
  */
-void * find_child(Tree *tree,void *child){
+void * tree_find_child(Tree *tree,void *child){
 	return list_find(tree->children,child);
 }
 

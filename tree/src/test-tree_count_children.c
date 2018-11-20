@@ -32,26 +32,33 @@ int main(void){
 		return *(int*)nb1-*(int*)nb2;
 	}
 
-	Tree *root = tree_create(compare_int);
+	Tree *root = tree_new_node(NULL,compare_int);
+	Tree *t1 = tree_new_node(un,compare_int);
+	Tree *t2 = tree_new_node(deux,compare_int);
+	Tree *t3 = tree_new_node(tro,compare_int);
+	Tree *t4 = tree_new_node(qua,compare_int);
+	Tree *t5 = tree_new_node(cin,compare_int);
+	Tree *t6 = tree_new_node(six,compare_int);
+	Tree *t7 = tree_new_node(sept,compare_int);
 
-	tree_add_node(root,un);//root-1
-	tree_add_node(tree_get_branch(root,0),deux);//root-1-2
-	tree_add_node(tree_get_branch(root,0),tro);//root-1-3
-	tree_add_node(tree_get_branch(root,0),qua);//root-1-4
-	tree_add_node(tree_get_branch(tree_get_branch(root,0),2),cin);//root-1-4-5
-	tree_add_node(tree_get_branch(tree_get_branch(root,0),2),six);//root-1-4-6
-	tree_add_node(tree_get_branch(tree_get_branch(tree_get_branch(root,0),2),0),sept);//root-1-4-5-7
+	tree_add_node(root,t1);//root-1
+	tree_add_node(t1,t2);//root-1-2
+	tree_add_node(t1,t3);//root-1-3
+	tree_add_node(t1,t4);//root-1-4
+	tree_add_node(t4,t5);//root-1-4-5
+	tree_add_node(t4,t6);//root-1-4-6
+	tree_add_node(t5,t7);//root-1-4-5-7
 	
 	assert(tree_count_children(root)==1);//root
-	assert(tree_count_children(tree_get_branch(root,0))==3);//1
-	assert(tree_count_children(tree_get_branch(tree_get_branch(root,0),0))==0);//2
-	assert(tree_count_children(tree_get_branch(tree_get_branch(root,0),1))==0);//3
-	assert(tree_count_children(tree_get_branch(tree_get_branch(root,0),2))==2);//4
-	assert(tree_count_children(tree_get_branch(tree_get_branch(tree_get_branch(root,0),2),0))==1);//5
-	assert(tree_count_children(tree_get_branch(tree_get_branch(tree_get_branch(root,0),2),1))==0);//6
-	assert(tree_count_children(tree_get_branch(tree_get_branch(tree_get_branch(tree_get_branch(root,0),2),0),0))==0);//7
+	assert(tree_count_children(t1)==3);//1
+	assert(tree_count_children(t2)==0);//2
+	assert(tree_count_children(t3)==0);//3
+	assert(tree_count_children(t4)==2);//4
+	assert(tree_count_children(t5)==1);//5
+	assert(tree_count_children(t6)==0);//6
+	assert(tree_count_children(t7)==0);//7
 	
-	free(un);free(deux);free(tro);free(qua);free(cin);free(six);free(sept);
+	//free(un);free(deux);free(tro);free(qua);free(cin);free(six);free(sept);
 	tree_destroy(root);
 
 	return 0;

@@ -52,65 +52,18 @@ install(
 	DESTINATION include
 )
 
-#Liste exécutables
-add_executable(test-tree test-tree.c)
-add_dependencies(test-tree tree)
-target_link_libraries(test-tree tree)
-
-add_executable(test-generate-tree test-generate-tree.c)
-add_dependencies(test-tree tree)
-target_link_libraries(test-generate-tree tree parseur)
-
-add_executable(test-tree_create test-tree_create.c)
-add_dependencies(test-tree_create tree)
-target_link_libraries(test-tree_create tree)
-
-add_executable(test-tree_destroy test-tree_destroy.c)
-add_dependencies(test-tree_destroy tree)
-target_link_libraries(test-tree_destroy tree parseur)
-
-add_executable(test-tree_get_node test-tree_get_node.c)
-add_dependencies(test-tree_get_node tree)
-target_link_libraries(test-tree_get_node tree parseur)
-
-add_executable(test-tree_add_node test-tree_add_node.c)
-add_dependencies(test-tree_add_node tree)
-target_link_libraries(test-tree_add_node tree parseur)
-
-add_executable(test-tree_get_branch test-tree_get_branch.c)
-add_dependencies(test-tree_get_branch tree)
-target_link_libraries(test-tree_get_branch tree parseur)
-
-add_executable(test-tree_count_children test-tree_count_children.c)
-add_dependencies(test-tree_count_children tree)
-target_link_libraries(test-tree_count_children tree parseur)
-
-add_executable(test-tree_lock test-tree_lock.c)
-add_dependencies(test-tree_lock tree)
-target_link_libraries(test-tree_lock tree parseur)
-
-add_executable(test-tree_unlock test-tree_unlock.c)
-add_dependencies(test-tree_unlock tree)
-target_link_libraries(test-tree_unlock tree parseur)
-
-add_executable(test-tree_find_child test-tree_find_child.c)
-add_dependencies(test-tree_find_child tree)
-target_link_libraries(test-tree_find_child tree parseur)
-
+#Liste exécutables/tests
+foreach (dir_name IN ITEMS generate_tree tree_destroy tree_get_node
+		tree_add_node tree_get_branch tree_count_children tree_lock
+		tree_unlock tree_find_child)
+	add_executable(test-${dir_name} test-${dir_name}.c)
+	add_dependencies(test-${dir_name} tree)
+	target_link_libraries(test-${dir_name} tree parseur)
+	add_test(test-${dir_name} ./test-${dir_name})
+endforeach(dir_name)
 #Autorisation tests
 enable_testing()
 
-#Liste tests
-add_test(test-tree ./test-tree)
-add_test(test-generate-tree ./test-generate-tree)
-add_test(test-tree_create ./test-tree_create)
-add_test(test-tree_destroy ./test-tree_destroy)
-add_test(test-tree_get_node ./test-tree_get_node)
-add_test(test-tree_add_node ./test-tree_add_node)
-add_test(test-tree_get_branch ./test-tree_get_branch)
-add_test(test-tree_count_children ./test-tree_count_children)
-add_test(test-tree_lock ./test-tree_lock)
-add_test(test-tree_unlock ./test-tree_unlock)
-add_test(test-tree_find_child ./test-tree_find_child)
+
 
 

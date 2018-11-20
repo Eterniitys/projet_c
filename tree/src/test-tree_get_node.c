@@ -17,14 +17,32 @@
 
 int main(void){
 
+	int * un   = malloc(sizeof(int)); *un   = 1 ;
+	int * deux = malloc(sizeof(int)); *deux = 2 ;
+	int * tro  = malloc(sizeof(int)); *tro  = 3 ;
+	int * qua  = malloc(sizeof(int)); *qua  = 4 ;
 
-	Tree *root = tree_create(NULL);
+	/**
+	 * Function to compare int (local)
+	 */
+	int compare_int (void * nb1,void * nb2){
+		return *(int*)nb1-*(int*)nb2;
+	}
 
-	//tree_add_branch(t1,t2);
+	Tree *root = tree_new_node(un,compare_int);
+	Tree *t2 = tree_new_node(deux,NULL);
+	Tree *t3 = tree_new_node(tro,NULL);
+	Tree *t4 = tree_new_node(qua,NULL);
 
-	assert(1 == 1);
-	assert(2 == 2);
-	assert(3 == 3);
+	tree_add_node(root,t2);
+	tree_add_node(t2,t3);
+	tree_add_node(t2,t4);
+
+	assert(tree_get_node(tree_get_branch(root,0))==deux);
+	assert(tree_get_node(tree_get_branch(tree_get_branch(root,0),0))==tro);
+	assert(tree_get_node(tree_get_branch(tree_get_branch(root,0),1))==qua);
+	
+	tree_destroy(root);
 
 	return 0;
 }

@@ -19,13 +19,13 @@ int main(void){
 
 	Mot ** tableau = parseur_read("../../Lexique382.csv");
 
-	Tree *root = tree_create(NULL);
+	//Tree *root = (NULL);
 
 	//tree_add_branch(t1,t2);
 
-	assert(1 == 1);
-	assert(2 == 2);
-	assert(3 == 3);
+	assert(1 == 0);
+	assert(2 == 0);
+	assert(3 == 0);
 
 	return 0;
 }
