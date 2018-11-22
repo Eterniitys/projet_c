@@ -6,11 +6,11 @@ Le but du projet est de produire un logiciel capable de :
 
 Le fichier Lexique382.csv (issu du projet http://www.lexique.org/telLexique.php) donne pour chaque mot fourni :
 
-— sa syllabisation
+    — sa syllabisation
 
-— sa phonétisation
+    — sa phonétisation
 
-— la syllabisation de sa phonétisation
+    — la syllabisation de sa phonétisation
 
 
 Les quatre champs sont séparés par une tabulation. Attention, il est possible que le fichier comporte quelques erreurs (que vous devrez détecter).
