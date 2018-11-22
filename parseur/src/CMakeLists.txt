@@ -21,11 +21,30 @@ if(WORD_LIB)
 endif(WORD_LIB)
 
 
+
+find_file(TREE_H "tree.h")
+if(TREE_H)
+	# Search of directory
+	get_filename_component(TREE_INCLUDE_DIR ${TREE_H} DIRECTORY)
+	# Calling with <>
+	include_directories("${TREE_INCLUDE_DIR}")
+endif(TREE_H)
+find_library(TREE_LIB word)
+if(TREE_LIB)
+	# Search of directory
+	get_filename_component(TREE_LIB_DIR ${TREE_LIB} DIRECTORY)
+	# Add file for research of library
+	link_directories("${TREE_LIB_DIR}")
+endif(TREE_LIB)
+
+
 # include library parseur
 add_library(parseur SHARED parseur.c parseur.h)
 
 # library parseur use library word 
 target_link_libraries(parseur word)
+# library parseur use library tree 
+target_link_libraries(parseur tree)
 
 
 # Destination files

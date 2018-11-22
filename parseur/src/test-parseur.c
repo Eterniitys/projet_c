@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
+#include <word.h>
 
 #include "parseur.h"
 
@@ -9,6 +11,9 @@
 int main (void){
 
 	Mot** tab=parseur_read("../../Lexique382.csv");
+
+	// test 
+	
 
 	printf("Mot : %s\n",tab[3]->mot);
 	printf("Syllabes : \n%s\n",tab[3]->syllabes[0]);
@@ -21,7 +26,8 @@ int main (void){
 	printf("%s\n",tab[3]->phonetique[3]);
 	
 	// TODO : assert 
-
+	
+	//assert(tab[3]->mot== "a cappela");
 	return(EXIT_SUCCESS);
 }
 

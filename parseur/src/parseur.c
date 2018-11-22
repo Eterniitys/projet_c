@@ -2,7 +2,63 @@
 #include <stdio.h>
 #include <string.h>
 #include <word.h>
+#include <tree.h>
 
+// TODO 4 buffer
+
+/**
+ * 
+ */
+int compare_char (void * node1,void * node2){
+	char_mot *cm1 = ((Tree*)node1)->struc;
+	char_mot *cm2 = ((Tree*)node2)->struc;
+	return cm1->caractere-cm2->caractere;
+}
+
+/**
+ * function fill_tree
+ */
+void fill_tree (char* mot,Mot * monMot,Tree * node){
+
+	char_mot *structure=malloc(sizeof(char_mot));
+	structure->caractere=mot[0];
+	structure->monMot=NULL;
+	
+	
+	Tree tmpTree;
+	(&tmpTree)->struc=structure;
+	
+	Tree * nodeBis=tree_find_child(node,&tmpTree); // null si y a pas 
+	
+	if (nodeBis==NULL){
+		nodeBis= tree_new_node(structure,compare_char);
+		tree_add_node(node, nodeBis);
+	}
+	
+	
+	if (mot[1]=='\0'){
+		structure->monMot=monMot;
+	}
+	else {		
+		fill_tree(mot+1,monMot,nodeBis);
+	}
+}
+
+
+/**
+ * function reverse
+ */
+
+void reverse_string(char * word){
+	int i=0;
+	int len = strlen(word);
+	char temp;
+	for (i=0 ; i<len/2 ; i++) {
+		temp = word[len-i-1];
+		word[len-i-1] = word[i];
+		word[i] = temp;
+	}
+}
 
 /**
  * function who return the size of ths stream file (Bytes)
@@ -78,6 +134,8 @@ Mot** parseur_read(const char * PATH){
 		// delim
 		char comp[3]="- ";
 
+		
+
 		// word structure 
 		Mot* monMot;
 		monMot=malloc(sizeof(Mot));
@@ -86,6 +144,10 @@ Mot** parseur_read(const char * PATH){
 		// Big tab who will contain all the word structure of the file
 		Mot** Tab;
 		Tab=malloc(sizeof(Mot)*numbers_lines(buffer,sizeFichier)+1);
+
+		// tree 
+		Tree *root=tree_new_node(NULL,compare_char);
+		
 
 		/* CROSS THE FILE */
 		while (i!=sizeFichier){
@@ -108,9 +170,15 @@ Mot** parseur_read(const char * PATH){
 						motLex=malloc(sizeof(char)*30);
 					}
 
-					// not use
+					// phonetique
 					else if (cmtpTab==2){
+						
+						motLex[cmptindex]='\0';
 						cmptindex=0;
+
+						reverse_string(motLex);
+						fill_tree(motLex,monMot,root);
+						
 						motLex=malloc(sizeof(char)*30);
 					}
 
@@ -183,6 +251,8 @@ Mot** parseur_read(const char * PATH){
 		return Tab;
 	}
 }
+
+
 
 
 
