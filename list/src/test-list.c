@@ -15,7 +15,6 @@
 int main(void) {
 	setbuf(stdout, NULL);
 
-
 	List* list = list_new(NULL);
 	assert(list != NULL);
 	assert(list_count(list) == 0);
@@ -49,6 +48,10 @@ int main(void) {
 	for (i=0; i<n; i++) {
 		t = list_get(list, i);
 		assert(*t == i);
+	}
+
+	for (i=0; i<n; i++) {
+		free(list_get(list,i));
 	}
 
 	list_destroy(list);

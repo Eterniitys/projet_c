@@ -23,8 +23,9 @@ int main(void) {
 
 	int* val;
 	int n = 42;
+	int i;
 	
-	for (int i=0; i<n; i++) {
+	for (i=0; i<n; i++) {
 		val = malloc(sizeof(int));
 		assert(val != NULL);
 		*val = rand();
@@ -45,6 +46,11 @@ int main(void) {
 	found = list_find(list,tofind);
 	assert(*tofind == *found);
 
+	// free memory
+	free(tofind);
+	for (i=0; i<n; i++) {
+		free(list_get(list, i));
+	}
 
 	list_destroy(list);
 	return EXIT_SUCCESS;

@@ -16,7 +16,6 @@
 int main(void) {
 	setbuf(stdout, NULL);
 
-
 	List* list = list_new(NULL);
 
 	int* val = malloc(sizeof(int));
@@ -32,6 +31,8 @@ int main(void) {
 
 	assert(list_add(list, val) == NULL);
 
+	// free memory
+	free(val);
 	list_destroy(list);
 	return EXIT_SUCCESS;
 }

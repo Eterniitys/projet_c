@@ -23,8 +23,9 @@ int main(void) {
 
 	int* val;
 	int n = 42;
-	
-	for (int i=0; i<n; i++) {
+	int i;
+
+	for (i=0; i<n; i++) {
 		val = malloc(sizeof(int));
 		assert(val != NULL);
 		*val = rand();
@@ -33,10 +34,14 @@ int main(void) {
 
 	list_lock(list);
 	// Check list is sorted
-	for (int i=1; i<n; i++) {
+	for (i=1; i<n; i++) {
 		assert(compare_int(list_get(list, i-1), list_get(list, i)) <= 0);
 	}
 
+	// free memory
+	for (i=0; i<n; i++) {
+		free(list_get(list,i));
+	}
 	list_destroy(list);
 	return EXIT_SUCCESS;
 }
