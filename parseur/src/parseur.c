@@ -4,7 +4,9 @@
 #include <word.h>
 #include <tree.h>
 
-// TODO 4 buffer
+#include "parseur.h"
+
+// TODO handle special cases
 
 /**
  * 
@@ -12,7 +14,7 @@
 int compare_char (void * node1,void * node2){
 	char_mot *cm1 = ((Tree*)node1)->struc;
 	char_mot *cm2 = ((Tree*)node2)->struc;
-	return cm1->caractere-cm2->caractere;
+	return cm1->caractere - cm2->caractere;
 }
 
 /**
@@ -83,179 +85,81 @@ int numbers_lines(char* buffer,int sizeFichier){
 	return cpt;
 }
 
-/**
- * Function who read and sort in a structure a file
+/*
+ * Splits a word in syllables separated by dashes or spaces
  */
-Mot** parseur_read(const char * PATH){
+char** split_syllables(char* word) {
+	int syl_counter = 0;
+	char** syllables = malloc(sizeof(char*)*10);
+	char* syl_point = NULL;
+	char* syllable = strtok_r(word, " -", &syl_point);
 
-	FILE * fichier;
-	fichier=fopen(PATH,"r");
+	while(syllable){
+		char* tmp_syl = malloc(strlen(syllable));
+		syllables[syl_counter]=tmp_syl;
 
-	long sizeFichier;
-	sizeFichier=size_file(fichier);
-
-
-	if(fichier == NULL){
-		return NULL;
+		syl_counter++;
+		syllable = strtok_r(NULL," -", &syl_point);
 	}
-	else {
-
-		/* READ FILE */ 
-		char buffer[sizeFichier];
-		fseek(fichier, 0, SEEK_SET);
-		fread(buffer,sizeFichier,1,fichier); 
-
-		/* COUNTER */
-
-		// counter of ligne of the file 
-		int i=0;
-		// counter of tab in a line
-		int cmtpTab=0;
-		// counter of index for a word in locurence motLex
-		int cmptindex=0;
-		// counter of index for tabs of results 
-		int compteurTableau=0;
-
-		/* DECLARATION */ 
-		// word who will be copy in the structure word->mot
-		char* motLex;
-		motLex=malloc(sizeof(char)*30);
-
-		// char ** who will be copy in the structure word->syllabes
-		char** motSyllabes;
-		motSyllabes=malloc(50);
-
-		// char ** who will be copy in the structure word->phonetique
-		char** motPhonetiques;
-		motPhonetiques=malloc(50);
-
-		// from strtok -> explode a word whith delim 
-		char * token;
-		// delim
-		char comp[3]="- ";
-
-		
-
-		// word structure 
-		Mot* monMot;
-		monMot=malloc(sizeof(Mot));
-
-
-		// Big tab who will contain all the word structure of the file
-		Mot** Tab;
-		Tab=malloc(sizeof(Mot)*numbers_lines(buffer,sizeFichier)+1);
-
-		// tree 
-		Tree *root=tree_new_node(NULL,compare_char);
-		
-
-		/* CROSS THE FILE */
-		while (i!=sizeFichier){
-
-			// new lign <-> new word 
-			if (buffer[i] != '\n'){
-
-				// new tabulation <-> new type of word 
-				if (buffer[i]=='\t'){
-
-					cmtpTab++;
-
-					// mot 
-					if (cmtpTab==1){
-
-						motLex[cmptindex]='\0';
-						cmptindex=0;
-
-						monMot->mot=motLex; // TODO : fonction qui stock les mots dans la structure
-						motLex=malloc(sizeof(char)*30);
-					}
-
-					// phonetique
-					else if (cmtpTab==2){
-						
-						motLex[cmptindex]='\0';
-						cmptindex=0;
-
-						reverse_string(motLex);
-						fill_tree(motLex,monMot,root);
-						
-						motLex=malloc(sizeof(char)*30);
-					}
-
-					// syllabes
-					else if (cmtpTab==3){
-
-						motLex[cmptindex]='\0';
-						cmptindex=0;
-
-						int j=0;
-						token=malloc(sizeof(char*));
-
-						token=strtok(motLex,comp);
-						while (token != NULL){
-							motSyllabes[j]=token;
-							token=malloc(sizeof(char*));
-							token=strtok(NULL,comp);
-							j++;
-						}
-
-						monMot->syllabes=motSyllabes; // TODO : fonction qui stock les mots dans la structure
-						motLex=malloc(sizeof(char)*30);
-
-					}
-				}
-				else {	
-					// word who cross the file
-					motLex[cmptindex]=buffer[i];
-					cmptindex++;
-				}
-			}
-			// other word 
-			else {
-
-				// phonetique
-				int j=0;
-				token=malloc(sizeof(char*));	
-
-				token=strtok(motLex,comp);
-				while (token != NULL){
-					motPhonetiques[j]=token;
-					token=malloc(sizeof(char*));
-					token=strtok(NULL,comp);
-					j++;
-				}
-
-				monMot->phonetique=motPhonetiques; // TODO : fonction qui stock les mots dans la structure
-				motLex=malloc(sizeof(char)*30);
-
-
-				cmtpTab=0;
-				cmptindex=0;
-
-
-				// stock the structure monMot in the big tab
-				Tab[compteurTableau]=monMot;
-				compteurTableau++;
-
-				// reset
-				monMot=malloc(sizeof(Mot));
-				motSyllabes=malloc(sizeof(motSyllabes));
-				motPhonetiques=malloc(sizeof(motPhonetiques));
-			}
-			i++;
-		}
-
-		/* CLOSE THE STREAM */
-
-		fclose(fichier);
-		return Tab;
-	}
+	return realloc(syllables, sizeof(char*)*syl_counter);
 }
 
+Mot** parser_read(const char* PATH){
+	
+	FILE* file;
+	file=fopen(PATH, "r");
+	
+	if(!file){
+		return NULL;
+	}
+	long size = size_file(file);
+	fseek(file, 0, SEEK_SET);
+	char* buffer = malloc(size*sizeof(char));
+	fread(buffer, size, 1, file);
+	fclose(file);
+	
+	int counter = 0;
+	char* pointer = buffer;
+	while(*pointer){ counter+=(*pointer)=='\0'?1:0; pointer++; }
+	
+	Tree* root = tree_new_node(NULL, compare_char);
+	
+	Mot** words = malloc(sizeof(Mot*)*counter);
 
+	char* file_pointer = NULL;
+	counter = 0;
+	char* line = strtok_r(buffer, "\n", &file_pointer);
+	while(line){
+		//initialisation
+		char* line_pointer = NULL;
+		Mot* my_word = malloc(sizeof(Mot));
+		
+		//word
+		char* tmp_word = strtok_r(line, "\t", &line_pointer);
+		char* word = malloc(strlen(tmp_word));
+		strcpy(word, tmp_word);
+		my_word->mot=word;
+		
+		//phonetique
+		char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
+		char* phonetique = malloc(strlen(tmp_phon));
+		strcpy(phonetique, tmp_phon);
+		reverse_string(phonetique);
+		fill_tree(phonetique, my_word, root);
+		
+		//syllables
+		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
+		my_word->syllabes = split_syllables(tmp_syllables);
+		
+		//syllables phonetique
+		char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
+		my_word->phonetique = split_syllables(tmp_syllables_phon);
 
+		strtok_r(NULL, "\t", &line_pointer);
 
-
-
-
-
+		words[counter] = my_word;
+		counter++;
+		line = strtok_r(NULL, "\n", &file_pointer);
+	}
+	return words;
+}

@@ -10,7 +10,7 @@
 
 int main (void){
 
-	Mot** tab=parseur_read("../../Lexique382.csv");
+	Mot** tab=parser_read("../../Lexique382.csv");
 
 	// test 
 	
