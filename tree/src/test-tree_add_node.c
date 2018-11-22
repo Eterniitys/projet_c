@@ -12,8 +12,6 @@
 #include <assert.h>
 
 #include "tree.h"
-#include <word.h>
-#include <parseur.h>
 
 
 int main(void){

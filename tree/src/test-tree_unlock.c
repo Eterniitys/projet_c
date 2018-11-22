@@ -11,7 +11,6 @@
 #include <assert.h>
 
 #include "tree.h"
-#include <word.h>
 #include <stdbool.h>
 
 int main(void){

@@ -87,6 +87,9 @@ int tree_count_children(Tree *tree){
  * Call list_lock on tree->children
  */
 void tree_lock(Tree *tree){
+	for (int i=0; i<tree_count_children(tree);i++){
+		tree_lock(list_get(tree->children, i));
+	}
 	list_lock(tree->children);
 }
 
@@ -96,6 +99,9 @@ void tree_lock(Tree *tree){
  * Call list_unlock on tree->children
  */
 void tree_unlock(Tree *tree){
+	for (int i=0; i<tree_count_children(tree);i++){
+		tree_unlock(list_get(tree->children, i));
+	}
 	list_unlock(tree->children);
 }
 

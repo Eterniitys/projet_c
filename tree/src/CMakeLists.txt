@@ -21,18 +21,18 @@ if(LIST_LIB)
 endif(LIST_LIB)
 
 #################################
-find_file(PARSEUR_H "parseur.h")
-if(PARSEUR_H)
-	get_filename_component(PARSEUR_INCLUDE_DIR ${PARSEUR_H} DIRECTORY)
-	include_directories("${PARSEUR_INCLUDE_DIR}")
-endif(PARSEUR_H)
+#find_file(PARSEUR_H "parseur.h")
+#if(PARSEUR_H)
+#	get_filename_component(PARSEUR_INCLUDE_DIR ${PARSEUR_H} DIRECTORY)
+#	include_directories("${PARSEUR_INCLUDE_DIR}")
+#endif(PARSEUR_H)
+#
+#find_library(PARSEUR_LIB parseur)
 
-find_library(PARSEUR_LIB parseur)
-
-if(PARSEUR_LIB)
-	get_filename_component(PARSEUR_LIB_DIR ${PARSEUR_LIB} DIRECTORY)
-	link_directories("${PARSEUR_LIB_DIR}")
-endif(PARSEUR_LIB)
+#if(PARSEUR_LIB)
+#	get_filename_component(PARSEUR_LIB_DIR ${PARSEUR_LIB} DIRECTORY)
+#	link_directories("${PARSEUR_LIB_DIR}")
+#endif(PARSEUR_LIB)*/
 
 #ajout de la librairie tree
 add_library(tree SHARED tree.c tree.h)
@@ -53,12 +53,12 @@ install(
 )
 
 #Liste exécutables/tests
-foreach (dir_name IN ITEMS generate_tree tree_destroy tree_get_node
+foreach (dir_name IN ITEMS tree_destroy tree_get_node
 		tree_add_node tree_get_branch tree_count_children tree_lock
 		tree_unlock tree_find_child)
 	add_executable(test-${dir_name} test-${dir_name}.c)
 	add_dependencies(test-${dir_name} tree)
-	target_link_libraries(test-${dir_name} tree parseur)
+	target_link_libraries(test-${dir_name} tree)
 	add_test(test-${dir_name} ./test-${dir_name})
 endforeach(dir_name)
 #Autorisation tests

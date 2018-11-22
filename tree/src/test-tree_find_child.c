@@ -11,17 +11,20 @@
 #include <assert.h>
 
 #include "tree.h"
-#include <word.h>
-#include <parseur.h>
 
 
 int main(void){
 
-		/**
+	/**
 	 * Function to compare int (local)
 	 */
 	int compare_int (void * nb1,void * nb2){
-		return *(int*)nb1-*(int*)nb2;
+		//static int tmp= 0;
+		int *a= (int*)((Tree*)nb1)->struc;
+		int b= *(int*)((Tree*)nb2)->struc;
+		//tmp++;
+		//printf("count:%d a:%d -- b:%d\n",tmp,*a,b);
+		return *a-b;
 	}
 
 	Tree *root = tree_new_node(NULL,compare_int);
@@ -32,18 +35,22 @@ int main(void){
 		Tree *tree_t = tree_new_node(t,NULL);
 		tree_add_node(root,tree_t);
 	}
-	int *ref = (int*)tree_get_node(tree_get_branch(root,42));
-	int val = *ref;
+	//ref is a reference pointer with the sought value and content
+	int *ref = (int*)tree_get_node(tree_get_branch(root,5));//6th value
+	//val is the sought content with wrong adress
+	Tree* val = tree_new_node(ref,NULL);
+	//fin have to be egals to ref
+	int *fin= (int*)((Tree*)tree_find_child(root,val))->struc;
 	
-	printf("ref = %p -- %d\n",ref,*ref) ;
-	printf("val = %p -- %d\n",&val,val) ;
+	assert(ref == fin && *ref == *fin);
 	
-	int *fin= (int*)tree_find_child(root,&val);
-
-	printf("fin = %p -- %d\n",&fin,fin) ;
-	//assert(1 == 0);
-	//assert(2 == 0);
-	//assert(3 == 0);
+	//new value then lock
+	ref = (int*)tree_get_node(tree_get_branch(root,23));
+	val = tree_new_node(ref,NULL);
+	tree_lock(root);
+	fin= (int*)((Tree*)tree_find_child(root,val))->struc;
+	
+	assert(ref == fin && *ref == *fin);
 
 	return 0;
 }
