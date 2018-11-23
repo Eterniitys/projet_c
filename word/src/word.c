@@ -35,14 +35,14 @@ Word* Set_mot ( Word* motAmodifier, char* mot ) {
 	return motAmodifier;
 }
 
-Word** Set_syllabes ( Word** syllabesAmodifier, char** syllabes ) {
+Word* Set_syllabes ( Word** syllabesAmodifier, char** syllabes ) {
 
 	syllabesAmodifier->syllabes = syllabes;
 
 	return syllabesAmodifier;
 }
 
-Word** Set_phonetique ( Word** phonetiqueAmodifier, char** phonetique ) {
+Word* Set_phonetique ( Word** phonetiqueAmodifier, char** phonetique ) {
 
 	phonetiqueAmodifier->phonetique  = phonetique;		
 
