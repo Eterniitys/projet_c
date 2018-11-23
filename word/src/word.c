@@ -44,7 +44,7 @@ Word** Set_syllabes ( Word** syllabesAmodifier, char** syllabes ) {
 
 Word** Set_phonetique ( Word** phonetiqueAmodifier, char** phonetique ) {
 
-	phonetiqueAmodifier->phonetique  = phonetique;		;
+	phonetiqueAmodifier->phonetique  = phonetique;		
 
 	return phonetiqueAmodifier;
 }
