@@ -4,13 +4,17 @@
 typedef struct _Word Word;
 
 struct _Word {
-  
-  char* mot;
-  char** syllabes;
-  char** phonetique;
- 
-};
 
+	char* mot;
+	char** syllabes;
+	char** phonetique;
+
+};
+typedef struct _char_mot char_mot;
+struct _char_mot {
+	char caractere;
+	Mot * monMot;
+};
 //Constructeur pour créer un mot
 extern Word* Word_new (char* mot, char** syllabes, char** phonetique); 
 Word* _fill(Word *mot, char* string, char** syllabes, char** phonetique);
@@ -25,7 +29,8 @@ extern char** Get_phonetique (Word* phoneArecup);
 
 //truc pas développer
 /*extern Mot decoupe_Mot(char Mot a);
-extern Mot Mot_rime(char Mot c);*/
+  extern Mot Mot_rime(char Mot c);*/
 
 #endif
+
 

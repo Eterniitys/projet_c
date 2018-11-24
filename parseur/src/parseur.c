@@ -1,3 +1,13 @@
+/**
+* \file parseur.c
+* \class parseur
+* \version 0.1 \author Marie
+* \version 0.2 \author Killian
+* \date 24 november 2018
+*
+* Allow the parse of the file and fill the tree
+*
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -9,8 +19,10 @@
 // TODO handle special cases
 
 /**
- * 
- */
+* \fn int compare_char (void * node1,void * node2)
+*
+* \return cm1->caractere - cm2->caractere; - return the result of the comparation.
+*/
 int compare_char (void * node1,void * node2){
 	char_mot *cm1 = ((Tree*)node1)->struc;
 	char_mot *cm2 = ((Tree*)node2)->struc;
@@ -18,8 +30,10 @@ int compare_char (void * node1,void * node2){
 }
 
 /**
- * function fill_tree
- */
+* \fn void fill_tree (char* mot,Mot * monMot,Tree * node)
+*
+* \return void - fill the tree
+*/
 void fill_tree (char* mot,Mot * monMot,Tree * node){
 
 	char_mot *structure=malloc(sizeof(char_mot));
@@ -47,10 +61,12 @@ void fill_tree (char* mot,Mot * monMot,Tree * node){
 }
 
 
-/**
- * function reverse
- */
 
+/**
+* \fn void reverse_string(char * word)
+*
+* \return void - reverse a string
+*/
 void reverse_string(char * word){
 	int i=0;
 	int len = strlen(word);
@@ -63,8 +79,10 @@ void reverse_string(char * word){
 }
 
 /**
- * function who return the size of ths stream file (Bytes)
- */ 
+* \fn long size_file(FILE * fichier)
+*
+* \return sizeFichier - return the size of the file
+*/
 long size_file(FILE * fichier){
 	long sizeFichier;
 	fseek (fichier , 0 , SEEK_END); 
@@ -72,22 +90,28 @@ long size_file(FILE * fichier){
 	return sizeFichier;
 }
 
-// function who return the number of line of a buffer
-int numbers_lines(char* buffer,int sizeFichier){ 
-	int i = 0;
-	int cpt = 0;
-	while (i != sizeFichier-1){
-		if ( buffer[i] == '\n') {
-			cpt = cpt+1;
-		}		
-		i++;
-	}
-	return cpt;
-}
+/**
+* 
+* int numbers_lines(char* buffer,int sizeFichier){ 
+*	int i = 0;
+*	int cpt = 0;
+*	while (i != sizeFichier-1){
+*		if ( buffer[i] == '\n') {
+*			cpt = cpt+1;
+*		}		
+*		i++;
+*	}
+*	return cpt;
+* }
+*
+*/
 
-/*
- * Splits a word in syllables separated by dashes or spaces
- */
+
+/**
+* \fn char** split_syllables(char* word)
+*
+* \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word 
+*/
 char** split_syllables(char* word) {
 	int syl_counter = 0;
 	char** syllables = malloc(sizeof(char*)*10);
@@ -96,14 +120,19 @@ char** split_syllables(char* word) {
 
 	while(syllable){
 		char* tmp_syl = malloc(strlen(syllable));
+		strcpy(tmp_syl,syllable);
 		syllables[syl_counter]=tmp_syl;
-
 		syl_counter++;
 		syllable = strtok_r(NULL," -", &syl_point);
 	}
 	return realloc(syllables, sizeof(char*)*syl_counter);
 }
 
+/**
+* \fn Mot** parser_read(const char* PATH)
+*
+* \return words - return a tabs of Mot **
+*/
 Mot** parser_read(const char* PATH){
 	
 	FILE* file;
@@ -120,7 +149,7 @@ Mot** parser_read(const char* PATH){
 	
 	int counter = 0;
 	char* pointer = buffer;
-	while(*pointer){ counter+=(*pointer)=='\0'?1:0; pointer++; }
+	while(*pointer){ counter+=(*pointer)=='\n'?1:0; pointer++; }
 	
 	Tree* root = tree_new_node(NULL, compare_char);
 	
