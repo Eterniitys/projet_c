@@ -1,8 +1,8 @@
 /**
-* \file parseur.c
-* \class parseur
+* \file parser.c
+* \class parser
 * \version 0.1 \author Marie
-* \version 0.2 \author Killian
+* \version 0.2 \author Gregoire
 * \date 24 november 2018
 *
 * Allow the parse of the file and fill the tree
@@ -14,7 +14,7 @@
 #include <word.h>
 #include <tree.h>
 
-#include "parseur.h"
+#include "parser.h"
 
 // TODO handle special cases
 
@@ -30,11 +30,11 @@ int compare_tree_wordchar (void * node1,void * node2){
 }
 
 /**
-* \fn void fill_tree (char* mot,Mot * monMot,Tree * node)
+* \fn void fill_tree (char* mot,Word * monMot,Tree * node)
 *
 * \return void - fill the tree
 */
-void fill_tree (char* mot,Mot * monMot,Tree * node){
+void fill_tree (char* mot, Word * monMot,Tree * node){
 
 	char_mot *structure=malloc(sizeof(char_mot));
 	structure->caractere=mot[0];
@@ -113,11 +113,11 @@ char** split_syllables(char* word) {
 }
 
 /**
-* \fn Mot** parser_read(const char* PATH)
+* \fn Word** parser_read(const char* PATH)
 *
-* \return words - return a tabs of Mot **
+* \return words - return a tabs of Word **
 */
-Mot** parser_read(const char* PATH){
+Word** parser_read(const char* PATH){
 	
 	FILE* file;
 	file=fopen(PATH, "r");
@@ -137,7 +137,7 @@ Mot** parser_read(const char* PATH){
 	
 	Tree* root = tree_new_node(NULL, compare_tree_wordchar);
 	
-	Mot** words = malloc(sizeof(Mot*)*counter);
+	Word** words = malloc(sizeof(Word*)*counter);
 
 	char* file_pointer = NULL;
 	counter = 0;
@@ -145,7 +145,7 @@ Mot** parser_read(const char* PATH){
 	while(line){
 		//initialisation
 		char* line_pointer = NULL;
-		Mot* my_word = malloc(sizeof(Mot));
+		Word* my_word = malloc(sizeof(Word));
 		
 		//word
 		char* tmp_word = strtok_r(line, "\t", &line_pointer);

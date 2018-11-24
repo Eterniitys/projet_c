@@ -4,13 +4,13 @@
 #include <assert.h>
 #include <word.h>
 
-#include "parseur.h"
+#include "parser.h"
 
 
 
 int main (void){
 
-	Mot** tab=parser_read("../../Lexique382.csv");
+	Word** tab=parser_read("../../Lexique382.csv");
 
 	// test 
 	

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(parseur C) 
+project(parser C) 
 
 find_file(WORD_H "word.h")
 
@@ -38,37 +38,35 @@ if(TREE_LIB)
 endif(TREE_LIB)
 
 
-# include library parseur
-add_library(parseur SHARED parseur.c parseur.h)
+# include library parser
+add_library(parser SHARED parser.c parser.h)
 
-# library parseur use library word 
-target_link_libraries(parseur word)
-# library parseur use library tree 
-target_link_libraries(parseur tree)
+# library parser use library word 
+target_link_libraries(parser word)
+# library parser use library tree 
+target_link_libraries(parser tree)
 
 
 # Destination files
 install(
-	TARGETS parseur
+	TARGETS parser
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	RUNTIME DESTINATION bin
 	)
 install(
-	FILES parseur.h
+	FILES parser.h
 	DESTINATION include
 	)
 
 # Creation of executable
-add_executable(test-parseur test-parseur.c)
-add_dependencies(test-parseur parseur)
-target_link_libraries(test-parseur parseur)
+add_executable(test-parser test-parser.c)
+add_dependencies(test-parser parser)
+target_link_libraries(test-parser parser)
 
 #Allowed tests
 enable_testing()
 
 # add test
-add_test(test-parseur ./test-parseur)
-
-
+add_test(test-parser ./test-parser)
 
