@@ -19,11 +19,11 @@
 // TODO handle special cases
 
 /**
-* \fn int compare_char (void * node1,void * node2)
+* \fn int compare_tree_wordchar (void * node1,void * node2)
 *
 * \return cm1->caractere - cm2->caractere; - return the result of the comparation.
 */
-int compare_char (void * node1,void * node2){
+int compare_tree_wordchar (void * node1,void * node2){
 	char_mot *cm1 = ((Tree*)node1)->struc;
 	char_mot *cm2 = ((Tree*)node2)->struc;
 	return cm1->caractere - cm2->caractere;
@@ -47,7 +47,7 @@ void fill_tree (char* mot,Mot * monMot,Tree * node){
 	Tree * nodeBis=tree_find_child(node,&tmpTree); // null si y a pas 
 	
 	if (nodeBis==NULL){
-		nodeBis= tree_new_node(structure,compare_char);
+		nodeBis= tree_new_node(structure,compare_tree_wordchar);
 		tree_add_node(node, nodeBis);
 	}
 	
@@ -89,22 +89,6 @@ long size_file(FILE * fichier){
 	sizeFichier = ftell (fichier);
 	return sizeFichier;
 }
-
-/**
-* 
-* int numbers_lines(char* buffer,int sizeFichier){ 
-*	int i = 0;
-*	int cpt = 0;
-*	while (i != sizeFichier-1){
-*		if ( buffer[i] == '\n') {
-*			cpt = cpt+1;
-*		}		
-*		i++;
-*	}
-*	return cpt;
-* }
-*
-*/
 
 
 /**
@@ -151,7 +135,7 @@ Mot** parser_read(const char* PATH){
 	char* pointer = buffer;
 	while(*pointer){ counter+=(*pointer)=='\n'?1:0; pointer++; }
 	
-	Tree* root = tree_new_node(NULL, compare_char);
+	Tree* root = tree_new_node(NULL, compare_tree_wordchar);
 	
 	Mot** words = malloc(sizeof(Mot*)*counter);
 
