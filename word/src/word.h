@@ -13,7 +13,7 @@ struct _Word {
 typedef struct _char_mot char_mot;
 struct _char_mot {
 	char caractere;
-	Mot * monMot;
+	Word * monMot;
 };
 //Constructeur pour créer un mot
 extern Word* Word_new (char* mot, char** syllabes, char** phonetique); 
