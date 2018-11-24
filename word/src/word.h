@@ -12,16 +12,16 @@ struct _Word {
 };
 
 //Constructeur pour créer un mot
-extern Word* Word_create (char* mot, char** syllabes, char** phonetique); 
+extern Word* Word_new (char* mot, char** syllabes, char** phonetique); 
 Word* _fill(Word *mot, char* string, char** syllabes, char** phonetique);
 //Setter
-extern Word* Set_mot ( Word* motAmodifier, char* mot );
-extern Word** Set_syllabes ( Word** syllabesAmodifier, char** syllabes );
-extern Word** Set_phonetique ( Word** phonetiqueAmodifier, char** phonetique );
+extern void Set_mot ( Word* motAmodifier, char* mot );
+extern void Set_syllabes ( Word* syllabesAmodifier, char** syllabes );
+extern void Set_phonetique ( Word* phonetiqueAmodifier, char** phonetique );
 //Getter
-extern Word* Get_mot (Word* motArecup);
-extern Word** Get_syllabes (Word** syllabesArecup);
-extern Word** Get_phonetique (Word** phoneArecup);
+extern char* Get_mot (Word* motArecup);
+extern char** Get_syllabes (Word* syllabesArecup);
+extern char** Get_phonetique (Word* phoneArecup);
 
 //truc pas développer
 /*extern Mot decoupe_Mot(char Mot a);
