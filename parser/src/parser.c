@@ -22,8 +22,8 @@
 * \return cm1->caractere - cm2->caractere; - return the result of the comparation.
 */
 int compare_tree_wordchar (void * node1,void * node2){
-	char_mot *cm1 = ((Tree*)node1)->struc;
-	char_mot *cm2 = ((Tree*)node2)->struc;
+	char_mot *cm1 = (char_mot*)tree_get_node((Tree*)node1);
+	char_mot *cm2 = (char_mot*)tree_get_node((Tree*)node2);
 	return cm1->caractere - cm2->caractere;
 }
 
@@ -40,7 +40,7 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	
 	
 	Tree tmpTree;
-	(&tmpTree)->struc=structure;
+	(&tmpTree)->_struc=structure;
 	
 	Tree * nodeBis=tree_find_child(node,&tmpTree); // null si y a pas 
 	
