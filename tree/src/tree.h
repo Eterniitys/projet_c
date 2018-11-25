@@ -14,9 +14,9 @@
 typedef int (*_compare_funct)(void*,void*);
 
 typedef struct _Tree {
-	void * struc;
-	List * children;
-	_compare_funct funct;
+	void * _struc;
+	List * _children;
+	_compare_funct _funct;
 } Tree;
 
 extern Tree * tree_new_node(void *struc,_compare_funct funct);
@@ -29,7 +29,7 @@ extern Tree * tree_add_node(Tree *root, Tree *node);
 
 extern Tree * tree_get_branch(Tree *root,int nb);
 
-extern int tree_count_children(Tree *tree);
+extern int tree_child_count(Tree *tree);
 
 extern void tree_lock(Tree *tree);
 

@@ -37,14 +37,14 @@ int main(void){
 	tree_add_node(t2,t3);
 	tree_add_node(t2,t4);
 
-	assert(root->struc==un);
-	assert(t2->struc==deux);
-	assert(t3->struc==tro);
-	assert(t4->struc==qua);
+	assert(root->_struc==un);
+	assert(t2->_struc==deux);
+	assert(t3->_struc==tro);
+	assert(t4->_struc==qua);
 	
-	assert(list_get(root->children,0)==t2);
-	assert(list_get(t2->children,0)==t3);
-	assert(list_get(t2->children,1)==t4);
+	assert(list_get(root->_children,0)==t2);
+	assert(list_get(t2->_children,0)==t3);
+	assert(list_get(t2->_children,1)==t4);
 
 	//free(un);free(deux);free(tro);
 	tree_destroy(root);

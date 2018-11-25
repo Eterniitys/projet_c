@@ -36,9 +36,9 @@ int main(void){
 	tree_add_node(t2,t3);
 	tree_add_node(t2,t4);
 
-	assert(tree_get_branch(root,0)->struc==deux);
-	assert(tree_get_branch(tree_get_branch(root,0),0)->struc==tro);
-	assert(tree_get_branch(tree_get_branch(root,0),1)->struc==qua);
+	assert(tree_get_branch(root,0)->_struc==deux);
+	assert(tree_get_branch(tree_get_branch(root,0),0)->_struc==tro);
+	assert(tree_get_branch(tree_get_branch(root,0),1)->_struc==qua);
 
 	//free(un);free(deux);free(tro);
 	tree_destroy(root);

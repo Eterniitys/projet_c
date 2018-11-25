@@ -16,12 +16,20 @@
 int main(void){
 
 	Tree *root = tree_new_node(NULL,NULL);
+	Tree *t2 = tree_new_node(NULL,NULL);
+	Tree *t3 = tree_new_node(NULL,NULL);
+	tree_add_node(root,t2);
+	tree_add_node(t2,t3);
 	tree_lock(root);
-	assert(list_is_locked(root->children)==true);
+	assert(list_is_locked(root->_children)==true);
+	assert(list_is_locked(t2->_children)==true);
+	assert(list_is_locked(t3->_children)==true);
 	
 	tree_unlock(root);
 	
-	assert(list_is_locked(root->children)==false);
+	assert(list_is_locked(root->_children)==false);
+	assert(list_is_locked(t2->_children)==false);
+	assert(list_is_locked(t3->_children)==false);
 
 	return 0;
 }

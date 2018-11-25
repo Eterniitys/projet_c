@@ -20,14 +20,14 @@ int main(void){
 	}
 
 	Tree *root1 = tree_create(NULL);
-	assert(sizeof(root1->struc) == sizeof(void*));
-	assert(sizeof(root1->children) == sizeof(List*));
-	assert(sizeof(root1->funct) == sizeof(NULL));
+	assert(sizeof(root1->_struc) == sizeof(void*));
+	assert(sizeof(root1->_children) == sizeof(List*));
+	assert(sizeof(root1->_funct) == sizeof(NULL));
 	
 	Tree *root2 = tree_create(compare_int);
-	assert(sizeof(root2->struc) == sizeof(void*));
-	assert(sizeof(root2->children) == sizeof(List*));
-	assert(sizeof(root2->funct) == sizeof(_compare_funct));
+	assert(sizeof(root2->_struc) == sizeof(void*));
+	assert(sizeof(root2->_children) == sizeof(List*));
+	assert(sizeof(root2->_funct) == sizeof(_compare_funct));
 	
 	tree_destroy(root1);
 	tree_destroy(root2);

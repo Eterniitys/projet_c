@@ -19,10 +19,10 @@
 /**
  * \fn void * tree_get_node(Tree *root)
  *
- * \return root->struc - return the node.
+ * \return root->_struc - return the node.
  */
 void * tree_get_node(Tree *root){
-	return root->struc;
+	return root->_struc;
 }
 
 /**
@@ -32,9 +32,9 @@ void * tree_get_node(Tree *root){
  */
 Tree * tree_new_node(void *struc,_compare_funct funct){
 	Tree *node = malloc(sizeof(Tree));
-	node->struc = struc;
-	node->funct=funct;
-	node->children = list_new(funct);
+	node->_struc = struc;
+	node->_funct=funct;
+	node->_children = list_new(funct);
 	return node;
 }
 
@@ -44,10 +44,10 @@ Tree * tree_new_node(void *struc,_compare_funct funct){
  * Allows Tree's structure freeing.
  */
 void tree_destroy(Tree * tree){
-	for (int i=0; i<tree_count_children(tree);i++){
-		tree_destroy(list_get(tree->children, i));
+	for (int i=0; i<tree_child_count(tree);i++){
+		tree_destroy(list_get(tree->_children, i));
 	}
-	list_destroy(tree->children);
+	list_destroy(tree->_children);
 	free(tree);
 }
 
@@ -57,9 +57,9 @@ void tree_destroy(Tree * tree){
  * Allows the addition of the child 'node' to the 'root'
  */
 Tree * tree_add_node(Tree *root, Tree *node){
-	node->children->_compare=root->funct;
-	node->funct=root->funct;
-	list_add(root->children, node);
+	node->_children->_compare=root->_funct;
+	node->_funct=root->_funct;
+	list_add(root->_children, node);
 	return root;
 }
 
@@ -69,51 +69,51 @@ Tree * tree_add_node(Tree *root, Tree *node){
  * Allows the getter of the child 'branch' to the 'root'
  */
 Tree * tree_get_branch(Tree *root,int nb){
-	return list_get(root->children,nb);
+	return list_get(root->_children,nb);
 }
 
 /**
- *\fn int tree_count_children(Tree *tree)
+ *\fn int tree_child_count(Tree *tree)
  *
- *\return list_count(tree->children) - number of children
+ *\return list_count(tree->_children) - number of children
  */
-int tree_count_children(Tree *tree){
-	return list_count(tree->children);
+int tree_child_count(Tree *tree){
+	return list_count(tree->_children);
 }
 
 /**
  *\fn void tree_lock(Tree *tree)
  *
- * Call list_lock on tree->children
+ * Call list_lock on tree->_children
  */
 void tree_lock(Tree *tree){
-	for (int i=0; i<tree_count_children(tree);i++){
-		tree_lock(list_get(tree->children, i));
+	for (int i=0; i<tree_child_count(tree);i++){
+		tree_lock(list_get(tree->_children, i));
 	}
-	list_lock(tree->children);
+	list_lock(tree->_children);
 }
 
 /**
  *\fn void tree_unlock(Tree *tree)
  *
- * Call list_unlock on tree->children
+ * Call list_unlock on tree->_children
  */
 void tree_unlock(Tree *tree){
-	for (int i=0; i<tree_count_children(tree);i++){
-		tree_unlock(list_get(tree->children, i));
+	for (int i=0; i<tree_child_count(tree);i++){
+		tree_unlock(list_get(tree->_children, i));
 	}
-	list_unlock(tree->children);
+	list_unlock(tree->_children);
 }
 
 
 /**
  *\fn Tree * tree_find_child(Tree *tree)
  *
- * Call list_find on tree->children
+ * Call list_find on tree->_children
  * Seeking *child in list
  */
 void * tree_find_child(Tree *tree,void *child){
-	return list_find(tree->children,child);
+	return list_find(tree->_children,child);
 }
 
 

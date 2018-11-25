@@ -47,14 +47,14 @@ int main(void){
 	tree_add_node(t4,t6);//root-1-4-6
 	tree_add_node(t5,t7);//root-1-4-5-7
 	
-	assert(tree_count_children(root)==1);//root
-	assert(tree_count_children(t1)==3);//1
-	assert(tree_count_children(t2)==0);//2
-	assert(tree_count_children(t3)==0);//3
-	assert(tree_count_children(t4)==2);//4
-	assert(tree_count_children(t5)==1);//5
-	assert(tree_count_children(t6)==0);//6
-	assert(tree_count_children(t7)==0);//7
+	assert(tree_child_count(root)==1);//root
+	assert(tree_child_count(t1)==3);//1
+	assert(tree_child_count(t2)==0);//2
+	assert(tree_child_count(t3)==0);//3
+	assert(tree_child_count(t4)==2);//4
+	assert(tree_child_count(t5)==1);//5
+	assert(tree_child_count(t6)==0);//6
+	assert(tree_child_count(t7)==0);//7
 	
 	//free(un);free(deux);free(tro);free(qua);free(cin);free(six);free(sept);
 	tree_destroy(root);

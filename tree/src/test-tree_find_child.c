@@ -20,8 +20,8 @@ int main(void){
 	 */
 	int compare_int (void * nb1,void * nb2){
 		//static int tmp= 0;
-		int *a= (int*)((Tree*)nb1)->struc;
-		int b= *(int*)((Tree*)nb2)->struc;
+		int *a= (int*)((Tree*)nb1)->_struc;
+		int b= *(int*)((Tree*)nb2)->_struc;
 		//tmp++;
 		//printf("count:%d a:%d -- b:%d\n",tmp,*a,b);
 		return *a-b;
@@ -40,7 +40,7 @@ int main(void){
 	//val is the sought content with wrong adress
 	Tree* val = tree_new_node(ref,NULL);
 	//fin have to be egals to ref
-	int *fin= (int*)((Tree*)tree_find_child(root,val))->struc;
+	int *fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
 	
 	assert(ref == fin && *ref == *fin);
 	
@@ -48,7 +48,7 @@ int main(void){
 	ref = (int*)tree_get_node(tree_get_branch(root,23));
 	val = tree_new_node(ref,NULL);
 	tree_lock(root);
-	fin= (int*)((Tree*)tree_find_child(root,val))->struc;
+	fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
 	
 	assert(ref == fin && *ref == *fin);
 

@@ -54,7 +54,7 @@ install(
 
 #Liste exécutables/tests
 foreach (dir_name IN ITEMS tree_destroy tree_get_node
-		tree_add_node tree_get_branch tree_count_children tree_lock
+		tree_add_node tree_get_branch tree_child_count tree_lock
 		tree_unlock tree_find_child)
 	add_executable(test-${dir_name} test-${dir_name}.c)
 	add_dependencies(test-${dir_name} tree)
