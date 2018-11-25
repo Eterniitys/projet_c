@@ -40,7 +40,7 @@ int main(void){
 	assert(tree_get_branch(tree_get_branch(root,0),0)->_struc==tro);
 	assert(tree_get_branch(tree_get_branch(root,0),1)->_struc==qua);
 
-	//free(un);free(deux);free(tro);
+	free(un);free(deux);free(tro);free(qua);
 	tree_destroy(root);
 
 	return 0;

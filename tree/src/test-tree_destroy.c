@@ -34,6 +34,8 @@ int main(void){
 	tree_destroy (root3);	
 	tree_destroy (root4);
 	
+	free(un);free(deux);
+	
 	return 0;
 }
 

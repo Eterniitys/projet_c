@@ -46,11 +46,20 @@ int main(void){
 	
 	//new value then lock
 	ref = (int*)tree_get_node(tree_get_branch(root,23));
+	tree_destroy(val);
 	val = tree_new_node(ref,NULL);
 	tree_lock(root);
 	fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
 	
 	assert(ref == fin && *ref == *fin);
+	
+	//freeing zone
+	for (int i=0;i<50;i++){
+		free(tree_get_node(tree_get_branch(root,i)));
+	}
+	tree_destroy(val);
+	tree_destroy(root);
+	
 
 	return 0;
 }
