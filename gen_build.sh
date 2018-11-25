@@ -11,7 +11,7 @@ message_erreur() {
 	fi
 }
 
-directories=("list" "word" "tree" "parser" "rhyme")
+directories=("hash" "list" "word" "tree" "parser" "rhyme")
 for dir in "${directories[@]}"; do
 	echo -e "\e[32;1mNettoyage du dossier build pour $dir\e[0m"
 	rm -rf "$dir"/build
