@@ -13,21 +13,16 @@
 #include <stdlib.h>
 
 
-int pow(int a, int b){
-	int sum=1;
-	for (int i =0;i<b;i++){
-		//printf("%d:%d*%d = mod:%d\n",i,sum,a,(a*sum%256+1));
-		sum*=a;
-		sum%=256;
-	}
-	return sum;
+int xor(int a, int b){
+	return a^b;
 }
 
 int hash (const char * string){
+	int val[] = {19,46,7,123};
 	int i;
 	int tmp[strlen(string)];
 	for (i=0;i<strlen(string);i++){
-		tmp[i] = abs(pow(rand(),string[i])%256);
+		tmp[i] = xor(val[i%3],string[i]);
 	}
 	int result = 0;
 	for (i=0;i<strlen(string);i++){

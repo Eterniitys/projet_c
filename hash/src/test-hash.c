@@ -15,11 +15,10 @@
 
  
 int main(void){
-	char * strings[5] = {"artyez","azerty","ytreza","azert","treza"};
+	char * strings[10] = {"artyez","azerty","ytreza","azert","treza","trezya","rtez","ytreaz","azer","zerty"};
 	
-	for (int i=0;i<5;i++){
+	for (int i=0;i<10;i++){
 		printf("%s:hash:%d\n",strings[i],hash(strings[i]));
 	}
-	
 	return 0;
 }
