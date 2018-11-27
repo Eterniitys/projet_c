@@ -33,7 +33,7 @@ install(
 )
 
 #Liste exécutables/tests
-foreach (dir_name IN ITEMS hash)
+foreach (dir_name IN ITEMS hash hashmap_new hashmap_set)
 	add_executable(test-${dir_name} test-${dir_name}.c)
 	add_dependencies(test-${dir_name} hash)
 	target_link_libraries(test-${dir_name} hash)

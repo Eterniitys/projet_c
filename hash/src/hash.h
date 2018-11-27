@@ -28,6 +28,6 @@ extern void* hashmap_get(Hashmap* map, char* key);
 extern void hashmap_set(Hashmap* map, char* key, void* value);
 extern void hashmap_destroy(Hashmap* map);
 
-extern int hash (char * string);
+extern int hash (const char * string);
 
 #endif /* _HASH_ */
