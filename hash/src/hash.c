@@ -22,13 +22,12 @@ int xor(int a, int b){
 int hash (const char * string){
 	int val[] = {19,46,7,123};
 	int i;
-	int tmp[strlen(string)];
 	for (i=0;i<strlen(string);i++){
-		tmp[i] = xor(val[i%3],string[i]);
+		val[i%4] = xor(val[i%4],string[(i+1)%4]);
 	}
 	int result = 0;
 	for (i=0;i<strlen(string);i++){
-		result+=tmp[i];
+		result+=val[i];
 	}
 	return result%256;
 	
@@ -40,6 +39,9 @@ Hashmap* hashmap_new(void){
 	//First hashMap
 	KeyValuePair **tab = malloc(sizeof(KeyValuePair*)*10);
 	tab[0] = malloc(sizeof(KeyValuePair)*256);
+	for (int i = 0; i<256;i++){
+		tab[0][i]._key=NULL;
+	}
 	newhash->_tables = tab;
 	return newhash;
 }
