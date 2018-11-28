@@ -13,6 +13,7 @@
 #include <string.h>
 #include <word.h>
 #include <tree.h>
+#include <hash.h>
 
 #include "parser.h"
 
@@ -37,23 +38,20 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	char_mot *structure=malloc(sizeof(char_mot));
 	structure->caractere=mot[0];
 	structure->monMot=NULL;
-	
-	
+
 	Tree tmpTree;
 	(&tmpTree)->_struc=structure;
-	
+
 	Tree * nodeBis=tree_find_child(node,&tmpTree); // null si y a pas 
-	
-	if (nodeBis==NULL){
+
+	if (nodeBis==NULL) {
 		nodeBis= tree_new_node(structure,compare_tree_wordchar);
 		tree_add_node(node, nodeBis);
 	}
-	
-	
-	if (mot[1]=='\0'){
+
+	if (mot[1]=='\0') {
 		structure->monMot=monMot;
-	}
-	else {		
+	} else {
 		fill_tree(mot+1,monMot,nodeBis);
 	}
 }
@@ -150,6 +148,8 @@ Word** parser_read(const char* PATH){
 	}
 	
 	Tree* root = tree_new_node(NULL, compare_tree_wordchar);
+
+	Hashmap* map_syl_phon = hashmap_new();
 	
 	Word** words = malloc(sizeof(Word*)*counter);
 
@@ -168,7 +168,7 @@ Word** parser_read(const char* PATH){
 			strcpy(word, tmp_word);
 			my_word->mot=word;
 		}
-		
+
 		//phonetique
 		char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_phon) {
@@ -177,17 +177,30 @@ Word** parser_read(const char* PATH){
 			reverse_string(phonetique);
 			fill_tree(phonetique, my_word, root);
 		}
-		
+
 		//syllables
 		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_syllables)
 			my_word->syllabes = split_syllables(tmp_syllables);
-		
+
 		//syllables phonetique
 		char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_syllables_phon)
 			my_word->phonetique = split_syllables(tmp_syllables_phon);
 
+		//fill hashmap
+		if (tmp_syllables && tmp_syllables_phon) {
+			int tmp_index = 0;
+			while (my_word->syllabes[tmp_index]) {
+				fprintf(stderr, "Ajout de %s -> %s\n",my_word->syllabes[tmp_index], my_word->phonetique[tmp_index]);
+				hashmap_set(map_syl_phon,
+					my_word->syllabes[tmp_index],
+					my_word->phonetique[tmp_index]);
+				tmp_index++;
+			}
+		}
+
+		// word insertion into table
 		if (tmp_word && tmp_phon && tmp_syllables && tmp_syllables_phon) {
 			words[counter] = my_word;
 			counter++;

@@ -29,13 +29,30 @@ if(TREE_H)
 	# Calling with <>
 	include_directories("${TREE_INCLUDE_DIR}")
 endif(TREE_H)
-find_library(TREE_LIB word)
+find_library(TREE_LIB tree)
 if(TREE_LIB)
 	# Search of directory
 	get_filename_component(TREE_LIB_DIR ${TREE_LIB} DIRECTORY)
 	# Add file for research of library
 	link_directories("${TREE_LIB_DIR}")
 endif(TREE_LIB)
+
+
+find_file(TREE_H "hash.h")
+if(HASH_H)
+	# Search of directory
+	get_filename_component(HASH_INCLUDE_DIR ${HASH_H} DIRECTORY)
+	# Calling with <>
+	include_directories("${HASH_INCLUDE_DIR}")
+endif(HASH_H)
+find_library(HASH_LIB hash)
+if(HASH_LIB)
+	# Search of directory
+	get_filename_component(HASH_LIB_DIR ${HASH_LIB} DIRECTORY)
+	# Add file for research of library
+	link_directories("${HASH_LIB_DIR}")
+endif(HASH_LIB)
+
 
 
 # include library parser
@@ -45,6 +62,8 @@ add_library(parser SHARED parser.c parser.h)
 target_link_libraries(parser word)
 # library parser use library tree 
 target_link_libraries(parser tree)
+# library parser use library hash
+target_link_libraries(parser hash)
 
 
 # Destination files
