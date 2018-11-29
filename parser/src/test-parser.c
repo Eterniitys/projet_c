@@ -18,22 +18,27 @@ int main (void){
 
 	Word** tab=parser_read("../../Lexique382.csv", root, root_syll, map);
 
-	// test 
-	
+	// Test Mot 
+	assert(strcmp(tab[3]->mot,"a capella")==0);
 
-	printf("Mot : %s\n",tab[3]->mot);
-	printf("Syllabes : \n%s\n",tab[3]->syllabes[0]);
-	printf("%s\n",tab[3]->syllabes[1]);
-	printf("%s\n",tab[3]->syllabes[2]);
-	printf("%s\n",tab[3]->syllabes[3]);
-	printf("Phonétique : \n%s\n",tab[3]->phonetique[0]);
-	printf("%s\n",tab[3]->phonetique[1]);
-	printf("%s\n",tab[3]->phonetique[2]);
-	printf("%s\n",tab[3]->phonetique[3]);
+	// Test Syllables
+	assert(strcmp(tab[3]->syllabes[0],"a")==0);
+	assert(strcmp(tab[3]->syllabes[1],"ca")==0);
+	assert(strcmp(tab[3]->syllabes[2],"pel")==0);
+	assert(strcmp(tab[3]->syllabes[3],"la")==0);
 	
-	// TODO : assert 
+	// Test Phon
+	assert(strcmp(tab[3]->phonetique[0],"a")==0);
+	assert(strcmp(tab[3]->phonetique[1],"ka")==0);
+	assert(strcmp(tab[3]->phonetique[2],"pE")==0);
+	assert(strcmp(tab[3]->phonetique[3],"la")==0);
+
+	// Test word not include 
+	assert(strcmp(tab[13]->mot,"ab absurdo")==0);
 	
-	//assert(tab[3]->mot== "a cappela");
+	// Test random word
+	assert(tab[rand()%140000]->mot != NULL);
+
 	return(EXIT_SUCCESS);
 }
 
