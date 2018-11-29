@@ -1,3 +1,14 @@
+/**
+ * \file word.h
+ * \class word
+ * \author Clément & Loïc
+ * \version 0.1
+ * \date 29 november 2018
+ *
+ * Allows the creation of a word with the structure of 'word'
+ *
+ */
+
 #ifndef MOT_H_
 #define MOT_H_
 
@@ -16,7 +27,8 @@ struct _char_word {
 	char character;
 	Word * myWord;
 };
-//Constructeur pour créer un mot
+
+//Constructor
 extern Word* word_new (char* string, char** syllables, char** phonetics); 
 Word* word_fill(Word* word, char* string, char** syllables, char** phonetics);
 //Setter
