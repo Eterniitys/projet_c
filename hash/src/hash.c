@@ -70,28 +70,29 @@ Hashmap* hashmap_new(void){
 void hashmap_set(Hashmap* map, char* key, void* value){
 	int nbTable = 0;
 	int place = false;
-	//printf("-Hash::%d\n",hash(key));
-	while (nbTable<map->_table_count && !place){
-		
-		if (map->_tables[nbTable][hash(key)]._key == NULL){
-			//printf("-La Place est Libre %s\n",map->_tables[nbTable][hash(key)]._key);
-			map->_tables[nbTable][hash(key)]._key = key;
-			map->_tables[nbTable][hash(key)]._value = value;
+	unsigned char key_hash = hash(key);
+	while (nbTable<map->_table_count && !place){	
+		if (map->_tables[nbTable][key_hash]._key == NULL){
+			map->_tables[nbTable][key_hash]._key = key;
+			map->_tables[nbTable][key_hash]._value = value;
 			place = true;
-		}else if (strcmp(map->_tables[nbTable][hash(key)]._key,key)==0){
-			//printf("-Contient déjà %s\n",map->_tables[nbTable][hash(key)]._key);
+		}else if (strcmp(map->_tables[nbTable][key_hash]._key,key)==0){
+			place = true;
+		}else if (map->_tables[nbTable][(key_hash+1)%256]._key == NULL){
+			map->_tables[nbTable][(key_hash+1)%256]._key = key;
+			map->_tables[nbTable][(key_hash+1)%256]._value = value;
+			place = true;
+		}else if (strcmp(map->_tables[nbTable][(key_hash+1)%256]._key,key)==0){
 			place = true;
 		}else{
-			//printf("-La Place est prise par %s\n",map->_tables[nbTable][hash(key)]._key);
 			nbTable++;
 		}
 	}
 	if(nbTable>=map->_table_count){
-		rpl(map);//TODO
-		printf("\n Nouvelle Table !! - %d -\n\n",nbTable);
+		//rpl(map);//TODO
 		_new_tab(map);
-		map->_tables[nbTable][hash(key)]._key = key;
-		map->_tables[nbTable][hash(key)]._value = value;
+		map->_tables[nbTable][key_hash]._key = key;
+		map->_tables[nbTable][key_hash]._value = value;
 	}
 }
 
@@ -100,6 +101,8 @@ void* hashmap_get(Hashmap* map, char* key){
 	while (nbTable<map->_table_count){
 		if (strcmp(map->_tables[nbTable][hash(key)]._key,key)==0){
 			return map->_tables[nbTable][hash(key)]._value;
+		}else if (strcmp(map->_tables[nbTable][(hash(key)+1)%256]._key,key)==0){
+			return map->_tables[nbTable][(hash(key)+1)%256]._value;
 		}else{
 			nbTable++;
 		}
@@ -112,4 +115,4 @@ void hashmap_destroy(Hashmap* map){
 	}
 	free(map->_tables);
 	free(map);	 
-}
+}\
