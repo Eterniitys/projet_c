@@ -32,8 +32,8 @@ Word* _fill ( Word* mot, char* string, char** syllabes, char** phonetique ) //Re
 
 void Set_mot ( Word* motAmodifier, char* mot ) {
 	
-        malloc(sizeof(char)*(strlen(mot)+1));
-	motAmodifier->mot = mot;
+        motAmodifier->mot = malloc(sizeof(char)*(strlen(mot)+1));
+	strcpy(motAmodifier->mot,mot);
 }
 
 
@@ -66,6 +66,20 @@ return syllabesArecup->syllabes;
 char** Get_phonetique (Word* phoneArecup) {
 
 return phoneArecup->phonetique;
+
+}
+
+//////////////////////////////////////////FREE/////////////////////////////////////////
+
+void Free(Word* motAliberer){
+	int i=0;
+	while(motAliberer->syllabes[i]){
+		free(motAliberer->syllabes[i]);
+		free(motAliberer->phonetique[i]);
+		i++;
+	}
+	free(motAliberer->mot);
+	free(motAliberer);
 
 }
 

@@ -26,8 +26,8 @@ extern void Set_phonetique ( Word* phonetiqueAmodifier, char** phonetique );
 extern char* Get_mot (Word* motArecup);
 extern char** Get_syllabes (Word* syllabesArecup);
 extern char** Get_phonetique (Word* phoneArecup);
-
-//truc pas développer
+//Free
+extern void Free(Word* motAliberer);
 /*extern Mot decoupe_Mot(char Mot a);
   extern Mot Mot_rime(char Mot c);*/
 
