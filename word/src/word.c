@@ -39,14 +39,14 @@ void Set_mot ( Word* motAmodifier, char* mot ) {
 
 void Set_syllabes ( Word* syllabesAmodifier, char** syllabes ) {
 
-	malloc(sizeof(char)*(strlen(syllabes)+1));
 	syllabesAmodifier->syllabes = syllabes;
+
 }
 
 void Set_phonetique ( Word* phonetiqueAmodifier, char** phonetique ) {
 	
-	malloc(sizeof(char)*(strlen(phonetique)+1));
-	phonetiqueAmodifier->phonetique  = phonetique;		
+	phonetiqueAmodifier->phonetique  = phonetique;
+		
 }
 
 //////////////////////////////////////////GETTER/////////////////////////////////////////
