@@ -14,11 +14,20 @@
 #include <stdbool.h>
 #include "hash.h"
 
-
+/**
+ *\fn int xor(int a, int b)
+ *
+ *\return a xor operation between a and b
+ */
 int xor(int a, int b){
 	return a^b;
 }
 
+/**
+ *\fn void rpl(Hashmap* map)
+ *
+ * Allow a tables per cent view
+ */
 void rpl(Hashmap* map){
 	int som=0;
 	for (int i = 0; i<map->_table_count;i++){
@@ -34,6 +43,11 @@ void rpl(Hashmap* map){
 	printf("<==> Tables remplie à %4.1f% <==>\n\n",((float)som/(256*map->_table_count))*100);
 }
 
+/**
+ *\fn unsigned char hash (const char * string)
+ *
+ *\return a hash of string between 0 and 255
+ */
 unsigned char hash (const char * string){
 	int val[] = {19,46,7,123};
 	int i;
@@ -48,6 +62,11 @@ unsigned char hash (const char * string){
 	
 }
 
+/**
+ *\fn void _new_tab(Hashmap* map)
+ *
+ *\ create a new hash table
+ */
 void _new_tab(Hashmap* map){
 	map->_table_count++;
 	char nbTable = map->_table_count;
@@ -58,6 +77,10 @@ void _new_tab(Hashmap* map){
 	}
 }
 
+/**
+ *\fn Hashmap* hashmap_new(void)
+ *\ return newhash - return an initialized hashmap
+ */
 Hashmap* hashmap_new(void){
 	Hashmap* newhash = malloc(sizeof(Hashmap));
 	newhash->_table_count=0;
@@ -65,8 +88,10 @@ Hashmap* hashmap_new(void){
 	return newhash;
 }
 
-
-
+/**
+ *\fn void hashmap_set(Hashmap* map, char* key, void* value)
+ *\ add key and values into an hashmap accroding to the hashKey
+ */
 void hashmap_set(Hashmap* map, char* key, void* value){
 	int nbTable = 0;
 	int place = false;
@@ -96,6 +121,10 @@ void hashmap_set(Hashmap* map, char* key, void* value){
 	}
 }
 
+/**
+ *\fn void* hashmap_get(Hashmap* map, char* key)
+ *\ return map->_tables[nbTable][hash(key)]._value || return map->_tables[nbTable][(hash(key)+1)%256]._value - return values of the key
+ */
 void* hashmap_get(Hashmap* map, char* key){
 	int nbTable = 0;
 	while (nbTable<map->_table_count){
@@ -109,10 +138,14 @@ void* hashmap_get(Hashmap* map, char* key){
 	}
 }
 
+/**
+ *\fn void hashmap_destroy(Hashmap* map)
+ *\ free the hashmap
+ */
 void hashmap_destroy(Hashmap* map){
 	for (int i=0;i<map->_table_count;i++){
 		free(map->_tables[i]);
 	}
 	free(map->_tables);
 	free(map);	 
-}\
+}
