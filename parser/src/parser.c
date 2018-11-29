@@ -126,7 +126,7 @@ char** split_syllables(char* word) {
 *
 * \return words - return a tabs of Word **
 */
-Word** parser_read(const char* PATH,Tree * root,Hashmap* map_syl_phon){
+Word** parser_read(const char* PATH, Tree * root, Tree * root_syll, Hashmap* map_syl_phon){
 	
 	FILE* file;
 	file=fopen(PATH, "r");
@@ -149,6 +149,8 @@ Word** parser_read(const char* PATH,Tree * root,Hashmap* map_syl_phon){
 	}
 	
 	root = tree_new_node(NULL, compare_tree_wordchar);
+	
+	root_syll = tree_new_node(NULL, compare_tree_wordchar);
 
 	map_syl_phon = hashmap_new();
 	
@@ -181,8 +183,10 @@ Word** parser_read(const char* PATH,Tree * root,Hashmap* map_syl_phon){
 
 		//syllables
 		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
-		if (tmp_syllables)
+		if (tmp_syllables){
+			fill_tree(tmp_syllables,my_word,root_syll);
 			my_word->syllabes = split_syllables(tmp_syllables);
+		}
 
 		//syllables phonetique
 		char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
@@ -199,7 +203,7 @@ Word** parser_read(const char* PATH,Tree * root,Hashmap* map_syl_phon){
 			}
 			while (my_word->phonetique[index_phon]){
 				index_phon++;
-			}
+			} 
 
 			if(index_syll==index_phon){
 				int tmp_index = 0;

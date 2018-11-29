@@ -13,9 +13,10 @@
 int main (void){
 	
 	Tree * root;
+	Tree * root_syll;
 	Hashmap * map;
 
-	Word** tab=parser_read("../../Lexique382.csv",root,map);
+	Word** tab=parser_read("../../Lexique382.csv", root, root_syll, map);
 
 	// test 
 	
