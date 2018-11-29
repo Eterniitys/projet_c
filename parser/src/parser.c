@@ -20,12 +20,12 @@
 /**
 * \fn int compare_tree_wordchar (void * node1,void * node2)
 *
-* \return cm1->caractere - cm2->caractere; - return the result of the comparation.
+* \return cm1->character - cm2->character; - return the result of the comparation.
 */
 int compare_tree_wordchar (void * node1,void * node2){
-	char_mot *cm1 = (char_mot*)tree_get_node((Tree*)node1);
-	char_mot *cm2 = (char_mot*)tree_get_node((Tree*)node2);
-	return cm1->caractere - cm2->caractere;
+	char_word *cm1 = (char_word*)tree_get_node((Tree*)node1);
+	char_word *cm2 = (char_word*)tree_get_node((Tree*)node2);
+	return cm1->character - cm2->character;
 }
 
 /**
@@ -35,9 +35,9 @@ int compare_tree_wordchar (void * node1,void * node2){
 */
 void fill_tree (char* mot, Word * monMot,Tree * node){
 
-	char_mot *structure=malloc(sizeof(char_mot));
-	structure->caractere=mot[0];
-	structure->monMot=NULL;
+	char_word *structure=malloc(sizeof(char_word));
+	structure->character=mot[0];
+	structure->myWord=NULL;
 
 	Tree tmpTree;
 	(&tmpTree)->_struc=structure;
@@ -50,7 +50,7 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	}
 
 	if (mot[1]=='\0') {
-		structure->monMot=monMot;
+		structure->myWord=monMot;
 	} else {
 		fill_tree(mot+1,monMot,nodeBis);
 	}
@@ -167,50 +167,48 @@ Word** parser_read(const char* PATH, Tree * root, Tree * root_syll, Hashmap* map
 		//word
 		char* tmp_word = strtok_r(line, "\t", &line_pointer);
 		if (tmp_word) {
-			char* word = malloc(strlen(tmp_word)+1);
-			strcpy(word, tmp_word);
-			my_word->mot=word;
+			word_set_string(my_word, tmp_word);
 		}
 
-		//phonetique
+		//phonetic
 		char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_phon) {
-			char* phonetique = malloc(strlen(tmp_phon)+1);
-			strcpy(phonetique, tmp_phon);
-			reverse_string(phonetique);
-			fill_tree(phonetique, my_word, root);
+			char* phonetic = malloc(strlen(tmp_phon)+1);
+			strcpy(phonetic, tmp_phon);
+			reverse_string(phonetic);
+			fill_tree(phonetic, my_word, root);
 		}
 
 		//syllables
 		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_syllables){
 			fill_tree(tmp_syllables,my_word,root_syll);
-			my_word->syllabes = split_syllables(tmp_syllables);
+			word_set_syllables(my_word, split_syllables(tmp_syllables));
 		}
 
-		//syllables phonetique
+		//syllables phonetics
 		char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_syllables_phon)
-			my_word->phonetique = split_syllables(tmp_syllables_phon);
+			word_set_phonetics(my_word, split_syllables(tmp_syllables_phon));
 
 		//fill hashmap
 		if (tmp_syllables && tmp_syllables_phon) {
 			int index_syll=0;
 			int index_phon=0;
 
-			while (my_word->syllabes[index_syll]){
+			while (my_word->syllables[index_syll]){
 				index_syll++;
 			}
-			while (my_word->phonetique[index_phon]){
+			while (my_word->phonetics[index_phon]){
 				index_phon++;
 			} 
 
 			if(index_syll==index_phon){
 				int tmp_index = 0;
-				while (my_word->syllabes[tmp_index]) {
+				while (my_word->syllables[tmp_index]) {
 					hashmap_set(map_syl_phon,
-						my_word->syllabes[tmp_index],
-						my_word->phonetique[tmp_index]);
+						my_word->syllables[tmp_index],
+						my_word->phonetics[tmp_index]);
 					tmp_index++;
 				}
 			}
@@ -226,25 +224,25 @@ Word** parser_read(const char* PATH, Tree * root, Tree * root_syll, Hashmap* map
 			int i;
 			if (tmp_syllables_phon) {
 				i=0;
-				while (my_word->phonetique[i]) {
-					free(my_word->phonetique[i]);
+				while (my_word->phonetics[i]) {
+					free(my_word->phonetics[i]);
 					i++;
 				}
-				free(my_word->phonetique);
+				free(my_word->phonetics);
 			}
 			if (tmp_syllables) {
 				i=0;
-				while (my_word->syllabes[i]) {
-					free(my_word->syllabes[i]);
+				while (my_word->syllables[i]) {
+					free(my_word->syllables[i]);
 					i++;
 				}
-				free(my_word->syllabes);
+				free(my_word->syllables);
 			}
 			if (tmp_phon) {
 				// freeing the stuff in the tree is too complex
 			}
 			if (tmp_word) {
-				free(my_word->mot);
+				free(my_word->string);
 			}
 			free(my_word);
 		}
