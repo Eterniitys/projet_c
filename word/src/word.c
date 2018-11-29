@@ -5,81 +5,81 @@
 
 ///////////////////////////////////CONSTRUCTEUR////////////////////////////////////////////
 
-Word* word_new (char* mot, char** syllabes, char** phonetique) //Constructeur
+Word* word_new (char* string, char** syllables, char** phonetics) //Constructeur
 {
 
-	Word* mot = malloc(sizeof(Word));//boîte pour la struture. Alloue de l'espace pour créer insérer le mot dedans.
+	Word* word = malloc(sizeof(Word));//boîte pour la struture. Alloue de l'espace pour créer insérer le word dedans.
 
-	if (mot) 
+	if (word) 
 	{
-	 return word_fill(mot, string , syllabes, phonetique);
+	 return word_fill(word, string , syllables, phonetics);
 	} else {
 		return NULL;
 	}
 
 }
 
-Word* word_fill ( Word* mot, char* string, char** syllabes, char** phonetique ) //Remplit la boîte pour la structure, c'est ça qui créer effectivement le mot.
+Word* word_fill(Word* word, char* string, char** syllables, char** phonetics) //Remplit la boîte pour la structure, c'est ça qui créer effectivement le word.
 {
-	mot->mot = string; //le premier mot avant "->" représente le mot créer dans word_create ( ou plutôt la boîte pour la structure )
-	mot->syllabes = syllabes;//Ce qui vient après "->" c'est les paramètres de Word_create, et on dit ensuite au programme avec le "=" : " les paramètre de mot sont égaux à ...( les paramètre de _fill )
-	mot->phonetique = phonetique;
-	return mot;
+	word->string = string; //le premier word avant "->" représente le word créer dans word_create ( ou plutôt la boîte pour la structure )
+	word->syllables = syllables;//Ce qui vient après "->" c'est les paramètres de Word_create, et on dit ensuite au programme avec le "=" : " les paramètre de word sont égaux à ...( les paramètre de _fill )
+	word->phonetics = phonetics;
+	return word;
 
 }
 
 //////////////////////////////////////////SETTER////////////////////////////////////////
 
-void word_set_mot ( Word* motAmodifier, char* mot ) {
+void word_set_string ( Word* wordToModify, char* string ) {
 	
-        motAmodifier->mot = malloc(sizeof(char)*(strlen(mot)+1));
-	strcpy(motAmodifier->mot,mot);
+        wordToModify->string = malloc(sizeof(char)*(strlen(string)+1));
+	strcpy(wordToModify->string,string);
 }
 
 
-void word_set_syllabes ( Word* syllabesAmodifier, char** syllabes ) {
+void word_set_syllables ( Word* syllablesToModify, char** syllables ) {
 
-	syllabesAmodifier->syllabes = syllabes;
+	syllablesToModify->syllables = syllables;
 
 }
 
-void word_set_phonetique ( Word* phonetiqueAmodifier, char** phonetique ) {
+void word_set_phonetics ( Word* phoneticsToModify, char** phonetics ) {
 	
-	phonetiqueAmodifier->phonetique  = phonetique;
+	phoneticsToModify->phonetics  = phonetics;
 		
 }
 
 //////////////////////////////////////////GETTER/////////////////////////////////////////
 
-char* word_get_mot (Word* motArecup) {
+char* word_get_string (Word* wordToGet) {
 
-return motArecup->mot;
-
-}
-
-char** word_get_syllabes (Word* syllabesArecup) {
-
-return syllabesArecup->syllabes;
+return wordToGet->string;
 
 }
 
-char** word_get_phonetique (Word* phoneArecup) {
+char** word_get_syllables (Word* syllablesToGet) {
 
-return phoneArecup->phonetique;
+return syllablesToGet->syllables;
+
+}
+
+char** word_get_phonetics (Word* phoneticsToGet) {
+
+return phoneticsToGet->phonetics;
 
 }
 
 //////////////////////////////////////////FREE/////////////////////////////////////////
 
-void word_free(Word* motAliberer){
+void word_free(Word* wordToFree){
 	int i=0;
-	while(motAliberer->syllabes[i]){
-		free(motAliberer->syllabes[i]);
-		free(motAliberer->phonetique[i]);
+	while(wordToFree->syllables[i]){
+		free(wordToFree->syllables[i]);
+		free(wordToFree->phonetics[i]);
 		i++;
 	}
-	free(motAliberer->mot);
-	free(motAliberer);
+	free(wordToFree->string);
+	free(wordToFree);
 
 }
 

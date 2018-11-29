@@ -5,29 +5,30 @@ typedef struct _Word Word;
 
 struct _Word {
 
-	char* mot;
-	char** syllabes;
-	char** phonetique;
+	char* string;
+	char** syllables;
+	char** phonetics;
 
 };
-typedef struct _char_mot char_mot;
-struct _char_mot {
-	char caractere;
-	Word * monMot;
+typedef struct _char_word char_word;
+struct _char_word {
+
+	char character;
+	Word * myWord;
 };
 //Constructeur pour créer un mot
-extern Word* word_new (char* mot, char** syllabes, char** phonetique); 
-Word* word_fill(Word *mot, char* string, char** syllabes, char** phonetique);
+extern Word* word_new (char* string, char** syllables, char** phonetics); 
+Word* word_fill(Word* word, char* string, char** syllables, char** phonetics);
 //Setter
-extern void word_set_mot ( Word* motAmodifier, char* mot );
-extern void word_set_syllabes ( Word* syllabesAmodifier, char** syllabes );
-extern void word_set_phonetique ( Word* phonetiqueAmodifier, char** phonetique );
+extern void word_set_string ( Word* stringToModify, char* string );
+extern void word_set_syllables ( Word* syllablesToModify, char** syllables );
+extern void word_set_phonetics ( Word* phoneticsToModify, char** phonetics );
 //Getter
-extern char* word_get_mot (Word* motArecup);
-extern char** word_get_syllabes (Word* syllabesArecup);
-extern char** word_get_phonetique (Word* phoneArecup);
+extern char* word_get_string (Word* stringToGet);
+extern char** word_get_syllables (Word* syllablesToGet);
+extern char** word_get_phonetics (Word* phoneticsToGet);
 //Free
-extern void word_free(Word* motAliberer);
+extern void word_free(Word* wordToFree);
 
 #endif
 
