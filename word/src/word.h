@@ -16,20 +16,18 @@ struct _char_mot {
 	Word * monMot;
 };
 //Constructeur pour créer un mot
-extern Word* Word_new (char* mot, char** syllabes, char** phonetique); 
-Word* _fill(Word *mot, char* string, char** syllabes, char** phonetique);
+extern Word* word_new (char* mot, char** syllabes, char** phonetique); 
+Word* word_fill(Word *mot, char* string, char** syllabes, char** phonetique);
 //Setter
-extern void Set_mot ( Word* motAmodifier, char* mot );
-extern void Set_syllabes ( Word* syllabesAmodifier, char** syllabes );
-extern void Set_phonetique ( Word* phonetiqueAmodifier, char** phonetique );
+extern void word_set_mot ( Word* motAmodifier, char* mot );
+extern void word_set_syllabes ( Word* syllabesAmodifier, char** syllabes );
+extern void word_set_phonetique ( Word* phonetiqueAmodifier, char** phonetique );
 //Getter
-extern char* Get_mot (Word* motArecup);
-extern char** Get_syllabes (Word* syllabesArecup);
-extern char** Get_phonetique (Word* phoneArecup);
+extern char* word_get_mot (Word* motArecup);
+extern char** word_get_syllabes (Word* syllabesArecup);
+extern char** word_get_phonetique (Word* phoneArecup);
 //Free
-extern void Free(Word* motAliberer);
-/*extern Mot decoupe_Mot(char Mot a);
-  extern Mot Mot_rime(char Mot c);*/
+extern void word_free(Word* motAliberer);
 
 #endif
 

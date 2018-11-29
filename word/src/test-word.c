@@ -16,17 +16,17 @@ char** t = malloc(sizeof(char*)*2);
 t[0]= malloc(sizeof(char)*2);
 strcpy(t[0],"d\0");
 t[1]=NULL;
-testmot = Word_new("blabla",test,t); //argv sont des tableaux de string utilisé pour le test. Ceci est l'équivalent d'un new objet, on remplis la boîte précédente.
+testmot = word_new("blabla",test,t); //argv sont des tableaux de string utilisé pour le test. Ceci est l'équivalent d'un new objet, on remplis la boîte précédente.
 printf("test mot : %s\n", testmot->mot);//testmot->mot, ici mot représente le premier paramètre de word_create (blabla), on pourrait donc techniquement obtenir les syllabes et phonétique de la même façon en faisant testmot->syllabes ( si ils étaient remplis )
 
-Set_mot(testmot, "bloublou\n");
+word_set_mot(testmot, "bloublou\n");
 printf("test mot setter : %s\n", testmot->mot);
 
 printf("test du getter\n");
-printf(Get_mot(testmot));//s'affiche derrière votre prompt normalement.
+printf(word_get_mot(testmot));//s'affiche derrière votre prompt normalement.
 
 printf("test du free\n");
-Free(testmot);
+word_free(testmot);
 
 
 return 0;
