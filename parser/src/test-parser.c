@@ -3,14 +3,19 @@
 #include <string.h>
 #include <assert.h>
 #include <word.h>
+#include <tree.h>
+#include <hash.h>
 
 #include "parser.h"
 
 
 
 int main (void){
+	
+	Tree * root;
+	Hashmap * map;
 
-	Word** tab=parser_read("../../Lexique382.csv");
+	Word** tab=parser_read("../../Lexique382.csv",root,map);
 
 	// test 
 	

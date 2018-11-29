@@ -126,7 +126,7 @@ char** split_syllables(char* word) {
 *
 * \return words - return a tabs of Word **
 */
-Word** parser_read(const char* PATH){
+Word** parser_read(const char* PATH,Tree * root,Hashmap* map_syl_phon){
 	
 	FILE* file;
 	file=fopen(PATH, "r");
@@ -148,9 +148,9 @@ Word** parser_read(const char* PATH){
 		pointer++;
 	}
 	
-	Tree* root = tree_new_node(NULL, compare_tree_wordchar);
+	root = tree_new_node(NULL, compare_tree_wordchar);
 
-	Hashmap* map_syl_phon = hashmap_new();
+	map_syl_phon = hashmap_new();
 	
 	Word** words = malloc(sizeof(Word*)*counter);
 
@@ -201,14 +201,9 @@ Word** parser_read(const char* PATH){
 				index_phon++;
 			}
 
-			fprintf(stderr,"syll : %d phon : %d\n",index_syll,index_phon);
-
 			if(index_syll==index_phon){
 				int tmp_index = 0;
 				while (my_word->syllabes[tmp_index]) {
-					fprintf(stderr, "Ajout de %s -> %s\n",
-						my_word->syllabes[tmp_index],
-						my_word->phonetique[tmp_index]);
 					hashmap_set(map_syl_phon,
 						my_word->syllabes[tmp_index],
 						my_word->phonetique[tmp_index]);
