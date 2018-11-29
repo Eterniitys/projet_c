@@ -108,6 +108,7 @@ char** split_syllables(char* word) {
 	char* syl_point = NULL;
 	char* syllable = strtok_r(word, " -", &syl_point);
 
+	
 	while(syllable){
 		char* tmp_syl = malloc(strlen(syllable) + 1);
 		strcpy(tmp_syl, syllable);
@@ -190,14 +191,31 @@ Word** parser_read(const char* PATH){
 
 		//fill hashmap
 		if (tmp_syllables && tmp_syllables_phon) {
-			int tmp_index = 0;
-			while (my_word->syllabes[tmp_index]) {
-				fprintf(stderr, "Ajout de %s -> %s\n",my_word->syllabes[tmp_index], my_word->phonetique[tmp_index]);
-				hashmap_set(map_syl_phon,
-					my_word->syllabes[tmp_index],
-					my_word->phonetique[tmp_index]);
-				tmp_index++;
+			int index_syll=0;
+			int index_phon=0;
+
+			while (my_word->syllabes[index_syll]){
+				index_syll++;
 			}
+			while (my_word->phonetique[index_phon]){
+				index_phon++;
+			}
+
+			fprintf(stderr,"syll : %d phon : %d\n",index_syll,index_phon);
+
+			if(index_syll==index_phon){
+				int tmp_index = 0;
+				while (my_word->syllabes[tmp_index]) {
+					fprintf(stderr, "Ajout de %s -> %s\n",
+						my_word->syllabes[tmp_index],
+						my_word->phonetique[tmp_index]);
+					hashmap_set(map_syl_phon,
+						my_word->syllabes[tmp_index],
+						my_word->phonetique[tmp_index]);
+					tmp_index++;
+				}
+			}
+			
 		}
 
 		// word insertion into table
