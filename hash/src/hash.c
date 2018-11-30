@@ -84,6 +84,7 @@ void _new_tab(Hashmap* map){
 Hashmap* hashmap_new(void){
 	Hashmap* newhash = malloc(sizeof(Hashmap));
 	newhash->_table_count=0;
+	newhash->_tables = NULL;
 	_new_tab(newhash);
 	return newhash;
 }
