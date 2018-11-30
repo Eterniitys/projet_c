@@ -37,10 +37,10 @@ void rpl(Hashmap* map){
 				inc++;
 			}
 		}
-		printf("\nTable %d remplie a %4.1f%\n",i,((float)inc/256)*100);
+		printf("\nnTable %d filled to %4.1f%\n",i,((float)inc/256)*100);
 		som+=inc;
 	}
-	printf("<==> Tables remplie à %4.1f% <==>\n\n",((float)som/(256*map->_table_count))*100);
+	printf("<==> Tables filled to %4.1f% <==>\n\n",((float)som/(256*map->_table_count))*100);
 }
 
 /**
