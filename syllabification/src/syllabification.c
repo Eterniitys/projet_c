@@ -3,9 +3,9 @@
 #include <word.h>
 #include <tree.h>
 
-#include "syllabisation.h"
+#include "syllabification.h"
 
-char** syllablizer (Tree* tree, char* word){
+char** syllabicate (Tree* tree, char* word){
 	char** output = malloc(sizeof(char*)*10);
 	int index = 0;
 	while(*word!='\0'){

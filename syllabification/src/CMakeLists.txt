@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(syllabisation C) 
+project(syllabification C)
 
 find_file(WORD_H "word.h")
 
@@ -39,23 +39,23 @@ endif(TREE_LIB)
 
 
 # include library parser
-add_library(syllabisation SHARED syllabisation.c syllabisation.h)
+add_library(syllabification SHARED syllabification.c syllabification.h)
 
 # library parser use library word 
-target_link_libraries(syllabisation word)
+target_link_libraries(syllabification word)
 # library parser use library tree 
-target_link_libraries(syllabisation tree)
+target_link_libraries(syllabification tree)
 
 
 # Destination files
 install(
-	TARGETS syllabisation
+	TARGETS syllabification
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	RUNTIME DESTINATION bin
 	)
 install(
-	FILES syllabisation.h
+	FILES syllabification.h
 	DESTINATION include
 	)
 
