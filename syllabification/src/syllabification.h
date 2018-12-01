@@ -12,6 +12,6 @@
 #include <tree.h>
 
 extern char** syllabicate(Tree* tree, char* word);
-char* recursive(Tree* node, char* match);
+char* recursive(Tree* node, char* match, int level);
 
 #endif /* _SYLLABIFICATION_H_ */

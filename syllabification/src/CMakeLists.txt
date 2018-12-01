@@ -53,20 +53,18 @@ install(
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib
 	RUNTIME DESTINATION bin
-	)
+)
 install(
 	FILES syllabification.h
 	DESTINATION include
-	)
-
-# Creation of executable
-#add_executable(test-parser test-parser.c)
-#add_dependencies(test-parser parser)
-#target_link_libraries(test-parser parser)
+)
 
 #Allowed tests
-#enable_testing()
+enable_testing()
 
-# add test
-#add_test(test-parser ./test-parser)
+# Creation of executable
+add_executable(test-syllabification test-syllabification.c)
+add_dependencies(test-syllabification syllabification)
+target_link_libraries(test-syllabification syllabification parser)
+add_test(test-syllabification ./test-syllabification)
 
