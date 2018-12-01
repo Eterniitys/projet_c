@@ -201,7 +201,7 @@ Word** parser_read(const char* PATH, Tree * root, Tree * root_syll, Hashmap* map
 			}
 			while (my_word->phonetics[index_phon]){
 				index_phon++;
-			} 
+			}
 
 			if(index_syll==index_phon){
 				int tmp_index = 0;

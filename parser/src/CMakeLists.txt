@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(parser C) 
+project(parser C)
 
 find_file(WORD_H "word.h")
 
@@ -82,10 +82,14 @@ install(
 add_executable(test-parser test-parser.c)
 add_dependencies(test-parser parser)
 target_link_libraries(test-parser parser)
+add_test(test-parser ./test-parser)
+
+add_executable(test-invalid_input test-invalid_input.c)
+add_dependencies(test-invalid_input parser)
+target_link_libraries(test-invalid_input parser)
+add_test(test-invalid_input ./test-invalid_input)
 
 #Allowed tests
 enable_testing()
 
-# add test
-add_test(test-parser ./test-parser)
 
