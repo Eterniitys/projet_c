@@ -12,11 +12,11 @@
 
 int main (void){
 	
-	Tree * root;
-	Tree * root_syll;
+	Tree * root = NULL;
+	Tree * root_syll = NULL;
 	Hashmap * map;
 
-	Word** tab=parser_read("../../Lexique382.csv", root, root_syll, map);
+	Word** tab=parser_read("../../Lexique382.csv", &root, &root_syll, map);
 
 	// Test Mot 
 	assert(strcmp(tab[3]->string,"a capella")==0);
@@ -39,13 +39,12 @@ int main (void){
 	// Test random word
 	assert(tab[rand()%140000]->string != NULL);
 	
-	printf("%p\n",root_syll);
-	char_word * mot =(char_word*)tree_get_node(root_syll);
-	printf("%p\n",mot);
+	fprintf(stderr, "%p\n",root_syll);
+	char_word* struc = (char_word*)tree_get_node(tree_get_child(root_syll,0));
+	fprintf(stderr, "%p\n", struc);
 
-	//char t = mot->character; // seg fault
-	
-	
+	char t = struc->character;
+
 	return(EXIT_SUCCESS);
 }
 
