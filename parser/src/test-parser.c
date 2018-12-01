@@ -38,7 +38,16 @@ int main (void){
 	
 	// Test random word
 	assert(tab[rand()%140000]->string != NULL);
-
+	
+	printf("%p\n",root_syll);
+	char_word * mot =(char_word*)tree_get_node(root_syll);
+	printf("%p\n",mot);
+	
+	
+	//char t = mot->character;
+	//char_word * mot = (char_word*)(tree_get_branch(root,0)->_struc);
+	//char t = mot->character;
+	
 	return(EXIT_SUCCESS);
 }
 

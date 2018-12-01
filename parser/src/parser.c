@@ -182,8 +182,15 @@ Word** parser_read(const char* PATH, Tree * root, Tree * root_syll, Hashmap* map
 		//syllables
 		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
 		if (tmp_syllables){
-			fill_tree(tmp_syllables,my_word,root_syll);
-			word_set_syllables(my_word, split_syllables(tmp_syllables));
+			char ** mot_tmp=split_syllables(tmp_syllables);
+			word_set_syllables(my_word, mot_tmp);
+			
+			int k=0;
+			while (mot_tmp[k]!=NULL){
+				fill_tree(mot_tmp[k],my_word,root_syll);
+				k++;
+				
+			}
 		}
 
 		//syllables phonetics
