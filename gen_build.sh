@@ -11,7 +11,7 @@ message_erreur() {
 	fi
 }
 
-directories=("hash" "list" "word" "tree" "parser" "rhyme" "syllabification" "graphic-interface")
+directories=("hash" "list" "word" "tree" "parser" "rhyme" "syllabification" "gui")
 for dir in "${directories[@]}"; do
 	echo -e "\e[32;1mNettoyage du dossier build pour $dir\e[0m"
 	rm -rf "$dir"/build
@@ -31,6 +31,4 @@ for dir in "${directories[@]}"; do
 	message_erreur $?
 	cd ../..
 done
-
-cp Lexique382.csv parser/build/
 
