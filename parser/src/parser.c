@@ -45,8 +45,8 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	Tree * nodeBis=tree_find_child(node,&tmpTree); // null si y a pas 
 
 	if (nodeBis==NULL) {
-		nodeBis= tree_new_node(structure,compare_tree_wordchar);
-		tree_add_node(node, nodeBis);
+		nodeBis= tree_new(structure,compare_tree_wordchar);
+		tree_add_child(node, nodeBis);
 	}
 
 	if (mot[1]=='\0') {
@@ -148,9 +148,9 @@ Word** parser_read(const char* PATH, Tree * root, Tree * root_syll, Hashmap* map
 		pointer++;
 	}
 	
-	root = tree_new_node(NULL, compare_tree_wordchar);
+	root = tree_new(NULL, compare_tree_wordchar);
 	
-	root_syll = tree_new_node(NULL, compare_tree_wordchar);
+	root_syll = tree_new(NULL, compare_tree_wordchar);
 
 	map_syl_phon = hashmap_new();
 	
