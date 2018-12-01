@@ -1,4 +1,3 @@
-
 /**
  * \file test-tree.c
  * \brief testing program
@@ -28,30 +27,22 @@ int main(void){
 		return *(int*)nb1-*(int*)nb2;
 	}
 
-	Tree *root = tree_new_node(un,compare_int);
-	Tree *t2 = tree_new_node(deux,NULL);
-	Tree *t3 = tree_new_node(tro,NULL);
-	Tree *t4 = tree_new_node(qua,NULL);
+	Tree *root = tree_new(un,compare_int);
+	Tree *t2 = tree_new(deux,NULL);
+	Tree *t3 = tree_new(tro,NULL);
+	Tree *t4 = tree_new(qua,NULL);
 
-	tree_add_node(root,t2);
-	tree_add_node(t2,t3);
-	tree_add_node(t2,t4);
+	tree_add_child(root,t2);
+	tree_add_child(t2,t3);
+	tree_add_child(t2,t4);
 
-	assert(root->_struc==un);
-	assert(t2->_struc==deux);
-	assert(t3->_struc==tro);
-	assert(t4->_struc==qua);
-	
-	assert(list_get(root->_children,0)==t2);
-	assert(list_get(t2->_children,0)==t3);
-	assert(list_get(t2->_children,1)==t4);
+	assert(tree_get_child(root,0)->_struc==deux);
+	assert(tree_get_child(tree_get_child(root,0),0)->_struc==tro);
+	assert(tree_get_child(tree_get_child(root,0),1)->_struc==qua);
 
 	free(un);free(deux);free(tro);free(qua);
 	tree_destroy(root);
 
 	return 0;
 }
-
-
-
 

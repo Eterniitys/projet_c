@@ -27,18 +27,18 @@ int main(void){
 		return *(int*)nb1-*(int*)nb2;
 	}
 
-	Tree *root = tree_new_node(un,compare_int);
-	Tree *t2 = tree_new_node(deux,NULL);
-	Tree *t3 = tree_new_node(tro,NULL);
-	Tree *t4 = tree_new_node(qua,NULL);
+	Tree *root = tree_new(un,compare_int);
+	Tree *t2 = tree_new(deux,NULL);
+	Tree *t3 = tree_new(tro,NULL);
+	Tree *t4 = tree_new(qua,NULL);
 
-	tree_add_node(root,t2);
-	tree_add_node(t2,t3);
-	tree_add_node(t2,t4);
+	tree_add_child(root,t2);
+	tree_add_child(t2,t3);
+	tree_add_child(t2,t4);
 
-	assert(tree_get_node(tree_get_branch(root,0))==deux);
-	assert(tree_get_node(tree_get_branch(tree_get_branch(root,0),0))==tro);
-	assert(tree_get_node(tree_get_branch(tree_get_branch(root,0),1))==qua);
+	assert(tree_get_node(tree_get_child(root,0))==deux);
+	assert(tree_get_node(tree_get_child(tree_get_child(root,0),0))==tro);
+	assert(tree_get_node(tree_get_child(tree_get_child(root,0),1))==qua);
 	
 	free(un);free(deux);free(tro);free(qua);
 	tree_destroy(root);

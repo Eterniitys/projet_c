@@ -27,27 +27,27 @@ int main(void){
 		return *a-b;
 	}
 
-	Tree *root = tree_new_node(NULL,compare_int);
+	Tree *root = tree_new(NULL,compare_int);
 	
 	for (int i=0;i<50;i++){
 		int *t = malloc(sizeof(int));
 		*t = rand();
-		Tree *tree_t = tree_new_node(t,NULL);
-		tree_add_node(root,tree_t);
+		Tree *tree_t = tree_new(t,NULL);
+		tree_add_child(root,tree_t);
 	}
 	//ref is a reference pointer with the sought value and content
-	int *ref = (int*)tree_get_node(tree_get_branch(root,5));//6th value
+	int *ref = (int*)tree_get_node(tree_get_child(root,5));//6th value
 	//val is the sought content with wrong adress
-	Tree* val = tree_new_node(ref,NULL);
+	Tree* val = tree_new(ref,NULL);
 	//fin have to be egals to ref
 	int *fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
 	
 	assert(ref == fin && *ref == *fin);
 	
 	//new value then lock
-	ref = (int*)tree_get_node(tree_get_branch(root,23));
+	ref = (int*)tree_get_node(tree_get_child(root,23));
 	tree_destroy(val);
-	val = tree_new_node(ref,NULL);
+	val = tree_new(ref,NULL);
 	tree_lock(root);
 	fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
 	
@@ -55,7 +55,7 @@ int main(void){
 	
 	//freeing zone
 	for (int i=0;i<50;i++){
-		free(tree_get_node(tree_get_branch(root,i)));
+		free(tree_get_node(tree_get_child(root,i)));
 	}
 	tree_destroy(val);
 	tree_destroy(root);

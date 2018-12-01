@@ -26,11 +26,11 @@ void * tree_get_node(Tree *root){
 }
 
 /**
- * \fn Tree * tree_new_node(Tree *root,void *struc)
+ * \fn Tree * tree_new(Tree *root,void *struc)
  *
  * \return node - return a new pointer of tree.
  */
-Tree * tree_new_node(void *struc,_compare_funct funct){
+Tree * tree_new(void *struc,_compare_funct funct){
 	Tree *node = malloc(sizeof(Tree));
 	node->_struc = struc;
 	node->_funct=funct;
@@ -52,11 +52,11 @@ void tree_destroy(Tree * tree){
 }
 
 /**
- *\fn Tree * tree_add_node(Tree *root, void *node)
+ *\fn Tree * tree_add_child(Tree *root, void *node)
  *
  * Allows the addition of the child 'node' to the 'root'
  */
-Tree * tree_add_node(Tree *root, Tree *node){
+Tree * tree_add_child(Tree *root, Tree *node){
 	node->_children->_compare=root->_funct;
 	node->_funct=root->_funct;
 	list_add(root->_children, node);
@@ -64,11 +64,11 @@ Tree * tree_add_node(Tree *root, Tree *node){
 }
 
 /**
- *\fn Tree * tree_get_branch(Tree *root,int nb)
+ *\fn Tree * tree_get_child(Tree *root,int nb)
  *
  * Allows the getter of the child 'branch' to the 'root'
  */
-Tree * tree_get_branch(Tree *root,int nb){
+Tree * tree_get_child(Tree *root,int nb){
 	return list_get(root->_children,nb);
 }
 

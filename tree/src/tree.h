@@ -19,15 +19,15 @@ typedef struct _Tree {
 	_compare_funct _funct;
 } Tree;
 
-extern Tree * tree_new_node(void *struc,_compare_funct funct);
+extern Tree * tree_new(void *struc,_compare_funct funct);
 
 extern void tree_destroy(Tree * tree);
 
 extern void * tree_get_node(Tree *root);
 
-extern Tree * tree_add_node(Tree *root, Tree *node);
+extern Tree * tree_add_child(Tree *root, Tree *node);
 
-extern Tree * tree_get_branch(Tree *root,int nb);
+extern Tree * tree_get_child(Tree *root,int nb);
 
 extern int tree_child_count(Tree *tree);
 

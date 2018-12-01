@@ -1,0 +1,9 @@
+replace all by :
+
+old -> new
+
+##############################
+
+tree_new_node	->	tree_new
+tree_add_node	->	tree_add_child
+tree_get_branch	->	tree_get_child

@@ -22,14 +22,14 @@ int main(void){
 		return *(int*)nb1-*(int*)nb2;
 	}
 
-	Tree *root1 = tree_new_node(un,NULL);	
-	Tree *root2 = tree_new_node(deux,compare_int);
+	Tree *root1 = tree_new(un,NULL);	
+	Tree *root2 = tree_new(deux,compare_int);
 	
 	tree_destroy (root1);	
 	tree_destroy (root2);
 	
-	Tree *root3 = tree_new_node(un,NULL);	
-	Tree *root4 = tree_new_node(root3,compare_int);
+	Tree *root3 = tree_new(un,NULL);	
+	Tree *root4 = tree_new(root3,compare_int);
 	
 	tree_destroy (root3);	
 	tree_destroy (root4);

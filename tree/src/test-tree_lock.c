@@ -16,12 +16,12 @@
 
 int main(void){
 
-	Tree *root = tree_new_node(NULL,NULL);
-	Tree *t2 = tree_new_node(NULL,NULL);
-	Tree *t3 = tree_new_node(NULL,NULL);
+	Tree *root = tree_new(NULL,NULL);
+	Tree *t2 = tree_new(NULL,NULL);
+	Tree *t3 = tree_new(NULL,NULL);
 	
-	tree_add_node(root,t2);
-	tree_add_node(t2,t3);
+	tree_add_child(root,t2);
+	tree_add_child(t2,t3);
 
 	tree_lock(root);
 	
