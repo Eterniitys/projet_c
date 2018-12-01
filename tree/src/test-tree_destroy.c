@@ -12,15 +12,15 @@
 
 #include "tree.h"
 
+int compare_int (void * nb1,void * nb2){
+	return *(int*)nb1-*(int*)nb2;
+}
 
 int main(void){
 
 	int * un   = malloc(sizeof(int)); *un   = 1 ;
 	int * deux = malloc(sizeof(int)); *deux = 2 ;
 
-	int compare_int (void * nb1,void * nb2){
-		return *(int*)nb1-*(int*)nb2;
-	}
 
 	Tree *root1 = tree_new(un,NULL);	
 	Tree *root2 = tree_new(deux,compare_int);

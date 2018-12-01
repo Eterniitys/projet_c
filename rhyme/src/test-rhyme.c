@@ -28,38 +28,38 @@ char* mot5="e";
 char* mot6="p";
 
 
-Tree *root= tree_new_node(NULL,NULL);
-Tree *prot0 = tree_new_node(test,NULL);
-Tree *prot1 = tree_new_node(test2,NULL);
-Tree *prot2 = tree_new_node(test3,NULL);
-Tree *prot3 = tree_new_node(test4,NULL);
-Tree *prot4 = tree_new_node(test5,NULL);
-Tree *prot5 = tree_new_node(test6,NULL);
-Tree *prot6 = tree_new_node(test7,NULL);
-Tree *prot7 = tree_new_node(test8,NULL);
+Tree *root= tree_new(NULL,NULL);
+Tree *prot0 = tree_new(test,NULL);
+Tree *prot1 = tree_new(test2,NULL);
+Tree *prot2 = tree_new(test3,NULL);
+Tree *prot3 = tree_new(test4,NULL);
+Tree *prot4 = tree_new(test5,NULL);
+Tree *prot5 = tree_new(test6,NULL);
+Tree *prot6 = tree_new(test7,NULL);
+Tree *prot7 = tree_new(test8,NULL);
 
-Tree *pet0 = tree_new_node(mot1,NULL);
-Tree *pet1 = tree_new_node(mot2,NULL);
-Tree *pet2 = tree_new_node(mot3,NULL);
-Tree *pet3 = tree_new_node(mot4,NULL);
-Tree *pet4 = tree_new_node(mot5,NULL);
-Tree *pet5 = tree_new_node(mot6,NULL);
+Tree *pet0 = tree_new(mot1,NULL);
+Tree *pet1 = tree_new(mot2,NULL);
+Tree *pet2 = tree_new(mot3,NULL);
+Tree *pet3 = tree_new(mot4,NULL);
+Tree *pet4 = tree_new(mot5,NULL);
+Tree *pet5 = tree_new(mot6,NULL);
 
 //debut arbre
-tree_add_node(root,prot0); //node l
-tree_add_node(prot0,prot1); //node O
-tree_add_node(prot1,prot2);//protocole node k
-tree_add_node(prot1,pet2);//petrol node r
+tree_add_child(root,prot0); //node l
+tree_add_child(prot0,prot1); //node O
+tree_add_child(prot1,prot2);//protocole node k
+tree_add_child(prot1,pet2);//petrol node r
 //fin de larbre protocol
-tree_add_node(prot2,prot3);//protocol node o
-tree_add_node(prot3,prot4);//protocol node t
-tree_add_node(prot4,prot5);//protocol node o
-tree_add_node(prot5,prot6);//protocol node R
-tree_add_node(prot6,prot7);//protocol node p
+tree_add_child(prot2,prot3);//protocol node o
+tree_add_child(prot3,prot4);//protocol node t
+tree_add_child(prot4,prot5);//protocol node o
+tree_add_child(prot5,prot6);//protocol node R
+tree_add_child(prot6,prot7);//protocol node p
 //fin de larbre petrol
-tree_add_node(pet2,pet3);//petrol node t
-tree_add_node(pet3,pet4);//petrol node e
-tree_add_node(pet4,pet5);//petrol node p
+tree_add_child(pet2,pet3);//petrol node t
+tree_add_child(pet3,pet4);//petrol node e
+tree_add_child(pet4,pet5);//petrol node p
 
 //rhyme_find(char2,);
 
@@ -67,9 +67,9 @@ tree_add_node(pet4,pet5);//petrol node p
  //pointeur de l'arbre
   printf("pointeur charT :%p  \n",charT );
 //ajout d'une node a root
-  tree_add_node(root,charT);
+  tree_add_child(root,charT);
   //pointeur de la nouvelle node
-  printf("pointeur charT 2 :%p  \n",tree_get_branch(root,0) );
+  printf("pointeur charT 2 :%p  \n",tree_get_child(root,0) );
   //pointeur de test
   printf("pointeur test :%p  \n",tree_get_node(charT) );
   //transtipage

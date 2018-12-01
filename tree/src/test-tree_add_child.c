@@ -13,6 +13,12 @@
 
 #include "tree.h"
 
+/**
+ * Function to compare int (local)
+ */
+int compare_int (void * nb1,void * nb2){
+	return *(int*)nb1-*(int*)nb2;
+}
 
 int main(void){
 
@@ -21,12 +27,7 @@ int main(void){
 	int * tro  = malloc(sizeof(int)); *tro  = 3 ;
 	int * qua  = malloc(sizeof(int)); *qua  = 4 ;
 
-	/**
-	 * Function to compare int (local)
-	 */
-	int compare_int (void * nb1,void * nb2){
-		return *(int*)nb1-*(int*)nb2;
-	}
+
 
 	Tree *root = tree_new(un,compare_int);
 	Tree *t2 = tree_new(deux,NULL);

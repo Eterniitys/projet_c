@@ -21,7 +21,7 @@ char **parcours(Tree*tree, char*phon,word**w)
   {
     for (int i = 0; i < tree_count_children(noeud); i++)
     {
-      Tree* enfant=tree_get_branch(noeud,i);
+      Tree* enfant=tree_get_child(noeud,i);
       char mot=tree_get_node(enfant);
       if(mot!=NULL)
       {

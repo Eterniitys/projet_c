@@ -12,8 +12,8 @@ int main(void) {
 
   char* l = "l";
 
-  Tree *root= tree_new_node(NULL,NULL);
-  Tree *char1= tree_new_node(NULL,NULL);
+  Tree *root= tree_new(NULL,NULL);
+  Tree *char1= tree_new(NULL,NULL);
 
   return (EXIT_SUCESS);
 }
