@@ -22,7 +22,7 @@ int main(void){
 	char * testVal = "test";
 	
 	for (int i=0;i<10;i++){
-		hashmap_set(map,strings[i],testVal);
+		hashmap_set(map,&strings[i],testVal);
 	}
 	
 	hashmap_destroy(map);
