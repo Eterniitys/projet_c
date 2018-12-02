@@ -74,7 +74,16 @@ List* list_add(List* list, void* pointer) {
 
 	// list is full, need realloc
 	if (list->_count >= list->_size) {
-		int new_size = list->_size > 256 ? list->_size+256 : list->_size*2;
+		int new_size;
+		if (list->_size < 16) {
+			new_size = 16;
+
+		} else if (list->_size > 256) {
+			new_size = list->_size + 256;
+
+		} else {
+			new_size = list->_size * 2;
+		}
 
 		// realloc fails
 		void* temp = realloc(list->_data, new_size*PSIZE);
@@ -142,15 +151,24 @@ void list_lock(List* list) {
 
 	// if count < size, reduce size in memory
 	if (list->_count < list->_size) {
-		int new_size = list->_count > 0 ? list->_count : 1;
-		void* temp = realloc(list->_data, new_size*PSIZE);
+		int new_size = list->_count;
 
-		if (temp) {
-			list->_data = temp;
-			list->_size = new_size;
+		if (new_size != 0) {
+			void* temp = realloc(list->_data, new_size*PSIZE);
+
+			if (temp) {
+				list->_data = temp;
+				list->_size = new_size;
+			}
+		} else {
+			free(list->_data);
+			list->_data = NULL;
+			list->_size = 0;
 		}
 	}
-	_list_qs(list, 0, list->_count-1);
+	if (list->_count > 1) {
+		_list_qs(list, 0, list->_count-1);
+	}
 }
 
 /**
@@ -192,12 +210,10 @@ void list_destroy(List* list) {
 
 static List* _list_init(List* list) {
 	list->_count = 0;
-	list->_size = 16;
-	list->_data = malloc(list->_size * PSIZE);
+	list->_size = 0;
+	list->_data = NULL;
 	list->_lock = false;
-	if (list->_data)
-		return list;
-	return NULL;
+	return list;
 }
 
 /**
