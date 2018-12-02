@@ -19,7 +19,7 @@ int main(void){
 	
 	for (int i=0;i<10;i++){
 		unsigned char a = hash(strings[i]);
-		//printf("%s:hash:%d\n",strings[i],a);
+		printf("%s:hash:%d\n",strings[i],a);
 	}
 	
 	return 0;

@@ -15,14 +15,14 @@
 
  
 int main(void){
-	char * strings[10] = {"artyez","azerty","ytreza","azerty","treza","trezya","rtez","ytreaz","azer","zerty"};
+	char * strings[] = {"artyez","azerty","ytreza","azerty","treza","trezya","rtez","ytreaz","azer","zerty"};
 	
 	Hashmap* map = hashmap_new();
 	
 	char * testVal = "test";
 	
 	for (int i=0;i<10;i++){
-		hashmap_set(map,&strings[i],testVal);
+		hashmap_set(map,strings[i],testVal);
 	}
 	
 	hashmap_destroy(map);

@@ -72,8 +72,11 @@ void _new_tab(Hashmap* map){
 	char nbTable = map->_table_count;
 	map->_tables = realloc(map->_tables,sizeof(KeyValuePair*)*nbTable);
 	map->_tables[nbTable-1] = malloc(sizeof(KeyValuePair)*256);
+	memset(map->_tables[nbTable-1], 0, sizeof(KeyValuePair) );
 	for (int i = 0; i<256;i++){
 		map->_tables[nbTable-1][i]._key=NULL;
+		map->_tables[nbTable-1][i]._value=NULL;
+		//printf("ini:%s\n",map->_tables[nbTable-1][i]._key);
 	}
 }
 
@@ -97,7 +100,9 @@ void hashmap_set(Hashmap* map, char* key, void* value){
 	int nbTable = 0;
 	int place = false;
 	unsigned char key_hash = hash(key);
-	while (nbTable<map->_table_count && !place){	
+	//printf("key:%p:%s\n",key,key);
+	while (nbTable<map->_table_count && !place){
+		printf("map:%s\n",map->_tables[nbTable][key_hash]._key);
 		if (map->_tables[nbTable][key_hash]._key == NULL){
 			map->_tables[nbTable][key_hash]._key = key;
 			map->_tables[nbTable][key_hash]._value = value;
