@@ -254,5 +254,9 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 		}
 		line = strtok_r(NULL, "\n", &file_pointer);
 	}
+	tree_lock(*root);
+	tree_lock(*root_syll);
+	words[counter] = NULL;
+	words = realloc(words, sizeof(Word) * counter);
 	return words;
 }
