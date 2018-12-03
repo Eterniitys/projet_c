@@ -55,7 +55,7 @@ unsigned char hash (const char * string){
 		val[i%4] = xor(val[i%4],string[(i+1)%4]);
 	}
 	int result = 0;
-	for (i=0;i<strlen(string);i++){
+	for (i=0;i<4;i++){
 		result+=val[i];
 	}
 	return result%256;
