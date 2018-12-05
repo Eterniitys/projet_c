@@ -27,13 +27,8 @@ int main(void){
 	}
 	
 	for (int i=0;i<10;i++){
-		if (i != 7){
-			assert(map->_tables[0][hash(strings[i])]._key == strings[i]);
-			assert(map->_tables[0][hash(strings[i])]._value == "test");
-		}else{
-			assert(map->_tables[0][hash(strings[i])+1]._key == strings[i]);
-			assert(map->_tables[0][hash(strings[i])+1]._value == "test");
-		}
+		char *kvpVal = (char*)hashmap_get(map, strings[i]);
+		assert(strcmp(kvpVal,"test") == 0);
 	}
 	
 	hashmap_destroy(map);

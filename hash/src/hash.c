@@ -102,7 +102,6 @@ void hashmap_set(Hashmap* map, char* key, void* value){
 	unsigned char key_hash = hash(key);
 	//printf("key:%p:%s\n",key,key);
 	while (nbTable<map->_table_count && !place){
-		printf("map:%s\n",map->_tables[nbTable][key_hash]._key);
 		if (map->_tables[nbTable][key_hash]._key == NULL){
 			map->_tables[nbTable][key_hash]._key = key;
 			map->_tables[nbTable][key_hash]._value = value;
@@ -120,7 +119,7 @@ void hashmap_set(Hashmap* map, char* key, void* value){
 		}
 	}
 	if(nbTable>=map->_table_count){
-		//rpl(map);//TODO
+		//rpl(map);//TODO remove before flight
 		_new_tab(map);
 		map->_tables[nbTable][key_hash]._key = key;
 		map->_tables[nbTable][key_hash]._value = value;
