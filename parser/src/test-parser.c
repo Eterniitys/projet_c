@@ -7,8 +7,50 @@
 #include <hash.h>
 
 #include "parser.h"
+/*
+char_word* get_struct(int profondeur,Tree* root_syll){
+	while (profondeur != 0){
+		root_syll=tree_get_child(root_syll,0);  
+		profondeur--;  
+	}
+	return (char_word*)tree_get_node(root_syll);
+}*/
 
+char** printTree(Tree* root_syll,char ** mesSyllabes){
+	static int n=0;
+	static int cmtp=0;
 
+		
+	if (tree_get_node(root_syll) != NULL){
+		mesSyllabes[n][cmtp]=((char_word*)tree_get_node(root_syll))->character;
+		cmtp++;
+		mesSyllabes[n][cmtp]='\0';		
+	}
+	
+	/*else if (tree_child_count(root_syll)>1){
+		mesSyllabes[n][cmtp]=((char_word*)tree_get_node(root_syll))->character;
+		cmtp++;
+		for (int j=0;j<tree_child_count(root_syll);j++){
+			//mesSyllabes[n][cmtp]=((char_word*)tree_get_node(tree_get_child(root_syll,j)))->character;
+			//cmtp++;
+		}	
+		mesSyllabes[n][cmtp]='\0';
+	}*/
+	if (tree_child_count(root_syll) == 0){
+		cmtp=0;
+		n++;
+	}
+	
+	for (int i=0;i<tree_child_count(root_syll);i++){
+		//if (tree_child_count(tree_get_child(root_syll,i))>1){
+			//printTree(root_syll,mesSyllabes);
+		//}
+	//	else {
+			printTree(tree_get_child(root_syll,i),mesSyllabes);
+		//}   
+	}
+	return mesSyllabes;
+}
 
 int main (void){
 	
@@ -16,9 +58,9 @@ int main (void){
 	Tree * root_syll = NULL;
 	Hashmap * map;
 
-	Word** tab=parser_read("../../Lexique382.csv", &root, &root_syll, map);
+	Word** tab=parser_read("../src/test.csv", &root, &root_syll, map);
 
-	// Test Mot 
+	/*// Test Mot 
 	assert(strcmp(tab[3]->string,"a capella")==0);
 
 	// Test Syllables
@@ -37,14 +79,19 @@ int main (void){
 	assert(strcmp(tab[13]->string,"ab absurdo")==0);
 	
 	// Test random word
-	assert(tab[rand()%140000]->string != NULL);
+	assert(tab[rand()%140000]->string != NULL);*/
 	
-	fprintf(stderr, "%p\n",root_syll);
-	char_word* struc = (char_word*)tree_get_node(tree_get_child(root_syll,0));
-	fprintf(stderr, "%p\n", struc);
-
-	char t = struc->character;
-
+	// fill_tree_syll 
+	tree_lock(root_syll);
+	
+	char ** mesSyllabes= malloc (150);
+	for (int i=0;i<7;i++){
+		mesSyllabes[i]=malloc(10);
+	}
+	
+	printTree(root_syll,mesSyllabes);
+	printf("%s\n",mesSyllabes[4]);
+		
 	return(EXIT_SUCCESS);
 }
 
