@@ -139,10 +139,11 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 	char* buffer = malloc(size*sizeof(char) + 1);
 	fread(buffer, size, 1, file);
 	fclose(file);
-	
+	buffer[size] = '\0';
+
 	int counter = 0;
 	char* pointer = buffer;
-	while(*pointer) {
+	while(pointer - buffer < size) {
 		if (*pointer == '\n')
 			counter++;
 		pointer++;
