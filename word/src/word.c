@@ -69,9 +69,12 @@ void word_set_string ( Word* wordToModify, char* string ) {
  * \return word - return the word fill
  */
 void word_set_syllables ( Word* syllablesToModify, char** syllables ) {
-
-	syllablesToModify->syllables = syllables;
-
+	int cpt = 0;
+	while(syllables[cpt]){
+		cpt++;
+	}
+	syllablesToModify->syllables = realloc(syllablesToModify->syllables, sizeof(char*)*cpt);
+	
 }
 
 /**
@@ -80,9 +83,11 @@ void word_set_syllables ( Word* syllablesToModify, char** syllables ) {
  * \return word - return the word fill
  */
 void word_set_phonetics ( Word* phoneticsToModify, char** phonetics ) {
-	
-	phoneticsToModify->phonetics  = phonetics;
-		
+	int cpt = 0;
+	while(phonetics[cpt]){
+		cpt++;
+	}
+	phoneticsToModify->phonetics = realloc(phoneticsToModify->phonetics, sizeof(char*)*cpt);
 }
 
 //////////////////////////////////////////GETTER/////////////////////////////////////////
