@@ -38,6 +38,10 @@ int main(void) {
 		assert(compare_int(list_get(list, i-1), list_get(list, i)) <= 0);
 	}
 
+	// check find returns null for invalid values
+	int value = -1;
+	assert(list_find(list, &value) == NULL);
+
 	// free memory
 	for (i=0; i<n; i++) {
 		free(list_get(list,i));

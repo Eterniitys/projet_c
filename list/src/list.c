@@ -32,7 +32,7 @@ void* list_find(List* list, void* object) {
 		int b = list->_count;
 		int med = (a+b)/2;
 		int comp = 0;
-		while (b - a >= 1 && !output) {
+		while (b - a > 1 && !output) {
 			comp = list->_compare(list->_data[med], object);
 			if (comp < 0) {
 				a = med;
