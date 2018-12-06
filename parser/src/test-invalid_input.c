@@ -9,7 +9,9 @@
 #include "parser.h"
 
 
-
+/**
+* \fn int main(void)
+*/
 int main (void){
 	
 	Tree * root;

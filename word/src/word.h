@@ -26,6 +26,7 @@ struct _char_word {
 
 	char character;
 	Word * myWord;
+	int counter_syll;
 };
 
 //Constructor

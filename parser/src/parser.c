@@ -38,6 +38,8 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	char_word *structure=malloc(sizeof(char_word));
 	structure->character=mot[0];
 	structure->myWord=NULL;
+	structure->counter_syll=0;
+	
 
 	Tree tmpTree;
 	(&tmpTree)->_struc=structure;
@@ -47,10 +49,14 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	if (!child) {
 		child = tree_new(structure, compare_tree_wordchar);
 		tree_add_child(node, child);
+		structure->counter_syll=1;
 	}
-
+	else if(mot[1]=='\0'){
+		((char_word*)tree_get_node(child))->counter_syll++;
+	}
+	
 	if (mot[1]=='\0') {
-		structure->myWord=monMot;
+		structure->myWord=monMot;		
 	} else {
 		fill_tree(mot + 1, monMot, child);
 	}
@@ -258,6 +264,6 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 	tree_lock(*root);
 	tree_lock(*root_syll);
 	words[counter] = NULL;
-	words = realloc(words, sizeof(Word) * counter);
+	words = realloc(words, sizeof(Word) * (counter+1));
 	return words;
 }

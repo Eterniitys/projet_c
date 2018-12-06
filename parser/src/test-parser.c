@@ -1,3 +1,12 @@
+/**
+* \file test-parser.c
+* \class parser
+* \version \author Marie / Clément / Kévin
+* \date 6 december 2018
+*
+* Allow the parse of the file and fill the tree
+*
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -8,7 +17,12 @@
 
 #include "parser.h"
 
-char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid){
+/**
+* \fn char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll)
+*
+* \return mesSyllabes - return a table of syllables and fill arguments
+*/
+char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll){
 	static int n=0;
 	static int k=0;
 	static int cmtp=0;
@@ -17,9 +31,10 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid){
 		mesSyllabes[n][cmtp]=((char_word*)tree_get_node(root_syll))->character;
 		cmtp++;
 		mesSyllabes[n][cmtp]='\0';	
-		
+
 		if (((char_word*)tree_get_node(root_syll))->myWord != NULL){
-			syll_valid[k]=mesSyllabes[n];
+			count_syll[k]=((char_word*)tree_get_node(root_syll))->counter_syll;
+			strcpy(syll_valid[k],mesSyllabes[n]);
 			k++;
 		}
 	}
@@ -28,9 +43,8 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid){
 		if (tree_get_node(root_syll)==NULL){
 			cmtp=0;
 		}	
-		printTree(tree_get_child(root_syll,i),mesSyllabes,syll_valid); 
+		printTree(tree_get_child(root_syll,i),mesSyllabes,syll_valid,count_syll); 
 	}
-
 	cmtp--;
 
 	if (tree_child_count(root_syll)==0){
@@ -40,9 +54,11 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid){
 
 
 	return mesSyllabes;
-
 }
 
+/**
+* \fn int main(void)
+*/
 int main (void){
 
 	Tree * root = NULL;
@@ -51,50 +67,49 @@ int main (void){
 
 	Word** tab=parser_read("../src/test.csv", &root, &root_syll, map);
 
-	/*// Test Mot 
-	  assert(strcmp(tab[3]->string,"a capella")==0);
+	// Test Mot 
+	assert(strcmp(tab[1]->string,"a capella")==0);
 
 	// Test Syllables
-	assert(strcmp(tab[3]->syllables[0],"a")==0);
-	assert(strcmp(tab[3]->syllables[1],"ca")==0);
-	assert(strcmp(tab[3]->syllables[2],"pel")==0);
-	assert(strcmp(tab[3]->syllables[3],"la")==0);
+	assert(strcmp(tab[1]->syllables[0],"a")==0);
+	assert(strcmp(tab[1]->syllables[1],"ca")==0);
+	assert(strcmp(tab[1]->syllables[2],"pel")==0);
+	assert(strcmp(tab[1]->syllables[3],"la")==0);
 
 	// Test Phon
-	assert(strcmp(tab[3]->phonetics[0],"a")==0);
-	assert(strcmp(tab[3]->phonetics[1],"ka")==0);
-	assert(strcmp(tab[3]->phonetics[2],"pE")==0);
-	assert(strcmp(tab[3]->phonetics[3],"la")==0);
+	assert(strcmp(tab[1]->phonetics[0],"a")==0);
+	assert(strcmp(tab[1]->phonetics[1],"ka")==0);
+	assert(strcmp(tab[1]->phonetics[2],"pE")==0);
+	assert(strcmp(tab[1]->phonetics[3],"la")==0);
 
-	// Test word not include 
-	assert(strcmp(tab[13]->string,"ab absurdo")==0);
 
-	// Test random word
-	assert(tab[rand()%140000]->string != NULL);*/
-
-	// fill_tree_syll 
+	// Test TreeSyll 
 	tree_lock(root_syll);
 
-	char ** mesSyllabes= malloc (150);
-	char ** syll_valid= malloc (150);
+	char ** mesSyllabes= malloc (140);
+	char ** syll_valid= malloc (140);
 	for (int i=0;i<14;i++){
 		mesSyllabes[i]=malloc(10);
 	}
-
-	printTree(root_syll,mesSyllabes,syll_valid);
-
-
-	char* Tab[]={"a","bel","bem","bet","la","li","lia","lidf","lioe","loe","lu","pel","queux","qz"};
 	for (int i=0;i<14;i++){
-		//assert(strcmp(mesSyllabes[i],Tab[i])==0);
-		printf("%d.%s=%s\n",i+1,Tab[i],syll_valid[i]);
+		syll_valid[i]=malloc(10);
 	}
-
-
-
+	
+	int * count_syll=malloc(sizeof(int)*7);
+	
+	printTree(root_syll,mesSyllabes,syll_valid,count_syll);
+	
+	int tabInt[]={2,2,2,1,1,1,2};
+	char* Tab[]={"a","ca","la","lai","li","lia","pel"};
+	
+	for (int i=0;i<7;i++){
+		assert(strcmp(syll_valid[i],Tab[i])==0);
+		assert(count_syll[i]==tabInt[i]);
+	}
 
 	return(EXIT_SUCCESS);
 }
+
 
 
 
