@@ -42,8 +42,6 @@ Word* word_new (char* string, char** syllables, char** phonetics)
 Word* word_fill(Word* word, char* string, char** syllables, char** phonetics) 
 {
 	word->string = malloc(sizeof(char*)); 
-	word->syllables = malloc(sizeof(char**));
-	word->phonetics = malloc(sizeof(char**));
 	strcpy(word->string, string); 
 	word->syllables = syllables;
 	word->phonetics = phonetics;
@@ -69,11 +67,8 @@ void word_set_string ( Word* wordToModify, char* string ) {
  * \return word - return the word fill
  */
 void word_set_syllables ( Word* syllablesToModify, char** syllables ) {
-	int cpt = 0;
-	while(syllables[cpt]){
-		cpt++;
-	}
-	syllablesToModify->syllables = realloc(syllablesToModify->syllables, sizeof(char*)*cpt);
+	
+	syllablesToModify->syllables = syllables;
 	
 }
 
@@ -83,11 +78,8 @@ void word_set_syllables ( Word* syllablesToModify, char** syllables ) {
  * \return word - return the word fill
  */
 void word_set_phonetics ( Word* phoneticsToModify, char** phonetics ) {
-	int cpt = 0;
-	while(phonetics[cpt]){
-		cpt++;
-	}
-	phoneticsToModify->phonetics = realloc(phoneticsToModify->phonetics, sizeof(char*)*cpt);
+	
+	phoneticsToModify->phonetics = phonetics;
 }
 
 //////////////////////////////////////////GETTER/////////////////////////////////////////
@@ -130,7 +122,7 @@ char** word_get_phonetics (Word* phoneticsToGet) {
  *
  * \return nothing - just free the allocation of the word
  */
-void word_free(Word* wordToFree){
+void word_destroy(Word* wordToFree){
 	int i=0;
 	while(wordToFree->syllables[i]){
 		free(wordToFree->syllables[i]);

@@ -41,7 +41,7 @@ extern char* word_get_string (Word* stringToGet);
 extern char** word_get_syllables (Word* syllablesToGet);
 extern char** word_get_phonetics (Word* phoneticsToGet);
 //Free
-extern void word_free(Word* wordToFree);
+extern void word_destroy(Word* wordToFree);
 
 #endif
 
