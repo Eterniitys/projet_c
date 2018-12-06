@@ -27,12 +27,12 @@ int main(void) {
 	Tree* tree_syll = NULL;
 	Hashmap* hashmap = NULL;
 
-	Word** output = parser_read("../../Lexique382.csv", &tree_phon, &tree_syll, hashmap);
+	Word** output = parser_read("../src/Lexique.txt", &tree_phon, &tree_syll, hashmap);
 
-	print_tree(tree_syll, 0);
-
-	char** syllables = syllabicate(tree_syll, "maison");
-
+	//print_tree(tree_syll, 0);
+	tree_unlock(tree_syll);
+	char** syllables = syllabicate(tree_syll, "abattrez");
+	
 	assert(syllables!=NULL);
 
 /*	if (syllables) {

@@ -16,6 +16,7 @@ typedef struct _StringBool StringBool;
 struct _StringBool {
 	char* string;
 	bool eow;
+	int score;
 };
 
 extern char** syllabicate(Tree* syll_tree, char* word);
