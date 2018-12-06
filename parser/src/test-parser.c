@@ -18,23 +18,23 @@
 #include "parser.h"
 
 /**
- * \fn char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll)
+ * \fn char** tabSyll(Tree* root_syll,char ** mySyllables,char ** syll_valid,int * count_syll)
  *
- * \return mesSyllabes - return a table of syllables and fill arguments
+ * \return mySyllables - return a table of syllables and fill arguments
  */
-char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll){
+char** tabSyll(Tree* root_syll,char ** mySyllables,char ** syll_valid,int * count_syll){
 	static int n=0;
 	static int k=0;
 	static int cmtp=0;
 
 	if (tree_get_node(root_syll) != NULL ){
-		mesSyllabes[n][cmtp]=((char_word*)tree_get_node(root_syll))->character;
+		mySyllables[n][cmtp]=((char_word*)tree_get_node(root_syll))->character;
 		cmtp++;
-		mesSyllabes[n][cmtp]='\0';	
+		mySyllables[n][cmtp]='\0';	
 
 		if (((char_word*)tree_get_node(root_syll))->myWord != NULL){
 			count_syll[k]=((char_word*)tree_get_node(root_syll))->counter_syll;
-			strcpy(syll_valid[k],mesSyllabes[n]);
+			strcpy(syll_valid[k],mySyllables[n]);
 			k++;
 		}
 	}
@@ -43,29 +43,34 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * co
 		if (tree_get_node(root_syll)==NULL){
 			cmtp=0;
 		}	
-		printTree(tree_get_child(root_syll,i),mesSyllabes,syll_valid,count_syll); 
+		tabSyll(tree_get_child(root_syll,i),mySyllables,syll_valid,count_syll); 
 	}
 	cmtp--;
 
 	if (tree_child_count(root_syll)==0){
 		n++;
-		strcpy(mesSyllabes[n],mesSyllabes[n-1]);
+		strcpy(mySyllables[n],mySyllables[n-1]);
 	}
 
 
-	return mesSyllabes;
+	return mySyllables;
 }
 
-char** tabPhon(Tree *root,char ** mesPhon,char ** phon_valid){
+/**
+* \fn char** tabPhon(Tree *root,char ** myPhons,char ** phon_valid)
+*
+* \return myPhons - return a table of phonetics and fill arguments
+*/
+char** tabPhon(Tree *root,char ** myPhons,char ** phon_valid){
 	static int n=0;
 	static int k=0;
 	static int cmtp=0;
 	if (tree_get_node(root) != NULL ){
-		mesPhon[n][cmtp]=((char_word*)tree_get_node(root))->character;
+		myPhons[n][cmtp]=((char_word*)tree_get_node(root))->character;
 		cmtp++;
-		mesPhon[n][cmtp]='\0';	
+		myPhons[n][cmtp]='\0';	
 		if (((char_word*)tree_get_node(root))->myWord != NULL){
-			strcpy(phon_valid[k],mesPhon[n]);
+			strcpy(phon_valid[k],myPhons[n]);
 			k++;
 		}
 	}
@@ -73,25 +78,17 @@ char** tabPhon(Tree *root,char ** mesPhon,char ** phon_valid){
 		if (tree_get_node(root)==NULL){
 			cmtp=0;
 		}	
-		tabPhon(tree_get_child(root,i),mesPhon,phon_valid); 
+		tabPhon(tree_get_child(root,i),myPhons,phon_valid); 
 	}
 	cmtp--;
 	if (tree_child_count(root)==0){
 		
 		n++;
-		strcpy(mesPhon[n],mesPhon[n-1]);
+		strcpy(myPhons[n],myPhons[n-1]);
 	}
-	return mesPhon;
+	return myPhons;
 }
 
-void afficher(Tree * root){
-	if (tree_get_node(root) != NULL ){
-		printf("%c\n",((char_word*)tree_get_node(root))->character);
-	}
-	for (int i=0;i<tree_child_count(root);i++){
-		afficher(tree_get_child(root,i)); 
-	}
-}
 void print_tree(Tree* node, int level) {
 	char_word* struc = (char_word*)tree_get_node(node);
 	if (struc) {
@@ -103,6 +100,7 @@ void print_tree(Tree* node, int level) {
 		print_tree(tree_get_child(node, i), level+1);
 	}
 }
+
 /**
  * \fn int main(void)
  */
@@ -110,79 +108,64 @@ int main (void){
 
 	Tree * root = NULL;
 	Tree * root_syll = NULL;
-	Hashmap * map;
+	Hashmap * map=NULL;
 
-	Word** tab=parser_read("../src/test.csv", &root, &root_syll, map);
+	Word** tab=parser_read("../src/test.csv", &root, &root_syll, &map);
 	
 	
-	// Test Mot 
+	// String test
 	assert(strcmp(tab[1]->string,"a capella")==0);
 
-	// Test Syllables
+	// Syllables test
 	assert(strcmp(tab[1]->syllables[0],"a")==0);
 	assert(strcmp(tab[1]->syllables[1],"ca")==0);
 	assert(strcmp(tab[1]->syllables[2],"pel")==0);
 	assert(strcmp(tab[1]->syllables[3],"la")==0);
 
-	// Test Phon
-	assert(strcmp(tab[1]->phonetics[0],"a")==0);
-	assert(strcmp(tab[1]->phonetics[1],"ka")==0);
-	assert(strcmp(tab[1]->phonetics[2],"pE")==0);
-	assert(strcmp(tab[1]->phonetics[3],"la")==0);
+	// Test Phonetics 
+	char * hash=(char*)hashmap_get(map,"pel");
+	assert(strcmp(hash,"pE")==0);
 
-
-	// Test TreeSyll 
-	//tree_lock(root_syll);
-	
-/*
-	char ** mesSyllabes= malloc (160);
-	char ** syll_valid= malloc (160);
-	for (int i=0;i<16;i++){
-		mesSyllabes[i]=malloc(10);
+	// TreeSyll test
+	char ** mySyllables= malloc (180);
+	char ** syll_valid= malloc (170);
+	int * count_syll=malloc(sizeof(int)*17);
+	for (int i=0;i<18;i++){
+		mySyllables[i]=malloc(10);
 	}
-	for (int i=0;i<9;i++){
+	for (int i=0;i<17;i++){
 		syll_valid[i]=malloc(10);
 	}
 
-	int * count_syll=malloc(sizeof(int)*9);
+	tabSyll(root_syll,mySyllables,syll_valid,count_syll);
 
-	printTree(root_syll,mesSyllabes,syll_valid,count_syll);
+	int tabInt[]={2,1,2,1,2,1,1,1,1,1,1,2,1,1,1,1,1};
+	char* tabSyll[]={"a","anti","ca","con","la","lai","le","li","lia","ment","nnel","pel","sti","t","tu","tio","zte"};
 
-	int tabInt[]={4,2,2,1,1,1,2,1,1};
-	char* tabSyll[]={"a","ca","la","lai","li","lia","pel","tes","st"};
-
-	for (int i=0;i<9;i++){
+	for (int i=0;i<17;i++){
 		assert(strcmp(syll_valid[i],tabSyll[i])==0);
 		assert(count_syll[i]==tabInt[i]);
 	}
 
-	// Test phon
-	
-	//tree_lock(root);
-	
-	
-	
-	char ** mesPhon= malloc (140);
+	// tree phon test
+	char ** myPhons= malloc (140);
 	char ** phon_valid= malloc (140);
-	for (int i=0;i<3;i++){
-		mesPhon[i]=malloc(10);
+	for (int i=0;i<5;i++){
+		myPhons[i]=malloc(10);
 	}
-	for (int i=0;i<2;i++){
+	for (int i=0;i<4;i++){
 		phon_valid[i]=malloc(10);
 	}
 	
-	tabPhon(root,mesPhon,phon_valid);
+	tabPhon(root,myPhons,phon_valid);
 	
 	
-	char* tabPhon[]={"alEpaka","iaLalEpaka"};
+	char* tabPhon[]={"alEpaka","iaLalEpaka","tnemeLennOitUtiTsnociTna","tSetZ"};
 	
-	
-	for (int i=0;i<2;i++){
-		//printf("%s : %s\n",phon_valid[i],tabPhon[i]);
-		//assert(strcmp(phon_valid[i],tabPhon[i])==0);
+	for (int i=0;i<4;i++){
+		assert(strcmp(phon_valid[i],tabPhon[i])==0);
 	}
-*/
-	print_tree(root,0);
+
 	return(EXIT_SUCCESS);
 }
 

@@ -45,11 +45,15 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	(&tmpTree)->_struc=structure;
 
 	Tree* child = tree_find_child(node, &tmpTree);
-
+	
 	if (!child) {
 		child = tree_new(structure, compare_tree_wordchar);
 		tree_add_child(node, child);
-		structure->counter_syll=1;
+		if (mot[1]=='\0'){
+			structure->counter_syll=1;	
+		}
+		
+		
 	}
 	else if(mot[1]=='\0'){
 		((char_word*)tree_get_node(child))->counter_syll++;
@@ -132,8 +136,7 @@ char** split_syllables(char* word) {
 *
 * \return words - return a tabs of Word **
 */
-Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map_syl_phon){
-
+Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon){
 	FILE* file;
 	file=fopen(PATH, "r");
 
@@ -154,12 +157,12 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 			counter++;
 		pointer++;
 	}
-
+	
 	*root = tree_new(NULL, compare_tree_wordchar);
 
 	*root_syll = tree_new(NULL, compare_tree_wordchar);
 
-	map_syl_phon = hashmap_new();
+	*map_syl_phon = hashmap_new();
 
 	Word** words = malloc(sizeof(Word*)*counter);
 
@@ -224,7 +227,7 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 			if(index_syll==index_phon){
 				int tmp_index = 0;
 				while (my_word->syllables[tmp_index]) {
-					hashmap_set(map_syl_phon,
+					hashmap_set(*map_syl_phon,
 						my_word->syllables[tmp_index],
 						my_word->phonetics[tmp_index]);
 					tmp_index++;
