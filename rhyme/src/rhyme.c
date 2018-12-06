@@ -4,27 +4,27 @@
 
 #include <tree.h>
 #include <word.h>
-//#include <parseur.h>
+#include <parser.h>
 #include <string.h>
 #include <list.h>
+
+
 
 //On veut faire une fonction qui, partant du noeud vide de base, parcours chacuns de ses
 //enfants jusqu'à trouver celui qui contient le dernier caractère phonétique du mot, et enfin
 //nous retourner un nouvel arbre ayant pour noeud de base ce dernier caractère phonétique.
 Tree*coursePhon(Tree*tree, char phon)
 {
-  //structure pour utiliser "phon" et le "tree_find_child()"
-  char_word* structure=malloc(sizeof(char_word));
-  structure->character=phon;
-  structure->myWord=NULL;
-  Tree phonetic;
-	(&phonetic)->_struc=structure;
+          //structure pour utiliser "phon" et le "tree_find_child()"
+          char_word* structure=malloc(sizeof(char_word));
+          structure->character=phon;
+          structure->myWord=NULL;
+          Tree * phonetic = tree_new(structure,NULL);
 
-//on recupere le noeud avec la phonétique correspondante.
-Tree* noeud=(Tree*)tree_find_child(tree,&phonetic);
+        //on recupere le noeud avec la phonétique correspondante.
+        Tree* noeud= (Tree*)tree_find_child(tree,phonetic);
 
-return noeud;
-
+        return noeud;
 }
 
 

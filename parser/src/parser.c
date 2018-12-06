@@ -39,7 +39,7 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	structure->character=mot[0];
 	structure->myWord=NULL;
 	structure->counter_syll=0;
-	
+
 
 	Tree tmpTree;
 	(&tmpTree)->_struc=structure;
@@ -54,7 +54,7 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	else if(mot[1]=='\0'){
 		((char_word*)tree_get_node(child))->counter_syll++;
 	}
-	
+
 	if (mot[1]=='\0') {
 		((char_word*)tree_get_node(child))->myWord=monMot;		
 	} else {
@@ -96,7 +96,7 @@ long size_file(FILE * fichier){
 /**
 * \fn char** split_syllables(char* word)
 *
-* \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word 
+* \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word
 */
 char** split_syllables(char* word) {
 	// Count first syllable, and add room for terminating NULL pointer
@@ -114,7 +114,7 @@ char** split_syllables(char* word) {
 	char* syl_point = NULL;
 	char* syllable = strtok_r(word, " -", &syl_point);
 
-	
+
 	while(syllable){
 		char* tmp_syl = malloc(strlen(syllable) + 1);
 		strcpy(tmp_syl, syllable);
@@ -133,10 +133,10 @@ char** split_syllables(char* word) {
 * \return words - return a tabs of Word **
 */
 Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map_syl_phon){
-	
+
 	FILE* file;
 	file=fopen(PATH, "r");
-	
+
 	if(!file){
 		return NULL;
 	}
@@ -154,13 +154,13 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 			counter++;
 		pointer++;
 	}
-	
+
 	*root = tree_new(NULL, compare_tree_wordchar);
-	
+
 	*root_syll = tree_new(NULL, compare_tree_wordchar);
 
 	map_syl_phon = hashmap_new();
-	
+
 	Word** words = malloc(sizeof(Word*)*counter);
 
 	char* file_pointer = NULL;
@@ -230,7 +230,7 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 					tmp_index++;
 				}
 			}
-			
+
 		}
 
 		// word insertion into table
