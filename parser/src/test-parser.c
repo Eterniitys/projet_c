@@ -56,6 +56,18 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * co
 	return mesSyllabes;
 }
 
+/*void afficher(Tree *root){
+	if (tree_get_node(root) != NULL ){
+		printf("%s\n",tree_get_node(root_syll));
+	}
+	for (int i=0;i<tree_child_count(root_syll);i++){
+		if (tree_get_node(root_syll)==NULL){
+			cmtp=0;
+		}	
+		printTree(tree_get_child(root_syll,i),mesSyllabes,syll_valid,count_syll); 
+	}
+}
+*/
 /**
 * \fn int main(void)
 */

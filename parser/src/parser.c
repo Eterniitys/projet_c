@@ -170,7 +170,7 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 		//initialisation
 		char* line_pointer = NULL;
 		Word* my_word = malloc(sizeof(Word));
-		
+		my_word->string=NULL;
 		//word
 		char* tmp_word = strtok_r(line, "\t", &line_pointer);
 		if (tmp_word) {
@@ -179,24 +179,20 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 
 		//phonetic
 		char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
+		char* phonetic;
 		if (tmp_phon) {
-			char* phonetic = malloc(strlen(tmp_phon)+1);
+			phonetic= malloc(strlen(tmp_phon)+1);
 			strcpy(phonetic, tmp_phon);
 			reverse_string(phonetic);
-			fill_tree(phonetic, my_word, *root);
+			
 		}
 
 		//syllables
 		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
+		char ** mot_tmp;
 		if (tmp_syllables){
-			char ** mot_tmp=split_syllables(tmp_syllables);
+			mot_tmp=split_syllables(tmp_syllables);
 			word_set_syllables(my_word, mot_tmp);
-
-			int k=0;
-			while (mot_tmp[k]){
-				fill_tree(mot_tmp[k], my_word, *root_syll);
-				k++;
-			}
 		}
 
 		//phonetic syllables
@@ -206,6 +202,15 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap* map
 
 		//fill hashmap
 		if (tmp_syllables && tmp_syllables_phon) {
+			
+			fill_tree(phonetic, my_word, *root);
+			
+			int k=0;
+			while (mot_tmp[k]){
+				fill_tree(mot_tmp[k], my_word, *root_syll);
+				k++;
+			}
+				
 			int index_syll=0;
 			int index_phon=0;
 
