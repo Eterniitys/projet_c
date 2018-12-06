@@ -22,8 +22,8 @@ Tree*coursePhon(Tree*tree, char phon)
           Tree * phonetic = tree_new(structure,NULL);
 
         //on recupere le noeud avec la phonétique correspondante.
+        tree_unlock(tree); //TODO
         Tree* noeud= (Tree*)tree_find_child(tree,phonetic);
-
         return noeud;
 }
 
