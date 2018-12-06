@@ -1,7 +1,7 @@
 /**
  * \file word.c
  * \class word
- * \author Clément & Loïc
+ * \author Clément & Loïc & Kevin
  * \version 0.1
  * \date 29 november 2018
  *
@@ -27,7 +27,7 @@ Word* word_new (char* string, char** syllables, char** phonetics)
 
 	if (word) 
 	{
-	 return word_fill(word, string , syllables, phonetics);
+		return word_fill(word, string , syllables, phonetics);
 	} else {
 		return NULL;
 	}
@@ -41,7 +41,10 @@ Word* word_new (char* string, char** syllables, char** phonetics)
  */
 Word* word_fill(Word* word, char* string, char** syllables, char** phonetics) 
 {
-	word->string = string; 
+	word->string = malloc(sizeof(char*)); 
+	word->syllables = malloc(sizeof(char**));
+	word->phonetics = malloc(sizeof(char**));
+	strcpy(word->string, string); 
 	word->syllables = syllables;
 	word->phonetics = phonetics;
 	return word;
@@ -56,7 +59,7 @@ Word* word_fill(Word* word, char* string, char** syllables, char** phonetics)
  */
 void word_set_string ( Word* wordToModify, char* string ) {
 	
-        wordToModify->string = malloc(sizeof(char)*(strlen(string)+1));
+        wordToModify->string = realloc(wordToModify->string, sizeof(char)*(strlen(string)+1));
 	strcpy(wordToModify->string,string);
 }
 
@@ -90,7 +93,7 @@ void word_set_phonetics ( Word* phoneticsToModify, char** phonetics ) {
  */
 char* word_get_string (Word* wordToGet) {
 
-return wordToGet->string;
+	return wordToGet->string;
 
 }
 
@@ -101,7 +104,7 @@ return wordToGet->string;
  */
 char** word_get_syllables (Word* syllablesToGet) {
 
-return syllablesToGet->syllables;
+	return syllablesToGet->syllables;
 
 }
 
@@ -112,7 +115,7 @@ return syllablesToGet->syllables;
  */
 char** word_get_phonetics (Word* phoneticsToGet) {
 
-return phoneticsToGet->phonetics;
+	return phoneticsToGet->phonetics;
 
 }
 
