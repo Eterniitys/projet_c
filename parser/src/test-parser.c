@@ -1,12 +1,12 @@
 /**
-* \file test-parser.c
-* \class parser
-* \version \author Marie / Clément / Kévin
-* \date 6 december 2018
-*
-* Allow the parse of the file and fill the tree
-*
-*/
+ * \file test-parser.c
+ * \class parser
+ * \version \author Marie / Clément / Kévin
+ * \date 6 december 2018
+ *
+ * Allow the parse of the file and fill the tree
+ *
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,10 +18,10 @@
 #include "parser.h"
 
 /**
-* \fn char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll)
-*
-* \return mesSyllabes - return a table of syllables and fill arguments
-*/
+ * \fn char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll)
+ *
+ * \return mesSyllabes - return a table of syllables and fill arguments
+ */
 char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * count_syll){
 	static int n=0;
 	static int k=0;
@@ -56,19 +56,56 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * co
 	return mesSyllabes;
 }
 
-void afficher(Tree *root){
-	if ((char_word*)tree_get_node(root) != NULL ){
+char** tabPhon(Tree *root,char ** mesPhon,char ** phon_valid){
+	static int n=0;
+	static int k=0;
+	static int cmtp=0;
+	if (tree_get_node(root) != NULL ){
+		mesPhon[n][cmtp]=((char_word*)tree_get_node(root))->character;
+		cmtp++;
+		mesPhon[n][cmtp]='\0';	
+		if (((char_word*)tree_get_node(root))->myWord != NULL){
+			strcpy(phon_valid[k],mesPhon[n]);
+			k++;
+		}
+	}
+	for (int i=0;i<tree_child_count(root);i++){
+		if (tree_get_node(root)==NULL){
+			cmtp=0;
+		}	
+		tabPhon(tree_get_child(root,i),mesPhon,phon_valid); 
+	}
+	cmtp--;
+	if (tree_child_count(root)==0){
+		
+		n++;
+		strcpy(mesPhon[n],mesPhon[n-1]);
+	}
+	return mesPhon;
+}
+
+void afficher(Tree * root){
+	if (tree_get_node(root) != NULL ){
 		printf("%c\n",((char_word*)tree_get_node(root))->character);
 	}
 	for (int i=0;i<tree_child_count(root);i++){
 		afficher(tree_get_child(root,i)); 
 	}
 }
-
-
+void print_tree(Tree* node, int level) {
+	char_word* struc = (char_word*)tree_get_node(node);
+	if (struc) {
+		for (int i = 0; i < level; i++)
+			fprintf(stderr, "|  ", NULL);
+		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).myWord == NULL ? "" : "->");
+	}
+	for (int i = 0; i < tree_child_count(node); i++) {
+		print_tree(tree_get_child(node, i), level+1);
+	}
+}
 /**
-* \fn int main(void)
-*/
+ * \fn int main(void)
+ */
 int main (void){
 
 	Tree * root = NULL;
@@ -76,7 +113,8 @@ int main (void){
 	Hashmap * map;
 
 	Word** tab=parser_read("../src/test.csv", &root, &root_syll, map);
-
+	
+	
 	// Test Mot 
 	assert(strcmp(tab[1]->string,"a capella")==0);
 
@@ -94,33 +132,60 @@ int main (void){
 
 
 	// Test TreeSyll 
-	tree_lock(root_syll);
-	tree_lock(root);
-
+	//tree_lock(root_syll);
+	
+/*
 	char ** mesSyllabes= malloc (160);
 	char ** syll_valid= malloc (160);
 	for (int i=0;i<16;i++){
 		mesSyllabes[i]=malloc(10);
 	}
-	for (int i=0;i<16;i++){
+	for (int i=0;i<9;i++){
 		syll_valid[i]=malloc(10);
 	}
-	
+
 	int * count_syll=malloc(sizeof(int)*9);
-	
+
 	printTree(root_syll,mesSyllabes,syll_valid,count_syll);
-	
-	int tabInt[]={2,2,2,1,1,1,1,2,1};
-	char* Tab[]={"a","ca","la","lai","li","lia","mai","pel","son"};
-	
+
+	int tabInt[]={4,2,2,1,1,1,2,1,1};
+	char* tabSyll[]={"a","ca","la","lai","li","lia","pel","tes","st"};
+
 	for (int i=0;i<9;i++){
-		assert(strcmp(syll_valid[i],Tab[i])==0);
+		assert(strcmp(syll_valid[i],tabSyll[i])==0);
 		assert(count_syll[i]==tabInt[i]);
 	}
+
+	// Test phon
 	
-	afficher(root);
+	//tree_lock(root);
+	
+	
+	
+	char ** mesPhon= malloc (140);
+	char ** phon_valid= malloc (140);
+	for (int i=0;i<3;i++){
+		mesPhon[i]=malloc(10);
+	}
+	for (int i=0;i<2;i++){
+		phon_valid[i]=malloc(10);
+	}
+	
+	tabPhon(root,mesPhon,phon_valid);
+	
+	
+	char* tabPhon[]={"alEpaka","iaLalEpaka"};
+	
+	
+	for (int i=0;i<2;i++){
+		//printf("%s : %s\n",phon_valid[i],tabPhon[i]);
+		//assert(strcmp(phon_valid[i],tabPhon[i])==0);
+	}
+*/
+	print_tree(root,0);
 	return(EXIT_SUCCESS);
 }
+
 
 
 
