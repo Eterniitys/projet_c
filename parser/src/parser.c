@@ -56,7 +56,7 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	}
 	
 	if (mot[1]=='\0') {
-		structure->myWord=monMot;		
+		((char_word*)tree_get_node(child))->myWord=monMot;		
 	} else {
 		fill_tree(mot + 1, monMot, child);
 	}

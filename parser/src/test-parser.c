@@ -57,13 +57,14 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * co
 }
 
 void afficher(Tree *root){
-	if (tree_get_node(root) != NULL ){
-		printf("%s\n",tree_get_node(root));
+	if ((char_word*)tree_get_node(root) != NULL ){
+		printf("%c\n",((char_word*)tree_get_node(root))->character);
 	}
 	for (int i=0;i<tree_child_count(root);i++){
 		afficher(tree_get_child(root,i)); 
 	}
 }
+
 
 /**
 * \fn int main(void)
@@ -116,7 +117,7 @@ int main (void){
 		assert(strcmp(syll_valid[i],Tab[i])==0);
 		assert(count_syll[i]==tabInt[i]);
 	}
-	printf("%s\n",syll_valid[8]);
+	
 	afficher(root);
 	return(EXIT_SUCCESS);
 }
