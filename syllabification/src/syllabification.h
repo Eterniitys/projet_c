@@ -8,10 +8,18 @@
 #ifndef _SYLLABIFICATION_H_
 #define _SYLLABIFICATION_H_
 
+#include <stdbool.h>
 #include <word.h>
 #include <tree.h>
 
-extern char** syllabicate(Tree* tree, char* word);
-char* recursive(Tree* node, char* match, int level);
+typedef struct _StringBool StringBool;
+struct _StringBool {
+	char* string;
+	bool eow;
+};
+
+extern char** syllabicate(Tree* syll_tree, char* word);
+void gen_syllables(Tree* node, Tree* syll_tree, char* word);
+void recursive(Tree* node, Tree* syll_tree, char* word, int index);
 
 #endif /* _SYLLABIFICATION_H_ */

@@ -1,68 +1,65 @@
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
+#include <stdio.h>
 #include <word.h>
 #include <tree.h>
 
 #include "syllabification.h"
 
-#include <stdio.h>
-
-char** syllabicate (Tree* tree, char* word){
+char** syllabicate(Tree* syll_tree, char* word) {
 	char** output = malloc(sizeof(char*)*10);
 	int index = 0;
-	while(*word!='\0'){
-		char* syllable = recursive(tree, word, 0);
-		if (syllable) {
-			output[index] = syllable;
-			index ++;
-			word += strlen(syllable);
-		} else {
-			fprintf(stderr, "Could not syllabicate word\n");
-			return NULL;
-		}
-	}
-	output[index] = NULL;
-	return realloc(output,sizeof(char*)*index);
+	Tree* root = tree_new(NULL, NULL);
+	gen_syllables(root, syll_tree, word);
+	//TODO parcours de l'arbre pour générer la liste de syllabes avec le plus de poids
+	fprintf(stderr, "%s\n",((StringBool*)tree_get_node(tree_get_child(root,0)))->string);
+	return output;
 }
 
-char* recursive (Tree* node, char* match, int level){
-	if(*match=='\0')
-		return NULL;
-	char_word* structure=malloc(sizeof(char_word));
-	structure->character=match[0];
-	structure->myWord=NULL;
-
-	Tree tmpTree;
-	(&tmpTree)->_struc=structure;
-	
-	Tree* child = tree_find_child(node,&tmpTree);
-	
-	if(child){
-		char_word* child_struc = (char_word*)tree_get_node(child);
-		char* result = recursive(child,match+1, level+1);
-		if(result){
-			result[level] = match[0];
-			return result;
-		} else {
-			char_word* struc = tree_get_node(node);
-			if(struc && struc->myWord){
-				char* output = malloc(sizeof(char)*level+1);
-				output[level]=match[0];
-				output[level+1]='\0';
-				return output;
-			}else{
-				return NULL;
-			}
-		}
-	}else{
-		char_word* struc = tree_get_node(node);
-		if(struc->myWord){
-			char* output = malloc(sizeof(char)*level+1);
-			output[level]=match[0];
-			output[level+1]='\0';
-			return output;
-		}else{
-			return NULL;
+void gen_syllables(Tree* root, Tree* syll_tree, char* word) {
+	fprintf(stderr, "%s\n", word);
+	recursive(root, syll_tree, word, 0);
+	int i;
+	for (i = 0; i < tree_child_count(root); i++) {
+		Tree* child = tree_get_child(root, i);
+		StringBool* sb = (StringBool*)tree_get_node(child);
+		//fprintf(stderr, "Syllabe %s (mot %s)\n", sb->string, word);
+		if (!sb->eow) {
+			//fprintf(stderr, "\tRécursion sur %s (%s)\n", sb->string, word + strlen(sb->string));
+			gen_syllables(child, syll_tree, word + strlen(sb->string));
 		}
 	}
 }
+
+void recursive(Tree* node, Tree* syll_tree, char* word, int index) {
+	fprintf(stderr, "\t%c\n",word[index]);
+	if (word[index]=='\0')
+		return;
+
+	char_word newWord;
+	newWord.character = word[index];
+	Tree* newTree = tree_new(&newWord, NULL);
+	Tree* child = tree_find_child(syll_tree, newTree);
+
+	if (!child) {
+		//fprintf(stderr, "pas d'enfants pour %s\n", word+index);
+		return;
+	}
+
+	if(((char_word*)tree_get_node(child))->myWord){
+		StringBool* sb = malloc(sizeof(StringBool));
+
+		sb->string = malloc(sizeof(char)*index+2);
+		strncpy(sb->string, word, index+1);
+		sb->string[index+1] = '\0';
+
+		sb->eow = word[index+1] == '\0';
+		//fprintf(stderr, "%s : %s %s\n", word, sb->string, sb->eow ? "fin":"-");
+		fprintf(stderr, "\t^^ fin de syllabe\n");
+		Tree * newNode = tree_new(sb,NULL);
+		tree_add_child(node, newNode);
+	}
+	recursive(node, child, word, index + 1);
+}
+
