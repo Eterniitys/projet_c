@@ -56,18 +56,15 @@ char** printTree(Tree* root_syll,char ** mesSyllabes,char ** syll_valid,int * co
 	return mesSyllabes;
 }
 
-/*void afficher(Tree *root){
+void afficher(Tree *root){
 	if (tree_get_node(root) != NULL ){
-		printf("%s\n",tree_get_node(root_syll));
+		printf("%s\n",tree_get_node(root));
 	}
-	for (int i=0;i<tree_child_count(root_syll);i++){
-		if (tree_get_node(root_syll)==NULL){
-			cmtp=0;
-		}	
-		printTree(tree_get_child(root_syll,i),mesSyllabes,syll_valid,count_syll); 
+	for (int i=0;i<tree_child_count(root);i++){
+		afficher(tree_get_child(root,i)); 
 	}
 }
-*/
+
 /**
 * \fn int main(void)
 */
@@ -97,28 +94,30 @@ int main (void){
 
 	// Test TreeSyll 
 	tree_lock(root_syll);
+	tree_lock(root);
 
-	char ** mesSyllabes= malloc (140);
-	char ** syll_valid= malloc (140);
-	for (int i=0;i<14;i++){
+	char ** mesSyllabes= malloc (160);
+	char ** syll_valid= malloc (160);
+	for (int i=0;i<16;i++){
 		mesSyllabes[i]=malloc(10);
 	}
-	for (int i=0;i<14;i++){
+	for (int i=0;i<16;i++){
 		syll_valid[i]=malloc(10);
 	}
 	
-	int * count_syll=malloc(sizeof(int)*7);
+	int * count_syll=malloc(sizeof(int)*9);
 	
 	printTree(root_syll,mesSyllabes,syll_valid,count_syll);
 	
-	int tabInt[]={2,2,2,1,1,1,2};
-	char* Tab[]={"a","ca","la","lai","li","lia","pel"};
+	int tabInt[]={2,2,2,1,1,1,1,2,1};
+	char* Tab[]={"a","ca","la","lai","li","lia","mai","pel","son"};
 	
-	for (int i=0;i<7;i++){
+	for (int i=0;i<9;i++){
 		assert(strcmp(syll_valid[i],Tab[i])==0);
 		assert(count_syll[i]==tabInt[i]);
 	}
-
+	printf("%s\n",syll_valid[8]);
+	afficher(root);
 	return(EXIT_SUCCESS);
 }
 
