@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include <stdio.h>
+
 #define PSIZE sizeof(void*)
 
 /**
@@ -43,7 +45,9 @@ void* list_find(List* list, void* object) {
 			}
 			med = (a+b)/2;
 		}
-		if (list->_compare(list->_data[med], object) == 0) {
+		if (med < list->_count &&
+				list->_compare(list->_data[med], object) == 0)
+			{
 			output = list->_data[med];
 		}
 	}
@@ -116,28 +120,41 @@ int list_count(List* list) {
  */
 
 void _list_qs(List* list, int A, int B) {
-	if (B - A <= 1)
+/*
+	fprintf(stderr, "QS list:\n");
+	int i;
+	for (i=0; i < list_count(list); i++) {
+		fprintf(stderr, "%d\t", *(int*)list_get(list, i));
+	}
+	fprintf(stderr, "\n");
+	for (int i=0; i<A; i++) {
+		fprintf(stderr, "\t");
+	}
+	fprintf(stderr,"A");
+	for (int i=A; i<B; i++) {
+		fprintf(stderr, "\t");
+	}
+	fprintf(stderr,"B");
+	fprintf(stderr,"\n");
+*/
+	if (A>=B)
 		return;
 	int watchA = A;
 	int watchB = B;
 	void* pivot = list->_data[(A + B) / 2];
 
-	while (list->_data[watchA] != pivot || list->_data[watchB] != pivot) {
-		if (list->_compare(list->_data[watchA], pivot) < 0)
+	while (watchA < watchB) {
+		while(list->_compare(list->_data[watchA], pivot) < 0 && watchA<watchB)
 			watchA++;
-		if (list->_compare(list->_data[watchB], pivot) > 0)
+		while(list->_compare(list->_data[watchB], pivot) > 0 && watchB>watchA)
 			watchB--;
 
-		if (list->_compare(list->_data[watchA], pivot) >= 0 &&
-				list->_compare(list->_data[watchB], pivot) <= 0)
-		{
-			void* temp = list->_data[watchA];
-			list->_data[watchA] = list->_data[watchB];
-			list->_data[watchB] = temp;
-		}
+		void* temp = list->_data[watchA];
+		list->_data[watchA] = list->_data[watchB];
+		list->_data[watchB] = temp;
 	}
 	_list_qs(list, A, watchA);
-	_list_qs(list, watchB, B);
+	_list_qs(list, watchA+1, B);
 }
 
 /**
