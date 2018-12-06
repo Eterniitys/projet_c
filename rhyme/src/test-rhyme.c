@@ -8,7 +8,7 @@
 
 int main(void) {
 
-  char * char1= "p e t R O l";
+  char * char1= "petROl";
   char * char2="pRotokOl";
 //construction mot protocole
 char* test = "l";
@@ -76,7 +76,8 @@ tree_add_child(pet4,pet5);//petrol node p
   printf("val test :%c  \n",*(char*)tree_get_node(charT) );
 */
 
-
+Tree* noeud = coursePhon(root,'l');
+printf("caractere:%c\n",((char_word*)tree_get_node(noeud))->character);
 
   return (EXIT_SUCCESS);
 }

@@ -3,7 +3,9 @@
 #include<stdbool.h>
 #include <tree.h>
 
-//bool voyelle(char lettre);
-extern char **parcours(Tree*tree, char*phon,word**w);
 
+//extern char **parcours(Tree*tree, char phon)
+
+//extern bool isVowel(char**phon);
+extern Tree*coursePhon(Tree*tree, char phon);
 #endif /* _RIME_H_ */
