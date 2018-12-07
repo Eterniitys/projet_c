@@ -73,9 +73,6 @@ void* list_get(List* list, int index) {
  */
 
 List* list_add(List* list, void* pointer) {
-	if (list->_lock)
-		return NULL;
-
 	// list is full, need realloc
 	if (list->_count >= list->_size) {
 		int new_size;
@@ -99,11 +96,40 @@ List* list_add(List* list, void* pointer) {
 			return NULL;
 		}
 	}
-	list->_data[list->_count++] = pointer;
+	if (list->_lock) {
+		fprintf(stderr, "WARN. List: adding element to locked list\n");
+		//TODO use dichotomy to find index
+		int index = 0;
+		while (index < list->_count &&
+				list->_compare(list->_data[index], pointer) < 0) {
+			index++;
+		}
+		// we need to insert at the last position
+		if (index == list->_count) {
+			list->_data[index] = pointer;
+			list->_count++;
+		// we need to insert somewhere in the list
+		} else {
+			// move all the cells by one to the right
+			void* temp = pointer;
+			void* swap;
+			while (index < list->_count) {
+				swap = list->_data[index];
+				list->_data[index] = temp;
+				temp = swap;
+				index++;
+			}
+			list->_data[index] = temp;
+			list->_count++;
+		}
+	} else {
+		list->_data[list->_count++] = pointer;
+	}
 	return list;
 }
 
 List* list_remove(List* list, int index) {
+	//TODO handle locked state
 	if (list->_lock || index < 0 || index >= list->_count)
 		return NULL;
 	if (index < list->_count-1) {

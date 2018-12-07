@@ -29,7 +29,7 @@ int main(void) {
 	assert(list_is_locked(list));
 	assert(list->_size == 1);
 
-	assert(list_add(list, val) == NULL);
+//	assert(list_add(list, val) == NULL);
 
 	// free memory
 	free(val);
