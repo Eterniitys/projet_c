@@ -25,6 +25,8 @@ extern void* list_get(List* list, int index);
 
 extern List* list_add(List* list, void* pointer);
 
+extern List* list_remove(List* list, int index);
+
 extern int list_count(List* list);
 
 extern void* list_find(List* list, void* pointer);
@@ -39,5 +41,5 @@ extern void list_destroy(List* list);
 
 extern List* list_new(_compFunc);
 
-#endif /* _LIST_H_ */ 
+#endif /* _LIST_H_ */
 

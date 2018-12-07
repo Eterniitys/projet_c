@@ -103,6 +103,20 @@ List* list_add(List* list, void* pointer) {
 	return list;
 }
 
+List* list_remove(List* list, int index) {
+	if (list->_lock || index < 0 || index >= list->_count)
+		return NULL;
+	if (index < list->_count-1) {
+		list->_data[index] = list->_data[list->_count-1];
+		list->_data[list->_count-1] = NULL;
+		list->_count--;
+	} else {
+		list->_data[index] = NULL;
+		list->_count--;
+	}
+	return list;
+}
+
 /**
  * \fn int list_count(List* list)
  *
