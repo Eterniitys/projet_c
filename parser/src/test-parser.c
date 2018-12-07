@@ -140,7 +140,7 @@ int main (void){
 	tabSyll(root_syll,mySyllables,syll_valid,count_syll);
 
 	int tabInt[]={2,1,2,1,2,1,1,1,1,1,1,2,1,1,1,1,1};
-	char* tabSyll[]={"a","anti","ca","con","la","lai","le","li","lia","ment","nnel","pel","sti","t","tu","tio","zte"};
+	char* tabSyll[]={"a","anti","ca","con","la","lai","le","li","lia","ment","nnel","pel","sti","t","tio","tu","zte"};
 
 	for (int i=0;i<17;i++){
 		assert(strcmp(syll_valid[i],tabSyll[i])==0);
