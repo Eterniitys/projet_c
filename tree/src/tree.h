@@ -27,6 +27,8 @@ extern void * tree_get_node(Tree *root);
 
 extern Tree * tree_add_child(Tree *root, Tree *node);
 
+extern Tree * tree_remove_child(Tree *root, int index);
+
 extern Tree * tree_get_child(Tree *root,int nb);
 
 extern int tree_child_count(Tree *tree);

@@ -64,6 +64,16 @@ Tree * tree_add_child(Tree *root, Tree *node){
 }
 
 /**
+ *\fn Tree * tree_remove_child(Tree *root, void *node)
+ *
+ * Allows removing of child at 'index' from 'root'
+ */
+Tree * tree_remove_child(Tree *root, int index){
+	list_remove(root->_children, index);
+	return root;
+}
+
+/**
  *\fn Tree * tree_get_child(Tree *root,int nb)
  *
  * Allows the getter of the child 'branch' to the 'root'
