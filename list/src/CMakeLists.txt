@@ -45,7 +45,7 @@ install(
 
 enable_testing()
 
-foreach(name IN ITEMS list lock find lock_qs qs)
+foreach(name IN ITEMS list lock find lock_qs qs remove)
 	add_executable("test-${name}" "test-${name}.c")
 	add_dependencies("test-${name}" list)
 	target_link_libraries("test-${name}" list)
