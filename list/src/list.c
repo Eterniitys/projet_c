@@ -129,11 +129,18 @@ List* list_add(List* list, void* pointer) {
 }
 
 List* list_remove(List* list, int index) {
-	//TODO handle locked state
-	if (list->_lock || index < 0 || index >= list->_count)
+	if (index < 0 || index >= list->_count)
 		return NULL;
 	if (index < list->_count-1) {
-		list->_data[index] = list->_data[list->_count-1];
+		if (list->_lock) {
+			fprintf(stderr, "WARN. List: removing element from locked list\n");
+			while (index < list->_count-1) {
+				list->_data[index] = list->_data[index+1];
+				index++;
+			}
+		} else {
+			list->_data[index] = list->_data[list->_count-1];
+		}
 		list->_data[list->_count-1] = NULL;
 		list->_count--;
 	} else {
