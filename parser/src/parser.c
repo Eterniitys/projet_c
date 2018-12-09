@@ -1,13 +1,13 @@
 /**
-* \file parser.c
-* \class parser
-* \version 0.1 \author Marie
-* \version 0.2 \author Gregoire
-* \date 24 november 2018
-*
-* Allow the parse of the file and fill the tree
-*
-*/
+ * \file parser.c
+ * \class parser
+ * \version 0.1 \author Marie
+ * \version 0.2 \author Gregoire
+ * \date 24 november 2018
+ *
+ * Allow the parse of the file and fill the tree
+ *
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,10 +18,10 @@
 #include "parser.h"
 
 /**
-* \fn int compare_tree_wordchar (void * node1,void * node2)
-*
-* \return cm1->character - cm2->character; - return the result of the comparation.
-*/
+ * \fn int compare_tree_wordchar (void * node1,void * node2)
+ *
+ * \return cm1->character - cm2->character; - return the result of the comparation.
+ */
 int compare_tree_wordchar (void * node1,void * node2){
 	char_word *cm1 = (char_word*)tree_get_node((Tree*)node1);
 	char_word *cm2 = (char_word*)tree_get_node((Tree*)node2);
@@ -29,10 +29,10 @@ int compare_tree_wordchar (void * node1,void * node2){
 }
 
 /**
-* \fn void fill_tree (char* mot,Word * monMot,Tree * node)
-*
-* \return void - fill the tree
-*/
+ * \fn void fill_tree (char* mot,Word * monMot,Tree * node)
+ *
+ * \return void - fill the tree
+ */
 void fill_tree (char* mot, Word * monMot,Tree * node){
 
 	char_word *structure=malloc(sizeof(char_word));
@@ -45,15 +45,15 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	(&tmpTree)->_struc=structure;
 
 	Tree* child = tree_find_child(node, &tmpTree);
-	
+
 	if (!child) {
 		child = tree_new(structure, compare_tree_wordchar);
 		tree_add_child(node, child);
 		if (mot[1]=='\0'){
 			structure->counter_syll=1;	
 		}
-		
-		
+
+
 	}
 	else if(mot[1]=='\0'){
 		((char_word*)tree_get_node(child))->counter_syll++;
@@ -69,10 +69,10 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 
 
 /**
-* \fn void reverse_string(char * word)
-*
-* \return void - reverse a string
-*/
+ * \fn void reverse_string(char * word)
+ *
+ * \return void - reverse a string
+ */
 void reverse_string(char * word){
 	int i=0;
 	int len = strlen(word);
@@ -85,10 +85,10 @@ void reverse_string(char * word){
 }
 
 /**
-* \fn long size_file(FILE * fichier)
-*
-* \return sizeFichier - return the size of the file
-*/
+ * \fn long size_file(FILE * fichier)
+ *
+ * \return sizeFichier - return the size of the file
+ */
 long size_file(FILE * fichier){
 	long sizeFichier;
 	fseek (fichier , 0 , SEEK_END);
@@ -98,10 +98,10 @@ long size_file(FILE * fichier){
 
 
 /**
-* \fn char** split_syllables(char* word)
-*
-* \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word
-*/
+ * \fn char** split_syllables(char* word)
+ *
+ * \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word
+ */
 char** split_syllables(char* word) {
 	// Count first syllable, and add room for terminating NULL pointer
 	int counter = 2;
@@ -132,10 +132,10 @@ char** split_syllables(char* word) {
 }
 
 /**
-* \fn Word** parser_read(const char* PATH)
-*
-* \return words - return a tabs of Word **
-*/
+ * \fn Word** parser_read(const char* PATH)
+ *
+ * \return words - return a tabs of Word **
+ */
 Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon){
 	FILE* file;
 	file=fopen(PATH, "r");
@@ -157,7 +157,7 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** ma
 			counter++;
 		pointer++;
 	}
-	
+
 	*root = tree_new(NULL, compare_tree_wordchar);
 
 	*root_syll = tree_new(NULL, compare_tree_wordchar);
@@ -187,7 +187,7 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** ma
 			phonetic= malloc(strlen(tmp_phon)+1);
 			strcpy(phonetic, tmp_phon);
 			reverse_string(phonetic);
-			
+
 		}
 
 		//syllables
@@ -205,15 +205,7 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** ma
 
 		//fill hashmap
 		if (tmp_syllables && tmp_syllables_phon) {
-			
-			fill_tree(phonetic, my_word, *root);
-			
-			int k=0;
-			while (mot_tmp[k]){
-				fill_tree(mot_tmp[k], my_word, *root_syll);
-				k++;
-			}
-				
+
 			int index_syll=0;
 			int index_phon=0;
 
@@ -223,13 +215,21 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** ma
 			while (my_word->phonetics[index_phon]){
 				index_phon++;
 			}
-
+			
 			if(index_syll==index_phon){
+
+				fill_tree(phonetic, my_word, *root);
+				int k=0;
+				while (mot_tmp[k]){
+					fill_tree(mot_tmp[k], my_word, *root_syll);
+					k++;
+				}
+
 				int tmp_index = 0;
 				while (my_word->syllables[tmp_index]) {
 					hashmap_set(*map_syl_phon,
-						my_word->syllables[tmp_index],
-						my_word->phonetics[tmp_index]);
+							my_word->syllables[tmp_index],
+							my_word->phonetics[tmp_index]);
 					tmp_index++;
 				}
 			}
@@ -275,3 +275,4 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** ma
 	words = realloc(words, sizeof(Word) * (counter+1));
 	return words;
 }
+

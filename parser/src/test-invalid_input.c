@@ -23,7 +23,6 @@ int main (void){
 	int index = 0;
 	assert(strcmp(word_get_string(tab[index]),"a\0") == 0);
 
-
 	return(EXIT_SUCCESS);
 }
 
