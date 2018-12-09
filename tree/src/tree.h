@@ -39,4 +39,6 @@ extern void tree_unlock(Tree *tree);
 
 extern void * tree_find_child(Tree *tree,void *child);
 
+extern int tree_get_depth(Tree *tree);
+
 #endif /* _TREE_H_ */

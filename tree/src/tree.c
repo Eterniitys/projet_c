@@ -126,6 +126,21 @@ void * tree_find_child(Tree *tree,void *child){
 	return list_find(tree->_children,child);
 }
 
+int tree_get_depth(Tree *tree){
+	int max = 0;
+	if (tree_child_count(tree)>1){
+		max = tree_get_depth(tree_get_child(tree,0));
+		for(int i=1; i<tree_child_count(tree) ; i++){
+			int depth = tree_get_depth(tree_get_child(tree,i));
+			max = max >= depth ? max : depth ;
+		}
+	}else if (tree_child_count(tree)==1){
+		max = tree_get_depth(tree_get_child(tree,0));
+	}
+	max++;
+	return max;
+}
+
 
 
 
