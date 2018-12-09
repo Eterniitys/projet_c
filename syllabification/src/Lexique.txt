@@ -91,7 +91,7 @@ abandonnés	ab@done	a-ban-don-nés	a-b@-do-ne
 abandons	ab@d§	a-ban-dons	a-b@-d§
 abaque	abak	a-ba-que	a-bak
 abasourdi	abazuRdi	a-ba-sour-di	a-ba-zuR-di
-abasourdi	abazuRdi	a-ba-sour-di	a-ba-zuR-di
+abasourdi	abazuRdi	a-ba-so-ur-di	a-ba-zuR-di
 abasourdie	abazuRdi	a-ba-sour-die	a-ba-zuR-di
 abasourdie	abazuRdi	a-ba-sour-die	a-ba-zuR-di
 abasourdir	abazuRdiR	a-ba-sour-dir	a-ba-zuR-diR

@@ -66,12 +66,18 @@ int score_tree(Tree* root){
 }
 
 char** get_better_match(Tree* root){
-	int profondeur = 0;
 	clean_invalide(root);
 	score_tree(root);
-	char** output = malloc(sizeof(char*));
-	printf("size = %d\n", profondeur);
-	
+	int depth = tree_get_depth(root)-1;
+	char** output = malloc(sizeof(char*)*depth);
+	int i = 0;
+	Tree * tmp = root;
+	do {
+		tmp = tree_get_child(tmp,0);
+		output[i] = ((StringBool*)tree_get_node(tmp))->string;
+		printf("syllabe %d : %s\n",i+1,output[i]);
+		i++;
+	} while (i < depth);
 	print_tree_j(root,0);
 	return output;
 }
