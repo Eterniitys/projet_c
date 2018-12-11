@@ -35,13 +35,30 @@ if(SYLLABIFICATION_LIB)
 endif(SYLLABIFICATION_LIB)
 
 
+find_file(TREE_H "tree.h")
+if(TREE_H)
+	# Search of directory
+	get_filename_component(TREE_INCLUDE_DIR ${TREE_H} DIRECTORY)
+	# Calling with <>
+	include_directories("${TREE_INCLUDE_DIR}")
+endif(TREE_H)
+find_library(TREE_LIB tree)
+if(TREE_LIB)
+	# Search of directory
+	get_filename_component(TREE_LIB_DIR ${TREE_LIB} DIRECTORY)
+	# Add file for research of library
+	link_directories("${TREE_LIB_DIR}")
+endif(TREE_LIB)
+
 # include library parser
 add_library(phonetics SHARED phonetics.c phonetics.h)
 
-# library parser use library word 
+# library parser use library hash 
 target_link_libraries(phonetics hash)
-# library parser use library tree 
+# library parser use library syllabification 
 target_link_libraries(phonetics syllabification)
+# library parser use library tree 
+target_link_libraries(phonetics tree)
 
 
 # Destination files
