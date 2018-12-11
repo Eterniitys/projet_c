@@ -7,6 +7,9 @@
 
 #include "syllabification.h"
 
+#define C_LENGTH 100
+#define C_SCORE 100
+
 void print_tree_j(Tree* node, int level) {
 	StringBool* struc = (StringBool*)tree_get_node(node);
 	if (struc) {
@@ -24,7 +27,7 @@ bool valid_inside(Tree* root){
 	if (tree_child_count(root) == 0 && valid){
 		return true;
 	}
-	for (int i = 0 ; i< tree_child_count(root);i++){
+	for (int i = 0 ; i < tree_child_count(root);i++){
 		valid = valid_inside(tree_get_child(root,i));
 	}
 	return valid;
@@ -32,18 +35,21 @@ bool valid_inside(Tree* root){
 
 Tree* clean_invalide(Tree* root){
 	int i = 0 ;
-	while( i< tree_child_count(root)){
-		if(valid_inside(tree_get_child(root,i))){
-			clean_invalide(tree_get_child(root,i));
-			i++;
+	while ( i< tree_child_count(root)) {
+		if (valid_inside(tree_get_child(root, i))) {
+			clean_invalide(tree_get_child(root, i));
+			i++ ;
 		}else{
-			tree_remove_child(root,i);
+			tree_remove_child(root, i);
 		}
 	}
 	return root;
 }
 
 int score_tree(Tree* root){
+	if (tree_child_count(root) == 1){
+		score_tree(tree_get_child(root,0));
+	}
 	while(tree_child_count(root) > 1){
 		Tree* child1 = (Tree*)tree_get_child(root,0);
 		Tree* child2 = (Tree*)tree_get_child(root,1);
@@ -53,14 +59,10 @@ int score_tree(Tree* root){
 			tree_remove_child(root,0);
 		}
 	}
-
 	int score = 0;
 	if (tree_get_node(root) != NULL){
-		score = ((StringBool*)tree_get_node(root))->score;
-	}
-	if (tree_child_count(root) >= 1){
-		Tree* node= (Tree*)tree_get_child(root,0);
-		score += score_tree(tree_get_child(root,0));
+		StringBool* tmp = (StringBool*)tree_get_node(root);
+		score = strlen(tmp->string)*C_LENGTH+tmp->score/C_SCORE;
 	}
 	return score;
 }
@@ -69,16 +71,17 @@ char** get_better_match(Tree* root){
 	clean_invalide(root);
 	score_tree(root);
 	int depth = tree_get_depth(root)-1;
-	char** output = malloc(sizeof(char*)*depth);
+	char** output = malloc(sizeof(char*)*(depth+1));
 	int i = 0;
 	Tree * tmp = root;
 	do {
 		tmp = tree_get_child(tmp,0);
 		output[i] = ((StringBool*)tree_get_node(tmp))->string;
-		printf("syllabe %d : %s\n",i+1,output[i]);
+		//printf("syllabe %d : %s\n",i+1,output[i]);
 		i++;
 	} while (i < depth);
-	print_tree_j(root,0);
+	output[i] = NULL;
+	//print_tree_j(root,0);
 	return output;
 }
 
@@ -87,7 +90,6 @@ char** syllabicate(Tree* syll_tree,char* word) {
 	int index = 0;
 	Tree* root = tree_new(NULL, NULL);
 	gen_syllables(root, syll_tree, word);
-	//TODO parcours de l'arbre pour générer la liste de syllabes avec le plus de poids
 	output = get_better_match(root);
 	return output;
 }
