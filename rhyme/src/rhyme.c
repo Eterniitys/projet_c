@@ -8,6 +8,8 @@
 #include <string.h>
 #include <list.h>
 
+
+//afficher un arbre
 void print_tree(Tree* node, int level) {
 	char_word* struc = (char_word*)tree_get_node(node);
 	if (struc) {
@@ -57,8 +59,8 @@ List* arbreEnList(Tree* tree,List* list)
         return list;
 }
 
-//afficher la liste final
-List* finalList(Tree* tree,List* list,char* word,int threshold)
+//afficher la liste final en fonction d'un seuil de caractère correspondant donné
+List* finalList(Tree* tree,List* list,char* word,int cpt,int threshold)
 {
         //condition de fin du mot
         if(word[0]=='\0')
@@ -74,9 +76,9 @@ List* finalList(Tree* tree,List* list,char* word,int threshold)
         //si on trouve le caractère
         if(noeud!=NULL)
         {
-                threshold++;
+                cpt++;
 		//si trois caractère phonetique concordes
-                if(threshold>=2)
+                if(cpt>=threshold)
                 {
 			//on recupère tous les enfants et on les range dans la list
 			list=arbreEnList(noeud,list);
@@ -84,7 +86,7 @@ List* finalList(Tree* tree,List* list,char* word,int threshold)
                 else
                 {
 			//on cherhce le prochain caractère de word
-                        finalList(noeud,list,word+1,threshold);
+                        finalList(noeud,list,word+1,cpt,threshold);
                 }
         }
         return list;
@@ -93,13 +95,13 @@ List* finalList(Tree* tree,List* list,char* word,int threshold)
 /*
 //######################################
 //savoir si le cactère phonetique est une voyelle
-bool isVowel(char**phon)
+bool isVowel(char*phon)
 {
   bool res=false;
   //liste de tout les carctère de voyelle
   List* list = list_new('i','y','e','E','5','2','9','1','a','Â°','u','o','O','Â§','@');
 
-  for(int i =0;i<list.size();i++)
+  for(int i =0;i<list_count(list);i++)
   {
     //test de comparaison des caractères
     if(phon==list_get(list,i))
