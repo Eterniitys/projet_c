@@ -33,11 +33,9 @@ int main(void){
 	
 	char** syllables = syllabicate(tree_syll, string);
 	char ** phonetics = fill_phonetics(phonetics,syllables,hashmap);
+	char * string_phon=tab_to_string(phonetics);
 	
-	assert(strcmp(phonetics[0],"l@")==0);
-	assert(strcmp(phonetics[1],"pad")==0);
-	assert(strcmp(phonetics[2],"ER")==0);
-	assert(strcmp(phonetics[3],"Re")==0);
+	assert(strcmp(string_phon,"l@padERRe")==0);
 	
 	hashmap_destroy(hashmap);
 	tree_destroy(tree_phon);

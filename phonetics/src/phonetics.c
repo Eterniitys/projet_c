@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <hash.h>
 #include <syllabification.h>
+#include <string.h>
 
 #include "phonetics.h"
 
@@ -21,7 +22,7 @@
 *\return tab_phon - return a fill tab with phonetics
 */
 char ** fill_phonetics(char ** tab_phon,char **syllables,Hashmap * hashmap){
-	tab_phon = malloc(sizeof(char**));
+	tab_phon = malloc(sizeof(char**)*15);
 	int i=0;
 	while(syllables[i]){
 		printf("%s - ",syllables[i]);
@@ -29,6 +30,22 @@ char ** fill_phonetics(char ** tab_phon,char **syllables,Hashmap * hashmap){
 		printf("%s\n",tab_phon[i]);
 		i++;	
 	}
+	tab_phon[i]=NULL;
 	return tab_phon;
 }
+
+/**
+*\fn char * tab_to_string(char ** tab)
+*\return string - return a string (convert string tab in only one string)
+*/
+char * tab_to_string(char ** tab){
+	int i=0;
+	char * string=malloc(sizeof(char*)*50);
+	while (tab[i]){
+		strcat(string,tab[i]);
+		i++;
+	}
+	return string;	 
+}
+
 
