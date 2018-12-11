@@ -1,4 +1,8 @@
 #include <gtk/gtk.h>
+#include <tree.h>
+#include <hash.h>
+#include <parser.h>
+
       typedef struct
       {
         GtkBuilder *builder;
@@ -20,6 +24,7 @@
       {
       
         GtkWidget *fenetre_principale = NULL;
+        GtkWidget *fenetre_lancement = NULL;
 
         GError *error = NULL;
         gchar *filename = NULL;
@@ -48,6 +53,20 @@
         /* Affectation des signaux de l'interface aux différents CallBacks. */
         gtk_builder_connect_signals (data.builder, &data);
 
+	/* Récupération du pointeur de la fenêtre de chargement du logiciel */
+        fenetre_lancement = GTK_WIDGET(gtk_builder_get_object (data.builder, "StartWindow"));
+        
+        /* Affichage de la fenêtre de chargement du logiciel. */
+        gtk_widget_show_all(fenetre_lancement);
+        while(gtk_events_pending()){gtk_main_iteration();}
+
+        Tree* root;
+        Tree* root_syll;
+        Hashmap* map_syl_phon;
+        parser_read("./Lexique382.csv", &root, &root_syll, &map_syl_phon);
+
+        gtk_window_close(fenetre_lancement);
+	
         /* Récupération du pointeur de la fenêtre principale */
         fenetre_principale = GTK_WIDGET(gtk_builder_get_object (data.builder, "MainWindow"));
         
@@ -102,23 +121,84 @@
       
       on___glade_unnamed_23_search_changed()
       {
+      	GtkWidget *entry = NULL;
+      	entry = GTK_WIDGET (gtk_builder_get_object (data.builder, "SearchEntry"));
+      	GtkEntryBuffer *buffer = gtk_entry_get_buffer (entry);
+      	printf(gtk_entry_buffer_get_text(buffer));
       	
-      	char* tab[] = { 
-	  "Perlis",
-	  "Wilkes",
-	  "Hamming",
-	  "Minsky",
-	  "Wilkinson",
-	  "McCarthy",
-	  "Dijkstra",
-	  "Bachman",
-	  "Knuth",
-	  "Newell et Simon",
-	  NULL
-	};  	      	
+      	deleteChildren();
+      	
+      	if (gtk_entry_buffer_get_text(buffer)[0] != '\0'){
+      		char* tab[] = { 
+		  "Perlis",
+		  "Wilkes",
+		  "Hamming",
+		  "Minsky",
+		  "Wilkinson",
+		  "McCarthy",
+		  "Dijkstra",
+		  "Bachman",
+		  "Knuth",
+		  "Newell et Simon",
+		  "Perlis",
+		  "Wilkes",
+		  "Hamming",
+		  "Minsky",
+		  "Wilkinson",
+		  "McCarthy",
+		  "Dijkstra",
+		  "Bachman",
+		  "Knuth",
+		  "Newell et Simon",
+		  "Perlis",
+		  "Wilkes",
+		  "Hamming",
+		  "Minsky",
+		  "Wilkinson",
+		  "McCarthy",
+		  "Dijkstra",
+		  "Bachman",
+		  "Knuth",
+		  "Newell et Simon",
+		  "Perlis",
+		  "Wilkes",
+		  "Hamming",
+		  "Minsky",
+		  "Wilkinson",
+		  "McCarthy",
+		  "Dijkstra",
+		  "Bachman",
+		  "Knuth",
+		  "Newell et Simon",
+		  "Perlis",
+		  "Wilkes",
+		  "Hamming",
+		  "Minsky",
+		  "Wilkinson",
+		  "McCarthy",
+		  "Dijkstra",
+		  "Bachman",
+		  "Knuth",
+		  "Newell et Simon",
+		  "Perlis",
+		  "Wilkes",
+		  "Hamming",
+		  "Minsky",
+		  "Wilkinson",
+		  "McCarthy",
+		  "Dijkstra",
+		  "Bachman",
+		  "Knuth",
+		  "Newell et Simon",
+		  NULL
+		};
+		insertChildren(tab);		 
+	}
+      	
+      	  	      	
         
-        deleteChildren();    
-        insertChildren(tab);
+        
+        
         
       }
       

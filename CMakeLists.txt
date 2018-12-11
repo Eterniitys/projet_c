@@ -3,6 +3,8 @@ project (Symphonie C)
 
 set (CMAKE_C_FLAGS "-rdynamic")
 set(DIR hash list tree word parser rhyme syllabification)
+set(LIBS hash list tree parser rhyme syllabification)
+set(FILES window.glade symphonie.png Lexique382.csv)
 
 foreach(dir IN LISTS DIR)
 	include_directories ("${PROJECT_SOURCE_DIR}/${dir}/src")
@@ -24,11 +26,12 @@ ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
 # add the executable
 add_executable (symphonie symphonie.c)
 
-foreach(dir IN LISTS DIR)
-	target_link_libraries (symphonie ${dir})
-endforeach(dir)
+foreach(lib IN LISTS LIBS)
+	target_link_libraries (symphonie ${lib})
+endforeach(lib)
 TARGET_LINK_LIBRARIES(symphonie ${GTK3_LIBRARIES})
 
 # Copy files
-configure_file("${PROJECT_SOURCE_DIR}/window.glade" "${CMAKE_CURRENT_BINARY_DIR}/window.glade" COPYONLY)
-configure_file("${PROJECT_SOURCE_DIR}/symphonie.png" "${CMAKE_CURRENT_BINARY_DIR}/symphonie.png" COPYONLY)
+foreach(file IN LISTS FILES)
+	configure_file("${PROJECT_SOURCE_DIR}/${file}" "${CMAKE_CURRENT_BINARY_DIR}/${file}" COPYONLY)
+endforeach(file)
