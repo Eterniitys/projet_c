@@ -8,6 +8,17 @@
 #include <string.h>
 #include <list.h>
 
+void print_tree(Tree* node, int level) {
+	char_word* struc = (char_word*)tree_get_node(node);
+	if (struc) {
+		for (int i = 0; i < level; i++)
+			fprintf(stderr, "|  ", NULL);
+		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).myWord == NULL ? "" : "->");
+	}
+	for (int i = 0; i < tree_child_count(node); i++) {
+		print_tree(tree_get_child(node, i), level+1);
+	}
+}
 
 
 //On veut faire une fonction qui, partant du noeud vide de base, parcours chacuns de ses
@@ -22,7 +33,7 @@ Tree*coursePhon(Tree*tree, char phon)
           Tree * phonetic = tree_new(structure,NULL);
 
         //on recupere le noeud avec la phonétique correspondante.
-        tree_unlock(tree); //TODO
+        //tree_unlock(tree); //TODO
         Tree* noeud= (Tree*)tree_find_child(tree,phonetic);
         return noeud;
 }

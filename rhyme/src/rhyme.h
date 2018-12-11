@@ -5,7 +5,7 @@
 
 
 //extern char **parcours(Tree*tree, char phon)
-
+extern void print_tree(Tree* node, int level) ;
 //extern bool isVowel(char**phon);
 extern Tree*coursePhon(Tree*tree, char phon);
 #endif /* _RIME_H_ */

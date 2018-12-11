@@ -12,13 +12,23 @@ int main(void) {
 
 Tree *root= NULL;
 Tree *root2= NULL;
-Hashmap* hash;
-parser_read("../src/rhym.txt",&root,&root2,hash);
+Hashmap* hash= NULL;
+parser_read("../../Lexique382.csv",&root,&root2,&hash);
 
 
 Tree* noeud = coursePhon(root,'l');
-printf("caractere:%c\n",((char_word*)tree_get_node(noeud))->character);
+print_tree(noeud,0);
+/*void* test0=tree_get_node(noeud);
+char_word* test=(char_word*)test0;
+if(test0==NULL)
+{
+        printf("ya rien !\n" );
+}
+else{
+                printf("caractere:%c\n",test->character);
+}*/
+
 //noeud = tree_get_child(noeud,0);//coursePhon(noeud,'O');
-//printf("caracsuiv:%c\n",((char_word*)tree_get_node(noeud))->character);
+printf("caracsuiv:%c\n",((char_word*)tree_get_node(noeud))->character);
   return (EXIT_SUCCESS);
 }
