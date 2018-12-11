@@ -21,8 +21,8 @@
 *\fn char ** fill_phonetics(char ** tab_phon,char **syllables,Hashmap * hashmap)
 *\return tab_phon - return a fill tab with phonetics
 */
-char ** fill_phonetics(char ** tab_phon,char **syllables,Hashmap * hashmap){
-	tab_phon = malloc(sizeof(char**)*15);
+char ** fill_phonetics(char **syllables,Hashmap * hashmap){
+	char **tab_phon = malloc(sizeof(char**)*15);
 	int i=0;
 	while(syllables[i]){
 		printf("%s - ",syllables[i]);

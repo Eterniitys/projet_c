@@ -32,7 +32,7 @@ int main(void){
 	parser_read("../../Lexique382.csv", &tree_phon, &tree_syll, &hashmap);
 	
 	char** syllables = syllabicate(tree_syll, string);
-	char ** phonetics = fill_phonetics(phonetics,syllables,hashmap);
+	char ** phonetics = fill_phonetics(syllables,hashmap);
 	char * string_phon=tab_to_string(phonetics);
 	
 	assert(strcmp(string_phon,"l@padERRe")==0);

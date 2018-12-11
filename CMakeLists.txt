@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 3.5)
 project (Symphonie C)
 
 set (CMAKE_C_FLAGS "-rdynamic")
-set(DIR hash list tree word parser rhyme syllabification)
-set(LIBS hash list tree parser rhyme syllabification)
+set(DIR hash list tree word parser rhyme syllabification phonetics)
+set(LIBS hash list tree parser rhyme syllabification phonetics)
 set(FILES window.glade symphonie.png Lexique382.csv)
 
 foreach(dir IN LISTS DIR)
