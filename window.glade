@@ -14,7 +14,7 @@ Grégoire Bourasseau, Kévin Dapp, Flavien Labbé,
 Clément Lombardini, Tony Papin, Loïc Lagrolle,
 Kévin Maitre, Julien Castan</property>
     <property name="documenters">Kilian Guillaume et Johan Guerrero</property>
-    <property name="logo">rhyme.png</property>
+    <property name="logo">symphonie.png</property>
     <child>
       <placeholder/>
     </child>

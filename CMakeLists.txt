@@ -1,17 +1,12 @@
 cmake_minimum_required (VERSION 3.5)
 project (Symphonie C)
 
+set (CMAKE_C_FLAGS "-rdynamic")
 set(DIR hash list tree word parser rhyme syllabification)
 
 foreach(dir IN LISTS DIR)
 	include_directories ("${PROJECT_SOURCE_DIR}/${dir}/src")
 	add_subdirectory (${dir}/src) 
-endforeach(dir)
- 
-# add the executable
-add_executable (symphonie symphonie.c)
-foreach(dir IN LISTS DIR)
-	target_link_libraries (symphonie ${dir})
 endforeach(dir)
 
 # Use the package PkgConfig to detect GTK+ headers/library files
@@ -26,4 +21,14 @@ LINK_DIRECTORIES(${GTK3_LIBRARY_DIRS})
 # Add other flags to the compiler
 ADD_DEFINITIONS(${GTK3_CFLAGS_OTHER})
 
+# add the executable
+add_executable (symphonie symphonie.c)
+
+foreach(dir IN LISTS DIR)
+	target_link_libraries (symphonie ${dir})
+endforeach(dir)
 TARGET_LINK_LIBRARIES(symphonie ${GTK3_LIBRARIES})
+
+# Copy files
+configure_file("${PROJECT_SOURCE_DIR}/window.glade" "${CMAKE_CURRENT_BINARY_DIR}/window.glade" COPYONLY)
+configure_file("${PROJECT_SOURCE_DIR}/symphonie.png" "${CMAKE_CURRENT_BINARY_DIR}/symphonie.png" COPYONLY)
