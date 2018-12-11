@@ -23,7 +23,7 @@ Tree* noeud = coursePhon(root,'l');
 //print_tree(noeud,0);
 printf("caracsuiv:%c\n",((char_word*)tree_get_node(noeud))->character);
 List* list = list_new(NULL);
-List*liste1= arbreEnList(root,list,"lORtep",0);
+List*liste1= finalList(root,list,"lORtep",0);
 
 for(int i=0 ; i < list_count(liste1) ; i++)
 {

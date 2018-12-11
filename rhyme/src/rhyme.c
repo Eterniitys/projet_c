@@ -38,8 +38,27 @@ Tree*coursePhon(Tree*tree, char phon)
         return noeud;
 }
 
+//ranger un arbre dans une liste
+List* arbreEnList(Tree* tree,List* list)
+{
+	//on veut parcourir tout l'arbre et recuperer chaque mots
+	for (int i = 0; i < tree_child_count(tree); i++)
+	{
+		Tree* enfant=tree_get_child(tree,i);
+		//on recupère le pointeur
+		char_word* mot=(char_word*)tree_get_node(enfant);
+		//on test le pointeur si il est pas NULL on ajoute le mot a la liste
+		if(mot && mot->string)
+		{
+			list_add(list,mot->string);
+		}
+		arbreEnList(enfant,list);
+	}
+        return list;
+}
 
-List* arbreEnList(Tree* tree,List* list,char* word,int threshold)
+//afficher la liste final
+List* finalList(Tree* tree,List* list,char* word,int threshold)
 {
         //condition de fin du mot
         if(word[0]=='\0')
@@ -56,28 +75,18 @@ List* arbreEnList(Tree* tree,List* list,char* word,int threshold)
         if(noeud!=NULL)
         {
                 threshold++;
-                if(threshold>=3)
+		//si trois caractère phonetique concordes
+                if(threshold>=2)
                 {
-                        //on veut parcourir tout l'arbre et recuperer chaque mots
-                        for (int i = 0; i < tree_child_count(tree); i++)
-                        {
-                                Tree* enfant=tree_get_child(tree,i);
-                                //on recupère le pointeur
-                                char_word* mot=(char_word*)tree_get_node(enfant);
-                                //on test le pointeur si il est pas NULL on ajoute le mot a la liste
-                                if(mot && mot->string)
-                                {
-                                        //si le compteur est = ou supèrieur a 3 on ajoute le mot a la liste
-                                                list_add(list,mot->string);
-                                }
-                        }
+			//on recupère tous les enfants et on les range dans la list
+			list=arbreEnList(noeud,list);
                 }
                 else
                 {
-                        arbreEnList(noeud,list,word+1,threshold);
+			//on cherhce le prochain caractère de word
+                        finalList(noeud,list,word+1,threshold);
                 }
         }
-
         return list;
 }
 
