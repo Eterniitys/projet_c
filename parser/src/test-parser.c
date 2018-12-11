@@ -32,7 +32,7 @@ char** tabSyll(Tree* root_syll,char ** mySyllables,char ** syll_valid,int * coun
 		cmtp++;
 		mySyllables[n][cmtp]='\0';	
 
-		if (((char_word*)tree_get_node(root_syll))->myWord != NULL){
+		if (((char_word*)tree_get_node(root_syll))->string != NULL){
 			count_syll[k]=((char_word*)tree_get_node(root_syll))->counter_syll;
 			strcpy(syll_valid[k],mySyllables[n]);
 			k++;
@@ -69,7 +69,7 @@ char** tabPhon(Tree *root,char ** myPhons,char ** phon_valid){
 		myPhons[n][cmtp]=((char_word*)tree_get_node(root))->character;
 		cmtp++;
 		myPhons[n][cmtp]='\0';	
-		if (((char_word*)tree_get_node(root))->myWord != NULL){
+		if (((char_word*)tree_get_node(root))->string != NULL){
 			strcpy(phon_valid[k],myPhons[n]);
 			k++;
 		}
@@ -93,8 +93,8 @@ void print_tree(Tree* node, int level) {
 	char_word* struc = (char_word*)tree_get_node(node);
 	if (struc) {
 		for (int i = 0; i < level; i++)
-			fprintf(stderr, "|  ", NULL);
-		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).myWord == NULL ? "" : "->");
+			fprintf(stderr, "|  ");
+		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).string == NULL ? "" : "->");
 	}
 	for (int i = 0; i < tree_child_count(node); i++) {
 		print_tree(tree_get_child(node, i), level+1);
@@ -110,17 +110,7 @@ int main (void){
 	Tree * root_syll = NULL;
 	Hashmap * map=NULL;
 
-	Word** tab=parser_read("../src/test.csv", &root, &root_syll, &map);
-	
-	
-	// String test
-	assert(strcmp(tab[1]->string,"a capella")==0);
-
-	// Syllables test
-	assert(strcmp(tab[1]->syllables[0],"a")==0);
-	assert(strcmp(tab[1]->syllables[1],"ca")==0);
-	assert(strcmp(tab[1]->syllables[2],"pel")==0);
-	assert(strcmp(tab[1]->syllables[3],"la")==0);
+	parser_read("../src/test.csv", &root, &root_syll, &map);
 
 	// Test Phonetics 
 	char * hash=(char*)hashmap_get(map,"pel");

@@ -11,16 +11,6 @@ if(WORD_H)
 	include_directories("${WORD_INCLUDE_DIR}")
 endif(WORD_H)
 
-find_library(WORD_LIB word)
-
-if(WORD_LIB)
-	# Search of directory
-	get_filename_component(WORD_LIB_DIR ${WORD_LIB} DIRECTORY)
-	# Add file for research of library
-	link_directories("${WORD_LIB_DIR}")
-endif(WORD_LIB)
-
-
 
 find_file(TREE_H "tree.h")
 if(TREE_H)
@@ -58,8 +48,6 @@ endif(HASH_LIB)
 # include library parser
 add_library(parser SHARED parser.c parser.h)
 
-# library parser use library word 
-target_link_libraries(parser word)
 # library parser use library tree 
 target_link_libraries(parser tree)
 # library parser use library hash

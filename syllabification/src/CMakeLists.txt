@@ -11,16 +11,6 @@ if(WORD_H)
 	include_directories("${WORD_INCLUDE_DIR}")
 endif(WORD_H)
 
-find_library(WORD_LIB word)
-
-if(WORD_LIB)
-	# Search of directory
-	get_filename_component(WORD_LIB_DIR ${WORD_LIB} DIRECTORY)
-	# Add file for research of library
-	link_directories("${WORD_LIB_DIR}")
-endif(WORD_LIB)
-
-
 
 find_file(TREE_H "tree.h")
 if(TREE_H)
@@ -41,8 +31,6 @@ endif(TREE_LIB)
 # include library parser
 add_library(syllabification SHARED syllabification.c syllabification.h)
 
-# library parser use library word 
-target_link_libraries(syllabification word)
 # library parser use library tree 
 target_link_libraries(syllabification tree)
 

@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <word.h>
 #include <tree.h>
 #include <hash.h>
@@ -29,15 +30,15 @@ int compare_tree_wordchar (void * node1,void * node2){
 }
 
 /**
- * \fn void fill_tree (char* mot,Word * monMot,Tree * node)
+ * \fn void fill_tree (char* mot, char* string, Tree * node)
  *
  * \return void - fill the tree
  */
-void fill_tree (char* mot, Word * monMot,Tree * node){
+void fill_tree (char* mot, char* string, Tree * node){
 
 	char_word *structure=malloc(sizeof(char_word));
 	structure->character=mot[0];
-	structure->myWord=NULL;
+	structure->string=NULL;
 	structure->counter_syll=0;
 
 
@@ -60,9 +61,9 @@ void fill_tree (char* mot, Word * monMot,Tree * node){
 	}
 
 	if (mot[1]=='\0') {
-		((char_word*)tree_get_node(child))->myWord=monMot;		
+		((char_word*)tree_get_node(child))->string=string;		
 	} else {
-		fill_tree(mot + 1, monMot, child);
+		fill_tree(mot + 1, string, child);
 	}
 }
 
@@ -136,12 +137,12 @@ char** split_syllables(char* word) {
  *
  * \return words - return a tabs of Word **
  */
-Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon){
+void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon){
 	FILE* file;
 	file=fopen(PATH, "r");
 
 	if(!file){
-		return NULL;
+		return;
 	}
 	long size = size_file(file);
 	fseek(file, 0, SEEK_SET);
@@ -150,129 +151,106 @@ Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** ma
 	fclose(file);
 	buffer[size] = '\0';
 
-	int counter = 0;
-	char* pointer = buffer;
-	while(pointer - buffer < size) {
-		if (*pointer == '\n')
-			counter++;
-		pointer++;
-	}
-
 	*root = tree_new(NULL, compare_tree_wordchar);
 
 	*root_syll = tree_new(NULL, compare_tree_wordchar);
 
 	*map_syl_phon = hashmap_new();
 
-	Word** words = malloc(sizeof(Word*)*counter);
-
 	char* file_pointer = NULL;
-	counter = 0;
 	char* line = strtok_r(buffer, "\n", &file_pointer);
 	while(line){
 		//initialisation
 		char* line_pointer = NULL;
-		Word* my_word = malloc(sizeof(Word));
-		my_word->string=NULL;
+
 		//word
 		char* tmp_word = strtok_r(line, "\t", &line_pointer);
+		char* word = NULL;
 		if (tmp_word) {
-			word_set_string(my_word, tmp_word);
+			word = malloc(sizeof(char)*(strlen(tmp_word)+1));
+			strcpy(word, tmp_word);
 		}
 
 		//phonetic
 		char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
-		char* phonetic;
+		char* phonetic = NULL;
 		if (tmp_phon) {
 			phonetic= malloc(strlen(tmp_phon)+1);
 			strcpy(phonetic, tmp_phon);
 			reverse_string(phonetic);
-
 		}
 
 		//syllables
 		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
-		char ** mot_tmp;
+		char ** mot_tmp = NULL;
 		if (tmp_syllables){
 			mot_tmp=split_syllables(tmp_syllables);
-			word_set_syllables(my_word, mot_tmp);
 		}
 
 		//phonetic syllables
 		char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
+		char** phon_sylls = NULL;
 		if (tmp_syllables_phon)
-			word_set_phonetics(my_word, split_syllables(tmp_syllables_phon));
+			phon_sylls = split_syllables(tmp_syllables_phon);
 
-		//fill hashmap
-		if (tmp_syllables && tmp_syllables_phon) {
-
+		// fill hashmap and some trees
+		if (tmp_word && tmp_phon && tmp_syllables && tmp_syllables_phon) {
 			int index_syll=0;
 			int index_phon=0;
 
-			while (my_word->syllables[index_syll]){
+			while (mot_tmp[index_syll]){
 				index_syll++;
 			}
-			while (my_word->phonetics[index_phon]){
+			while (phon_sylls[index_phon]){
 				index_phon++;
 			}
 			
 			if(index_syll==index_phon){
 
-				fill_tree(phonetic, my_word, *root);
+				fill_tree(phonetic, word, *root);
 				int k=0;
 				while (mot_tmp[k]){
-					fill_tree(mot_tmp[k], my_word, *root_syll);
+					fill_tree(mot_tmp[k], word, *root_syll);
 					k++;
 				}
 
 				int tmp_index = 0;
-				while (my_word->syllables[tmp_index]) {
+				while (tmp_index < index_syll) {
 					hashmap_set(*map_syl_phon,
-							my_word->syllables[tmp_index],
-							my_word->phonetics[tmp_index]);
+							mot_tmp[tmp_index],
+							phon_sylls[tmp_index]);
 					tmp_index++;
 				}
 			}
-
-		}
-
-		// word insertion into table
-		if (tmp_word && tmp_phon && tmp_syllables && tmp_syllables_phon) {
-			words[counter] = my_word;
-			counter++;
 		} else {
 			// free everything
 			int i;
 			if (tmp_syllables_phon) {
 				i=0;
-				while (my_word->phonetics[i]) {
-					free(my_word->phonetics[i]);
+				while (phon_sylls[i]) {
+					free(phon_sylls[i]);
 					i++;
 				}
-				free(my_word->phonetics);
+				free(phon_sylls);
 			}
 			if (tmp_syllables) {
 				i=0;
-				while (my_word->syllables[i]) {
-					free(my_word->syllables[i]);
+				while (mot_tmp[i]) {
+					free(mot_tmp[i]);
 					i++;
 				}
-				free(my_word->syllables);
+				free(mot_tmp);
 			}
 			if (tmp_phon) {
 				// freeing the stuff in the tree is too complex
 			}
 			if (tmp_word) {
-				free(my_word->string);
+				free(word);
 			}
-			free(my_word);
 		}
 		line = strtok_r(NULL, "\n", &file_pointer);
 	}
 	tree_lock(*root);
 	tree_lock(*root_syll);
-	words[counter] = NULL;
-	words = realloc(words, sizeof(Word) * (counter+1));
-	return words;
 }
 

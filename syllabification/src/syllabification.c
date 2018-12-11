@@ -126,7 +126,7 @@ void recursive(Tree* node, Tree* syll_tree, char* word, int index) {
 		return;
 	}
 
-	if(((char_word*)tree_get_node(child))->myWord){
+	if(((char_word*)tree_get_node(child))->string){
 		StringBool* sb = malloc(sizeof(StringBool));
 
 		sb->string = malloc(sizeof(char)*index+2);

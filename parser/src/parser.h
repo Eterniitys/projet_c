@@ -5,7 +5,7 @@
 #include <word.h>
 #include <hash.h>
 
-extern Word** parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon);
+extern void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon);
 
 #endif /* _PARSER_H_ */
 

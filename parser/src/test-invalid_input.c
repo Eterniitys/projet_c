@@ -18,10 +18,9 @@ int main (void){
 	Tree * root_syll;
 	Hashmap * map;
 
-	Word** tab=parser_read("../src/invalid.csv", &root, &root_syll, &map);
+	parser_read("../src/invalid.csv", &root, &root_syll, &map);
 
-	int index = 0;
-	assert(strcmp(word_get_string(tab[index]),"a\0") == 0);
+	//TODO
 
 	return(EXIT_SUCCESS);
 }
