@@ -117,29 +117,29 @@ int main (void){
 	assert(strcmp(hash,"pE")==0);
 
 	// TreeSyll test
-	char ** mySyllables= malloc (190);
-	char ** syll_valid= malloc (180);
-	int * count_syll=malloc(sizeof(int)*18);
-	for (int i=0;i<19;i++){
+	char ** mySyllables= malloc (180);
+	char ** syll_valid= malloc (170);
+	int * count_syll=malloc(sizeof(int)*17);
+	for (int i=0;i<18;i++){
 		mySyllables[i]=malloc(10);
 	}
-	for (int i=0;i<18;i++){
+	for (int i=0;i<17;i++){
 		syll_valid[i]=malloc(10);
 	}
-//superstiteuse	sypERstisj2z	su-per-s-ti-tieu-se	sy-pER-sti-sj2z
+	
+	//superstiteuse	sypERstisj2z	su-per-s-ti-tieu-se	sy-pER-sti-sj2z
 	tabSyll(root_syll,mySyllables,syll_valid,count_syll);
 
-	int tabInt[]={2,1,2,1,2,1,1,1,1,1,1,2,1,1,1,1,1,0};
-	char* tabSyll[]={"a","anti","ca","con","la","lai","le","li","lia","ment","nnel","pel","sti","t","tio","tu","zte","s"};
+	int tabInt[]={2,1,2,1,2,1,1,1,1,1,1,2,1,1,1,1,1};
+	char* tabSyll[]={"a","anti","ca","con","la","lai","le","li","lia","ment","nnel","pel","sti","t","tio","tu","zte"};
 
-	for (int i=0;i<18;i++){
-		//assert(strcmp(syll_valid[i],tabSyll[i])==0);
-		//assert(count_syll[i]==tabInt[i]);
-		printf("%d : %s\n",count_syll[i],tabSyll[i]);
+	for (int i=0;i<17;i++){
+		assert(strcmp(syll_valid[i],tabSyll[i])==0);
+		assert(count_syll[i]==tabInt[i]);
 	}
 
 	// tree phon test
-	/*char ** myPhons= malloc (140);
+	char ** myPhons= malloc (140);
 	char ** phon_valid= malloc (140);
 	for (int i=0;i<5;i++){
 		myPhons[i]=malloc(10);
@@ -155,7 +155,7 @@ int main (void){
 	
 	for (int i=0;i<4;i++){
 		assert(strcmp(phon_valid[i],tabPhon[i])==0);
-	}*/
+	}
 
 	return(EXIT_SUCCESS);
 }
