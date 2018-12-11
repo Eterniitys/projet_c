@@ -13,7 +13,7 @@ void print_tree(Tree* node, int level) {
 	if (struc) {
 		for (int i = 0; i < level; i++)
 			fprintf(stderr, "|  ", NULL);
-		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).myWord == NULL ? "" : "->");
+		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).string == NULL ? "" : "->");
 	}
 	for (int i = 0; i < tree_child_count(node); i++) {
 		print_tree(tree_get_child(node, i), level+1);
@@ -29,7 +29,7 @@ Tree*coursePhon(Tree*tree, char phon)
           //structure pour utiliser "phon" et le "tree_find_child()"
           char_word* structure=malloc(sizeof(char_word));
           structure->character=phon;
-          structure->myWord=NULL;
+          structure->string=NULL;
           Tree * phonetic = tree_new(structure,NULL);
 
         //on recupere le noeud avec la phonétique correspondante.
@@ -39,46 +39,50 @@ Tree*coursePhon(Tree*tree, char phon)
 }
 
 
-
-
-
-/*char **parcours(Tree*tree, char phon)
+List* arbreEnList(Tree* tree,List* list,char* word,int threshold)
 {
-  //List* list = list_new(NULL);
+        //condition de fin du mot
+        if(word[0]=='\0')
+        {
+                return list;
+        }
+        //trouver le caractère
+        char_word structure={0};
+        (&structure)->character=word[0];
+        Tree phonetic = {0};
+        (&phonetic)->_struc = &structure;
+        Tree* noeud= (Tree*)tree_find_child(tree,&phonetic);
+        //si on trouve le caractère
+        if(noeud!=NULL)
+        {
+                threshold++;
+                if(threshold>=3)
+                {
+                        //on veut parcourir tout l'arbre et recuperer chaque mots
+                        for (int i = 0; i < tree_child_count(tree); i++)
+                        {
+                                Tree* enfant=tree_get_child(tree,i);
+                                //on recupère le pointeur
+                                char_word* mot=(char_word*)tree_get_node(enfant);
+                                //on test le pointeur si il est pas NULL on ajoute le mot a la liste
+                                if(mot && mot->string)
+                                {
+                                        //si le compteur est = ou supèrieur a 3 on ajoute le mot a la liste
+                                                list_add(list,mot->string);
+                                }
+                        }
+                }
+                else
+                {
+                        arbreEnList(noeud,list,word+1,threshold);
+                }
+        }
 
-  //structure pour utiliser "phon" et le "tree_find_child()"
-  char_word* structure=malloc(sizeof(char_word));
-  structure->character=phon;
-  structure->myWord=NULL;
-  Tree phonetic;
-(&phonetic)->_struc=structure;
-
-//recuperer le noeud avec toutes les correspondances
-  noeud=(Tree*)tree_find_child(tree,phonetic);
-  //si le caractère du noeud est egale au denier caractère de notre mot
-  if(noeud==phon)
-  {
-    //creation d'un arbre avec pour noeud phon et pour enfant les mots recupere de noeud
-        Tree arbre=tree_new(noeud,//enfants);
-
-  }
-    else
-  {
-    for (int i = 0; i < tree_count_children(noeud); i++)
-    {
-      Tree* enfant=tree_get_child(noeud,i);
-      char mot=tree_get_node(enfant);
-      if(mot!=NULL)
-      {
-        list_add(list,mot);
-      }
-      //parcours(enfant,,w)
-    }
-  }
-
-    return NULL;
+        return list;
 }
 
+/*
+//######################################
 //savoir si le cactère phonetique est une voyelle
 bool isVowel(char**phon)
 {

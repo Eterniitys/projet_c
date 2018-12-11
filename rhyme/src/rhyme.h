@@ -8,4 +8,6 @@
 extern void print_tree(Tree* node, int level) ;
 //extern bool isVowel(char**phon);
 extern Tree*coursePhon(Tree*tree, char phon);
+
+extern List* arbreEnList(Tree* tree,List* list,char* word,int threshold);
 #endif /* _RIME_H_ */

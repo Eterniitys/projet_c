@@ -60,10 +60,32 @@ if(PARSER_LIB)
 endif(PARSER_LIB)
 
 ########
+
+########
+find_file(LIST_H "list.h")
+
+if(LIST_H)
+	# Calcul du dossier
+	get_filename_component(LIST_INCLUDE_DIR ${LIST_H} DIRECTORY)
+	# Ajout du dossier pour la recherche des fichiers entre chevrons
+	include_directories("${LIST_INCLUDE_DIR}")
+endif(LIST_H)
+
+find_library(LIST_LIB parser)
+
+if(LIST_LIB)
+	# Calcul du dossier
+	get_filename_component(LIST_INCLUDE_DIR ${PARSER_LIB} DIRECTORY)
+	# Ajout du dossier pour la recherche des librairies
+	link_directories("${LIST_INCLUDE_DIR}")
+endif(LIST_LIB)
+
+########
+
 #ajout de la librairie tree
-add_library(rhyme SHARED rhyme.c rhyme.h)
+add_library(rhyme SHARED rhyme.c rhyme.h )
 #la librairie tree utilise la librairie list
-target_link_libraries(rhyme tree parser)
+target_link_libraries(rhyme tree parser list)
 
 
 
