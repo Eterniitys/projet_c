@@ -38,19 +38,15 @@ int main(void){
 	}
 	//ref is a reference pointer with the sought value and content
 	int *ref = (int*)tree_get_node(tree_get_child(root,5));//6th value
-	//val is the sought content with wrong adress
-	Tree* val = tree_new(ref,NULL);
 	//fin have to be egals to ref
-	int *fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
+	int *fin= (int*)((Tree*)tree_find_child(root,ref))->_struc;
 	
 	assert(ref == fin && *ref == *fin);
 	
 	//new value then lock
 	ref = (int*)tree_get_node(tree_get_child(root,23));
-	tree_destroy(val);
-	val = tree_new(ref,NULL);
 	tree_lock(root);
-	fin= (int*)((Tree*)tree_find_child(root,val))->_struc;
+	fin= (int*)((Tree*)tree_find_child(root,ref))->_struc;
 	
 	assert(ref == fin && *ref == *fin);
 	
@@ -58,7 +54,6 @@ int main(void){
 	for (int i=0;i<50;i++){
 		free(tree_get_node(tree_get_child(root,i)));
 	}
-	tree_destroy(val);
 	tree_destroy(root);
 	
 

@@ -122,8 +122,10 @@ void tree_unlock(Tree *tree){
  * Call list_find on tree->_children
  * Seeking *child in list
  */
-void * tree_find_child(Tree *tree,void *child){
-	return list_find(tree->_children,child);
+Tree* tree_find_child(Tree *tree,void *child){
+	Tree temp = {0};
+	(&temp)->_struc = child;
+	return (Tree*)list_find(tree->_children, &temp);
 }
 
 int tree_get_depth(Tree *tree){

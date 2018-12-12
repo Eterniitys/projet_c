@@ -118,8 +118,7 @@ void recursive(Tree* node, Tree* syll_tree, char* word, int index) {
 
 	char_word newWord;
 	newWord.character = word[index];
-	Tree* newTree = tree_new(&newWord, NULL);
-	Tree* child = tree_find_child(syll_tree, newTree);
+	Tree* child = tree_find_child(syll_tree, &newWord);
 
 	if (!child) {
 		//fprintf(stderr, "pas d'enfants pour %s\n", word+index);

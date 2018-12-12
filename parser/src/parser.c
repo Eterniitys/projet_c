@@ -36,16 +36,16 @@ int compare_tree_wordchar (void * node1,void * node2){
  */
 void fill_tree (char* mot, char* string, Tree * node){
 
-	char_word *structure=malloc(sizeof(char_word));
+	char_word* structure=malloc(sizeof(char_word));
 	structure->character=mot[0];
 	structure->string=NULL;
 	structure->counter_syll=0;
 
+	Tree* child = tree_find_child(node, structure);
 
-	Tree tmpTree;
-	(&tmpTree)->_struc=structure;
-
-	Tree* child = tree_find_child(node, &tmpTree);
+	if (child) {
+		free(structure);
+	}
 
 	if (!child) {
 		child = tree_new(structure, compare_tree_wordchar);
@@ -53,8 +53,6 @@ void fill_tree (char* mot, char* string, Tree * node){
 		if (mot[1]=='\0'){
 			structure->counter_syll=1;	
 		}
-
-
 	}
 	else if(mot[1]=='\0'){
 		((char_word*)tree_get_node(child))->counter_syll++;

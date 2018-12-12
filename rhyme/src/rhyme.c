@@ -4,7 +4,7 @@
 
 #include <tree.h>
 #include <word.h>
-#include <parser.h>
+//#include <parser.h>
 #include <string.h>
 #include <list.h>
 
@@ -29,14 +29,11 @@ void print_tree(Tree* node, int level) {
 Tree*coursePhon(Tree*tree, char phon)
 {
           //structure pour utiliser "phon" et le "tree_find_child()"
-          char_word* structure=malloc(sizeof(char_word));
-          structure->character=phon;
-          structure->string=NULL;
-          Tree * phonetic = tree_new(structure,NULL);
+          char_word structure={0};
+          (&structure)->character=phon;
 
         //on recupere le noeud avec la phonétique correspondante.
-        //tree_unlock(tree); //TODO
-        Tree* noeud= (Tree*)tree_find_child(tree,phonetic);
+        Tree* noeud= tree_find_child(tree, &structure);
         return noeud;
 }
 
@@ -70,9 +67,7 @@ List* finalList(Tree* tree,List* list,char* word,int cpt,int threshold)
         //trouver le caractère
         char_word structure={0};
         (&structure)->character=word[0];
-        Tree phonetic = {0};
-        (&phonetic)->_struc = &structure;
-        Tree* noeud= (Tree*)tree_find_child(tree,&phonetic);
+        Tree* noeud= tree_find_child(tree, &structure);
         //si on trouve le caractère
         if(noeud!=NULL)
         {

@@ -43,7 +43,7 @@ char** tabSyll(Tree* root_syll,char ** mySyllables,char ** syll_valid,int * coun
 		if (tree_get_node(root_syll)==NULL){
 			cmtp=0;
 		}	
-		tabSyll(tree_get_child(root_syll,i),mySyllables,syll_valid,count_syll); 
+		tabSyll(tree_get_child(root_syll,i),mySyllables,syll_valid,count_syll);
 	}
 	cmtp--;
 
@@ -78,7 +78,7 @@ char** tabPhon(Tree *root,char ** myPhons,char ** phon_valid){
 		if (tree_get_node(root)==NULL){
 			cmtp=0;
 		}	
-		tabPhon(tree_get_child(root,i),myPhons,phon_valid); 
+		tabPhon(tree_get_child(root,i),myPhons,phon_valid);
 	}
 	cmtp--;
 	if (tree_child_count(root)==0){
@@ -151,7 +151,7 @@ int main (void){
 	tabPhon(root,myPhons,phon_valid);
 	
 	
-	char* tabPhon[]={"alEpaka","iaLalEpaka","tnemeLennOitUtiTsnociTna","tSetZ"};
+	char* tabPhon[]={"alEpaka","iaLalEpaka","tSetZ","tnemeLennOitUtiTsnociTna"};
 	
 	for (int i=0;i<4;i++){
 		assert(strcmp(phon_valid[i],tabPhon[i])==0);
@@ -159,11 +159,4 @@ int main (void){
 
 	return(EXIT_SUCCESS);
 }
-
-
-
-
-
-
-
 
