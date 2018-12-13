@@ -34,10 +34,10 @@ int compare_tree_wordchar (void * node1,void * node2){
  *
  * \return void - fill the tree
  */
-void fill_tree (char* word, char* string, Tree * node){
+void fill_tree (const char* mot, char* string, Tree * node){
 
 	char_word* structure=malloc(sizeof(char_word));
-	structure->character=word[0];
+	structure->character=mot[0];
 	structure->string=NULL;
 	structure->counter_syll=0;
 
@@ -50,18 +50,18 @@ void fill_tree (char* word, char* string, Tree * node){
 	if (!child) {
 		child = tree_new(structure, compare_tree_wordchar);
 		tree_add_child(node, child);
-		if (word[1]=='\0'){
+		if (mot[1]=='\0'){
 			structure->counter_syll=1;	
 		}
 	}
-	else if(word[1]=='\0'){
+	else if(mot[1]=='\0'){
 		((char_word*)tree_get_node(child))->counter_syll++;
 	}
 
-	if (word[1]=='\0') {
+	if (mot[1]=='\0') {
 		((char_word*)tree_get_node(child))->string=string;		
 	} else {
-		fill_tree(word + 1, string, child);
+		fill_tree(mot + 1, string, child);
 	}
 }
 
