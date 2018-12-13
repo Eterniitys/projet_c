@@ -1,5 +1,11 @@
 # Symphonie
 
+Requirements:
+```bash
+# Archlinux
+pacman -S valgrind flawfinder
+```
+
 How to compile:
 ```bash
 mkdir build

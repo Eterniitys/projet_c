@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 3.5)
 project (Symphonie C)
 
+find_package(FlawFinder)
+enable_flaw_finder()
+
 set (CMAKE_C_FLAGS "-rdynamic")
 set(DIR hash list tree word parser rhyme syllabification phonetics)
 set(LIBS hash list tree parser rhyme syllabification phonetics)
