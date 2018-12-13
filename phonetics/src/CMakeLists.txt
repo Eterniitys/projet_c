@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
+find_package(Valgrind)
 
 project(phonetics C)
 
@@ -80,5 +81,5 @@ enable_testing()
 add_executable(test-phonetics test-phonetics.c)
 add_dependencies(test-phonetics phonetics)
 target_link_libraries(test-phonetics phonetics parser)
-add_test(test-phonetics ./test-phonetics)
+valgrind_test(test-phonetics ./test-phonetics)
 

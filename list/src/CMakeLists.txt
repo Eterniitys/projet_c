@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-
+find_package(Valgrind)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
 
 project(List C)
@@ -49,7 +49,8 @@ foreach(name IN ITEMS list lock find lock_qs qs remove add_locked remove_locked)
 	add_executable("test-${name}" "test-${name}.c")
 	add_dependencies("test-${name}" list)
 	target_link_libraries("test-${name}" list)
-	add_test("test-${name}" "./test-${name}")
-	add_test("test-${name}-valgrind" "/usr/bin/valgrind" "--error-exitcode=42" "--leak-check=full" "./test-${name}")
+	valgrind_test("test-${name}" "./test-${name}")
+	#add_test("test-${name}" "./test-${name}")
+	#add_test("test-${name}-valgrind" "/usr/bin/valgrind" "--error-exitcode=42" "--leak-check=full" "./test-${name}")
 endforeach(name)
 

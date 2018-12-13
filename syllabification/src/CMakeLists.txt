@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
+find_package(Valgrind)
 
 project(syllabification C)
 
@@ -54,5 +55,5 @@ enable_testing()
 add_executable(test-syllabification test-syllabification.c)
 add_dependencies(test-syllabification syllabification)
 target_link_libraries(test-syllabification syllabification parser)
-add_test(test-syllabification ./test-syllabification)
+valgrind_test(test-syllabification ./test-syllabification)
 

@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
+find_package(Valgrind)
 
 project(parser C)
 
@@ -70,12 +71,12 @@ install(
 add_executable(test-parser test-parser.c)
 add_dependencies(test-parser parser)
 target_link_libraries(test-parser parser)
-add_test(test-parser ./test-parser)
+valgrind_test(test-parser ./test-parser)
 
 add_executable(test-invalid_input test-invalid_input.c)
 add_dependencies(test-invalid_input parser)
 target_link_libraries(test-invalid_input parser)
-add_test(test-invalid_input ./test-invalid_input)
+valgrind_test(test-invalid_input ./test-invalid_input)
 
 #Allowed tests
 enable_testing()

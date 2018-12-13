@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
+find_package(Valgrind)
 
 project(hash C)
 
@@ -37,7 +38,7 @@ foreach (dir_name IN ITEMS hash hashmap_new hashmap_set hashmap_get)
 	add_executable(test-${dir_name} test-${dir_name}.c)
 	add_dependencies(test-${dir_name} hash)
 	target_link_libraries(test-${dir_name} hash)
-	add_test(test-${dir_name} ./test-${dir_name})
+	valgrind_test(test-${dir_name} ./test-${dir_name})
 endforeach(dir_name)
 #Autorisation tests
 enable_testing()

@@ -18,7 +18,7 @@ for dir in "${directories[@]}"; do
 	mkdir "$dir"/build
 	echo -e "\e[36mGénération fichiers build pour \e[33;1m$dir\e[0m"
 	cd "$dir"/build/
-	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/tmp ../src
+	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/tmp -DCMAKE_MODULE_PATH=../../cmake -DUSE_VALGRIND=1 ../src
 	message_erreur $?
 	echo -e "\e[36mGénération de la \e[33;1;4mlib$dir.so\e[0m"
 	make
