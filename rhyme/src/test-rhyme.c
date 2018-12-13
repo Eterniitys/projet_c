@@ -17,19 +17,26 @@ Hashmap* hash= NULL;
 parser_read("../../Lexique382.csv",&root,&root2,&hash);
 
 
-Tree* noeud = coursePhon(root,'l');
-//afficher l'abre
-//print_tree(noeud,0);
-printf("caracsuiv:%c\n",((char_word*)tree_get_node(noeud))->character);
-List* list = list_new(NULL);
-List*liste1= finalList(root,list,"lORtep",0,3);
+char* para=malloc(sizeof(char)*7);
+strcpy(para,"amÂ§");
+reverse_string(para);
+char* para2="§Â";
+//printf("%c\n",para2[4] );
+//tree_unlock(root);
+//print_tree(tree_find_child(tree_find_child(tree_find_child(root,&para2[1]),&para2[0]),&para2[3]),0);
+
+List* list = list_new(&compare);
+List*liste1= finalList(root,list,para,0,2);
+printf("%i\n",list_count(liste1));
+//liste coupé
+liste1=cutList(liste1);
 //afficher la liste
 for(int i=0 ; i < list_count(liste1) ; i++)
 {
-        printf("%s\n",(char*)list_get(liste1,i));
+        printf("%d :\t%s\t\t",i+1,((Word*)list_get(liste1,i))->_pronunc);
+        printf("%s\n",((Word*)list_get(liste1,i))->_word);
 }
-//nombre de mot dans la liste
-printf("%i\n",list_count(liste1));
+
 
 
   return (EXIT_SUCCESS);
