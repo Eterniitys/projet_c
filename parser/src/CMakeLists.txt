@@ -68,10 +68,10 @@ install(
 	)
 
 # Creation of executable
-add_executable(test-parser test-parser.c)
-add_dependencies(test-parser parser)
-target_link_libraries(test-parser parser)
-valgrind_test(test-parser ./test-parser)
+add_executable(test-tree_syll test-tree_syll.c)
+add_dependencies(test-tree_syll parser)
+target_link_libraries(test-tree_syll parser)
+valgrind_test(test-tree_syll ./test-tree_syll)
 
 add_executable(test-invalid_input test-invalid_input.c)
 add_dependencies(test-invalid_input parser)

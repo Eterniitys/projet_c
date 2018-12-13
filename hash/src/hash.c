@@ -132,15 +132,20 @@ void hashmap_set(Hashmap* map, char* key, void* value){
  */
 void* hashmap_get(Hashmap* map, char* key){
 	int nbTable = 0;
-	while (nbTable<map->_table_count){
-		if (strcmp(map->_tables[nbTable][hash(key)]._key,key)==0){
-			return map->_tables[nbTable][hash(key)]._value;
-		}else if (strcmp(map->_tables[nbTable][(hash(key)+1)%256]._key,key)==0){
-			return map->_tables[nbTable][(hash(key)+1)%256]._value;
-		}else{
-			nbTable++;
+	if(map && key){
+		while (nbTable < map->_table_count){
+				if (map->_tables[nbTable][hash(key)]._key != NULL
+					&& strcmp(map->_tables[nbTable][hash(key)]._key,key)==0){
+					return map->_tables[nbTable][hash(key)]._value;
+				}else if (map->_tables[nbTable][(hash(key)+1)%256]._key != NULL
+						&& strcmp(map->_tables[nbTable][(hash(key)+1)%256]._key,key)==0){
+					return map->_tables[nbTable][(hash(key)+1)%256]._value;
+				}else{
+					nbTable++;
+				}
 		}
 	}
+	return NULL;
 }
 
 /**

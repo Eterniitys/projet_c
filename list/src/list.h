@@ -21,6 +21,13 @@ struct _List {
 	void** _data;
 };
 
+typedef struct _ScoreSyllPhon ScoreSyllPhon;
+struct _ScoreSyllPhon {
+	char * syllPhon;
+	int score;
+};
+
+
 extern void* list_get(List* list, int index);
 
 extern List* list_add(List* list, void* pointer);
