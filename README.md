@@ -1,4 +1,17 @@
-# projet_c 2018-2019 -- semestre 3
+# Symphonie
+
+How to compile:
+```bash
+mkdir build
+cd build
+cmake -DCMAKE_MODULE_PATH="$(pwd)/../cmake/" -DUSE_VALGRIND=1 ..
+make
+```
+
+How to run:
+```bash
+./symphonie
+```
 
 Le but du projet est de produire un logiciel capable de :
 — donner les mots rimant avec un mot (en les classant par ordre de richesse de rimes) ; — produire un système de phonétisation d’un nouveau mot.
