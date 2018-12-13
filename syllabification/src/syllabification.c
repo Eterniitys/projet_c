@@ -33,11 +33,11 @@ bool valid_inside(Tree* root){
 	return valid;
 }
 
-Tree* clean_invalide(Tree* root){
+Tree* clean_invalid(Tree* root){
 	int i = 0 ;
 	while ( i< tree_child_count(root)) {
 		if (valid_inside(tree_get_child(root, i))) {
-			clean_invalide(tree_get_child(root, i));
+			clean_invalid(tree_get_child(root, i));
 			i++ ;
 		}else{
 			tree_remove_child(root, i);
@@ -68,7 +68,7 @@ int score_tree(Tree* root){
 }
 
 char** get_better_match(Tree* root){
-	clean_invalide(root);
+	clean_invalid(root);
 	score_tree(root);
 	int depth = tree_get_depth(root)-1;
 	char** output = malloc(sizeof(char*)*(depth+1));

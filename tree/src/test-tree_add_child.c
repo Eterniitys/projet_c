@@ -14,7 +14,7 @@
 #include "tree.h"
 
 /**
- * Function to compare int (local)
+ * Fonection to compare int (local)
  */
 int compare_int (void * nb1,void * nb2){
 	return *(int*)nb1-*(int*)nb2;
@@ -22,32 +22,32 @@ int compare_int (void * nb1,void * nb2){
 
 int main(void){
 
-	int * un   = malloc(sizeof(int)); *un   = 1 ;
-	int * deux = malloc(sizeof(int)); *deux = 2 ;
-	int * tro  = malloc(sizeof(int)); *tro  = 3 ;
-	int * qua  = malloc(sizeof(int)); *qua  = 4 ;
+	int * one   = malloc(sizeof(int)); *one   = 1 ;
+	int * two = malloc(sizeof(int)); *two = 2 ;
+	int * three  = malloc(sizeof(int)); *three  = 3 ;
+	int * four  = malloc(sizeof(int)); *four  = 4 ;
 
 
 
-	Tree *root = tree_new(un,compare_int);
-	Tree *t2 = tree_new(deux,NULL);
-	Tree *t3 = tree_new(tro,NULL);
-	Tree *t4 = tree_new(qua,NULL);
+	Tree *root = tree_new(one,compare_int);
+	Tree *t2 = tree_new(two,NULL);
+	Tree *t3 = tree_new(three,NULL);
+	Tree *t4 = tree_new(four,NULL);
 
 	tree_add_child(root,t2);
 	tree_add_child(t2,t3);
 	tree_add_child(t2,t4);
 
-	assert(root->_struc==un);
-	assert(t2->_struc==deux);
-	assert(t3->_struc==tro);
-	assert(t4->_struc==qua);
+	assert(root->_struc==one);
+	assert(t2->_struc==two);
+	assert(t3->_struc==three);
+	assert(t4->_struc==four);
 	
 	assert(list_get(root->_children,0)==t2);
 	assert(list_get(t2->_children,0)==t3);
 	assert(list_get(t2->_children,1)==t4);
 
-	free(un);free(deux);free(tro);free(qua);
+	free(one);free(two);free(three);free(four);
 	tree_destroy(root);
 
 	return 0;

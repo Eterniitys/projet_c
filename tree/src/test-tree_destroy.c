@@ -18,23 +18,23 @@ int compare_int (void * nb1,void * nb2){
 
 int main(void){
 
-	int * un   = malloc(sizeof(int)); *un   = 1 ;
-	int * deux = malloc(sizeof(int)); *deux = 2 ;
+	int * one   = malloc(sizeof(int)); *one   = 1 ;
+	int * two = malloc(sizeof(int)); *two = 2 ;
 
 
-	Tree *root1 = tree_new(un,NULL);	
-	Tree *root2 = tree_new(deux,compare_int);
+	Tree *root1 = tree_new(one,NULL);	
+	Tree *root2 = tree_new(two,compare_int);
 	
 	tree_destroy (root1);	
 	tree_destroy (root2);
 	
-	Tree *root3 = tree_new(un,NULL);	
+	Tree *root3 = tree_new(one,NULL);	
 	Tree *root4 = tree_new(root3,compare_int);
 	
 	tree_destroy (root3);	
 	tree_destroy (root4);
 	
-	free(un);free(deux);
+	free(one);free(two);
 	
 	return 0;
 }

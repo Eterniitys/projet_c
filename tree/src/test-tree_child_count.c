@@ -21,24 +21,24 @@ int compare_int (void * nb1,void * nb2){
 
 int main(void){
 
-	int * un   = malloc(sizeof(int)); *un   = 1 ;
-	int * deux = malloc(sizeof(int)); *deux = 2 ;
-	int * tro  = malloc(sizeof(int)); *tro  = 3 ;
-	int * qua  = malloc(sizeof(int)); *qua  = 4 ;
-	int * cin  = malloc(sizeof(int)); *cin  = 5 ;
+	int * one   = malloc(sizeof(int)); *one   = 1 ;
+	int * two = malloc(sizeof(int)); *two = 2 ;
+	int * three  = malloc(sizeof(int)); *three  = 3 ;
+	int * four  = malloc(sizeof(int)); *four  = 4 ;
+	int * five  = malloc(sizeof(int)); *five  = 5 ;
 	int * six  = malloc(sizeof(int)); *six  = 6 ;
-	int * sept = malloc(sizeof(int)); *sept = 7 ;
+	int * seven = malloc(sizeof(int)); *seven = 7 ;
 	
 
 
 	Tree *root = tree_new(NULL,compare_int);
-	Tree *t1 = tree_new(un,compare_int);
-	Tree *t2 = tree_new(deux,compare_int);
-	Tree *t3 = tree_new(tro,compare_int);
-	Tree *t4 = tree_new(qua,compare_int);
-	Tree *t5 = tree_new(cin,compare_int);
+	Tree *t1 = tree_new(one,compare_int);
+	Tree *t2 = tree_new(two,compare_int);
+	Tree *t3 = tree_new(three,compare_int);
+	Tree *t4 = tree_new(four,compare_int);
+	Tree *t5 = tree_new(five,compare_int);
 	Tree *t6 = tree_new(six,compare_int);
-	Tree *t7 = tree_new(sept,compare_int);
+	Tree *t7 = tree_new(seven,compare_int);
 
 	tree_add_child(root,t1);//root-1
 	tree_add_child(t1,t2);//root-1-2
@@ -57,7 +57,7 @@ int main(void){
 	assert(tree_child_count(t6)==0);//6
 	assert(tree_child_count(t7)==0);//7
 	
-	free(un);free(deux);free(tro);free(qua);free(cin);free(six);free(sept);
+	free(one);free(two);free(three);free(four);free(five);free(six);free(seven);
 	tree_destroy(root);
 
 	return 0;
