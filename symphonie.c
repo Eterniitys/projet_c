@@ -33,12 +33,12 @@ void insertChildren();
 
 int main(int argc, char *argv []) {
 
-	GtkWidget *fenetre_principale = NULL;
-	GtkWidget *fenetre_lancement = NULL;
+	GtkWindow *fenetre_principale = NULL;
+	GtkWindow *fenetre_lancement = NULL;
 	GError *error = NULL;
 	gchar *filename = NULL;
-	
-	
+
+
 	/* Initialisation de la bibliothèque Gtk. */
 	gtk_init(&argc, &argv);
 
@@ -64,14 +64,13 @@ int main(int argc, char *argv []) {
 	gtk_builder_connect_signals (data.builder, &data);
 
 	/* Récupération du pointeur de la fenêtre popup de chargement du logiciel */
-	fenetre_lancement = GTK_WIDGET(gtk_builder_get_object (data.builder, "StartWindow"));
+	fenetre_lancement = (GtkWindow*)GTK_WIDGET(gtk_builder_get_object (data.builder, "StartWindow"));
 
 	/* Affichage de la fenêtre popup de chargement du logiciel. */
-	gtk_widget_show_all(fenetre_lancement);
-	
+	gtk_widget_show_all((GtkWidget*)fenetre_lancement);
+
 	//Permet d'attendre que toutes les données soit chargés
 	while(gtk_events_pending()){gtk_main_iteration();}
-
 
 	parser_read("./Lexique382.csv", &root_phon, &root_syll, &map_syl_phon);
 
@@ -79,11 +78,11 @@ int main(int argc, char *argv []) {
 	gtk_window_close(fenetre_lancement);
 
 	/* Récupération du pointeur de la fenêtre principale */
-	fenetre_principale = GTK_WIDGET(gtk_builder_get_object (data.builder, "MainWindow"));
+	fenetre_principale = (GtkWindow*)GTK_WIDGET(gtk_builder_get_object (data.builder, "MainWindow"));
 
 
 	/* Affichage de la fenêtre principale. */
-	gtk_widget_show_all (fenetre_principale);
+	gtk_widget_show_all((GtkWidget*)fenetre_principale);
 
 	gtk_main();
 
@@ -126,15 +125,15 @@ void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data)
 
 void on___glade_unnamed_23_search_changed() {
 
-	GtkWidget *entry = NULL;
-	
+	GtkEntry *entry = NULL;
+
 	//On récupère le widget de la barre de rechercher
-	entry = GTK_WIDGET (gtk_builder_get_object (data.builder, "SearchEntry"));
-	
+	entry = (GtkEntry*)GTK_WIDGET (gtk_builder_get_object (data.builder, "SearchEntry"));
+
 	GtkEntryBuffer *buffer = gtk_entry_get_buffer (entry);
-	
+
 	//On récupère la chaîne de caractère tapée dans la barre de recherche 
-	char* mot = gtk_entry_buffer_get_text(buffer);
+	const char* mot = gtk_entry_buffer_get_text(buffer);
 
 	//On vide la flow_box pour pour pouvoir la remplire ensuite
 	deleteChildren();
@@ -142,7 +141,7 @@ void on___glade_unnamed_23_search_changed() {
 	//Si il y a au moins un caractère recherché dans la barre de recherche on exècute
 	if (mot[0] != '\0'){
 
-		char** syllables = syllabicate(root_syll, mot[0]);
+		char** syllables = syllabicate(root_syll, mot);
 
 		char ** phonetics = fill_phonetics(syllables,map_syl_phon);
 		char * string_phon = tab_to_string(phonetics);

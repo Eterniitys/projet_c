@@ -85,7 +85,7 @@ char** get_better_match(Tree* root){
 	return output;
 }
 
-char** syllabicate(Tree* syll_tree,char* word) {
+char** syllabicate(Tree* syll_tree, const char* word) {
 	char** output = malloc(sizeof(char*)*10);
 	int index = 0;
 	Tree* root = tree_new(NULL, NULL);
@@ -96,7 +96,7 @@ char** syllabicate(Tree* syll_tree,char* word) {
 
 
 
-void gen_syllables(Tree* root, Tree* syll_tree, char* word) {
+void gen_syllables(Tree* root, Tree* syll_tree, const char* word) {
 	//fprintf(stderr, "%s\n", word);
 	recursive(root, syll_tree, word, 0);
 	int i;
@@ -111,7 +111,7 @@ void gen_syllables(Tree* root, Tree* syll_tree, char* word) {
 	}
 }
 
-void recursive(Tree* node, Tree* syll_tree, char* word, int index) {
+void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
 	//fprintf(stderr, "\t%d-%c\n",index,word[index]);
 	if (word[index]=='\0')
 		return;

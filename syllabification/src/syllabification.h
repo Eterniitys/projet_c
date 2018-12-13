@@ -19,8 +19,8 @@ struct _StringBool {
 	int score;
 };
 
-extern char** syllabicate(Tree* syll_tree, char* word);
-void gen_syllables(Tree* node, Tree* syll_tree, char* word);
-void recursive(Tree* node, Tree* syll_tree, char* word, int index);
+extern char** syllabicate(Tree* syll_tree, const char* word);
+void gen_syllables(Tree* node, Tree* syll_tree, const char* word);
+void recursive(Tree* node, Tree* syll_tree, const char* word, int index);
 
 #endif /* _SYLLABIFICATION_H_ */
