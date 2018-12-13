@@ -167,7 +167,6 @@ int list_count(List* list) {
  */
 
 void _list_qs(List* list, int A, int B) {
-/*
 	fprintf(stderr, "QS list:\n");
 	int i;
 	for (i=0; i < list_count(list); i++) {
@@ -183,7 +182,7 @@ void _list_qs(List* list, int A, int B) {
 	}
 	fprintf(stderr,"B");
 	fprintf(stderr,"\n");
-*/
+
 	if (A>=B)
 		return;
 	int watchA = A;
@@ -191,6 +190,14 @@ void _list_qs(List* list, int A, int B) {
 	void* pivot = list->_data[(A + B) / 2];
 
 	while (watchA < watchB) {
+		int compA = list->_compare(list->_data[watchA], pivot);
+		int compB = list->_compare(list->_data[watchB], pivot);
+
+		if (compA==compB && compA == 0) {
+			watchA++;
+			watchB--;
+		}
+
 		while(list->_compare(list->_data[watchA], pivot) < 0 && watchA<watchB)
 			watchA++;
 		while(list->_compare(list->_data[watchB], pivot) > 0 && watchB>watchA)
