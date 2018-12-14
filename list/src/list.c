@@ -167,22 +167,6 @@ int list_count(List* list) {
  */
 
 void _list_qs(List* list, int A, int B) {
-	fprintf(stderr, "QS list:\n");
-	int i;
-	for (i=0; i < list_count(list); i++) {
-		fprintf(stderr, "%d\t", *(int*)list_get(list, i));
-	}
-	fprintf(stderr, "\n");
-	for (int i=0; i<A; i++) {
-		fprintf(stderr, "\t");
-	}
-	fprintf(stderr,"A");
-	for (int i=A; i<B; i++) {
-		fprintf(stderr, "\t");
-	}
-	fprintf(stderr,"B");
-	fprintf(stderr,"\n");
-
 	if (A>=B)
 		return;
 	int watchA = A;
