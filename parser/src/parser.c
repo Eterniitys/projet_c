@@ -42,7 +42,6 @@ int compare_score (void* score1, void* score2){
 }
 
 
-
 /**
  * \fn void fill_tree (char* word, char* string, Tree * node)
  *
@@ -144,14 +143,14 @@ char** split_syllables(char* word) {
 	return syllables;
 }
 
-void fill_hashmap(Hashmap** map, char** syllables, char** phon_sylls, int syll_count) {
+void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int syll_count) {
 	int index = 0;
-	while (syllables[index]) {					
+	while (syllables[index]) {
 		List* list_phon;
-		list_phon=(List*)hashmap_get(*map, syllables[index]);
+		list_phon=(List*)hashmap_get(map, syllables[index]);
 		if (!list_phon) {
 			list_phon = list_new(&compare_score);
-			hashmap_set(*map, syllables[index], list_phon);
+			hashmap_set(map, syllables[index], list_phon);
 		}
 
 		// Find phonetic in list
@@ -159,7 +158,7 @@ void fill_hashmap(Hashmap** map, char** syllables, char** phon_sylls, int syll_c
 		(&search_score)->score=0;
 		(&search_score)->syllPhon = phon_sylls[index];
 		ScoreSyllPhon* score = (ScoreSyllPhon*)list_find(list_phon, &search_score);
-		
+
 		if (!score) {
 			score = malloc(sizeof(ScoreSyllPhon));
 			list_add(list_phon, score);
@@ -167,10 +166,96 @@ void fill_hashmap(Hashmap** map, char** syllables, char** phon_sylls, int syll_c
 			score->score=0;
 			score->syllPhon=phon_sylls[index];
 		}
-		
 		score->score++;
-		
-	index++;
+		index++;
+	}
+}
+
+void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,
+		Tree* phon_tree) {
+	//initialisation
+	char* line_pointer = NULL;
+
+	//word
+	char* tmp_word = strtok_r(line, "\t", &line_pointer);
+	char* word = NULL;
+	if (tmp_word) {
+		word = malloc(sizeof(char)*(strlen(tmp_word)+1));
+		strcpy(word, tmp_word);
+	}
+
+	//phonetic
+	char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
+	char* phonetic = NULL;
+	if (tmp_phon) {
+		phonetic= malloc(strlen(tmp_phon)+1);
+		strcpy(phonetic, tmp_phon);
+		reverse_string(phonetic);
+	}
+
+	//syllables
+	char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
+	char ** word_tmp = NULL;
+	if (tmp_syllables){
+		word_tmp=split_syllables(tmp_syllables);
+	}
+
+	//phonetic syllables
+	char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
+	char** phon_sylls = NULL;
+	if (tmp_syllables_phon)
+		phon_sylls = split_syllables(tmp_syllables_phon);
+
+	// fill hashmap and some trees
+	if (tmp_word && tmp_phon && word_tmp && phon_sylls) {
+		// Check both tables have the same length, and save the count
+		int index_syll=0;
+		while (word_tmp[index_syll]){
+			index_syll++;
+		}
+		int syll_count=index_syll;
+		index_syll=0;
+		while (phon_sylls[index_syll]){
+			index_syll++;
+		}
+
+		// If both tables have same length
+		if(index_syll==syll_count){
+			// Fill trees
+			fill_tree(phonetic, word, phon_tree);
+			int k=0;
+			while (word_tmp[k]){
+				fill_tree(word_tmp[k], word, syll_tree);
+				k++;
+			}
+			// Fill hashmap
+			fill_hashmap(syll_phon_map, word_tmp, phon_sylls, syll_count);
+		}
+	} else {
+		// free everything
+		int i;
+		if (tmp_syllables_phon) {
+			i=0;
+			while (phon_sylls[i]) {
+				free(phon_sylls[i]);
+				i++;
+			}
+			free(phon_sylls);
+		}
+		if (tmp_syllables) {
+			i=0;
+			while (word_tmp[i]) {
+				free(word_tmp[i]);
+				i++;
+			}
+			free(word_tmp);
+		}
+		if (tmp_phon) {
+			free(phonetic);
+		}
+		if (tmp_word) {
+			free(word);
+		}
 	}
 }
 
@@ -202,97 +287,12 @@ void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_
 	char* file_pointer = NULL;
 	char* line = strtok_r(buffer, "\n", &file_pointer);
 
-
-		
-		
 	while(line){
-		//initialisation
-		char* line_pointer = NULL;
-
-		//word
-		char* tmp_word = strtok_r(line, "\t", &line_pointer);
-		char* word = NULL;
-		if (tmp_word) {
-			word = malloc(sizeof(char)*(strlen(tmp_word)+1));
-			strcpy(word, tmp_word);
-		}
-
-		//phonetic
-		char* tmp_phon = strtok_r(NULL, "\t", &line_pointer);
-		char* phonetic = NULL;
-		if (tmp_phon) {
-			phonetic= malloc(strlen(tmp_phon)+1);
-			strcpy(phonetic, tmp_phon);
-			reverse_string(phonetic);
-		}
-
-		//syllables
-		char* tmp_syllables = strtok_r(NULL, "\t", &line_pointer);
-		char ** word_tmp = NULL;
-		if (tmp_syllables){
-			word_tmp=split_syllables(tmp_syllables);
-		}
-
-		//phonetic syllables
-		char* tmp_syllables_phon = strtok_r(NULL, "\t", &line_pointer);
-		char** phon_sylls = NULL;
-		if (tmp_syllables_phon)
-			phon_sylls = split_syllables(tmp_syllables_phon);
-
-		// fill hashmap and some trees
-		if (tmp_word && tmp_phon && word_tmp && phon_sylls) {
-			// Check both tables have the same length, and save the count
-			int index_syll=0;
-			while (word_tmp[index_syll]){
-				index_syll++;
-			}
-			int syll_count=index_syll;
-			index_syll=0;
-			while (phon_sylls[index_syll]){
-				index_syll++;
-			}
-			
-			// If both tables have same length
-			if(index_syll==syll_count){
-				// Fill trees
-				fill_tree(phonetic, word, *root);
-				int k=0;
-				while (word_tmp[k]){
-					fill_tree(word_tmp[k], word, *root_syll);
-					k++;
-				}
-				// Fill hashmap
-				fill_hashmap(map_syl_phon, word_tmp, phon_sylls, syll_count);
-			}
-		} else {
-			// free everything
-			int i;
-			if (tmp_syllables_phon) {
-				i=0;
-				while (phon_sylls[i]) {
-					free(phon_sylls[i]);
-					i++;
-				}
-				free(phon_sylls);
-			}
-			if (tmp_syllables) {
-				i=0;
-				while (word_tmp[i]) {
-					free(word_tmp[i]);
-					i++;
-				}
-				free(word_tmp);
-			}
-			if (tmp_phon) {
-				// freeing the stuff in the tree is too complex
-			}
-			if (tmp_word) {
-				free(word);
-			}
-		}
+		parse_line(line, *map_syl_phon, *root_syll, *root);
 		line = strtok_r(NULL, "\n", &file_pointer);
 	}
 	tree_lock(*root);
 	tree_lock(*root_syll);
+	free(buffer);
 }
 
