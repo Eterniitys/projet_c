@@ -31,7 +31,7 @@ int main(void){
 	assert(list_is_locked(t2->_children)==false);
 	assert(list_is_locked(t3->_children)==false);
 
-	tree_destroy(root);
+	tree_destroy(root, NULL);
 	
 	return 0;
 }

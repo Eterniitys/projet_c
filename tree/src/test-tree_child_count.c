@@ -57,8 +57,7 @@ int main(void){
 	assert(tree_child_count(t6)==0);//6
 	assert(tree_child_count(t7)==0);//7
 	
-	free(one);free(two);free(three);free(four);free(five);free(six);free(seven);
-	tree_destroy(root);
+	tree_destroy(root, &free);
 
 	return 0;
 }

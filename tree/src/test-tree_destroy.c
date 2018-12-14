@@ -25,14 +25,14 @@ int main(void){
 	Tree *root1 = tree_new(one,NULL);	
 	Tree *root2 = tree_new(two,compare_int);
 	
-	tree_destroy (root1);	
-	tree_destroy (root2);
+	tree_destroy (root1, NULL);
+	tree_destroy (root2, NULL);
 	
 	Tree *root3 = tree_new(one,NULL);	
 	Tree *root4 = tree_new(root3,compare_int);
 	
-	tree_destroy (root3);	
-	tree_destroy (root4);
+	tree_destroy (root3, NULL);	
+	tree_destroy (root4, NULL);
 	
 	free(one);free(two);
 	

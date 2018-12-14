@@ -69,7 +69,7 @@ int main(void) {
 		list_lock(list);
 		assert(list_count(list) == datasets[i][0]);
 		assert(check_list_sorted(list));
-		list_destroy(list);
+		list_destroy(list, NULL);
 	}
 	return EXIT_SUCCESS;
 }

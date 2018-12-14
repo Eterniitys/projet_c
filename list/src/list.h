@@ -12,6 +12,7 @@
 
 typedef struct _List List;
 typedef int (*_compFunc)(void*, void*);
+typedef void (*_freeFunc)(void*);
 
 struct _List {
 	int _count;
@@ -44,9 +45,9 @@ extern void list_unlock(List* list);
 
 extern bool list_is_locked(List* list);
 
-extern void list_destroy(List* list);
+extern void list_destroy(List* list, _freeFunc free);
 
-extern List* list_new(_compFunc);
+extern List* list_new(_compFunc comp);
 
 #endif /* _LIST_H_ */
 

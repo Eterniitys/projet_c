@@ -11,17 +11,15 @@
 
 #include <list.h>
 
-typedef int (*_compare_funct)(void*,void*);
-
 typedef struct _Tree {
 	void * _struc;
 	List * _children;
-	_compare_funct _funct;
+	_compFunc _funct;
 } Tree;
 
-extern Tree * tree_new(void *struc,_compare_funct funct);
+extern Tree * tree_new(void *struc, _compFunc funct);
 
-extern void tree_destroy(Tree * tree);
+extern void tree_destroy(Tree * tree, _freeFunc free);
 
 extern void * tree_get_node(Tree *root);
 

@@ -41,8 +41,7 @@ int main(void){
 	assert(tree_get_child(tree_get_child(root,0),0)->_struc==three);
 	assert(tree_get_child(tree_get_child(root,0),1)->_struc==four);
 
-	free(one);free(two);free(three);free(four);
-	tree_destroy(root);
+	tree_destroy(root, &free);
 
 	return 0;
 }

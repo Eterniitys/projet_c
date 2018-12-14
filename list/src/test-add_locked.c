@@ -70,7 +70,7 @@ int main(void) {
 		assert(check_list_sorted(list));
 		list_add(list, &to_add);
 		assert(check_list_sorted(list));
-		list_destroy(list);
+		list_destroy(list, NULL);
 	}
 	return EXIT_SUCCESS;
 }

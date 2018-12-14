@@ -247,12 +247,20 @@ bool list_is_locked(List* list) {
 }
 
 /**
- * \fn void list_destroy(List* list)
+ * \fn void list_destroy(List* list, _freeFunc elm_free)
  *
  * \return  - free the list
  */
 
-void list_destroy(List* list) {
+void list_destroy(List* list, _freeFunc elm_free) {
+	if (elm_free) {
+	int i;
+	for (i=0; i<list->_count; i++) {
+		elm_free(list->_data[i]);
+	}
+	} else {
+		fprintf(stderr, "WARN. List: destroying a list without freeing the elements");
+	}
 	free(list->_data);
 	free(list);
 }

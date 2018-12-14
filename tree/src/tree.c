@@ -30,7 +30,7 @@ void * tree_get_node(Tree *root){
  *
  * \return node - return a new pointer of tree.
  */
-Tree * tree_new(void *struc,_compare_funct funct){
+Tree * tree_new(void *struc, _compFunc funct){
 	Tree *node = malloc(sizeof(Tree));
 	node->_struc = struc;
 	node->_funct=funct;
@@ -43,11 +43,14 @@ Tree * tree_new(void *struc,_compare_funct funct){
  *
  * Allows Tree's structure freeing.
  */
-void tree_destroy(Tree * tree){
-	for (int i=0; i<tree_child_count(tree);i++){
-		tree_destroy(list_get(tree->_children, i));
+void tree_destroy(Tree * tree, _freeFunc node_free) {
+	for (int i=0; i<tree_child_count(tree);i++) {
+		tree_destroy(list_get(tree->_children, i), node_free);
 	}
-	list_destroy(tree->_children);
+	list_destroy(tree->_children, NULL);//TODO add noop free function
+	if (node_free) {
+		node_free(tree->_struc);
+	}
 	free(tree);
 }
 

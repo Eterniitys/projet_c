@@ -48,11 +48,7 @@ int main(void) {
 
 	// free memory
 	free(tofind);
-	for (i=0; i<n; i++) {
-		free(list_get(list, i));
-	}
-
-	list_destroy(list);
+	list_destroy(list, &free);
 	return EXIT_SUCCESS;
 }
 

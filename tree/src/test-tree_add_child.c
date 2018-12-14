@@ -47,8 +47,7 @@ int main(void){
 	assert(list_get(t2->_children,0)==t3);
 	assert(list_get(t2->_children,1)==t4);
 
-	free(one);free(two);free(three);free(four);
-	tree_destroy(root);
+	tree_destroy(root, &free);
 
 	return 0;
 }

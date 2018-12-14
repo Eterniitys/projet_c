@@ -33,7 +33,7 @@ int main(void) {
 
 	// free memory
 	free(val);
-	list_destroy(list);
+	list_destroy(list, NULL);
 	return EXIT_SUCCESS;
 }
 

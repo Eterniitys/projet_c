@@ -50,11 +50,7 @@ int main(void){
 	
 	assert(ref == fin && *ref == *fin);
 	
-	//freeing zone
-	for (int i=0;i<50;i++){
-		free(tree_get_node(tree_get_child(root,i)));
-	}
-	tree_destroy(root);
+	tree_destroy(root, &free);
 	
 
 	return 0;
