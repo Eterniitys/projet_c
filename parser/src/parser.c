@@ -264,25 +264,42 @@ int _compare_pointers(void* a, void* b) {
 
 List* _freed_strings = NULL;
 
+void _free_once_string(char* string) {
+	char* is_freed = (char*)list_find(_freed_strings, string);
+	if (is_freed == 0) {
+		list_add(_freed_strings, string);
+		free(string);
+	}
+}
+
 void _destroy_func(void* node) {
 	char_word* chwd = (char_word*)node;
 
 	if (chwd->string) {
-		char* is_freed = (char*)list_find(_freed_strings, chwd->string);
-		if (is_freed == 0) {
-			list_add(_freed_strings, chwd->string);
-			free(chwd->string);
-		}
+		_free_once_string(chwd->string);
 	}
 	free(chwd);
 }
 
+void _destroy_map_func(void* value) {
+	List* list = (List*)value;
+	for (int i=0; i<list_count(list); i++) {
+		ScoreSyllPhon* score = (ScoreSyllPhon*)list_get(list, i);
+		_free_once_string(score->syllPhon);
+	}
+	list_destroy(list, &free);
+}
+
 void _noop_free(void* a) {}
 
-void parser_destroy_tree(Tree* tree1, Tree* tree2) {
+void parser_destroy_generated_structures(Tree* tree1, Tree* tree2, Hashmap* map)
+		{
 	_freed_strings = list_new(&_compare_pointers);
+
 	tree_destroy(tree1, &_destroy_func);
 	tree_destroy(tree2, &_destroy_func);
+	hashmap_destroy(map, &_destroy_map_func);
+
 	list_destroy(_freed_strings, &_noop_free);
 	_freed_strings = NULL;
 }

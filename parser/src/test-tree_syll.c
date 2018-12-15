@@ -48,8 +48,7 @@ int main (void){
 	assert(is_syll_in_tree(root_syll, "la"));
 
 	//print_tree(root_syll, 0);
-	parser_destroy_tree(root, root_syll);
-	hashmap_destroy(map);
+	parser_destroy_generated_structures(root, root_syll, map);
 
 	return(EXIT_SUCCESS);
 }
