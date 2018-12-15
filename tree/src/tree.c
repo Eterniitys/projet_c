@@ -38,6 +38,8 @@ Tree * tree_new(void *struc, _compFunc funct){
 	return node;
 }
 
+void _noop_void_voidp(void* p) { }
+
 /**
  * \fn Tree * tree_destroy()
  *
@@ -47,7 +49,7 @@ void tree_destroy(Tree * tree, _freeFunc node_free) {
 	for (int i=0; i<tree_child_count(tree);i++) {
 		tree_destroy(list_get(tree->_children, i), node_free);
 	}
-	list_destroy(tree->_children, NULL);//TODO add noop free function
+	list_destroy(tree->_children, &_noop_void_voidp);
 	if (node_free) {
 		node_free(tree->_struc);
 	}
