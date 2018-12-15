@@ -152,10 +152,14 @@ void* hashmap_get(Hashmap* map, char* key){
  *\fn void hashmap_destroy(Hashmap* map)
  *\ free the hashmap
  */
-void hashmap_destroy(Hashmap* map){
-	for (int i=0;i<map->_table_count;i++){
+void hashmap_destroy(Hashmap* map, void (*freeFunc)(void*)){
+	for (int i=0;i<map->_table_count;i++) {
+		for (int j=0; j<255; j++) {
+			if (map->_tables[i][j]._value)
+				freeFunc(map->_tables[i][j]._value);
+		}
 		free(map->_tables[i]);
 	}
 	free(map->_tables);
-	free(map);	 
+	free(map);
 }

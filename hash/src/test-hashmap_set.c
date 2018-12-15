@@ -14,7 +14,8 @@
 
 #include "hash.h"
 
- 
+void noop_free(void* a){}
+
 int main(void){
 	char * strings[] = {"artyez","azerty","ytreza","azerty","treza","trezya","rtez","ytreaz","azer","zerty"};
 	
@@ -35,8 +36,8 @@ int main(void){
 			assert(map->_tables[0][hash(strings[i])+1]._value == "test");
 		}
 	}
-	
-	hashmap_destroy(map);
-	
+
+	hashmap_destroy(map, &noop_free);
+
 	return 0;
 }

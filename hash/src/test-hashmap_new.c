@@ -14,7 +14,8 @@
 
 #include "hash.h"
 
-void _new_tab(Hashmap* map);
+//void _new_tab(Hashmap* map);
+void noop_free(void* a) {}
 
 int main(void){
 	
@@ -30,7 +31,7 @@ int main(void){
 		}
 		_new_tab(map);
 	}
-	hashmap_destroy(map);
-		
+	hashmap_destroy(map, &noop_free);
+
 	return 0;
 }

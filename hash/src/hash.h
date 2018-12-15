@@ -26,7 +26,7 @@ struct _Hashmap {
 extern Hashmap* hashmap_new(void);
 extern void* hashmap_get(Hashmap* map, char* key);
 extern void hashmap_set(Hashmap* map, char* key, void* value);
-extern void hashmap_destroy(Hashmap* map);
+extern void hashmap_destroy(Hashmap* map, void (*freeFunc)(void*));
 
 extern unsigned char hash (const char * string);
 

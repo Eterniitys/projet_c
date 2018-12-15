@@ -13,7 +13,7 @@
 
 #include "hash.h"
 
- 
+
 int main(void){
 	char * strings[] = {"artyez","azerty","ytreza","azert","treza","trezya","rtez","ytreaz","azer","zerty"};
 	

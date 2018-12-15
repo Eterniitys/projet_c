@@ -14,7 +14,8 @@
 
 #include "hash.h"
 
- 
+void noop_free(void* a){}
+
 int main(void){
 	char * strings[] = {"artyez","azerty","ytreza","azerty","treza","trezya","rtez","ytreaz","azer","zerty"};
 	
@@ -31,7 +32,7 @@ int main(void){
 		assert(strcmp(kvpVal,"test") == 0);
 	}
 	
-	hashmap_destroy(map);
+	hashmap_destroy(map, &noop_free);
 	
 	return 0;
 }
