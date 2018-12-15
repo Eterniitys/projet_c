@@ -10,6 +10,7 @@ void fill_tree(const char* mot, char* string, Tree* node);
 void reverse_string(char* word);
 long size_file(FILE* fichier);
 char** split_syllables(char* word);
+extern void parser_destroy_tree(Tree* tree1, Tree* tree2);
 extern void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon);
 
 #endif /* _PARSER_H_ */

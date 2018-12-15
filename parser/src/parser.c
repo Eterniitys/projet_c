@@ -47,7 +47,7 @@ int compare_score (void* score1, void* score2){
  *
  * \return void - fill the tree
  */
-void fill_tree (const char* mot, char* string, Tree * node){
+void fill_tree(const char* mot, char* string, Tree * node){
 
 	char_word* structure=malloc(sizeof(char_word));
 	structure->character=mot[0];
@@ -64,15 +64,14 @@ void fill_tree (const char* mot, char* string, Tree * node){
 		child = tree_new(structure, compare_tree_wordchar);
 		tree_add_child(node, child);
 		if (mot[1]=='\0'){
-			structure->counter_syll=1;	
+			structure->counter_syll=1;
 		}
-	}
-	else if(mot[1]=='\0'){
+	} else if(mot[1]=='\0'){
 		((char_word*)tree_get_node(child))->counter_syll++;
 	}
 
 	if (mot[1]=='\0') {
-		((char_word*)tree_get_node(child))->string=string;		
+		((char_word*)tree_get_node(child))->string=string;
 	} else {
 		fill_tree(mot + 1, string, child);
 	}
@@ -259,6 +258,35 @@ void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,
 	}
 }
 
+int _compare_pointers(void* a, void* b) {
+	return a != b;
+}
+
+List* _freed_strings = NULL;
+
+void _destroy_func(void* node) {
+	char_word* chwd = (char_word*)node;
+
+	if (chwd->string) {
+		char* is_freed = (char*)list_find(_freed_strings, chwd->string);
+		if (is_freed == 0) {
+			list_add(_freed_strings, chwd->string);
+			free(chwd->string);
+		}
+	}
+	free(chwd);
+}
+
+void _noop_free(void* a) {}
+
+void parser_destroy_tree(Tree* tree1, Tree* tree2) {
+	_freed_strings = list_new(&_compare_pointers);
+	tree_destroy(tree1, &_destroy_func);
+	tree_destroy(tree2, &_destroy_func);
+	list_destroy(_freed_strings, &_noop_free);
+	_freed_strings = NULL;
+}
+
 /**
  * \fn Word** parser_read(const char* PATH)
  *
@@ -278,9 +306,17 @@ void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_
 	fclose(file);
 	buffer[size] = '\0';
 
-	*root = tree_new(NULL, compare_tree_wordchar);
+	char_word* root_node = (char_word*)malloc(sizeof(char_word));
+	root_node->character='\0';
+	root_node->string=NULL;
+	root_node->counter_syll = 0;
+	*root = tree_new(root_node, compare_tree_wordchar);
 
-	*root_syll = tree_new(NULL, compare_tree_wordchar);
+	char_word* root_syll_node = (char_word*)malloc(sizeof(char_word));
+	root_syll_node->character='\0';
+	root_syll_node->string=NULL;
+	root_syll_node->counter_syll = 0;
+	*root_syll = tree_new(root_syll_node, compare_tree_wordchar);
 
 	*map_syl_phon = hashmap_new();
 

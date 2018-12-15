@@ -11,11 +11,10 @@
 
 void print_tree(Tree* node, int level) {
 	char_word* struc = (char_word*)tree_get_node(node);
-	if (struc) {
 		for (int i = 0; i < level; i++)
 			fprintf(stderr, "|  ", NULL);
-		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, (*struc).string == NULL ? "" : "->");
-	}
+		fprintf(stderr, "%p - ", struc);
+		fprintf(stderr,"'%c' %u %s\n", struc->character, struc->character, struc->string == NULL ? "" : "->");
 	for (int i = 0; i < tree_child_count(node); i++) {
 		print_tree(tree_get_child(node, i), level+1);
 	}
@@ -47,8 +46,10 @@ int main (void){
 	assert(is_syll_in_tree(root_syll, "nnel"));
 	assert(is_syll_in_tree(root_syll, "lai"));
 	assert(is_syll_in_tree(root_syll, "la"));
-	
+
+	//print_tree(root_syll, 0);
+	parser_destroy_tree(root, root_syll);
+	hashmap_destroy(map);
+
 	return(EXIT_SUCCESS);
 }
-
-
