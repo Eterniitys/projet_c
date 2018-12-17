@@ -41,6 +41,7 @@ int compare_score (void* score1, void* score2){
 	return score;
 }
 
+List* _to_free = NULL;
 
 /**
  * \fn void fill_tree (char* word, char* string, Tree * node)
@@ -129,7 +130,6 @@ char** split_syllables(char* word) {
 	char* syl_point = NULL;
 	char* syllable = strtok_r(word, " -", &syl_point);
 
-
 	while(syllable){
 		char* tmp_syl = malloc(strlen(syllable) + 1);
 		strcpy(tmp_syl, syllable);
@@ -207,16 +207,22 @@ void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,
 
 	// fill hashmap and some trees
 	if (tmp_word && tmp_phon && word_tmp && phon_sylls) {
+		list_add(_to_free, word);
+		list_add(_to_free, phonetic);
 		// Check both tables have the same length, and save the count
 		int index_syll=0;
 		while (word_tmp[index_syll]){
+			list_add(_to_free, word_tmp[index_syll]);
 			index_syll++;
 		}
+		list_add(_to_free, word_tmp);
 		int syll_count=index_syll;
 		index_syll=0;
 		while (phon_sylls[index_syll]){
+			list_add(_to_free, phon_sylls[index_syll]);
 			index_syll++;
 		}
+		list_add(_to_free, phon_sylls);
 
 		// If both tables have same length
 		if(index_syll==syll_count){
@@ -262,46 +268,20 @@ int _compare_pointers(void* a, void* b) {
 	return a != b;
 }
 
-List* _freed_strings = NULL;
-
-void _free_once_string(char* string) {
-	char* is_freed = (char*)list_find(_freed_strings, string);
-	if (is_freed == 0) {
-		list_add(_freed_strings, string);
-		free(string);
-	}
-}
-
-void _destroy_func(void* node) {
-	char_word* chwd = (char_word*)node;
-
-	if (chwd->string) {
-		_free_once_string(chwd->string);
-	}
-	free(chwd);
-}
+void _noop_free(void* a) {}
 
 void _destroy_map_func(void* value) {
 	List* list = (List*)value;
-	for (int i=0; i<list_count(list); i++) {
-		ScoreSyllPhon* score = (ScoreSyllPhon*)list_get(list, i);
-		_free_once_string(score->syllPhon);
-	}
 	list_destroy(list, &free);
 }
 
-void _noop_free(void* a) {}
-
 void parser_destroy_generated_structures(Tree* tree1, Tree* tree2, Hashmap* map)
 		{
-	_freed_strings = list_new(&_compare_pointers);
-
-	tree_destroy(tree1, &_destroy_func);
-	tree_destroy(tree2, &_destroy_func);
+	tree_destroy(tree1, &free);
+	tree_destroy(tree2, &free);
 	hashmap_destroy(map, &_destroy_map_func);
-
-	list_destroy(_freed_strings, &_noop_free);
-	_freed_strings = NULL;
+	list_destroy(_to_free, &free);
+	_to_free = NULL;
 }
 
 /**
@@ -310,6 +290,7 @@ void parser_destroy_generated_structures(Tree* tree1, Tree* tree2, Hashmap* map)
  * \return words - return a tabs of Word **
  */
 void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon){
+	_to_free = list_new(NULL);
 	FILE* file;
 	file=fopen(PATH, "r");
 
