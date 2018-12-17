@@ -18,9 +18,9 @@ int main (void){
 	Tree * root_syll;
 	Hashmap * map;
 
-//	parser_read("../src/invalid.csv", &root, &root_syll, &map);
+	parser_read("../src/invalid.csv", &root, &root_syll, &map);
 
-	//TODO
+	parser_destroy_generated_structures(root, root_syll, map);
 
 	return(EXIT_SUCCESS);
 }
