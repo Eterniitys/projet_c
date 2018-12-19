@@ -110,7 +110,7 @@ List* arbreEnList(Tree* tree,List* list, int stage)
 		{
 			Word* bidon=malloc(sizeof(Word));
 			bidon->_word= mot->string;
-			bidon->_pronunc = malloc(sizeof(char)*strlen(tab));
+			bidon->_pronunc = malloc(sizeof(char)*strlen(tab)+1);
 			strcpy(bidon->_pronunc , tab);
 			list_add(list,bidon);
 		}
