@@ -18,17 +18,12 @@
 
 #include "parser.h"
 
-/**
- * \fn int compare_tree_wordchar (void * node1,void * node2)
- *
- * \return cm1->character - cm2->character; - return the result of the comparation.
- */
+
 int compare_tree_wordchar (void * node1,void * node2){
 	char_word *cm1 = (char_word*)tree_get_node((Tree*)node1);
 	char_word *cm2 = (char_word*)tree_get_node((Tree*)node2);
 	return cm1->character - cm2->character;
 }
-
 
 int compare_score (void* score1, void* score2){
 	ScoreSyllPhon * tmp1 = (ScoreSyllPhon*) score1;
@@ -38,11 +33,6 @@ int compare_score (void* score1, void* score2){
 
 List* _to_free = NULL;
 
-/**
- * \fn void fill_tree (char* word, char* string, Tree * node)
- *
- * \return void - fill the tree
- */
 void fill_tree(const char* mot, char* string, Tree * node){
 
 	char_word* structure=malloc(sizeof(char_word));
@@ -73,13 +63,6 @@ void fill_tree(const char* mot, char* string, Tree * node){
 	}
 }
 
-
-
-/**
- * \fn void reverse_string(char * word)
- *
- * \return void - reverse a string
- */
 void reverse_string(char * word){
 	int i=0;
 	int len = strlen(word);
@@ -91,11 +74,6 @@ void reverse_string(char * word){
 	}
 }
 
-/**
- * \fn long size_file(FILE * fichier)
- *
- * \return sizeFichier - return the size of the file
- */
 long size_file(FILE * fichier){
 	long sizeFichier;
 	fseek (fichier , 0 , SEEK_END);
@@ -103,12 +81,6 @@ long size_file(FILE * fichier){
 	return sizeFichier;
 }
 
-
-/**
- * \fn char** split_syllables(char* word)
- *
- * \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word
- */
 char** split_syllables(char* word) {
 	// Count first syllable, and add room for terminating NULL pointer
 	int counter = 2;
@@ -150,7 +122,7 @@ void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int syll_co
 		// Find phonetic in list
 		ScoreSyllPhon search_score = {0};
 		(&search_score)->syllPhon = phon_sylls[index];
-		ScoreSyllPhon* score = (ScoreSyllPhon*)list_find(list_phon, &search_score);	
+		ScoreSyllPhon* score = (ScoreSyllPhon*)list_find(list_phon, &search_score);
 
 		if (!score) {
 			score = malloc(sizeof(ScoreSyllPhon));
@@ -160,7 +132,7 @@ void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int syll_co
 		}
 
 		score->score++;
-		index++;		
+		index++;
 	}
 }
 
@@ -278,11 +250,6 @@ void parser_destroy_generated_structures(Tree* tree1, Tree* tree2, Hashmap* map)
 	_to_free = NULL;
 }
 
-/**
- * \fn Word** parser_read(const char* PATH)
- *
- * \return words - return a tabs of Word **
- */
 void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_syl_phon){
 	_to_free = list_new(NULL);
 	FILE* file;
@@ -323,5 +290,3 @@ void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_
 	tree_lock(*root_syll);
 	free(buffer);
 }
-
-

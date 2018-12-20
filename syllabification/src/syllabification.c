@@ -10,6 +10,7 @@
 #define C_LENGTH 100
 #define C_SCORE 100
 
+
 void print_tree_j(Tree* node, int level) {
 	StringBool* struc = (StringBool*)tree_get_node(node);
 	if (struc) {
@@ -131,7 +132,7 @@ void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
 		sb->string = malloc(sizeof(char)*index+2);
 		strncpy(sb->string, word, index+1);
 		sb->string[index+1] = '\0';
-		
+
 		sb->score = ((char_word*)tree_get_node(child))->counter_syll;
 
 		sb->eow = word[index+1] == '\0';
@@ -142,4 +143,3 @@ void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
 	}
 	recursive(node, child, word, index + 1);
 }
-
