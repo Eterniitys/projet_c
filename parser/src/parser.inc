@@ -65,7 +65,7 @@ void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,Tree* phon_t
 /**
  * \fn int _compare_pointers(void* a, void* b)
  *
- * \return int  - return a!=b **
+ * \ return a!=b; -**
  */
 int _compare_pointers(void* a, void* b);
 
