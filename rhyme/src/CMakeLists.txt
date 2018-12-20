@@ -83,12 +83,21 @@ endif(LIST_LIB)
 
 ########
 
-#ajout de la librairie tree
+#ajout de la librairie rhyme
 add_library(rhyme SHARED rhyme.c rhyme.h )
-#la librairie tree utilise la librairie list
+#la librairie rhyme utilise les librairies tree parser list
 target_link_libraries(rhyme tree parser list)
 
-
+install(
+	TARGETS rhyme
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+	RUNTIME DESTINATION bin
+	)
+install(
+	FILES rhyme.h
+	DESTINATION include
+)
 
 #Liste exécutables/tests
 foreach (dir_name IN ITEMS rhyme)

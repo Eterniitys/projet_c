@@ -4,18 +4,7 @@ find_package(Valgrind)
 project(hash C)
 
 #################################
-#find_file(PARSEUR_H "parseur.h")
-#if(PARSEUR_H)
-#	get_filename_component(PARSEUR_INCLUDE_DIR ${PARSEUR_H} DIRECTORY)
-#	include_directories("${PARSEUR_INCLUDE_DIR}")
-#endif(PARSEUR_H)
-#
-#find_library(PARSEUR_LIB parseur)
 
-#if(PARSEUR_LIB)
-#	get_filename_component(PARSEUR_LIB_DIR ${PARSEUR_LIB} DIRECTORY)
-#	link_directories("${PARSEUR_LIB_DIR}")
-#endif(PARSEUR_LIB)*/
 
 #ajout de la librairie tree
 add_library(hash SHARED hash.c hash.h)
@@ -28,7 +17,7 @@ install(
 	RUNTIME DESTINATION bin
 )
 
-install(
+install(	
 	FILES hash.h
 	DESTINATION include
 )

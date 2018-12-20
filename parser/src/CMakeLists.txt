@@ -67,7 +67,7 @@ install(
 install(
 	FILES parser.h
 	DESTINATION include
-	)
+)
 
 # Creation of executable
 add_executable(test-tree_syll test-tree_syll.c)
