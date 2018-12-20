@@ -9,14 +9,14 @@
 #define _SYLLABIFICATION_INC_
 
 #include <stdbool.h>
-#include <word.h>
 #include <tree.h>
+#include <word.h>
 
 typedef struct _StringBool StringBool;
 struct _StringBool {
-	char* string;
-	bool eow;
-	int score;
+  char* string;
+  bool eow;
+  int score;
 };
 
 /**

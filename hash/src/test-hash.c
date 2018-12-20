@@ -14,14 +14,14 @@
 #include "hash.h"
 #include "hash.inc"
 
+int main(void) {
+  char* strings[] = {"artyez", "azerty", "ytreza", "azert", "treza",
+                     "trezya", "rtez",   "ytreaz", "azer",  "zerty"};
 
-int main(void){
-	char * strings[] = {"artyez","azerty","ytreza","azert","treza","trezya","rtez","ytreaz","azer","zerty"};
-	
-	for (int i=0;i<10;i++){
-		unsigned char a = hash(strings[i]);
-		printf("%s:hash:%d\n",strings[i],a);
-	}
-	
-	return 0;
+  for (int i = 0; i < 10; i++) {
+    unsigned char a = hash(strings[i]);
+    printf("%s:hash:%d\n", strings[i], a);
+  }
+
+  return 0;
 }

@@ -2,15 +2,15 @@
 #define _SYMPHONIE_H_
 
 #include <gtk/gtk.h>
-#include <tree.h>
 #include <hash.h>
+#include <parser.h>
 #include <phonetics.h>
 #include <syllabification.h>
-#include <parser.h>
+#include <tree.h>
 
 typedef struct {
-	GtkBuilder *builder;
-	gpointer user_data;
+  GtkBuilder *builder;
+  gpointer user_data;
 } SGlobalData;
 
 /**
@@ -22,12 +22,14 @@ typedef struct {
 void callback_about(GtkMenuItem *itemAbout, gpointer user_data);
 
 /**
- * \fn void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data)
+ * \fn void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer
+ * user_data)
  *
  * Display the window named "Préférences".
  * \return void
  */
-void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data);
+void on_itemPreference_activate(GtkMenuItem *itemPreference,
+                                gpointer user_data);
 
 /**
  * \fn void on_SearchEntry_search_changed()

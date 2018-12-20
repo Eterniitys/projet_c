@@ -1,6 +1,6 @@
 /**
  * \file test-lock.c
- * \struct List list.h "Définition" 
+ * \struct List list.h "Définition"
  * \author Kilian
  * \version 0.1
  * \date 15 november 2018
@@ -24,6 +24,4 @@ void _list_qs(List* list, int A, int B);
  */
 static List* _list_init(List* list);
 
-
 #endif /* _LIST_INC_ */
-

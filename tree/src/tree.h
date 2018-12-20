@@ -12,9 +12,9 @@
 #include <list.h>
 
 typedef struct _Tree {
-	void * _struc;
-	List * _children;
-	_compFunc _funct;
+  void *_struc;
+  List *_children;
+  _compFunc _funct;
 } Tree;
 
 /**
@@ -22,21 +22,21 @@ typedef struct _Tree {
  *
  * \return node - Return a new pointer of tree.
  */
-extern Tree * tree_new(void *struc, _compFunc funct);
+extern Tree *tree_new(void *struc, _compFunc funct);
 
 /**
  * \fn Tree * tree_destroy()
  *
  * \return void - Allows Tree's structure freeing.
  */
-extern void tree_destroy(Tree * tree, _freeFunc free);
+extern void tree_destroy(Tree *tree, _freeFunc free);
 
 /**
  * \fn void * tree_get_node(Tree *root)
  *
  * \return root->_struc - Return the node.
  */
-extern void * tree_get_node(Tree *root);
+extern void *tree_get_node(Tree *root);
 
 /**
  *\fn Tree * tree_add_child(Tree *root, void *node)
@@ -44,7 +44,7 @@ extern void * tree_get_node(Tree *root);
  * Allows the addition of the child 'node' to the 'root'
  *\return root - Return root.
  */
-extern Tree * tree_add_child(Tree *root, Tree *node);
+extern Tree *tree_add_child(Tree *root, Tree *node);
 
 /**
  *\fn Tree * tree_remove_child(Tree *root, void *node)
@@ -52,15 +52,15 @@ extern Tree * tree_add_child(Tree *root, Tree *node);
  * Allows removing of child at 'index' from 'root'
  *\return root
  */
-extern Tree * tree_remove_child(Tree *root, int index);
+extern Tree *tree_remove_child(Tree *root, int index);
 
 /**
  *\fn Tree * tree_get_child(Tree *root,int nb)
  *
  * Allows the getter of the child n°'nb' from 'root'
- *\return Tree * node 
+ *\return Tree * node
  */
-extern Tree * tree_get_child(Tree *root,int nb);
+extern Tree *tree_get_child(Tree *root, int nb);
 
 /**
  *\fn int tree_child_count(Tree *tree)
@@ -92,7 +92,7 @@ extern void tree_unlock(Tree *tree);
  * Seeking *child in list
  * \return Tree node - The tree which contains child.
  */
-extern Tree * tree_find_child(Tree *tree,void *child);
+extern Tree *tree_find_child(Tree *tree, void *child);
 
 /**
  *\fn int tree_get_depth(Tree *tree)

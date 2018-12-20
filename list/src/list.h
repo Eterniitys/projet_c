@@ -1,6 +1,6 @@
 /**
  * \file test-lock.c
- * \struct List list.h "Définition" 
+ * \struct List list.h "Définition"
  * \author Kilian
  * \version 0.1
  * \date 15 november 2018
@@ -15,17 +15,17 @@ typedef int (*_compFunc)(void*, void*);
 typedef void (*_freeFunc)(void*);
 
 struct _List {
-	int _count;
-	int _size;
-	bool _lock;
-	_compFunc _compare;
-	void** _data;
+  int _count;
+  int _size;
+  bool _lock;
+  _compFunc _compare;
+  void** _data;
 };
 
 typedef struct _ScoreSyllPhon ScoreSyllPhon;
 struct _ScoreSyllPhon {
-	char * syllPhon;
-	int score;
+  char* syllPhon;
+  int score;
 };
 
 /**
@@ -98,6 +98,4 @@ extern void list_destroy(List* list, _freeFunc free);
  */
 extern List* list_new(_compFunc comp);
 
-
 #endif /* _LIST_H_ */
-

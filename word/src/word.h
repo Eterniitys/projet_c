@@ -14,12 +14,9 @@
 
 typedef struct _char_word char_word;
 struct _char_word {
-
-	char character;
-	char* string;
-	int counter_syll;
+  char character;
+  char* string;
+  int counter_syll;
 };
 
 #endif
-
-

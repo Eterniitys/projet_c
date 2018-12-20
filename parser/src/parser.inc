@@ -1,23 +1,25 @@
 #ifndef _PARSER_INC_
 #define _PARSER_INC_
 
+#include <hash.h>
 #include <tree.h>
 #include <word.h>
-#include <hash.h>
 
 /**
  * \fn int compare_tree_wordchar (void * node1,void * node2)
  *
- * \return cm1->character - cm2->character; - return the result of the comparation.
+ * \return cm1->character - cm2->character; - return the result of the
+ * comparation.
  */
 int compare_tree_wordchar(void* node1, void* node2);
 
 /**
  * \fn int compare_score (void* score1, void* score2)
  *
- * \return strcmp(tmp1->syllPhon, tmp2->syllPhon); - return the score of the comparation.
+ * \return strcmp(tmp1->syllPhon, tmp2->syllPhon); - return the score of the
+ * comparation.
  */
-int compare_score (void* score1, void* score2);
+int compare_score(void* score1, void* score2);
 
 /**
  * \fn void fill_tree (char* word, char* string, Tree * node)
@@ -43,24 +45,29 @@ long size_file(FILE* fichier);
 /**
  * \fn char** split_syllables(char* word)
  *
- * \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char ** split word
+ * \return realloc(syllables, sizeof(char*)*syl_counter); - return a a char **
+ * split word
  */
 char** split_syllables(char* word);
 
 /**
- * \fn void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int syll_count)
+ * \fn void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int
+ * syll_count)
  *
  * \return void; - fill up hashmap
  */
-void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int syll_count);
+void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls,
+                  int syll_count);
 
 /**
  * \fn void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,
- 		Tree* phon_tree)
+                Tree* phon_tree)
  *
- * \return void; - separate the columns , the lines, , the syllables, phoenitsation of the syllables
+ * \return void; - separate the columns , the lines, , the syllables,
+ phoenitsation of the syllables
  */
-void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,Tree* phon_tree) ;
+void parse_line(char* line, Hashmap* syll_phon_map, Tree* syll_tree,
+                Tree* phon_tree);
 
 /**
  * \fn int _compare_pointers(void* a, void* b)
@@ -74,13 +81,13 @@ int _compare_pointers(void* a, void* b);
  *
  * \return void - does nothing **
  */
-void _noop_free(void* a) ;
+void _noop_free(void* a);
 
 /**
  * \fn void _destroy_map_func(void* value)
  *
  * \return void - destroy list **
  */
-void _destroy_map_func(void* value) ;
+void _destroy_map_func(void* value);
 
 #endif /* _PARSER_INC_ */

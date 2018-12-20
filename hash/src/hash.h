@@ -14,15 +14,15 @@
 typedef struct _KeyValuePair KeyValuePair;
 
 struct _KeyValuePair {
-	char* _key;
-	void* _value;
+  char* _key;
+  void* _value;
 };
 
 typedef struct _Hashmap Hashmap;
 
 struct _Hashmap {
-	KeyValuePair** _tables;
-	char _table_count;
+  KeyValuePair** _tables;
+  char _table_count;
 };
 
 /**
@@ -30,7 +30,7 @@ struct _Hashmap {
  *
  *\return a hash of string between 0 and 255
  */
-extern unsigned char hash (const char * string);
+extern unsigned char hash(const char* string);
 
 /**
  *\fn Hashmap* hashmap_new(void)
@@ -46,7 +46,8 @@ extern void hashmap_set(Hashmap* map, char* key, void* value);
 
 /**
  *\fn void* hashmap_get(Hashmap* map, char* key)
- *\ return map->_tables[nbTable][hash(key)]._value || return map->_tables[nbTable][(hash(key)+1)%256]._value - return values of the key
+ *\ return map->_tables[nbTable][hash(key)]._value || return
+ *map->_tables[nbTable][(hash(key)+1)%256]._value - return values of the key
  */
 extern void* hashmap_get(Hashmap* map, char* key);
 
@@ -54,6 +55,6 @@ extern void* hashmap_get(Hashmap* map, char* key);
  *\fn void hashmap_destroy(Hashmap* map)
  *\ free the hashmap
  */
-extern  void hashmap_destroy(Hashmap* map, void (*freeFunc)(void*));
+extern void hashmap_destroy(Hashmap* map, void (*freeFunc)(void*));
 
 #endif /* _HASH_H_ */
