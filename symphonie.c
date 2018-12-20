@@ -152,9 +152,11 @@ void on_SearchEntry_search_changed() {
 		if (!string_phon)
 			return;
 
+		
+		GtkLabel *phonetisation = (GtkLabel*)GTK_WIDGET(gtk_builder_get_object (data.builder, "phonetisation"));
+		gtk_label_set_text (phonetisation,string_phon);
+		
 		reverse_string(string_phon);
-
-		fprintf(stderr, "LIMITE %d\n", nbResults);
 
 		List* liste = match_word(root_phon, nbResults, string_phon);
 		if (!liste)
@@ -207,4 +209,7 @@ void deleteChildren() {
 		gtk_widget_destroy(children->data);
 		children = children->next;
 	}
+	
+	GtkLabel *phonetisation = (GtkLabel*)GTK_WIDGET(gtk_builder_get_object (data.builder, "phonetisation"));
+	gtk_label_set_text (phonetisation,"");
 }
