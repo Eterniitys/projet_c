@@ -9,6 +9,7 @@
 #include <parser.h>
 
 #include "syllabification.h"
+#include "syllabification.inc"
 
 void print_tree(Tree* node, int level) {
 	char_word* struc = (char_word*)tree_get_node(node);

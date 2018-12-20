@@ -6,6 +6,7 @@
 #include <tree.h>
 
 #include "syllabification.h"
+#include "syllabification.inc"
 
 #define C_LENGTH 100
 #define C_SCORE 100
