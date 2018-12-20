@@ -88,7 +88,6 @@ void tree_unlock(Tree *tree){
 
 Tree* tree_find_child(Tree *tree,void *child){
 	Tree temp = {0};
-	printf("%p\n",child);
 	(&temp)->_struc = child;
 	if (!tree->_children)
 		return NULL;

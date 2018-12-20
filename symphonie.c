@@ -107,8 +107,16 @@ void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data)
 	gtk_widget_hide (dialog);
 }
 
-
-
+void reverse_string(char * word){
+        int i=0;
+        int len = strlen(word);
+        char temp;
+        for (i=0 ; i<len/2 ; i++) {
+                temp = word[len-i-1];
+                word[len-i-1] = word[i];
+                word[i] = temp;
+        }
+}
 
 /*
  *Retrieving the widget from the search bar
@@ -144,6 +152,10 @@ void on_SearchEntry_search_changed() {
 		if (!string_phon)
 			return;
 
+		reverse_string(string_phon);
+
+		fprintf(stderr, "LIMITE %d\n", nbResults);
+
 		List* liste = match_word(root_phon, nbResults, string_phon);
 		if (!liste)
 			return;
@@ -175,10 +187,10 @@ void insertChildren(List* liste) {
 	for(int i = 0; i < list_count(liste); i++){
 		GtkWidget * gtk_flow_box_child_new ();
 		char* str = (char*)list_get(liste,i);
+		fprintf(stderr, "%s\n", str);
 		GtkWidget *label = gtk_label_new (str);
 		gtk_flow_box_insert ((GtkFlowBox*)flow_box, label, i);
 		gtk_widget_show(label);
-		i++; 
 	}
 }
 
