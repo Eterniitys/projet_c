@@ -126,12 +126,6 @@ void on_SearchEntry_search_changed() {
       gtk_builder_get_object(data.builder, "SearchEntry"));
   GtkEntryBuffer *buffer = gtk_entry_get_buffer(entry);
   const char *mot = gtk_entry_buffer_get_text(buffer);
-  fprintf(stderr, "%s\n", mot);
-  int i = 0;
-  while (mot[i]) {
-    fprintf(stderr, "%c %d\n", mot[i]);
-    i++;
-  }
 
   deleteChildren();
 
@@ -178,7 +172,6 @@ void insertChildren(List *liste) {
   for (int i = 0; i < list_count(liste); i++) {
     GtkWidget *gtk_flow_box_child_new();
     char *str = (char *)list_get(liste, i);
-    fprintf(stderr, "%s\n", str);
     GtkWidget *label = gtk_label_new(str);
     gtk_flow_box_insert((GtkFlowBox *)flow_box, label, i);
     gtk_widget_show(label);

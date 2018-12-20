@@ -11,18 +11,6 @@
 #define C_LENGTH 100
 #define C_SCORE 100
 
-void print_tree_j(Tree* node, int level) {
-  StringBool* struc = (StringBool*)tree_get_node(node);
-  if (struc) {
-    for (int i = 0; i < level; i++) fprintf(stderr, "|      ");
-    fprintf(stderr, "'%s' \\%d/ %s\n", struc->string, struc->score,
-            struc->eow ? "+" : "");
-  }
-  for (int i = 0; i < tree_child_count(node); i++) {
-    print_tree_j(tree_get_child(node, i), level + 1);
-  }
-}
-
 bool valid_inside(Tree* root) {
   bool valid = ((StringBool*)tree_get_node(root))->eow;
   if (tree_child_count(root) == 0 && valid) {
@@ -78,11 +66,9 @@ char** get_better_match(Tree* root) {
   while (i < depth) {
     tmp = tree_get_child(tmp, 0);
     output[i] = ((StringBool*)tree_get_node(tmp))->string;
-    // printf("syllabe %d : %s\n",i+1,output[i]);
     i++;
   }
   output[i] = NULL;
-  // print_tree_j(root,0);
   return output;
 }
 
@@ -96,23 +82,18 @@ char** syllabicate(Tree* syll_tree, const char* word) {
 }
 
 void gen_syllables(Tree* root, Tree* syll_tree, const char* word) {
-  // fprintf(stderr, "%s\n", word);
   recursive(root, syll_tree, word, 0);
   int i;
   for (i = 0; i < tree_child_count(root); i++) {
     Tree* child = tree_get_child(root, i);
     StringBool* sb = (StringBool*)tree_get_node(child);
-    // fprintf(stderr, "Syllabe %s (mot %s)\n", sb->string, word);
     if (!sb->eow) {
-      // fprintf(stderr, "\tRécursion sur %s (%s)\n", sb->string, word +
-      // strlen(sb->string));
       gen_syllables(child, syll_tree, word + strlen(sb->string));
     }
   }
 }
 
 void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
-  fprintf(stderr, "\t%d-%c\n", index, word[index]);
   if (word[index] == '\0') return;
 
   char_word newWord;
@@ -122,7 +103,6 @@ void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
   Tree* child = tree_find_child(syll_tree, &newWord);
 
   if (!child) {
-    fprintf(stderr, "pas d'enfants pour %s\n", word + index);
     return;
   }
 
@@ -136,8 +116,6 @@ void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
     sb->score = ((char_word*)tree_get_node(child))->counter_syll;
 
     sb->eow = word[index + 1] == '\0';
-    // fprintf(stderr, "%s : %s %s\n", word, sb->string, sb->eow ? "fin":"-");
-    // fprintf(stderr, "\t^^ fin de syllabe\n");
     Tree* newNode = tree_new(sb, NULL);
     tree_add_child(node, newNode);
   }

@@ -21,12 +21,6 @@ int main(void) {
   char* para2 = "§Â";
 
   List* liste1 = match_word(root, 20, para);
-  printf("%i\n", list_count(liste1));
-  // afficher la liste
-  for (int i = 0; i < list_count(liste1); i++) {
-    printf("%d :\t%s\t\t\n", i + 1, (char*)list_get(liste1, i));
-    // printf("%s\n",((Word*)list_get(liste1,i))->_word);
-  }
 
   return (EXIT_SUCCESS);
 }

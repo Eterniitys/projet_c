@@ -17,22 +17,6 @@
 
 int xora(int a, int b) { return a ^ b; }
 
-void rpl(Hashmap* map) {
-  int som = 0;
-  for (int i = 0; i < map->_table_count; i++) {
-    int inc = 0;
-    for (int j = 0; j < 256; j++) {
-      if (map->_tables[i][j]._key != NULL) {
-        inc++;
-      }
-    }
-    printf("\nnTable %d filled to %4.1f%\n", i, ((float)inc / 256) * 100);
-    som += inc;
-  }
-  printf("<==> Tables filled to %4.1f% <==>\n\n",
-         ((float)som / (256 * map->_table_count)) * 100);
-}
-
 unsigned char hash(const char* string) {
   int val[] = {19, 46, 7, 123};
   int i;
@@ -55,7 +39,6 @@ void _new_tab(Hashmap* map) {
   for (int i = 0; i < 256; i++) {
     map->_tables[nbTable - 1][i]._key = NULL;
     map->_tables[nbTable - 1][i]._value = NULL;
-    // printf("ini:%s\n",map->_tables[nbTable-1][i]._key);
   }
 }
 
@@ -71,7 +54,6 @@ void hashmap_set(Hashmap* map, char* key, void* value) {
   int nbTable = 0;
   int place = false;
   unsigned char key_hash = hash(key);
-  // printf("key:%p:%s\n",key,key);
   while (nbTable < map->_table_count && !place) {
     if (map->_tables[nbTable][key_hash]._key == NULL) {
       map->_tables[nbTable][key_hash]._key = key;
@@ -91,7 +73,6 @@ void hashmap_set(Hashmap* map, char* key, void* value) {
     }
   }
   if (nbTable >= map->_table_count) {
-    // rpl(map);//TODO remove before flight
     _new_tab(map);
     map->_tables[nbTable][key_hash]._key = key;
     map->_tables[nbTable][key_hash]._value = value;

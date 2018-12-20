@@ -18,21 +18,6 @@ char tab[40];
  */
 char* wordCompar;
 
-void print_tree(Tree* node, int level) {
-  char_word* struc;
-  if (node) {
-    struc = (char_word*)tree_get_node(node);
-  }
-  if (struc) {
-    for (int i = 0; i < level; i++) fprintf(stderr, "|  ", NULL);
-    fprintf(stderr, "'%c' %u %s\n", struc->character, struc->character,
-            (*struc).string == NULL ? "" : "->");
-  }
-  for (int i = 0; i < tree_child_count(node); i++) {
-    print_tree(tree_get_child(node, i), level + 1);
-  }
-}
-
 void reverse_string(char* word) {
   int i = 0;
   int len = strlen(word);

@@ -23,13 +23,6 @@ bool check_list_sorted(List* list) {
     output =
         output && compare_int(list_get(list, i - 1), list_get(list, i)) <= 0;
   }
-  if (!output) {
-    fprintf(stderr, "List not sorted !\n");
-    for (i = 0; i < list_count(list); i++) {
-      fprintf(stderr, "%d\t", *(int*)list_get(list, i));
-    }
-    fprintf(stderr, "\n");
-  }
   return output;
 }
 
@@ -58,7 +51,6 @@ int main(void) {
   for (i = 0; i < count; i++) {
     list = list_new(&compare_int);
     int j;
-    fprintf(stderr, "List %d\n", i);
     for (j = 1; j <= datasets[i][0]; j++) {
       list_add(list, &(datasets[i][j]));
     }

@@ -17,11 +17,8 @@
  * Function to compare int (local)
  */
 int compare_int(void *nb1, void *nb2) {
-  // static int tmp= 0;
   int *a = (int *)((Tree *)nb1)->_struc;
   int b = *(int *)((Tree *)nb2)->_struc;
-  // tmp++;
-  // printf("count:%d a:%d -- b:%d\n",tmp,*a,b);
   return *a - b;
 }
 

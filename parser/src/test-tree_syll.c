@@ -10,17 +10,6 @@
 #include "parser.h"
 #include "parser.inc"
 
-void print_tree(Tree* node, int level) {
-  char_word* struc = (char_word*)tree_get_node(node);
-  for (int i = 0; i < level; i++) fprintf(stderr, "|  ", NULL);
-  fprintf(stderr, "%p - ", struc);
-  fprintf(stderr, "'%c' %u %s\n", struc->character, struc->character,
-          struc->string == NULL ? "" : "->");
-  for (int i = 0; i < tree_child_count(node); i++) {
-    print_tree(tree_get_child(node, i), level + 1);
-  }
-}
-
 bool is_syll_in_tree(Tree* node, char* syll) {
   if (syll[0] == '\0' && ((char_word*)tree_get_node(node))->string) return true;
 

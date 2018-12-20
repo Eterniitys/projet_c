@@ -79,7 +79,6 @@ List* list_add(List* list, void* pointer) {
   }
   if (list->_lock) {
     fprintf(stderr, "WARN. List: adding element to locked list\n");
-    // TODO use dichotomy to find index
     int index = 0;
     while (index < list->_count &&
            list->_compare(list->_data[index], pointer) < 0) {

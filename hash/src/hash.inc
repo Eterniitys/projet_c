@@ -19,13 +19,6 @@
 int xora(int a, int b);
 
 /**
- *\fn void rpl(Hashmap* map)
- *
- * Allow a tables per cent view
- */
-void rpl(Hashmap* map);
-
-/**
  *\fn void _new_tab(Hashmap* map)
  *
  *\ create a new hash table
