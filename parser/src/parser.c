@@ -17,6 +17,7 @@
 #include <hash.h>
 
 #include "parser.h"
+#include "parser.inc"
 
 
 int compare_tree_wordchar (void * node1,void * node2){

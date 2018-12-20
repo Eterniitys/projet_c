@@ -8,6 +8,7 @@
 #include <hash.h>
 
 #include "parser.h"
+#include "parser.inc"
 
 void print_tree(Tree* node, int level) {
 	char_word* struc = (char_word*)tree_get_node(node);

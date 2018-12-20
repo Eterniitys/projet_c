@@ -8,6 +8,7 @@
 #include <tree.h>
 #include <hash.h>
 #include "parser.h"
+#include "parser.inc"
 
 
 /**
