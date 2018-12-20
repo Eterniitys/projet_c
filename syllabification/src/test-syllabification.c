@@ -27,7 +27,7 @@ int main(void) {
 	Tree* tree_syll = NULL;
 	Hashmap* hashmap = NULL;
 
-	parser_read("../../Lexique382.csv", &tree_phon, &tree_syll, &hashmap);
+	parser_read("../../Lexique382_short.csv", &tree_phon, &tree_syll, &hashmap);
 
 	//print_tree(tree_syll, 0);
 	char** syllables = syllabicate(tree_syll, "abasourdi");

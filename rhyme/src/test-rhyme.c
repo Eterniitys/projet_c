@@ -14,7 +14,7 @@ int main(void) {
 Tree *root= NULL;
 Tree *root2= NULL;
 Hashmap* hash= NULL;
-parser_read("../../Lexique382.csv",&root,&root2,&hash);
+parser_read("../../Lexique382_short.csv",&root,&root2,&hash);
 
 
 char* para=malloc(sizeof(char)*7);
