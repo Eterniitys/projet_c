@@ -1,3 +1,0 @@
-Phonetics
-==============
-.. doxygenfile:: phonetics.h
