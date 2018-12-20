@@ -16,10 +16,12 @@ extern void reverse_string(char * word);
 
 extern int compare (void* word1, void*word2);
 
-extern List* cutList(List* list);
+extern List* cutList(List* list, int count);
 
 extern List* arbreEnList(Tree* tree,List* list, int stage);
 
-extern List* finalList(Tree* tree,List* list,char* word,int cpt,int threshold);
+extern void finalList(Tree* tree,List* list,char* word,int cpt,int threshold);
+
+extern List* match_word(Tree* tree, int count, char* word);
 
 #endif /* _RIME_H_ */

@@ -59,7 +59,7 @@ void reverse_string(char * word){
  */
 int compare (void* word1, void*word2)
 {
- 	char* un = ((Word*)word1)->_pronunc;
+	char* un = ((Word*)word1)->_pronunc;
 	char* two = ((Word*)word2)->_pronunc;
 	int score=0;
 	int i=0;
@@ -79,11 +79,11 @@ int compare (void* word1, void*word2)
 /**
  *limiter la liste a 20 valeurs
  */
-List* cutList(List* list)
+List* cutList(List* list, int count)
 {
 	List * aList=list_new(NULL);
 	int i=0;
-	while(i<20 && list_count(list)>i)
+	while(i<count && list_count(list)>i)
 	{
 		list_add(aList,list_get(list,i));
 		i++;
@@ -116,74 +116,48 @@ List* arbreEnList(Tree* tree,List* list, int stage)
 		}
 		arbreEnList(enfant,list,stage+1);
 	}
-        return list;
+	return list;
 }
 
 /**
  *afficher la liste final en fonction d'un seuil de caractère correspondant donné
  */
-List* finalList(Tree* tree,List* list,char* word,int cpt,int threshold)
+void finalList(Tree* tree, List* list, char* word, int cpt, int threshold)
 {
-	if(cpt==0)
-	{
+	if(cpt==0) {
 		wordCompar=word;
 	}
 
-        //condition de fin du mot
-        if(word[0]=='\0')
-        {
-                return list;
-        }
-        //trouver le caractère
-        char_word structure={0};
-        (&structure)->character=word[0];
-        Tree* noeud= tree_find_child(tree, &structure);
+	//condition de fin du mot
+	if(word[0]=='\0') {
+		return;
+	}
+
+	//trouver le caractère
+	char_word structure={0};
+	(&structure)->character=word[0];
+	Tree* noeud= tree_find_child(tree, &structure);
 
 	tab[cpt]=word[0];
 	tab[cpt+1]='\0';
-        //si on trouve le caractère
-        if(noeud!=NULL)
-        {
-                cpt++;
+	//si on trouve le caractère
+	if(noeud!=NULL) {
+		cpt++;
 		//si le nombre de  caractère phonetique concordes
-                if(cpt>=threshold)
-                {
+		if(cpt>=threshold) {
 			//on recupère tous les enfants et on les range dans la list
-			list=arbreEnList(noeud,list,cpt);
-                }
-                else
-                {
+			arbreEnList(noeud,list,cpt);
+		} else {
 			//on cherhce le prochain caractère de word
-                        finalList(noeud,list,word+1,cpt,threshold);
-                }
-        }
+			finalList(noeud,list,word+1,cpt,threshold);
+		}
+	}
 	list_lock(list);
-        return list ;
+	return;
 }
 
-/*
-//######################################
-//savoir si le cactère phonetique est une voyelle
-bool isVowel(char*word)
-{
-  bool res=false;
-  //liste de tout les carctère de voyelle
-  char tablChar[]= {'i','y','e','E','5','2','9','1','a','u','o','O','@'};
-  List* list = list_new(NULL);
-  //on ajoute les charactères dans la liste
-  for(int i=0; i<sizeof(tablChar); i++)
-  {
-	    list_add(list,&tablChar[i] );
-  }
-
-  for(int i =0;i<list_count(list);i++)
-  {
-    //test de comparaison des caractères
-    if(word[0]==*(char*)list_get(list,i) )
-    {
-	    res=true;
-    }
-  }
-  return res;
+List* match_word(Tree* tree, int count, char* word) {
+	List* output = list_new(&compare);
+	finalList(tree, output, word, 0, 2);
+	return cutList(output, count);
 }
-*/
