@@ -6,7 +6,6 @@
  * \date 15 november 2018
  */
 
-#include "./list.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -14,7 +13,8 @@
 
 #define PSIZE sizeof(void*)
 
-
+#include "list.h"
+#include "list.inc"
 
 void* list_find(List* list, void* object) {
 	void* output = NULL;

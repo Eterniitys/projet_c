@@ -10,7 +10,8 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "./list.h"
+#include "list.h"
+#include "list.inc"
 
 int main(void) {
 	setbuf(stdout, NULL);

@@ -98,20 +98,6 @@ extern void list_destroy(List* list, _freeFunc free);
  */
 extern List* list_new(_compFunc comp);
 
-/**
- * \fn void _list_qs(List* list, int A, int B)
- *
- * \return  - if the list is lock, sort it in its place
- */
-void _list_qs(List* list, int A, int B);
-
-/**
- * \fn static List* _list_init(List* list)
- *
- * \return list - init the list (variable, malloc the list)
- */
-static List* _list_init(List* list);
-
 
 #endif /* _LIST_H_ */
 

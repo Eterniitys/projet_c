@@ -11,8 +11,8 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "./list.h"
-
+#include "list.h"
+#include "list.inc"
 
 int compare_int(void* a, void* b) {
 	return *(int*)a - *(int*)b;
