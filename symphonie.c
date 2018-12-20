@@ -132,24 +132,24 @@ void on_SearchEntry_search_changed() {
 		char * string_phon = tab_to_string(phonetics);
 		
 		List* liste = match_word(root_phon, 20, string_phon);
-
-		
 		
 		insertChildren(liste);		 
 	}
 }
 
 
-void on_setNumberResultsButton_clicked(){
+void on_setNumberResultsButton_clicked(gpointer user_data){
 	printf("on_setNumberResultsButton_clicked\n");
+	/*SGlobalData *data = (SGlobalData*) user_data;
+	GtkSpinButton *entryNumber = NULL;
+
+	entryNumber = (GtkSpinButton*)GTK_WIDGET (gtk_builder_get_object (data.builder, "spinNumber"));
+	
+	int number = gtk_spin_button_get_value_as_int(entryNumber);
+	printf("%d",number);*/
 }
 
-void on_closePreference_clicked(/*gpointer user_data*/){
-	/*SGlobalData *data = (SGlobalData*) user_data;
-	GtkWidget *dialog = NULL;
-
-	dialog =  GTK_WIDGET (gtk_builder_get_object (data->builder, "PreferenceWindow"));
-	gtk_widget_hide (dialog);*/
+void on_closePreference_clicked(){
 	printf("on_closePreference_clicked\n");
 }
 

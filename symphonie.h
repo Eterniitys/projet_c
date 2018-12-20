@@ -13,18 +13,18 @@ typedef struct {
 	gpointer user_data;
 } SGlobalData;
 
-extern void callback_about (GtkMenuItem *itemAbout, gpointer user_data);
+void callback_about (GtkMenuItem *itemAbout, gpointer user_data);
 
-extern void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data);
+void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data);
 
-extern void on_SearchEntry_search_changed();
+void on_SearchEntry_search_changed();
 
-extern void on_setNumberResultsButton_clicked();
+void on_setNumberResultsButton_clicked(gpointer user_data);
 
-extern void on_closePreference_clicked(/*gpointer user_data*/);
+void on_closePreference_clicked();
 
-extern void deleteChildren();
+void deleteChildren();
 
-extern void insertChildren();
+void insertChildren();
 
 #endif /* _SYMPHONIE_H_ */
