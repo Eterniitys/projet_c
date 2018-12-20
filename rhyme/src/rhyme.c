@@ -112,27 +112,26 @@ void finalList(Tree* tree, List* list, char* word, int cpt, int threshold)
 		wordCompar=word;
 	}
 
-	//condition de fin du mot
+	//condition end of word
 	if(word[0]=='\0') {
 		return;
 	}
 
-	//trouver le caractère
 	char_word structure={0};
 	(&structure)->character=word[0];
 	Tree* noeud= tree_find_child(tree, &structure);
 
 	tab[cpt]=word[0];
 	tab[cpt+1]='\0';
-	//si on trouve le caractère
+
 	if(noeud!=NULL) {
 		cpt++;
-		//si le nombre de  caractère phonetique concordes
+		//if the matching of caracter is equal
 		if(cpt>=threshold) {
-			//on recupère tous les childs et on les range dans la list
+			//recuperation of all childs and put  them in list
 			treeToList(noeud,list,cpt);
 		} else {
-			//on cherhce le prochain caractère de word
+			//research the next caracter of the word
 			finalList(noeud,list,word+1,cpt,threshold);
 		}
 	}
