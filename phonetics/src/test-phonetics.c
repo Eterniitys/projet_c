@@ -38,18 +38,6 @@ int main(void){
 	assert(strcmp(string_phon,"abRiko")==0);
 
 	
-	int i=0;
-	while(phonetics[i]){
-		free(phonetics[i]);
-		i++;
-	}
-	
-	i=0;
-	while(syllables[i]){
-		free(syllables[i]);
-		i++;
-	}
-	
 	free(phonetics);
 	free(syllables);
 	free(string_phon);
