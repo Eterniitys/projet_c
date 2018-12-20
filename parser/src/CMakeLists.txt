@@ -53,6 +53,8 @@ add_library(parser SHARED parser.c parser.h)
 target_link_libraries(parser tree)
 # library parser use library hash
 target_link_libraries(parser hash)
+# library parser use library list
+target_link_libraries(parser list)
 
 
 # Destination files
@@ -77,6 +79,16 @@ add_executable(test-invalid_input test-invalid_input.c)
 add_dependencies(test-invalid_input parser)
 target_link_libraries(test-invalid_input parser)
 valgrind_test(test-invalid_input ./test-invalid_input)
+
+add_executable(test-tree_phon test-tree_phon.c)
+add_dependencies(test-tree_phon parser)
+target_link_libraries(test-tree_phon parser)
+valgrind_test(test-tree_phon ./test-tree_phon)
+
+add_executable(test-fill_hash test-fill_hash.c)
+add_dependencies(test-fill_hash parser)
+target_link_libraries(test-fill_hash parser list)
+valgrind_test(test-fill_hash ./test-fill_hash)
 
 #Allowed tests
 enable_testing()

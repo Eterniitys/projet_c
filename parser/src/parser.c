@@ -33,12 +33,7 @@ int compare_tree_wordchar (void * node1,void * node2){
 int compare_score (void* score1, void* score2){
 	ScoreSyllPhon * tmp1 = (ScoreSyllPhon*) score1;
 	ScoreSyllPhon * tmp2 = (ScoreSyllPhon*) score2;
-
-	int score = tmp1->score - tmp2->score;
-	if (score == 0){
-		score = strcmp(tmp1->syllPhon, tmp2->syllPhon);
-	}
-	return score;
+	return strcmp(tmp1->syllPhon, tmp2->syllPhon);
 }
 
 List* _to_free = NULL;
@@ -154,19 +149,18 @@ void fill_hashmap(Hashmap* map, char** syllables, char** phon_sylls, int syll_co
 
 		// Find phonetic in list
 		ScoreSyllPhon search_score = {0};
-		(&search_score)->score=0;
 		(&search_score)->syllPhon = phon_sylls[index];
-		ScoreSyllPhon* score = (ScoreSyllPhon*)list_find(list_phon, &search_score);
+		ScoreSyllPhon* score = (ScoreSyllPhon*)list_find(list_phon, &search_score);	
 
 		if (!score) {
 			score = malloc(sizeof(ScoreSyllPhon));
 			list_add(list_phon, score);
-
 			score->score=0;
 			score->syllPhon=phon_sylls[index];
 		}
+
 		score->score++;
-		index++;
+		index++;		
 	}
 }
 
@@ -276,7 +270,7 @@ void _destroy_map_func(void* value) {
 }
 
 void parser_destroy_generated_structures(Tree* tree1, Tree* tree2, Hashmap* map)
-		{
+{
 	tree_destroy(tree1, &free);
 	tree_destroy(tree2, &free);
 	hashmap_destroy(map, &_destroy_map_func);
@@ -329,4 +323,5 @@ void parser_read(const char* PATH, Tree** root, Tree** root_syll, Hashmap** map_
 	tree_lock(*root_syll);
 	free(buffer);
 }
+
 
