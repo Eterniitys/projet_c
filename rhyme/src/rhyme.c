@@ -55,7 +55,7 @@ void reverse_string(char * word){
 }
 
 /**
- *fonction de comparaison entre 2 d'une liste
+ *conpare 2 list
  */
 int compare (void* word1, void*word2)
 {
@@ -77,7 +77,7 @@ int compare (void* word1, void*word2)
 }
 
 /**
- *limiter la liste a 20 valeurs
+ *limit to 20 values
  */
 List* cutList(List* list, int count)
 {
@@ -92,8 +92,9 @@ List* cutList(List* list, int count)
 }
 
 /**
- *ranger un arbre dans une liste
+ *put tree in list
  */
+ /*
 List* arbreEnList(Tree* tree,List* list, int stage)
 {
 	//on veut parcourir tout l'arbre et recuperer chaque mots
@@ -115,6 +116,30 @@ List* arbreEnList(Tree* tree,List* list, int stage)
 			list_add(list,bidon);
 		}
 		arbreEnList(enfant,list,stage+1);
+	}
+	return list;
+}*/
+List* treeToList(Tree* tree,List* list, int stage)
+{
+	//browse all of the tree to get every word
+
+	for(int i =0; i< tree_child_count(tree); i++ )
+	{
+		Tree* child=tree_get_child(tree,i);
+		//get pointer
+		char_word* aWord=(char_word*)tree_get_node(child);
+		tab[stage]=aWord->character;
+		tab[stage+1]='\0';
+		//if pointer not NULL add word in the list
+		if(aWord && aWord->string)
+		{
+			Word* word1=malloc(sizeof(Word));
+			word1->_word= aWord->string;
+			word1->_pronunc = malloc(sizeof(char)*strlen(tab)+1);
+			strcpy(word1->_pronunc , tab);
+			list_add(list,word1);
+		}
+		treeToList(child,list,stage+1);
 	}
 	return list;
 }
@@ -145,8 +170,8 @@ void finalList(Tree* tree, List* list, char* word, int cpt, int threshold)
 		cpt++;
 		//si le nombre de  caractère phonetique concordes
 		if(cpt>=threshold) {
-			//on recupère tous les enfants et on les range dans la list
-			arbreEnList(noeud,list,cpt);
+			//on recupère tous les childs et on les range dans la list
+			treeToList(noeud,list,cpt);
 		} else {
 			//on cherhce le prochain caractère de word
 			finalList(noeud,list,word+1,cpt,threshold);

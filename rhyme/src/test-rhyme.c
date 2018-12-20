@@ -27,7 +27,7 @@ int main(void) {
 	//afficher la liste
 	for(int i=0 ; i < list_count(liste1) ; i++)
 	{
-		printf("%d :\t%s\t\t",i+1,(char*)list_get(liste1,i));
+		printf("%d :\t%s\t\t\n",i+1,(char*)list_get(liste1,i));
 		//printf("%s\n",((Word*)list_get(liste1,i))->_word);
 	}
 

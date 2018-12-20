@@ -18,7 +18,7 @@ extern int compare (void* word1, void*word2);
 
 extern List* cutList(List* list, int count);
 
-extern List* arbreEnList(Tree* tree,List* list, int stage);
+extern List* treeToList(Tree* tree,List* list, int stage);
 
 extern void finalList(Tree* tree,List* list,char* word,int cpt,int threshold);
 
