@@ -17,6 +17,7 @@ SGlobalData data;
 Tree* root_phon;
 Tree* root_syll;
 Hashmap* map_syl_phon;
+int nbResults = 20;
 
 
 /*
@@ -131,7 +132,7 @@ void on_SearchEntry_search_changed() {
 		char ** phonetics = fill_phonetics(syllables,map_syl_phon);
 		char * string_phon = tab_to_string(phonetics);
 		
-		List* liste = match_word(root_phon, 20, string_phon);
+		List* liste = match_word(root_phon, nbResults, string_phon);
 		
 		insertChildren(liste);		 
 	}
@@ -139,11 +140,15 @@ void on_SearchEntry_search_changed() {
 
 
 void on_setNumberResultsButton_clicked(){
-	printf("on_setNumberResultsButton_clicked\n");
+	GtkSpinButton *spin_button = (GtkSpinButton*)GTK_WIDGET(gtk_builder_get_object (data.builder, "spinNumber"));
+	nbResults = gtk_spin_button_get_value_as_int (spin_button);
+	GtkWindow *preference_window = (GtkWindow*)GTK_WIDGET(gtk_builder_get_object (data.builder, "PreferenceWindow"));
+	gtk_window_close(preference_window);
 }
 
 void on_closePreference_clicked(){
-	printf("on_closePreference_clicked\n");
+	GtkWindow *preference_window = (GtkWindow*)GTK_WIDGET(gtk_builder_get_object (data.builder, "PreferenceWindow"));
+	gtk_window_close(preference_window);
 }
 
 
