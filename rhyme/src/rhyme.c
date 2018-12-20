@@ -23,8 +23,6 @@ void print_tree(Tree* node, int level) {
 	char_word* struc;
 	if(node){
 		struc = (char_word*)tree_get_node(node);
-	}else{
-		fprintf(stderr, "%s\n","C nule s'mér !" );
 	}
 	if (struc) {
 		for (int i = 0; i < level; i++)

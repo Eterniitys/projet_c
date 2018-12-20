@@ -29,28 +29,28 @@ void print_tree_j(Tree* node, int level);
 /**
  * \fn bool valid_inside(Tree* root)
  *
- * \return bool; - Look if a word is valid in the tree.
+ * \return valid; - Look if a word is valid in the tree (bool).
  */
 bool valid_inside(Tree* root);
 
 /**
  * \fn Tree* clean_invalid(Tree* root)
  *
- * \return Tree; - Return a tree without syllables which didn't make a word.
+ * \return root; - Return a tree without syllables which didn't make a word.
  */
 Tree* clean_invalid(Tree* root);
 
 /**
  * \fn int score_tree(Tree* root)
  *
- * \return int; - Return the path which have the highest score.
+ * \return score; - Return the path which have the highest score.
  */
 int score_tree(Tree* root);
 
 /**
  * \fn char** get_better_match(Tree* root)
  *
- * \return char**; - Return a tab of words which have the highest score.
+ * \return output; - Return a tab of words which have the highest score.
  */
 char** get_better_match(Tree* root);
 

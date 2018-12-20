@@ -15,7 +15,7 @@
 /**
  * \fn extern char** syllabicate(Tree* syll_tree, const char* word)
  *
- * \return char**; - Return a tab of syllables of a given word.
+ * \return output; - Return a tab of syllables of a given word.
  */
 extern char** syllabicate(Tree* syll_tree, const char* word);
 
