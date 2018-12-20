@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_572890c148f68441e050f6560d78312b" kind="dir">
+    <compoundname>parser</compoundname>
+    <innerdir refid="dir_32c5a3e47767d452350e34b5f4cbed1b">parser/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="parser/"/>
+  </compounddef>
+</doxygen>

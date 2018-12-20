@@ -1,0 +1,66 @@
+\hypertarget{syllabification_8h}{}\section{syllabification/src/syllabification.h File Reference}
+\label{syllabification_8h}\index{syllabification/src/syllabification.\+h@{syllabification/src/syllabification.\+h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$word.\+h$>$}\newline
+{\ttfamily \#include $<$tree.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__StringBool}{\+\_\+\+String\+Bool}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct__StringBool}{\+\_\+\+String\+Bool}} \mbox{\hyperlink{syllabification_8h_a43d2b58947318c50424e417ea91ef7aa}{String\+Bool}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{syllabification_8h_ad32b0efa2c2493ef731bbb735fe02d4f}{syllabicate}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$syll\+\_\+tree, const char $\ast$\mbox{\hyperlink{classword}{word}})
+\item 
+void \mbox{\hyperlink{syllabification_8h_affa8402c394da306c79e11bfd880dee6}{gen\+\_\+syllables}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$node, \mbox{\hyperlink{structTree}{Tree}} $\ast$syll\+\_\+tree, const char $\ast$\mbox{\hyperlink{classword}{word}})
+\item 
+void \mbox{\hyperlink{syllabification_8h_a148507898c83b18c69cb421f2a1f4eeb}{recursive}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$node, \mbox{\hyperlink{structTree}{Tree}} $\ast$syll\+\_\+tree, const char $\ast$\mbox{\hyperlink{classword}{word}}, int index)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gregoire 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+29 november 2018 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{syllabification_8h_a43d2b58947318c50424e417ea91ef7aa}\label{syllabification_8h_a43d2b58947318c50424e417ea91ef7aa}} 
+\index{syllabification.\+h@{syllabification.\+h}!String\+Bool@{String\+Bool}}
+\index{String\+Bool@{String\+Bool}!syllabification.\+h@{syllabification.\+h}}
+\subsubsection{\texorpdfstring{String\+Bool}{StringBool}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct__StringBool}{\+\_\+\+String\+Bool}} \mbox{\hyperlink{syllabification_8h_a43d2b58947318c50424e417ea91ef7aa}{String\+Bool}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{syllabification_8h_affa8402c394da306c79e11bfd880dee6}\label{syllabification_8h_affa8402c394da306c79e11bfd880dee6}} 
+\index{syllabification.\+h@{syllabification.\+h}!gen\+\_\+syllables@{gen\+\_\+syllables}}
+\index{gen\+\_\+syllables@{gen\+\_\+syllables}!syllabification.\+h@{syllabification.\+h}}
+\subsubsection{\texorpdfstring{gen\+\_\+syllables()}{gen\_syllables()}}
+{\footnotesize\ttfamily void gen\+\_\+syllables (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{node,  }\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{syll\+\_\+tree,  }\item[{const char $\ast$}]{word }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{syllabification_8h_a148507898c83b18c69cb421f2a1f4eeb}\label{syllabification_8h_a148507898c83b18c69cb421f2a1f4eeb}} 
+\index{syllabification.\+h@{syllabification.\+h}!recursive@{recursive}}
+\index{recursive@{recursive}!syllabification.\+h@{syllabification.\+h}}
+\subsubsection{\texorpdfstring{recursive()}{recursive()}}
+{\footnotesize\ttfamily void recursive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{node,  }\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{syll\+\_\+tree,  }\item[{const char $\ast$}]{word,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{syllabification_8h_ad32b0efa2c2493ef731bbb735fe02d4f}\label{syllabification_8h_ad32b0efa2c2493ef731bbb735fe02d4f}} 
+\index{syllabification.\+h@{syllabification.\+h}!syllabicate@{syllabicate}}
+\index{syllabicate@{syllabicate}!syllabification.\+h@{syllabification.\+h}}
+\subsubsection{\texorpdfstring{syllabicate()}{syllabicate()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ syllabicate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{syll\+\_\+tree,  }\item[{const char $\ast$}]{word }\end{DoxyParamCaption})}
+

@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="hash_8h" kind="file" language="C++">
+    <compoundname>hash.h</compoundname>
+    <includedby refid="parser_8h" local="no">parser/src/parser.h</includedby>
+    <includedby refid="symphonie_8h" local="no">symphonie.h</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>symphonie.h</label>
+        <link refid="symphonie_8h"/>
+      </node>
+      <node id="1">
+        <label>hash/src/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>parser/src/parser.h</label>
+        <link refid="parser_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__KeyValuePair" prot="public">_KeyValuePair</innerclass>
+    <innerclass refid="struct__Hashmap" prot="public">_Hashmap</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="hash_8h_1a7007e96d0b254e48465c7b9bb6d179de" prot="public" static="no">
+        <type>struct <ref refid="struct__KeyValuePair" kindref="compound">_KeyValuePair</ref></type>
+        <definition>typedef struct _KeyValuePair KeyValuePair</definition>
+        <argsstring></argsstring>
+        <name>KeyValuePair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="1" column="1" bodyfile="hash/src/hash.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" prot="public" static="no">
+        <type>struct <ref refid="struct__Hashmap" kindref="compound">_Hashmap</ref></type>
+        <definition>typedef struct _Hashmap Hashmap</definition>
+        <argsstring></argsstring>
+        <name>Hashmap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="1" column="1" bodyfile="hash/src/hash.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="hash_8h_1a78a3d891440b624ddc1bbe23ade53ba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int xora</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>xora</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a xor operation between a and b </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1a040f3135106e008c3680cb8684dfb298" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rpl</definition>
+        <argsstring>(Hashmap *map)</argsstring>
+        <name>rpl</name>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allow a tables per cent view </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1ac7dec4507e05d56550b60a926bd5766a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char hash</definition>
+        <argsstring>(const char *string)</argsstring>
+        <name>hash</name>
+        <param>
+          <type>const char *</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a hash of string between 0 and 255 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="47" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1ac60e691b4a55dd2821126c2f5cd80441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void _new_tab</definition>
+        <argsstring>(Hashmap *map)</argsstring>
+        <name>_new_tab</name>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>\ create a new hash table </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="54" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1ac19eba68a28da4f11a7ffc71e7273bb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+        <definition>Hashmap * hashmap_new</definition>
+        <argsstring>(void)</argsstring>
+        <name>hashmap_new</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>\ return newhash - return an initialized hashmap </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1a4b7111f76c72e28e85dfb49b35cee3e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hashmap_set</definition>
+        <argsstring>(Hashmap *map, char *key, void *value)</argsstring>
+        <name>hashmap_set</name>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>\ add key and values into an hashmap accroding to the hashKey </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="66" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1ad39fb7cf60f000483e54488e9e6bb5f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * hashmap_get</definition>
+        <argsstring>(Hashmap *map, char *key)</argsstring>
+        <name>hashmap_get</name>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>\ return map-&gt;_tables[nbTable][<ref refid="classhash" kindref="compound">hash(key)</ref>]._value || return map-&gt;_tables[nbTable][(<ref refid="classhash" kindref="compound">hash(key)</ref>+1)%256]._value - return values of the key </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hash_8h_1aead54b098197b7ac42fc3a1804a2e721" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void hashmap_destroy</definition>
+        <argsstring>(Hashmap *map, void(*freeFunc)(void *))</argsstring>
+        <name>hashmap_destroy</name>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>void(*)(void *)</type>
+          <declname>freeFunc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="78" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>_HASH_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_HASH_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="hash_8h_1a7007e96d0b254e48465c7b9bb6d179de" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__KeyValuePair" kindref="compound">_KeyValuePair</ref><sp/><ref refid="struct__KeyValuePair" kindref="compound">KeyValuePair</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="struct__KeyValuePair" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__KeyValuePair" kindref="compound">_KeyValuePair</ref><sp/>{</highlight></codeline>
+<codeline lineno="17" refid="struct__KeyValuePair_1a50d41beb7885ba3c1cf2f3c063395adb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="struct__KeyValuePair_1a50d41beb7885ba3c1cf2f3c063395adb" kindref="member">_key</ref>;</highlight></codeline>
+<codeline lineno="18" refid="struct__KeyValuePair_1a304cf7fa6300fbabe54276e0790bc3c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="struct__KeyValuePair_1a304cf7fa6300fbabe54276e0790bc3c0" kindref="member">_value</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__Hashmap" kindref="compound">_Hashmap</ref><sp/><ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="struct__Hashmap" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__Hashmap" kindref="compound">_Hashmap</ref><sp/>{</highlight></codeline>
+<codeline lineno="24" refid="struct__Hashmap_1aae269efcb3bd2ef490fff8f9b656f24a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct__KeyValuePair" kindref="compound">KeyValuePair</ref>**<sp/><ref refid="struct__Hashmap_1aae269efcb3bd2ef490fff8f9b656f24a" kindref="member">_tables</ref>;</highlight></codeline>
+<codeline lineno="25" refid="struct__Hashmap_1aef808183503599d6678222736c8eb72e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="struct__Hashmap_1aef808183503599d6678222736c8eb72e" kindref="member">_table_count</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1a78a3d891440b624ddc1bbe23ade53ba9" kindref="member">xora</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1a040f3135106e008c3680cb8684dfb298" kindref="member">rpl</ref>(<ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/>map);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1ac7dec4507e05d56550b60a926bd5766a" kindref="member">hash</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1ac60e691b4a55dd2821126c2f5cd80441" kindref="member">_new_tab</ref>(<ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/>map);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/><ref refid="hash_8h_1ac19eba68a28da4f11a7ffc71e7273bb1" kindref="member">hashmap_new</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1a4b7111f76c72e28e85dfb49b35cee3e4" kindref="member">hashmap_set</ref>(<ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/>map,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>value);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="hash_8h_1ad39fb7cf60f000483e54488e9e6bb5f9" kindref="member">hashmap_get</ref>(<ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/>map,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1aead54b098197b7ac42fc3a1804a2e721" kindref="member">hashmap_destroy</ref>(<ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/>map,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*freeFunc)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*));</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_HASH_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="hash/src/hash.h"/>
+  </compounddef>
+</doxygen>

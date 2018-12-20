@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_85cd7de79443643707b9275dcc4c5a53" kind="dir">
+    <compoundname>phonetics/src</compoundname>
+    <innerfile refid="phonetics_8h">phonetics.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="phonetics/src/"/>
+  </compounddef>
+</doxygen>

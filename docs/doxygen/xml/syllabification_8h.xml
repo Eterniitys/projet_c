@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="syllabification_8h" kind="file" language="C++">
+    <compoundname>syllabification.h</compoundname>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="word_8h" local="no">word.h</includes>
+    <includes refid="tree_8h" local="no">tree.h</includes>
+    <includedby refid="symphonie_8h" local="no">symphonie.h</includedby>
+    <incdepgraph>
+      <node id="29">
+        <label>stdbool.h</label>
+      </node>
+      <node id="31">
+        <label>tree.h</label>
+        <link refid="tree_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>word.h</label>
+        <link refid="word_8h"/>
+      </node>
+      <node id="28">
+        <label>syllabification/src/syllabification.h</label>
+        <link refid="syllabification_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>list.h</label>
+        <link refid="list_8h"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="34">
+        <label>symphonie.h</label>
+        <link refid="symphonie_8h"/>
+      </node>
+      <node id="33">
+        <label>syllabification/src/syllabification.h</label>
+        <link refid="syllabification_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__StringBool" prot="public">_StringBool</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="syllabification_8h_1a43d2b58947318c50424e417ea91ef7aa" prot="public" static="no">
+        <type>struct <ref refid="struct__StringBool" kindref="compound">_StringBool</ref></type>
+        <definition>typedef struct _StringBool StringBool</definition>
+        <argsstring></argsstring>
+        <name>StringBool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="10" column="1" bodyfile="syllabification/src/syllabification.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="syllabification_8h_1ad32b0efa2c2493ef731bbb735fe02d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char **</type>
+        <definition>char** syllabicate</definition>
+        <argsstring>(Tree *syll_tree, const char *word)</argsstring>
+        <name>syllabicate</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>syll_tree</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="syllabification_8h_1affa8402c394da306c79e11bfd880dee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gen_syllables</definition>
+        <argsstring>(Tree *node, Tree *syll_tree, const char *word)</argsstring>
+        <name>gen_syllables</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>syll_tree</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="syllabification_8h_1a148507898c83b18c69cb421f2a1f4eeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void recursive</definition>
+        <argsstring>(Tree *node, Tree *syll_tree, const char *word, int index)</argsstring>
+        <name>recursive</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>syll_tree</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>word</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="24" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gregoire </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+<simplesect kind="date"><para>29 november 2018 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>_SYLLABIFICATION_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SYLLABIFICATION_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="word_8h" kindref="compound">word.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="tree_8h" kindref="compound">tree.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="syllabification_8h_1a43d2b58947318c50424e417ea91ef7aa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__StringBool" kindref="compound">_StringBool</ref><sp/><ref refid="struct__StringBool" kindref="compound">StringBool</ref>;</highlight></codeline>
+<codeline lineno="16" refid="struct__StringBool" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__StringBool" kindref="compound">_StringBool</ref><sp/>{</highlight></codeline>
+<codeline lineno="17" refid="struct__StringBool_1a87c49f9dd316545ad28c1d53bc7548e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="struct__StringBool_1a87c49f9dd316545ad28c1d53bc7548e0" kindref="member">string</ref>;</highlight></codeline>
+<codeline lineno="18" refid="struct__StringBool_1a107dddb18b71440f00a640eef3836974" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="struct__StringBool_1a107dddb18b71440f00a640eef3836974" kindref="member">eow</ref>;</highlight></codeline>
+<codeline lineno="19" refid="struct__StringBool_1a34a88c155be65a283d3dc85007924702" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct__StringBool_1a34a88c155be65a283d3dc85007924702" kindref="member">score</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/><ref refid="syllabification_8h_1ad32b0efa2c2493ef731bbb735fe02d4f" kindref="member">syllabicate</ref>(<ref refid="structTree" kindref="compound">Tree</ref>*<sp/>syll_tree,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classword" kindref="compound">word</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="syllabification_8h_1affa8402c394da306c79e11bfd880dee6" kindref="member">gen_syllables</ref>(<ref refid="structTree" kindref="compound">Tree</ref>*<sp/>node,<sp/><ref refid="structTree" kindref="compound">Tree</ref>*<sp/>syll_tree,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classword" kindref="compound">word</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="syllabification_8h_1a148507898c83b18c69cb421f2a1f4eeb" kindref="member">recursive</ref>(<ref refid="structTree" kindref="compound">Tree</ref>*<sp/>node,<sp/><ref refid="structTree" kindref="compound">Tree</ref>*<sp/>syll_tree,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classword" kindref="compound">word</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SYLLABIFICATION_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="syllabification/src/syllabification.h"/>
+  </compounddef>
+</doxygen>

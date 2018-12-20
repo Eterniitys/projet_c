@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="parser_8h" kind="file" language="C++">
+    <compoundname>parser.h</compoundname>
+    <includes refid="tree_8h" local="no">tree.h</includes>
+    <includes refid="word_8h" local="no">word.h</includes>
+    <includes refid="hash_8h" local="no">hash.h</includes>
+    <includedby refid="symphonie_8h" local="no">symphonie.h</includedby>
+    <incdepgraph>
+      <node id="15">
+        <label>stdbool.h</label>
+      </node>
+      <node id="17">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+      </node>
+      <node id="13">
+        <label>tree.h</label>
+        <link refid="tree_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>word.h</label>
+        <link refid="word_8h"/>
+      </node>
+      <node id="12">
+        <label>parser/src/parser.h</label>
+        <link refid="parser_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>list.h</label>
+        <link refid="list_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="19">
+        <label>symphonie.h</label>
+        <link refid="symphonie_8h"/>
+      </node>
+      <node id="18">
+        <label>parser/src/parser.h</label>
+        <link refid="parser_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="parser_8h_1a4d8d7369517cb24f04e65e160ec7682e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int compare_tree_wordchar</definition>
+        <argsstring>(void *node1, void *node2)</argsstring>
+        <name>compare_tree_wordchar</name>
+        <param>
+          <type>void *</type>
+          <declname>node1</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>node2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="8" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="parser_8h_1a87567524b1644e252052bfa03e0dd447" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fill_tree</definition>
+        <argsstring>(const char *mot, char *string, Tree *node)</argsstring>
+        <name>fill_tree</name>
+        <param>
+          <type>const char *</type>
+          <declname>mot</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="9" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="parser_8h_1ac981b8500f1377b39bbd11bacfdeeb88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void reverse_string</definition>
+        <argsstring>(char *word)</argsstring>
+        <name>reverse_string</name>
+        <param>
+          <type>char *</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="10" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="parser_8h_1a7efdff8b6d858f82b66d6d514a59ffa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long size_file</definition>
+        <argsstring>(FILE *fichier)</argsstring>
+        <name>size_file</name>
+        <param>
+          <type>FILE *</type>
+          <declname>fichier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="11" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="parser_8h_1a81d9ef0b3b8a8cb42fec8e24885d236c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char **</type>
+        <definition>char** split_syllables</definition>
+        <argsstring>(char *word)</argsstring>
+        <name>split_syllables</name>
+        <param>
+          <type>char *</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="12" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="parser_8h_1a4ceb46418adb4edc6865bb52be66c2b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void parser_destroy_generated_structures</definition>
+        <argsstring>(Tree *tree1, Tree *tree2, Hashmap *map)</argsstring>
+        <name>parser_destroy_generated_structures</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree1</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree2</declname>
+        </param>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="13" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="parser_8h_1a98eed53e8ef993fd7fd679033ed930e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void parser_read</definition>
+        <argsstring>(const char *PATH, Tree **root, Tree **root_syll, Hashmap **map_syl_phon)</argsstring>
+        <name>parser_read</name>
+        <param>
+          <type>const char *</type>
+          <declname>PATH</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> **</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> **</type>
+          <declname>root_syll</declname>
+        </param>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> **</type>
+          <declname>map_syl_phon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="parser/src/parser.h" line="15" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_PARSER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_PARSER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="tree_8h" kindref="compound">tree.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="word_8h" kindref="compound">word.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="hash_8h" kindref="compound">hash.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="parser_8h_1a4d8d7369517cb24f04e65e160ec7682e" kindref="member">compare_tree_wordchar</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>node1,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>node2);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="parser_8h_1a87567524b1644e252052bfa03e0dd447" kindref="member">fill_tree</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>mot,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/><ref refid="structTree" kindref="compound">Tree</ref>*<sp/>node);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="parser_8h_1ac981b8500f1377b39bbd11bacfdeeb88" kindref="member">reverse_string</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classword" kindref="compound">word</ref>);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="parser_8h_1a7efdff8b6d858f82b66d6d514a59ffa4" kindref="member">size_file</ref>(FILE*<sp/>fichier);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/><ref refid="parser_8h_1a81d9ef0b3b8a8cb42fec8e24885d236c" kindref="member">split_syllables</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classword" kindref="compound">word</ref>);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="parser_8h_1a4ceb46418adb4edc6865bb52be66c2b7" kindref="member">parser_destroy_generated_structures</ref>(<ref refid="structTree" kindref="compound">Tree</ref>*<sp/>tree1,<sp/><ref refid="structTree" kindref="compound">Tree</ref>*<sp/>tree2,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/>map);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="parser_8h_1a98eed53e8ef993fd7fd679033ed930e6" kindref="member">parser_read</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>PATH,<sp/><ref refid="structTree" kindref="compound">Tree</ref>**<sp/>root,<sp/><ref refid="structTree" kindref="compound">Tree</ref>**<sp/><ref refid="symphonie_8h_1abfb059e98975eaabd267b4240f103356" kindref="member">root_syll</ref>,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>**<sp/><ref refid="symphonie_8h_1a8a083bae6c323daa5a086473b4dbe3ab" kindref="member">map_syl_phon</ref>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_PARSER_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="parser/src/parser.h"/>
+  </compounddef>
+</doxygen>

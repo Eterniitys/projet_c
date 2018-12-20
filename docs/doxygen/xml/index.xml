@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.14">
+  <compound refid="struct__char__word" kind="struct"><name>_char_word</name>
+    <member refid="struct__char__word_1a923893bb982df8732163cb16c78d9a68" kind="variable"><name>character</name></member>
+    <member refid="struct__char__word_1adaa60c81c7c562ed3e8fee6ec7fa0201" kind="variable"><name>string</name></member>
+    <member refid="struct__char__word_1a899990c0d69a80beea4155b2f8ff11d7" kind="variable"><name>counter_syll</name></member>
+  </compound>
+  <compound refid="struct__Hashmap" kind="struct"><name>_Hashmap</name>
+    <member refid="struct__Hashmap_1aae269efcb3bd2ef490fff8f9b656f24a" kind="variable"><name>_tables</name></member>
+    <member refid="struct__Hashmap_1aef808183503599d6678222736c8eb72e" kind="variable"><name>_table_count</name></member>
+  </compound>
+  <compound refid="struct__KeyValuePair" kind="struct"><name>_KeyValuePair</name>
+    <member refid="struct__KeyValuePair_1a50d41beb7885ba3c1cf2f3c063395adb" kind="variable"><name>_key</name></member>
+    <member refid="struct__KeyValuePair_1a304cf7fa6300fbabe54276e0790bc3c0" kind="variable"><name>_value</name></member>
+  </compound>
+  <compound refid="struct__List" kind="struct"><name>_List</name>
+    <member refid="struct__List_1afcc6effbeea05019d64a0fdcb99ebf9c" kind="variable"><name>_count</name></member>
+    <member refid="struct__List_1acccc526abfc4d69b37bb167adc029107" kind="variable"><name>_size</name></member>
+    <member refid="struct__List_1aa424250bd616a9439c83b2521d13c242" kind="variable"><name>_lock</name></member>
+    <member refid="struct__List_1a79d2aa2126fed5346e46f58444872bf5" kind="variable"><name>_compare</name></member>
+    <member refid="struct__List_1a6dc233faef712458daa3667ba09cfcbf" kind="variable"><name>_data</name></member>
+  </compound>
+  <compound refid="struct__ScoreSyllPhon" kind="struct"><name>_ScoreSyllPhon</name>
+    <member refid="struct__ScoreSyllPhon_1ae559395e6a1d1d381ede53015b3c8c6d" kind="variable"><name>syllPhon</name></member>
+    <member refid="struct__ScoreSyllPhon_1aeb8fd7a2eea4dd089105f875923fc034" kind="variable"><name>score</name></member>
+  </compound>
+  <compound refid="struct__StringBool" kind="struct"><name>_StringBool</name>
+    <member refid="struct__StringBool_1a87c49f9dd316545ad28c1d53bc7548e0" kind="variable"><name>string</name></member>
+    <member refid="struct__StringBool_1a107dddb18b71440f00a640eef3836974" kind="variable"><name>eow</name></member>
+    <member refid="struct__StringBool_1a34a88c155be65a283d3dc85007924702" kind="variable"><name>score</name></member>
+  </compound>
+  <compound refid="struct__Tree" kind="struct"><name>_Tree</name>
+    <member refid="struct__Tree_1a092eb0c0eeebcdfb1be9ef09aa2da570" kind="variable"><name>_struc</name></member>
+    <member refid="struct__Tree_1a11aee979ce213bff45ff720ac1dbf85a" kind="variable"><name>_children</name></member>
+    <member refid="struct__Tree_1a436639ce6e12fed08dbc85cb6f9960ed" kind="variable"><name>_funct</name></member>
+  </compound>
+  <compound refid="struct__Word" kind="struct"><name>_Word</name>
+    <member refid="struct__Word_1ab090ace4849f621274b5e45de57efc99" kind="variable"><name>_pronunc</name></member>
+    <member refid="struct__Word_1a59e9f91b2f07e506223b4bf52ee403c5" kind="variable"><name>_word</name></member>
+  </compound>
+  <compound refid="classhash" kind="class"><name>hash</name>
+  </compound>
+  <compound refid="structList" kind="struct"><name>List</name>
+  </compound>
+  <compound refid="structSGlobalData" kind="struct"><name>SGlobalData</name>
+    <member refid="structSGlobalData_1ab34d4cdd1dbc99f665a11fb406b6d81d" kind="variable"><name>builder</name></member>
+    <member refid="structSGlobalData_1a559fa68643f54b12903bd3aa42ea7171" kind="variable"><name>user_data</name></member>
+  </compound>
+  <compound refid="structTree" kind="struct"><name>Tree</name>
+  </compound>
+  <compound refid="classword" kind="class"><name>word</name>
+  </compound>
+  <compound refid="hash_8h" kind="file"><name>hash.h</name>
+    <member refid="hash_8h_1a7007e96d0b254e48465c7b9bb6d179de" kind="typedef"><name>KeyValuePair</name></member>
+    <member refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kind="typedef"><name>Hashmap</name></member>
+    <member refid="hash_8h_1a78a3d891440b624ddc1bbe23ade53ba9" kind="function"><name>xora</name></member>
+    <member refid="hash_8h_1a040f3135106e008c3680cb8684dfb298" kind="function"><name>rpl</name></member>
+    <member refid="hash_8h_1ac7dec4507e05d56550b60a926bd5766a" kind="function"><name>hash</name></member>
+    <member refid="hash_8h_1ac60e691b4a55dd2821126c2f5cd80441" kind="function"><name>_new_tab</name></member>
+    <member refid="hash_8h_1ac19eba68a28da4f11a7ffc71e7273bb1" kind="function"><name>hashmap_new</name></member>
+    <member refid="hash_8h_1a4b7111f76c72e28e85dfb49b35cee3e4" kind="function"><name>hashmap_set</name></member>
+    <member refid="hash_8h_1ad39fb7cf60f000483e54488e9e6bb5f9" kind="function"><name>hashmap_get</name></member>
+    <member refid="hash_8h_1aead54b098197b7ac42fc3a1804a2e721" kind="function"><name>hashmap_destroy</name></member>
+  </compound>
+  <compound refid="list_8h" kind="file"><name>list.h</name>
+    <member refid="list_8h_1af415aadeab887feeda9d2e42371a40b0" kind="typedef"><name>List</name></member>
+    <member refid="list_8h_1a635855f2315417070aa4dbae27b6e4a6" kind="typedef"><name>_compFunc</name></member>
+    <member refid="list_8h_1a3a8f19288aa6b651b32daa5ab7d25410" kind="typedef"><name>_freeFunc</name></member>
+    <member refid="list_8h_1a8324198aec6dec4d8d77a0aa89b9f633" kind="typedef"><name>ScoreSyllPhon</name></member>
+    <member refid="list_8h_1a4a888b9969308fa868af9273c85c0bf5" kind="function"><name>list_get</name></member>
+    <member refid="list_8h_1a62896b0cfe8dee886318a16233ab517e" kind="function"><name>list_add</name></member>
+    <member refid="list_8h_1a4ce90ec0e117e0d33483eacb7fd6de11" kind="function"><name>list_remove</name></member>
+    <member refid="list_8h_1a32cd409bcddb3f8e9bdef6cdfc2f9c07" kind="function"><name>list_count</name></member>
+    <member refid="list_8h_1a1d00add7bac46092e4fd07605237a2fb" kind="function"><name>list_find</name></member>
+    <member refid="list_8h_1a4a9db04be8454603d6e2116d0d54c3f6" kind="function"><name>list_lock</name></member>
+    <member refid="list_8h_1abc9b4cb87249552a271a99e4e290dbd6" kind="function"><name>list_unlock</name></member>
+    <member refid="list_8h_1a09ee852718e75a7c476308b01c59cfbf" kind="function"><name>list_is_locked</name></member>
+    <member refid="list_8h_1a46f2172ed298d4fa1c009bba806d4221" kind="function"><name>list_destroy</name></member>
+    <member refid="list_8h_1ac060f99a71d77aa1576d96cf6724b1de" kind="function"><name>list_new</name></member>
+  </compound>
+  <compound refid="parser_8h" kind="file"><name>parser.h</name>
+    <member refid="parser_8h_1a4d8d7369517cb24f04e65e160ec7682e" kind="function"><name>compare_tree_wordchar</name></member>
+    <member refid="parser_8h_1a87567524b1644e252052bfa03e0dd447" kind="function"><name>fill_tree</name></member>
+    <member refid="parser_8h_1ac981b8500f1377b39bbd11bacfdeeb88" kind="function"><name>reverse_string</name></member>
+    <member refid="parser_8h_1a7efdff8b6d858f82b66d6d514a59ffa4" kind="function"><name>size_file</name></member>
+    <member refid="parser_8h_1a81d9ef0b3b8a8cb42fec8e24885d236c" kind="function"><name>split_syllables</name></member>
+    <member refid="parser_8h_1a4ceb46418adb4edc6865bb52be66c2b7" kind="function"><name>parser_destroy_generated_structures</name></member>
+    <member refid="parser_8h_1a98eed53e8ef993fd7fd679033ed930e6" kind="function"><name>parser_read</name></member>
+  </compound>
+  <compound refid="phonetics_8h" kind="file"><name>phonetics.h</name>
+    <member refid="phonetics_8h_1a5e14250751f22260562fce765a9abf1d" kind="function"><name>fill_phonetics</name></member>
+    <member refid="phonetics_8h_1a3037ccc3794bc158b0bfbe95db08b6f3" kind="function"><name>tab_to_string</name></member>
+  </compound>
+  <compound refid="rhyme_8h" kind="file"><name>rhyme.h</name>
+    <member refid="rhyme_8h_1aae7c8a41a1ad079e312daf3f57c7a653" kind="typedef"><name>Word</name></member>
+    <member refid="rhyme_8h_1a4043e79e55782cf768b7308dcad7ffbd" kind="function"><name>print_tree</name></member>
+    <member refid="rhyme_8h_1ac981b8500f1377b39bbd11bacfdeeb88" kind="function"><name>reverse_string</name></member>
+    <member refid="rhyme_8h_1a1a488be8e6d05353c2a6b4ff138e06c2" kind="function"><name>compare</name></member>
+    <member refid="rhyme_8h_1a93842818707766437e9a2328650f1a03" kind="function"><name>cutList</name></member>
+    <member refid="rhyme_8h_1ab9e2e4dd1302a78889a58fd421d79c6a" kind="function"><name>arbreEnList</name></member>
+    <member refid="rhyme_8h_1a6802dd93c119ac80f75454fce0f8e549" kind="function"><name>finalList</name></member>
+    <member refid="rhyme_8h_1a4a5b21e8ee23f1e951aca6ef0cf06c52" kind="function"><name>match_word</name></member>
+  </compound>
+  <compound refid="syllabification_8h" kind="file"><name>syllabification.h</name>
+    <member refid="syllabification_8h_1a43d2b58947318c50424e417ea91ef7aa" kind="typedef"><name>StringBool</name></member>
+    <member refid="syllabification_8h_1ad32b0efa2c2493ef731bbb735fe02d4f" kind="function"><name>syllabicate</name></member>
+    <member refid="syllabification_8h_1affa8402c394da306c79e11bfd880dee6" kind="function"><name>gen_syllables</name></member>
+    <member refid="syllabification_8h_1a148507898c83b18c69cb421f2a1f4eeb" kind="function"><name>recursive</name></member>
+  </compound>
+  <compound refid="symphonie_8h" kind="file"><name>symphonie.h</name>
+    <member refid="symphonie_8h_1a961aac8cc82ee7789a9288daa6c25602" kind="variable"><name>data</name></member>
+    <member refid="symphonie_8h_1ac8173d466e7c37ece89790e9a64a5103" kind="variable"><name>root_phon</name></member>
+    <member refid="symphonie_8h_1abfb059e98975eaabd267b4240f103356" kind="variable"><name>root_syll</name></member>
+    <member refid="symphonie_8h_1a8a083bae6c323daa5a086473b4dbe3ab" kind="variable"><name>map_syl_phon</name></member>
+    <member refid="symphonie_8h_1a1b1d3d5e95f044a344a1fd1d944511c5" kind="function"><name>callback_about</name></member>
+    <member refid="symphonie_8h_1a1278ffa67f6f2206d864c002c0f5c821" kind="function"><name>on_itemPreference_activate</name></member>
+    <member refid="symphonie_8h_1aa655d89a60d0f19dc0477fa683a9a3fc" kind="function"><name>on_SearchEntry_search_changed</name></member>
+    <member refid="symphonie_8h_1abf67d882cbea8b20d80544fe5f604e4a" kind="function"><name>deleteChildren</name></member>
+    <member refid="symphonie_8h_1a9643c1a6383721c7e1e9a1319879e9b4" kind="function"><name>insertChildren</name></member>
+  </compound>
+  <compound refid="tree_8h" kind="file"><name>tree.h</name>
+    <member refid="tree_8h_1abd3c5b5c3b85f90db37d7debe4cf3004" kind="typedef"><name>Tree</name></member>
+    <member refid="tree_8h_1a1ced26a6778ed16e0fcaa75d8ab8cb5a" kind="function"><name>tree_new</name></member>
+    <member refid="tree_8h_1aef47ef333aa1f90c2afcab9132342b9d" kind="function"><name>tree_destroy</name></member>
+    <member refid="tree_8h_1a9ba95b242a69b0fe7928b5132e399d63" kind="function"><name>tree_get_node</name></member>
+    <member refid="tree_8h_1a4e67eb0be70806ad0fd794adb5383e6d" kind="function"><name>tree_add_child</name></member>
+    <member refid="tree_8h_1a182d144bd266f8f2442c8c202650d2f6" kind="function"><name>tree_remove_child</name></member>
+    <member refid="tree_8h_1afa5ff3ba97979c54672044378142459d" kind="function"><name>tree_get_child</name></member>
+    <member refid="tree_8h_1a2688b0740d34a6993c1d76d574e85201" kind="function"><name>tree_child_count</name></member>
+    <member refid="tree_8h_1a9193e48672a80131b2d70cb35ead6ea6" kind="function"><name>tree_lock</name></member>
+    <member refid="tree_8h_1a9566ca10a5d6fdce1c6916c693814310" kind="function"><name>tree_unlock</name></member>
+    <member refid="tree_8h_1a2d730809e71779e25c628036cb1051f7" kind="function"><name>tree_find_child</name></member>
+    <member refid="tree_8h_1abe66ab0a960c6a121183694af6be70ee" kind="function"><name>tree_get_depth</name></member>
+  </compound>
+  <compound refid="word_8h" kind="file"><name>word.h</name>
+    <member refid="word_8h_1a7194cb286b5b74e7b5a3bbb469ca8a91" kind="typedef"><name>char_word</name></member>
+  </compound>
+  <compound refid="dir_72aaf47615111200018c039a56ef48be" kind="dir"><name>hash</name>
+  </compound>
+  <compound refid="dir_48c61abad44e2f181b0a6a33afb59c17" kind="dir"><name>list</name>
+  </compound>
+  <compound refid="dir_572890c148f68441e050f6560d78312b" kind="dir"><name>parser</name>
+  </compound>
+  <compound refid="dir_1784fca08ade19ed716796cd75188b77" kind="dir"><name>phonetics</name>
+  </compound>
+  <compound refid="dir_73b94d455fe09934c849167bfe454849" kind="dir"><name>rhyme</name>
+  </compound>
+  <compound refid="dir_1543c59ac10db750b223d8b75adf6bc2" kind="dir"><name>syllabification/src</name>
+  </compound>
+  <compound refid="dir_85cd7de79443643707b9275dcc4c5a53" kind="dir"><name>phonetics/src</name>
+  </compound>
+  <compound refid="dir_7e22159ec4ac1aca9035aaf631b38ad8" kind="dir"><name>rhyme/src</name>
+  </compound>
+  <compound refid="dir_c7960c25f8213ab5dbb4454ab689ec59" kind="dir"><name>list/src</name>
+  </compound>
+  <compound refid="dir_892f9a48c664aa63a511e1f0df9edf70" kind="dir"><name>hash/src</name>
+  </compound>
+  <compound refid="dir_cf2be754cc060701bc221ebb342c9a09" kind="dir"><name>word/src</name>
+  </compound>
+  <compound refid="dir_32c5a3e47767d452350e34b5f4cbed1b" kind="dir"><name>parser/src</name>
+  </compound>
+  <compound refid="dir_5e84d2ee95ade8dac90100fc06d809c8" kind="dir"><name>tree/src</name>
+  </compound>
+  <compound refid="dir_19cde11b5c9e86a446688cb8c26bd588" kind="dir"><name>syllabification</name>
+  </compound>
+  <compound refid="dir_70093cb3a9d1f8840af4e997fde867c3" kind="dir"><name>tree</name>
+  </compound>
+  <compound refid="dir_812ab01a3a83dff64125b0ee6d4b1dd0" kind="dir"><name>word</name>
+  </compound>
+</doxygenindex>

@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="tree_8h" kind="file" language="C++">
+    <compoundname>tree.h</compoundname>
+    <includes refid="list_8h" local="no">list.h</includes>
+    <includedby refid="parser_8h" local="no">parser/src/parser.h</includedby>
+    <includedby refid="rhyme_8h" local="no">rhyme/src/rhyme.h</includedby>
+    <includedby refid="syllabification_8h" local="no">syllabification/src/syllabification.h</includedby>
+    <includedby refid="symphonie_8h" local="no">symphonie.h</includedby>
+    <incdepgraph>
+      <node id="48">
+        <label>stdbool.h</label>
+      </node>
+      <node id="46">
+        <label>tree/src/tree.h</label>
+        <link refid="tree_8h"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>list.h</label>
+        <link refid="list_8h"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="51">
+        <label>symphonie.h</label>
+        <link refid="symphonie_8h"/>
+      </node>
+      <node id="49">
+        <label>tree/src/tree.h</label>
+        <link refid="tree_8h"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>parser/src/parser.h</label>
+        <link refid="parser_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>rhyme/src/rhyme.h</label>
+        <link refid="rhyme_8h"/>
+      </node>
+      <node id="53">
+        <label>syllabification/src/syllabification.h</label>
+        <link refid="syllabification_8h"/>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__Tree" prot="public">_Tree</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tree_8h_1abd3c5b5c3b85f90db37d7debe4cf3004" prot="public" static="no">
+        <type>struct <ref refid="struct__Tree" kindref="compound">_Tree</ref></type>
+        <definition>typedef struct _Tree  Tree</definition>
+        <argsstring></argsstring>
+        <name>Tree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="18" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tree_8h_1a1ced26a6778ed16e0fcaa75d8ab8cb5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+        <definition>Tree* tree_new</definition>
+        <argsstring>(void *struc, _compFunc funct)</argsstring>
+        <name>tree_new</name>
+        <param>
+          <type>void *</type>
+          <declname>struc</declname>
+        </param>
+        <param>
+          <type><ref refid="list_8h_1a635855f2315417070aa4dbae27b6e4a6" kindref="member">_compFunc</ref></type>
+          <declname>funct</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1aef47ef333aa1f90c2afcab9132342b9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tree_destroy</definition>
+        <argsstring>(Tree *tree, _freeFunc free)</argsstring>
+        <name>tree_destroy</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree</declname>
+        </param>
+        <param>
+          <type><ref refid="list_8h_1a3a8f19288aa6b651b32daa5ab7d25410" kindref="member">_freeFunc</ref></type>
+          <declname>free</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a9ba95b242a69b0fe7928b5132e399d63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* tree_get_node</definition>
+        <argsstring>(Tree *root)</argsstring>
+        <name>tree_get_node</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="24" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a4e67eb0be70806ad0fd794adb5383e6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+        <definition>Tree* tree_add_child</definition>
+        <argsstring>(Tree *root, Tree *node)</argsstring>
+        <name>tree_add_child</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="26" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a182d144bd266f8f2442c8c202650d2f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+        <definition>Tree* tree_remove_child</definition>
+        <argsstring>(Tree *root, int index)</argsstring>
+        <name>tree_remove_child</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="28" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1afa5ff3ba97979c54672044378142459d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+        <definition>Tree* tree_get_child</definition>
+        <argsstring>(Tree *root, int nb)</argsstring>
+        <name>tree_get_child</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="30" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a2688b0740d34a6993c1d76d574e85201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int tree_child_count</definition>
+        <argsstring>(Tree *tree)</argsstring>
+        <name>tree_child_count</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="32" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a9193e48672a80131b2d70cb35ead6ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tree_lock</definition>
+        <argsstring>(Tree *tree)</argsstring>
+        <name>tree_lock</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a9566ca10a5d6fdce1c6916c693814310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tree_unlock</definition>
+        <argsstring>(Tree *tree)</argsstring>
+        <name>tree_unlock</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="36" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1a2d730809e71779e25c628036cb1051f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+        <definition>Tree* tree_find_child</definition>
+        <argsstring>(Tree *tree, void *child)</argsstring>
+        <name>tree_find_child</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="tree_8h_1abe66ab0a960c6a121183694af6be70ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int tree_get_depth</definition>
+        <argsstring>(Tree *tree)</argsstring>
+        <name>tree_get_depth</name>
+        <param>
+          <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
+          <declname>tree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="40" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>_TREE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_TREE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="list_8h" kindref="compound">list.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="struct__Tree" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__Tree" kindref="compound">_Tree</ref><sp/>{</highlight></codeline>
+<codeline lineno="15" refid="struct__Tree_1a092eb0c0eeebcdfb1be9ef09aa2da570" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="struct__Tree_1a092eb0c0eeebcdfb1be9ef09aa2da570" kindref="member">_struc</ref>;</highlight></codeline>
+<codeline lineno="16" refid="struct__Tree_1a11aee979ce213bff45ff720ac1dbf85a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structList" kindref="compound">List</ref><sp/>*<sp/><ref refid="struct__Tree_1a11aee979ce213bff45ff720ac1dbf85a" kindref="member">_children</ref>;</highlight></codeline>
+<codeline lineno="17" refid="struct__Tree_1a436639ce6e12fed08dbc85cb6f9960ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="list_8h_1a635855f2315417070aa4dbae27b6e4a6" kindref="member">_compFunc</ref><sp/><ref refid="struct__Tree_1a436639ce6e12fed08dbc85cb6f9960ed" kindref="member">_funct</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}<sp/><ref refid="tree_8h_1abd3c5b5c3b85f90db37d7debe4cf3004" kindref="member">Tree</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structTree" kindref="compound">Tree</ref><sp/>*<sp/><ref refid="tree_8h_1a1ced26a6778ed16e0fcaa75d8ab8cb5a" kindref="member">tree_new</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*struc,<sp/><ref refid="list_8h_1a635855f2315417070aa4dbae27b6e4a6" kindref="member">_compFunc</ref><sp/>funct);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tree_8h_1aef47ef333aa1f90c2afcab9132342b9d" kindref="member">tree_destroy</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*<sp/>tree,<sp/><ref refid="list_8h_1a3a8f19288aa6b651b32daa5ab7d25410" kindref="member">_freeFunc</ref><sp/>free);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/><ref refid="tree_8h_1a9ba95b242a69b0fe7928b5132e399d63" kindref="member">tree_get_node</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*root);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structTree" kindref="compound">Tree</ref><sp/>*<sp/><ref refid="tree_8h_1a4e67eb0be70806ad0fd794adb5383e6d" kindref="member">tree_add_child</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*root,<sp/><ref refid="structTree" kindref="compound">Tree</ref><sp/>*node);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structTree" kindref="compound">Tree</ref><sp/>*<sp/><ref refid="tree_8h_1a182d144bd266f8f2442c8c202650d2f6" kindref="member">tree_remove_child</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*root,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structTree" kindref="compound">Tree</ref><sp/>*<sp/><ref refid="tree_8h_1afa5ff3ba97979c54672044378142459d" kindref="member">tree_get_child</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*root,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tree_8h_1a2688b0740d34a6993c1d76d574e85201" kindref="member">tree_child_count</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*tree);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tree_8h_1a9193e48672a80131b2d70cb35ead6ea6" kindref="member">tree_lock</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*tree);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tree_8h_1a9566ca10a5d6fdce1c6916c693814310" kindref="member">tree_unlock</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*tree);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structTree" kindref="compound">Tree</ref><sp/>*<sp/><ref refid="tree_8h_1a2d730809e71779e25c628036cb1051f7" kindref="member">tree_find_child</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*tree,</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*child);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tree_8h_1abe66ab0a960c6a121183694af6be70ee" kindref="member">tree_get_depth</ref>(<ref refid="structTree" kindref="compound">Tree</ref><sp/>*tree);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_TREE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="tree/src/tree.h"/>
+  </compounddef>
+</doxygen>

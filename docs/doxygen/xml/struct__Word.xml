@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__Word" kind="struct" language="C++" prot="public">
+    <compoundname>_Word</compoundname>
+    <includes refid="rhyme_8h" local="no">rhyme.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__Word_1ab090ace4849f621274b5e45de57efc99" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* _Word::_pronunc</definition>
+        <argsstring></argsstring>
+        <name>_pronunc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rhyme/src/rhyme.h" line="9" column="1" bodyfile="rhyme/src/rhyme.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__Word_1a59e9f91b2f07e506223b4bf52ee403c5" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* _Word::_word</definition>
+        <argsstring></argsstring>
+        <name>_word</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="rhyme/src/rhyme.h" line="10" column="1" bodyfile="rhyme/src/rhyme.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="rhyme/src/rhyme.h" line="8" column="1" bodyfile="rhyme/src/rhyme.h" bodystart="8" bodyend="11"/>
+    <listofallmembers>
+      <member refid="struct__Word_1ab090ace4849f621274b5e45de57efc99" prot="public" virt="non-virtual"><scope>_Word</scope><name>_pronunc</name></member>
+      <member refid="struct__Word_1a59e9f91b2f07e506223b4bf52ee403c5" prot="public" virt="non-virtual"><scope>_Word</scope><name>_word</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

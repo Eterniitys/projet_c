@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__ScoreSyllPhon" kind="struct" language="C++" prot="public">
+    <compoundname>_ScoreSyllPhon</compoundname>
+    <includes refid="list_8h" local="no">list.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__ScoreSyllPhon_1ae559395e6a1d1d381ede53015b3c8c6d" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* _ScoreSyllPhon::syllPhon</definition>
+        <argsstring></argsstring>
+        <name>syllPhon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="list/src/list.h" line="27" column="1" bodyfile="list/src/list.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__ScoreSyllPhon_1aeb8fd7a2eea4dd089105f875923fc034" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int _ScoreSyllPhon::score</definition>
+        <argsstring></argsstring>
+        <name>score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="list/src/list.h" line="28" column="1" bodyfile="list/src/list.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="list/src/list.h" line="26" column="1" bodyfile="list/src/list.h" bodystart="26" bodyend="29"/>
+    <listofallmembers>
+      <member refid="struct__ScoreSyllPhon_1aeb8fd7a2eea4dd089105f875923fc034" prot="public" virt="non-virtual"><scope>_ScoreSyllPhon</scope><name>score</name></member>
+      <member refid="struct__ScoreSyllPhon_1ae559395e6a1d1d381ede53015b3c8c6d" prot="public" virt="non-virtual"><scope>_ScoreSyllPhon</scope><name>syllPhon</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

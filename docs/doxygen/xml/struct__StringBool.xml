@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__StringBool" kind="struct" language="C++" prot="public">
+    <compoundname>_StringBool</compoundname>
+    <includes refid="syllabification_8h" local="no">syllabification.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__StringBool_1a87c49f9dd316545ad28c1d53bc7548e0" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* _StringBool::string</definition>
+        <argsstring></argsstring>
+        <name>string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="17" column="1" bodyfile="syllabification/src/syllabification.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__StringBool_1a107dddb18b71440f00a640eef3836974" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool _StringBool::eow</definition>
+        <argsstring></argsstring>
+        <name>eow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="18" column="1" bodyfile="syllabification/src/syllabification.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__StringBool_1a34a88c155be65a283d3dc85007924702" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int _StringBool::score</definition>
+        <argsstring></argsstring>
+        <name>score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="syllabification/src/syllabification.h" line="19" column="1" bodyfile="syllabification/src/syllabification.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="syllabification/src/syllabification.h" line="16" column="1" bodyfile="syllabification/src/syllabification.h" bodystart="16" bodyend="20"/>
+    <listofallmembers>
+      <member refid="struct__StringBool_1a107dddb18b71440f00a640eef3836974" prot="public" virt="non-virtual"><scope>_StringBool</scope><name>eow</name></member>
+      <member refid="struct__StringBool_1a34a88c155be65a283d3dc85007924702" prot="public" virt="non-virtual"><scope>_StringBool</scope><name>score</name></member>
+      <member refid="struct__StringBool_1a87c49f9dd316545ad28c1d53bc7548e0" prot="public" virt="non-virtual"><scope>_StringBool</scope><name>string</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

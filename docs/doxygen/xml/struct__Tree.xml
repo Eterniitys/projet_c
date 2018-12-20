@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__Tree" kind="struct" language="C++" prot="public">
+    <compoundname>_Tree</compoundname>
+    <includes refid="tree_8h" local="no">tree.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__Tree_1a092eb0c0eeebcdfb1be9ef09aa2da570" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* _Tree::_struc</definition>
+        <argsstring></argsstring>
+        <name>_struc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="15" column="1" bodyfile="tree/src/tree.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__Tree_1a11aee979ce213bff45ff720ac1dbf85a" prot="public" static="no" mutable="no">
+        <type><ref refid="structList" kindref="compound">List</ref> *</type>
+        <definition>List* _Tree::_children</definition>
+        <argsstring></argsstring>
+        <name>_children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="16" column="1" bodyfile="tree/src/tree.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__Tree_1a436639ce6e12fed08dbc85cb6f9960ed" prot="public" static="no" mutable="no">
+        <type><ref refid="list_8h_1a635855f2315417070aa4dbae27b6e4a6" kindref="member">_compFunc</ref></type>
+        <definition>_compFunc _Tree::_funct</definition>
+        <argsstring></argsstring>
+        <name>_funct</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tree/src/tree.h" line="17" column="1" bodyfile="tree/src/tree.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="14">
+        <label>_Tree</label>
+        <link refid="struct__Tree"/>
+        <childnode refid="15" relation="usage">
+          <edgelabel>_children</edgelabel>
+        </childnode>
+      </node>
+      <node id="15">
+        <label>List</label>
+        <link refid="structList"/>
+      </node>
+    </collaborationgraph>
+    <location file="tree/src/tree.h" line="14" column="1" bodyfile="tree/src/tree.h" bodystart="14" bodyend="18"/>
+    <listofallmembers>
+      <member refid="struct__Tree_1a11aee979ce213bff45ff720ac1dbf85a" prot="public" virt="non-virtual"><scope>_Tree</scope><name>_children</name></member>
+      <member refid="struct__Tree_1a436639ce6e12fed08dbc85cb6f9960ed" prot="public" virt="non-virtual"><scope>_Tree</scope><name>_funct</name></member>
+      <member refid="struct__Tree_1a092eb0c0eeebcdfb1be9ef09aa2da570" prot="public" virt="non-virtual"><scope>_Tree</scope><name>_struc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

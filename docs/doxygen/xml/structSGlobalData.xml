@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structSGlobalData" kind="struct" language="C++" prot="public">
+    <compoundname>SGlobalData</compoundname>
+    <includes refid="symphonie_8h" local="no">symphonie.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structSGlobalData_1ab34d4cdd1dbc99f665a11fb406b6d81d" prot="public" static="no" mutable="no">
+        <type>GtkBuilder *</type>
+        <definition>GtkBuilder* SGlobalData::builder</definition>
+        <argsstring></argsstring>
+        <name>builder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="symphonie.h" line="12" column="1" bodyfile="symphonie.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSGlobalData_1a559fa68643f54b12903bd3aa42ea7171" prot="public" static="no" mutable="no">
+        <type>gpointer</type>
+        <definition>gpointer SGlobalData::user_data</definition>
+        <argsstring></argsstring>
+        <name>user_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="symphonie.h" line="13" column="1" bodyfile="symphonie.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="symphonie.h" line="11" column="1" bodyfile="symphonie.h" bodystart="11" bodyend="14"/>
+    <listofallmembers>
+      <member refid="structSGlobalData_1ab34d4cdd1dbc99f665a11fb406b6d81d" prot="public" virt="non-virtual"><scope>SGlobalData</scope><name>builder</name></member>
+      <member refid="structSGlobalData_1a559fa68643f54b12903bd3aa42ea7171" prot="public" virt="non-virtual"><scope>SGlobalData</scope><name>user_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

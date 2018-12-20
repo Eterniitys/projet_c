@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__Hashmap" kind="struct" language="C++" prot="public">
+    <compoundname>_Hashmap</compoundname>
+    <includes refid="hash_8h" local="no">hash.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__Hashmap_1aae269efcb3bd2ef490fff8f9b656f24a" prot="public" static="no" mutable="no">
+        <type><ref refid="hash_8h_1a7007e96d0b254e48465c7b9bb6d179de" kindref="member">KeyValuePair</ref> **</type>
+        <definition>KeyValuePair** _Hashmap::_tables</definition>
+        <argsstring></argsstring>
+        <name>_tables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="24" column="1" bodyfile="hash/src/hash.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__Hashmap_1aef808183503599d6678222736c8eb72e" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char _Hashmap::_table_count</definition>
+        <argsstring></argsstring>
+        <name>_table_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hash/src/hash.h" line="25" column="1" bodyfile="hash/src/hash.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>_KeyValuePair</label>
+        <link refid="struct__KeyValuePair"/>
+      </node>
+      <node id="3">
+        <label>_Hashmap</label>
+        <link refid="struct__Hashmap"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_tables</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="hash/src/hash.h" line="23" column="1" bodyfile="hash/src/hash.h" bodystart="23" bodyend="26"/>
+    <listofallmembers>
+      <member refid="struct__Hashmap_1aef808183503599d6678222736c8eb72e" prot="public" virt="non-virtual"><scope>_Hashmap</scope><name>_table_count</name></member>
+      <member refid="struct__Hashmap_1aae269efcb3bd2ef490fff8f9b656f24a" prot="public" virt="non-virtual"><scope>_Hashmap</scope><name>_tables</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

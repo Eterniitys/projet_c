@@ -1,0 +1,1 @@
+.. doxygenfile:: symphonie.h

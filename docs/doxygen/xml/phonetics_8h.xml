@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="phonetics_8h" kind="file" language="C++">
+    <compoundname>phonetics.h</compoundname>
+    <includedby refid="symphonie_8h" local="no">symphonie.h</includedby>
+    <invincdepgraph>
+      <node id="22">
+        <label>symphonie.h</label>
+        <link refid="symphonie_8h"/>
+      </node>
+      <node id="21">
+        <label>phonetics/src/phonetics.h</label>
+        <link refid="phonetics_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="phonetics_8h_1a5e14250751f22260562fce765a9abf1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char **</type>
+        <definition>char** fill_phonetics</definition>
+        <argsstring>(char **syllables, Hashmap *hashmap)</argsstring>
+        <name>fill_phonetics</name>
+        <param>
+          <type>char **</type>
+          <declname>syllables</declname>
+        </param>
+        <param>
+          <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
+          <declname>hashmap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="phonetics/src/phonetics.h" line="4" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="phonetics_8h_1a3037ccc3794bc158b0bfbe95db08b6f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* tab_to_string</definition>
+        <argsstring>(char **tab)</argsstring>
+        <name>tab_to_string</name>
+        <param>
+          <type>char **</type>
+          <declname>tab</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="phonetics/src/phonetics.h" line="5" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_PHONETICS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_PHONETICS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**<sp/><ref refid="phonetics_8h_1a5e14250751f22260562fce765a9abf1d" kindref="member">fill_phonetics</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**syllables,<ref refid="struct__Hashmap" kindref="compound">Hashmap</ref><sp/>*<sp/>hashmap);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/><ref refid="phonetics_8h_1a3037ccc3794bc158b0bfbe95db08b6f3" kindref="member">tab_to_string</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**<sp/>tab);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*_PHONETICS_H_*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="phonetics/src/phonetics.h"/>
+  </compounddef>
+</doxygen>

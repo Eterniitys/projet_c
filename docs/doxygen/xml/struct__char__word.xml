@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="struct__char__word" kind="struct" language="C++" prot="public">
+    <compoundname>_char_word</compoundname>
+    <includes refid="word_8h" local="no">word.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__char__word_1a923893bb982df8732163cb16c78d9a68" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char _char_word::character</definition>
+        <argsstring></argsstring>
+        <name>character</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="word/src/word.h" line="18" column="1" bodyfile="word/src/word.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__char__word_1adaa60c81c7c562ed3e8fee6ec7fa0201" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* _char_word::string</definition>
+        <argsstring></argsstring>
+        <name>string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="word/src/word.h" line="19" column="1" bodyfile="word/src/word.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__char__word_1a899990c0d69a80beea4155b2f8ff11d7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int _char_word::counter_syll</definition>
+        <argsstring></argsstring>
+        <name>counter_syll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="word/src/word.h" line="20" column="1" bodyfile="word/src/word.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="word/src/word.h" line="16" column="1" bodyfile="word/src/word.h" bodystart="16" bodyend="21"/>
+    <listofallmembers>
+      <member refid="struct__char__word_1a923893bb982df8732163cb16c78d9a68" prot="public" virt="non-virtual"><scope>_char_word</scope><name>character</name></member>
+      <member refid="struct__char__word_1a899990c0d69a80beea4155b2f8ff11d7" prot="public" virt="non-virtual"><scope>_char_word</scope><name>counter_syll</name></member>
+      <member refid="struct__char__word_1adaa60c81c7c562ed3e8fee6ec7fa0201" prot="public" virt="non-virtual"><scope>_char_word</scope><name>string</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

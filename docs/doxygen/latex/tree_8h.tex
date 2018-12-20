@@ -1,0 +1,116 @@
+\hypertarget{tree_8h}{}\section{tree/src/tree.h File Reference}
+\label{tree_8h}\index{tree/src/tree.\+h@{tree/src/tree.\+h}}
+{\ttfamily \#include $<$list.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Tree}{\+\_\+\+Tree}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct__Tree}{\+\_\+\+Tree}} \mbox{\hyperlink{tree_8h_abd3c5b5c3b85f90db37d7debe4cf3004}{Tree}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structTree}{Tree}} $\ast$ \mbox{\hyperlink{tree_8h_a1ced26a6778ed16e0fcaa75d8ab8cb5a}{tree\+\_\+new}} (void $\ast$struc, \mbox{\hyperlink{list_8h_a635855f2315417070aa4dbae27b6e4a6}{\+\_\+comp\+Func}} funct)
+\item 
+void \mbox{\hyperlink{tree_8h_aef47ef333aa1f90c2afcab9132342b9d}{tree\+\_\+destroy}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$tree, \mbox{\hyperlink{list_8h_a3a8f19288aa6b651b32daa5ab7d25410}{\+\_\+free\+Func}} free)
+\item 
+void $\ast$ \mbox{\hyperlink{tree_8h_a9ba95b242a69b0fe7928b5132e399d63}{tree\+\_\+get\+\_\+node}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$root)
+\item 
+\mbox{\hyperlink{structTree}{Tree}} $\ast$ \mbox{\hyperlink{tree_8h_a4e67eb0be70806ad0fd794adb5383e6d}{tree\+\_\+add\+\_\+child}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$root, \mbox{\hyperlink{structTree}{Tree}} $\ast$node)
+\item 
+\mbox{\hyperlink{structTree}{Tree}} $\ast$ \mbox{\hyperlink{tree_8h_a182d144bd266f8f2442c8c202650d2f6}{tree\+\_\+remove\+\_\+child}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$root, int index)
+\item 
+\mbox{\hyperlink{structTree}{Tree}} $\ast$ \mbox{\hyperlink{tree_8h_afa5ff3ba97979c54672044378142459d}{tree\+\_\+get\+\_\+child}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$root, int nb)
+\item 
+int \mbox{\hyperlink{tree_8h_a2688b0740d34a6993c1d76d574e85201}{tree\+\_\+child\+\_\+count}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$tree)
+\item 
+void \mbox{\hyperlink{tree_8h_a9193e48672a80131b2d70cb35ead6ea6}{tree\+\_\+lock}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$tree)
+\item 
+void \mbox{\hyperlink{tree_8h_a9566ca10a5d6fdce1c6916c693814310}{tree\+\_\+unlock}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$tree)
+\item 
+\mbox{\hyperlink{structTree}{Tree}} $\ast$ \mbox{\hyperlink{tree_8h_a2d730809e71779e25c628036cb1051f7}{tree\+\_\+find\+\_\+child}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$tree, void $\ast$child)
+\item 
+int \mbox{\hyperlink{tree_8h_abe66ab0a960c6a121183694af6be70ee}{tree\+\_\+get\+\_\+depth}} (\mbox{\hyperlink{structTree}{Tree}} $\ast$tree)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{tree_8h_abd3c5b5c3b85f90db37d7debe4cf3004}\label{tree_8h_abd3c5b5c3b85f90db37d7debe4cf3004}} 
+\index{tree.\+h@{tree.\+h}!Tree@{Tree}}
+\index{Tree@{Tree}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{Tree}{Tree}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct__Tree}{\+\_\+\+Tree}}  \mbox{\hyperlink{structTree}{Tree}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tree_8h_a4e67eb0be70806ad0fd794adb5383e6d}\label{tree_8h_a4e67eb0be70806ad0fd794adb5383e6d}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+add\+\_\+child@{tree\+\_\+add\+\_\+child}}
+\index{tree\+\_\+add\+\_\+child@{tree\+\_\+add\+\_\+child}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+add\+\_\+child()}{tree\_add\_child()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}}$\ast$ tree\+\_\+add\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a2688b0740d34a6993c1d76d574e85201}\label{tree_8h_a2688b0740d34a6993c1d76d574e85201}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+child\+\_\+count@{tree\+\_\+child\+\_\+count}}
+\index{tree\+\_\+child\+\_\+count@{tree\+\_\+child\+\_\+count}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+child\+\_\+count()}{tree\_child\_count()}}
+{\footnotesize\ttfamily int tree\+\_\+child\+\_\+count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{tree }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_aef47ef333aa1f90c2afcab9132342b9d}\label{tree_8h_aef47ef333aa1f90c2afcab9132342b9d}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+destroy@{tree\+\_\+destroy}}
+\index{tree\+\_\+destroy@{tree\+\_\+destroy}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+destroy()}{tree\_destroy()}}
+{\footnotesize\ttfamily void tree\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{tree,  }\item[{\mbox{\hyperlink{list_8h_a3a8f19288aa6b651b32daa5ab7d25410}{\+\_\+free\+Func}}}]{free }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a2d730809e71779e25c628036cb1051f7}\label{tree_8h_a2d730809e71779e25c628036cb1051f7}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+find\+\_\+child@{tree\+\_\+find\+\_\+child}}
+\index{tree\+\_\+find\+\_\+child@{tree\+\_\+find\+\_\+child}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+find\+\_\+child()}{tree\_find\_child()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}}$\ast$ tree\+\_\+find\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{tree,  }\item[{void $\ast$}]{child }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_afa5ff3ba97979c54672044378142459d}\label{tree_8h_afa5ff3ba97979c54672044378142459d}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+get\+\_\+child@{tree\+\_\+get\+\_\+child}}
+\index{tree\+\_\+get\+\_\+child@{tree\+\_\+get\+\_\+child}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+get\+\_\+child()}{tree\_get\_child()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}}$\ast$ tree\+\_\+get\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{root,  }\item[{int}]{nb }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_abe66ab0a960c6a121183694af6be70ee}\label{tree_8h_abe66ab0a960c6a121183694af6be70ee}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+get\+\_\+depth@{tree\+\_\+get\+\_\+depth}}
+\index{tree\+\_\+get\+\_\+depth@{tree\+\_\+get\+\_\+depth}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+get\+\_\+depth()}{tree\_get\_depth()}}
+{\footnotesize\ttfamily int tree\+\_\+get\+\_\+depth (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{tree }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a9ba95b242a69b0fe7928b5132e399d63}\label{tree_8h_a9ba95b242a69b0fe7928b5132e399d63}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+get\+\_\+node@{tree\+\_\+get\+\_\+node}}
+\index{tree\+\_\+get\+\_\+node@{tree\+\_\+get\+\_\+node}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+get\+\_\+node()}{tree\_get\_node()}}
+{\footnotesize\ttfamily void$\ast$ tree\+\_\+get\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a9193e48672a80131b2d70cb35ead6ea6}\label{tree_8h_a9193e48672a80131b2d70cb35ead6ea6}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+lock@{tree\+\_\+lock}}
+\index{tree\+\_\+lock@{tree\+\_\+lock}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+lock()}{tree\_lock()}}
+{\footnotesize\ttfamily void tree\+\_\+lock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{tree }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a1ced26a6778ed16e0fcaa75d8ab8cb5a}\label{tree_8h_a1ced26a6778ed16e0fcaa75d8ab8cb5a}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+new@{tree\+\_\+new}}
+\index{tree\+\_\+new@{tree\+\_\+new}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+new()}{tree\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}}$\ast$ tree\+\_\+new (\begin{DoxyParamCaption}\item[{void $\ast$}]{struc,  }\item[{\mbox{\hyperlink{list_8h_a635855f2315417070aa4dbae27b6e4a6}{\+\_\+comp\+Func}}}]{funct }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a182d144bd266f8f2442c8c202650d2f6}\label{tree_8h_a182d144bd266f8f2442c8c202650d2f6}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+remove\+\_\+child@{tree\+\_\+remove\+\_\+child}}
+\index{tree\+\_\+remove\+\_\+child@{tree\+\_\+remove\+\_\+child}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+remove\+\_\+child()}{tree\_remove\_child()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}}$\ast$ tree\+\_\+remove\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{root,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tree_8h_a9566ca10a5d6fdce1c6916c693814310}\label{tree_8h_a9566ca10a5d6fdce1c6916c693814310}} 
+\index{tree.\+h@{tree.\+h}!tree\+\_\+unlock@{tree\+\_\+unlock}}
+\index{tree\+\_\+unlock@{tree\+\_\+unlock}!tree.\+h@{tree.\+h}}
+\subsubsection{\texorpdfstring{tree\+\_\+unlock()}{tree\_unlock()}}
+{\footnotesize\ttfamily void tree\+\_\+unlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTree}{Tree}} $\ast$}]{tree }\end{DoxyParamCaption})}
+

@@ -4,10 +4,13 @@ project (Symphonie C)
 find_package(FlawFinder)
 enable_flaw_finder()
 
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set (CMAKE_C_FLAGS "-rdynamic")
 set(DIR hash list tree word parser rhyme syllabification phonetics)
 set(LIBS hash list tree parser rhyme syllabification phonetics)
 set(FILES window.glade symphonie.png Lexique382.csv)
+
+#find_package(Sphinx REQUIRED)
 
 foreach(dir IN LISTS DIR)
 	include_directories ("${PROJECT_SOURCE_DIR}/${dir}/src")
