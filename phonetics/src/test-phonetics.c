@@ -24,7 +24,7 @@
 */
 int main(void){
 
-	char* string = "lampadaire";
+	char* string = "abricot";
 
 	Tree* tree_phon = NULL;
 	Tree* tree_syll = NULL;
@@ -35,8 +35,25 @@ int main(void){
 	char ** phonetics = fill_phonetics(syllables,hashmap);
 	char * string_phon=tab_to_string(phonetics);
 
-	assert(strcmp(string_phon,"l@padERRe")==0);
+	assert(strcmp(string_phon,"abRiko")==0);
 
+	
+	int i=0;
+	while(phonetics[i]){
+		free(phonetics[i]);
+		i++;
+	}
+	
+	i=0;
+	while(syllables[i]){
+		free(syllables[i]);
+		i++;
+	}
+	
+	free(phonetics);
+	free(syllables);
+	free(string_phon);
+	
 	parser_destroy_generated_structures(tree_phon, tree_syll, hashmap);
 
 	return EXIT_SUCCESS;
