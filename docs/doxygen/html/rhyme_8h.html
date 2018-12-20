@@ -98,8 +98,8 @@ Functions</h2></td></tr>
 <tr class="separator:a1a488be8e6d05353c2a6b4ff138e06c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93842818707766437e9a2328650f1a03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rhyme_8h.html#a93842818707766437e9a2328650f1a03">cutList</a> (<a class="el" href="structList.html">List</a> *list, int count)</td></tr>
 <tr class="separator:a93842818707766437e9a2328650f1a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9e2e4dd1302a78889a58fd421d79c6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rhyme_8h.html#ab9e2e4dd1302a78889a58fd421d79c6a">arbreEnList</a> (<a class="el" href="structTree.html">Tree</a> *tree, <a class="el" href="structList.html">List</a> *list, int stage)</td></tr>
-<tr class="separator:ab9e2e4dd1302a78889a58fd421d79c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee65d00ac86b3c198956d8cac46354c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rhyme_8h.html#a5ee65d00ac86b3c198956d8cac46354c">treeToList</a> (<a class="el" href="structTree.html">Tree</a> *tree, <a class="el" href="structList.html">List</a> *list, int stage)</td></tr>
+<tr class="separator:a5ee65d00ac86b3c198956d8cac46354c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6802dd93c119ac80f75454fce0f8e549"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rhyme_8h.html#a6802dd93c119ac80f75454fce0f8e549">finalList</a> (<a class="el" href="structTree.html">Tree</a> *tree, <a class="el" href="structList.html">List</a> *list, char *<a class="el" href="classword.html">word</a>, int cpt, int threshold)</td></tr>
 <tr class="separator:a6802dd93c119ac80f75454fce0f8e549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a5b21e8ee23f1e951aca6ef0cf06c52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structList.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rhyme_8h.html#a4a5b21e8ee23f1e951aca6ef0cf06c52">match_word</a> (<a class="el" href="structTree.html">Tree</a> *tree, int count, char *<a class="el" href="classword.html">word</a>)</td></tr>
@@ -121,40 +121,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ab9e2e4dd1302a78889a58fd421d79c6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9e2e4dd1302a78889a58fd421d79c6a">&#9670;&nbsp;</a></span>arbreEnList()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structList.html">List</a>* arbreEnList </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structTree.html">Tree</a> *&#160;</td>
-          <td class="paramname"><em>tree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>stage</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a1a488be8e6d05353c2a6b4ff138e06c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a488be8e6d05353c2a6b4ff138e06c2">&#9670;&nbsp;</a></span>compare()</h2>
 
@@ -331,6 +297,40 @@ Functions</h2></td></tr>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>word</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ee65d00ac86b3c198956d8cac46354c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee65d00ac86b3c198956d8cac46354c">&#9670;&nbsp;</a></span>treeToList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structList.html">List</a>* treeToList </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTree.html">Tree</a> *&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structList.html">List</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

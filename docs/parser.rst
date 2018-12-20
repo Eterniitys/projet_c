@@ -1,1 +1,3 @@
+Parser
+==========
 .. doxygenfile:: parser.h

@@ -10,8 +10,16 @@ Welcome to Symphonie's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   README.rst
-   hash.rst
+   Readme <README>
+   Hash <hash.rst>
+   list.rst
+   parser.rst
+   phonetics.rst
+   syllabification.rst
+   rhyme.rst
+   symphonie.rst
+   tree.rst
+   word.rst
 
 Indices and tables
 ==================

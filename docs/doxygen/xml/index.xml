@@ -97,7 +97,7 @@
     <member refid="rhyme_8h_1ac981b8500f1377b39bbd11bacfdeeb88" kind="function"><name>reverse_string</name></member>
     <member refid="rhyme_8h_1a1a488be8e6d05353c2a6b4ff138e06c2" kind="function"><name>compare</name></member>
     <member refid="rhyme_8h_1a93842818707766437e9a2328650f1a03" kind="function"><name>cutList</name></member>
-    <member refid="rhyme_8h_1ab9e2e4dd1302a78889a58fd421d79c6a" kind="function"><name>arbreEnList</name></member>
+    <member refid="rhyme_8h_1a5ee65d00ac86b3c198956d8cac46354c" kind="function"><name>treeToList</name></member>
     <member refid="rhyme_8h_1a6802dd93c119ac80f75454fce0f8e549" kind="function"><name>finalList</name></member>
     <member refid="rhyme_8h_1a4a5b21e8ee23f1e951aca6ef0cf06c52" kind="function"><name>match_word</name></member>
   </compound>
@@ -108,13 +108,11 @@
     <member refid="syllabification_8h_1a148507898c83b18c69cb421f2a1f4eeb" kind="function"><name>recursive</name></member>
   </compound>
   <compound refid="symphonie_8h" kind="file"><name>symphonie.h</name>
-    <member refid="symphonie_8h_1a961aac8cc82ee7789a9288daa6c25602" kind="variable"><name>data</name></member>
-    <member refid="symphonie_8h_1ac8173d466e7c37ece89790e9a64a5103" kind="variable"><name>root_phon</name></member>
-    <member refid="symphonie_8h_1abfb059e98975eaabd267b4240f103356" kind="variable"><name>root_syll</name></member>
-    <member refid="symphonie_8h_1a8a083bae6c323daa5a086473b4dbe3ab" kind="variable"><name>map_syl_phon</name></member>
     <member refid="symphonie_8h_1a1b1d3d5e95f044a344a1fd1d944511c5" kind="function"><name>callback_about</name></member>
     <member refid="symphonie_8h_1a1278ffa67f6f2206d864c002c0f5c821" kind="function"><name>on_itemPreference_activate</name></member>
     <member refid="symphonie_8h_1aa655d89a60d0f19dc0477fa683a9a3fc" kind="function"><name>on_SearchEntry_search_changed</name></member>
+    <member refid="symphonie_8h_1ad8cbd3a4f8e9fcad4e02345c2d2e27d1" kind="function"><name>on_setNumberResultsButton_clicked</name></member>
+    <member refid="symphonie_8h_1a7f58c89ca3b188ff57fb9ac3f7c75a5b" kind="function"><name>on_closePreference_clicked</name></member>
     <member refid="symphonie_8h_1abf67d882cbea8b20d80544fe5f604e4a" kind="function"><name>deleteChildren</name></member>
     <member refid="symphonie_8h_1a9643c1a6383721c7e1e9a1319879e9b4" kind="function"><name>insertChildren</name></member>
   </compound>

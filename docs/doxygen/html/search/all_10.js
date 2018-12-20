@@ -1,14 +1,18 @@
 var searchData=
 [
-  ['score',['score',['../struct__ScoreSyllPhon.html#aeb8fd7a2eea4dd089105f875923fc034',1,'_ScoreSyllPhon::score()'],['../struct__StringBool.html#a34a88c155be65a283d3dc85007924702',1,'_StringBool::score()']]],
-  ['scoresyllphon',['ScoreSyllPhon',['../list_8h.html#a8324198aec6dec4d8d77a0aa89b9f633',1,'list.h']]],
-  ['sglobaldata',['SGlobalData',['../structSGlobalData.html',1,'']]],
-  ['size_5ffile',['size_file',['../parser_8h.html#a7efdff8b6d858f82b66d6d514a59ffa4',1,'parser.h']]],
-  ['split_5fsyllables',['split_syllables',['../parser_8h.html#a81d9ef0b3b8a8cb42fec8e24885d236c',1,'parser.h']]],
-  ['string',['string',['../struct__StringBool.html#a87c49f9dd316545ad28c1d53bc7548e0',1,'_StringBool::string()'],['../struct__char__word.html#adaa60c81c7c562ed3e8fee6ec7fa0201',1,'_char_word::string()']]],
-  ['stringbool',['StringBool',['../syllabification_8h.html#a43d2b58947318c50424e417ea91ef7aa',1,'syllabification.h']]],
-  ['syllabicate',['syllabicate',['../syllabification_8h.html#ad32b0efa2c2493ef731bbb735fe02d4f',1,'syllabification.h']]],
-  ['syllabification_2eh',['syllabification.h',['../syllabification_8h.html',1,'']]],
-  ['syllphon',['syllPhon',['../struct__ScoreSyllPhon.html#ae559395e6a1d1d381ede53015b3c8c6d',1,'_ScoreSyllPhon']]],
-  ['symphonie_2eh',['symphonie.h',['../symphonie_8h.html',1,'']]]
+  ['tab_5fto_5fstring',['tab_to_string',['../phonetics_8h.html#a3037ccc3794bc158b0bfbe95db08b6f3',1,'phonetics.h']]],
+  ['tree',['Tree',['../structTree.html',1,'Tree'],['../tree_8h.html#abd3c5b5c3b85f90db37d7debe4cf3004',1,'Tree():&#160;tree.h']]],
+  ['tree_2eh',['tree.h',['../tree_8h.html',1,'']]],
+  ['tree_5fadd_5fchild',['tree_add_child',['../tree_8h.html#a4e67eb0be70806ad0fd794adb5383e6d',1,'tree.h']]],
+  ['tree_5fchild_5fcount',['tree_child_count',['../tree_8h.html#a2688b0740d34a6993c1d76d574e85201',1,'tree.h']]],
+  ['tree_5fdestroy',['tree_destroy',['../tree_8h.html#aef47ef333aa1f90c2afcab9132342b9d',1,'tree.h']]],
+  ['tree_5ffind_5fchild',['tree_find_child',['../tree_8h.html#a2d730809e71779e25c628036cb1051f7',1,'tree.h']]],
+  ['tree_5fget_5fchild',['tree_get_child',['../tree_8h.html#afa5ff3ba97979c54672044378142459d',1,'tree.h']]],
+  ['tree_5fget_5fdepth',['tree_get_depth',['../tree_8h.html#abe66ab0a960c6a121183694af6be70ee',1,'tree.h']]],
+  ['tree_5fget_5fnode',['tree_get_node',['../tree_8h.html#a9ba95b242a69b0fe7928b5132e399d63',1,'tree.h']]],
+  ['tree_5flock',['tree_lock',['../tree_8h.html#a9193e48672a80131b2d70cb35ead6ea6',1,'tree.h']]],
+  ['tree_5fnew',['tree_new',['../tree_8h.html#a1ced26a6778ed16e0fcaa75d8ab8cb5a',1,'tree.h']]],
+  ['tree_5fremove_5fchild',['tree_remove_child',['../tree_8h.html#a182d144bd266f8f2442c8c202650d2f6',1,'tree.h']]],
+  ['tree_5funlock',['tree_unlock',['../tree_8h.html#a9566ca10a5d6fdce1c6916c693814310',1,'tree.h']]],
+  ['treetolist',['treeToList',['../rhyme_8h.html#a5ee65d00ac86b3c198956d8cac46354c',1,'rhyme.h']]]
 ];

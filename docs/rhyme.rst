@@ -1,1 +1,3 @@
+Rhyme
+========
 .. doxygenfile:: rhyme.h

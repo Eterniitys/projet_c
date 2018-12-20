@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['map_5fsyl_5fphon',['map_syl_phon',['../symphonie_8h.html#a8a083bae6c323daa5a086473b4dbe3ab',1,'symphonie.h']]]
+  ['user_5fdata',['user_data',['../structSGlobalData.html#a559fa68643f54b12903bd3aa42ea7171',1,'SGlobalData']]]
 ];

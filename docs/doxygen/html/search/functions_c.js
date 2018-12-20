@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['recursive',['recursive',['../syllabification_8h.html#a148507898c83b18c69cb421f2a1f4eeb',1,'syllabification.h']]],
-  ['reverse_5fstring',['reverse_string',['../parser_8h.html#ac981b8500f1377b39bbd11bacfdeeb88',1,'reverse_string(char *word):&#160;parser.h'],['../rhyme_8h.html#ac981b8500f1377b39bbd11bacfdeeb88',1,'reverse_string(char *word):&#160;rhyme.h']]],
-  ['rpl',['rpl',['../hash_8h.html#a040f3135106e008c3680cb8684dfb298',1,'hash.h']]]
+  ['size_5ffile',['size_file',['../parser_8h.html#a7efdff8b6d858f82b66d6d514a59ffa4',1,'parser.h']]],
+  ['split_5fsyllables',['split_syllables',['../parser_8h.html#a81d9ef0b3b8a8cb42fec8e24885d236c',1,'parser.h']]],
+  ['syllabicate',['syllabicate',['../syllabification_8h.html#ad32b0efa2c2493ef731bbb735fe02d4f',1,'syllabification.h']]]
 ];

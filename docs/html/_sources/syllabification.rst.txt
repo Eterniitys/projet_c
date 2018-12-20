@@ -1,1 +1,3 @@
+Syllabification
+=======================
 .. doxygenfile:: syllabification.h

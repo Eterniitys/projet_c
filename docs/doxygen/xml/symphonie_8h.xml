@@ -77,60 +77,6 @@
       </node>
     </incdepgraph>
     <innerclass refid="structSGlobalData" prot="public">SGlobalData</innerclass>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="symphonie_8h_1a961aac8cc82ee7789a9288daa6c25602" prot="public" static="no" mutable="no">
-        <type><ref refid="structSGlobalData" kindref="compound">SGlobalData</ref></type>
-        <definition>SGlobalData data</definition>
-        <argsstring></argsstring>
-        <name>data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="symphonie.h" line="15" column="1" bodyfile="symphonie.h" bodystart="15" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="symphonie_8h_1ac8173d466e7c37ece89790e9a64a5103" prot="public" static="no" mutable="no">
-        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
-        <definition>Tree* root_phon</definition>
-        <argsstring></argsstring>
-        <name>root_phon</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="symphonie.h" line="16" column="1" bodyfile="symphonie.h" bodystart="16" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="symphonie_8h_1abfb059e98975eaabd267b4240f103356" prot="public" static="no" mutable="no">
-        <type><ref refid="structTree" kindref="compound">Tree</ref> *</type>
-        <definition>Tree* root_syll</definition>
-        <argsstring></argsstring>
-        <name>root_syll</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="symphonie.h" line="17" column="1" bodyfile="symphonie.h" bodystart="17" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="symphonie_8h_1a8a083bae6c323daa5a086473b4dbe3ab" prot="public" static="no" mutable="no">
-        <type><ref refid="hash_8h_1af42ffd8d0757dfe64619c3321aeaf0cd" kindref="member">Hashmap</ref> *</type>
-        <definition>Hashmap* map_syl_phon</definition>
-        <argsstring></argsstring>
-        <name>map_syl_phon</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="symphonie.h" line="18" column="1" bodyfile="symphonie.h" bodystart="18" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="symphonie_8h_1a1b1d3d5e95f044a344a1fd1d944511c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -151,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="symphonie.h" line="20" column="1"/>
+        <location file="symphonie.h" line="16" column="1"/>
       </memberdef>
       <memberdef kind="function" id="symphonie_8h_1a1278ffa67f6f2206d864c002c0f5c821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -172,13 +118,39 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="symphonie.h" line="22" column="1"/>
+        <location file="symphonie.h" line="18" column="1"/>
       </memberdef>
       <memberdef kind="function" id="symphonie_8h_1aa655d89a60d0f19dc0477fa683a9a3fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void on_SearchEntry_search_changed</definition>
         <argsstring>()</argsstring>
         <name>on_SearchEntry_search_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="symphonie.h" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="symphonie_8h_1ad8cbd3a4f8e9fcad4e02345c2d2e27d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void on_setNumberResultsButton_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_setNumberResultsButton_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="symphonie.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="symphonie_8h_1a7f58c89ca3b188ff57fb9ac3f7c75a5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void on_closePreference_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_closePreference_clicked</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -198,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="symphonie.h" line="28" column="1"/>
+        <location file="symphonie.h" line="26" column="1"/>
       </memberdef>
       <memberdef kind="function" id="symphonie_8h_1a9643c1a6383721c7e1e9a1319879e9b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -211,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="symphonie.h" line="30" column="1"/>
+        <location file="symphonie.h" line="28" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -233,24 +205,22 @@
 <codeline lineno="12" refid="structSGlobalData_1ab34d4cdd1dbc99f665a11fb406b6d81d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GtkBuilder<sp/>*<ref refid="structSGlobalData_1ab34d4cdd1dbc99f665a11fb406b6d81d" kindref="member">builder</ref>;</highlight></codeline>
 <codeline lineno="13" refid="structSGlobalData_1a559fa68643f54b12903bd3aa42ea7171" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>gpointer<sp/><ref refid="structSGlobalData_1a559fa68643f54b12903bd3aa42ea7171" kindref="member">user_data</ref>;</highlight></codeline>
 <codeline lineno="14"><highlight class="normal">}<sp/><ref refid="structSGlobalData" kindref="compound">SGlobalData</ref>;</highlight></codeline>
-<codeline lineno="15" refid="symphonie_8h_1a961aac8cc82ee7789a9288daa6c25602" refkind="member"><highlight class="normal"><ref refid="structSGlobalData" kindref="compound">SGlobalData</ref><sp/><ref refid="symphonie_8h_1a961aac8cc82ee7789a9288daa6c25602" kindref="member">data</ref>;</highlight></codeline>
-<codeline lineno="16" refid="symphonie_8h_1ac8173d466e7c37ece89790e9a64a5103" refkind="member"><highlight class="normal"><ref refid="structTree" kindref="compound">Tree</ref>*<sp/><ref refid="symphonie_8h_1ac8173d466e7c37ece89790e9a64a5103" kindref="member">root_phon</ref>;</highlight></codeline>
-<codeline lineno="17" refid="symphonie_8h_1abfb059e98975eaabd267b4240f103356" refkind="member"><highlight class="normal"><ref refid="structTree" kindref="compound">Tree</ref>*<sp/><ref refid="symphonie_8h_1abfb059e98975eaabd267b4240f103356" kindref="member">root_syll</ref>;</highlight></codeline>
-<codeline lineno="18" refid="symphonie_8h_1a8a083bae6c323daa5a086473b4dbe3ab" refkind="member"><highlight class="normal"><ref refid="struct__Hashmap" kindref="compound">Hashmap</ref>*<sp/><ref refid="symphonie_8h_1a8a083bae6c323daa5a086473b4dbe3ab" kindref="member">map_syl_phon</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a1b1d3d5e95f044a344a1fd1d944511c5" kindref="member">callback_about</ref><sp/>(GtkMenuItem<sp/>*itemAbout,<sp/>gpointer<sp/>user_data);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a1278ffa67f6f2206d864c002c0f5c821" kindref="member">on_itemPreference_activate</ref>(GtkMenuItem<sp/>*itemPreference,<sp/>gpointer<sp/>user_data);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a1b1d3d5e95f044a344a1fd1d944511c5" kindref="member">callback_about</ref><sp/>(GtkMenuItem<sp/>*itemAbout,<sp/>gpointer<sp/>user_data);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1aa655d89a60d0f19dc0477fa683a9a3fc" kindref="member">on_SearchEntry_search_changed</ref>();</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a1278ffa67f6f2206d864c002c0f5c821" kindref="member">on_itemPreference_activate</ref>(GtkMenuItem<sp/>*itemPreference,<sp/>gpointer<sp/>user_data);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1ad8cbd3a4f8e9fcad4e02345c2d2e27d1" kindref="member">on_setNumberResultsButton_clicked</ref>();</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1aa655d89a60d0f19dc0477fa683a9a3fc" kindref="member">on_SearchEntry_search_changed</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a7f58c89ca3b188ff57fb9ac3f7c75a5b" kindref="member">on_closePreference_clicked</ref>(</highlight><highlight class="comment">/*gpointer<sp/>user_data*/</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//extern<sp/>void<sp/>on_setNumberResultsButton_clicked(self,<sp/>button);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1abf67d882cbea8b20d80544fe5f604e4a" kindref="member">deleteChildren</ref>();</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1abf67d882cbea8b20d80544fe5f604e4a" kindref="member">deleteChildren</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a9643c1a6383721c7e1e9a1319879e9b4" kindref="member">insertChildren</ref>();</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="symphonie_8h_1a9643c1a6383721c7e1e9a1319879e9b4" kindref="member">insertChildren</ref>();</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SYMPHONIE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SYMPHONIE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="symphonie.h"/>
   </compounddef>

@@ -1,1 +1,3 @@
+Hash
+======
 .. doxygenfile:: hash.h

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['insertchildren',['insertChildren',['../symphonie_8h.html#a9643c1a6383721c7e1e9a1319879e9b4',1,'symphonie.h']]]
+  ['keyvaluepair',['KeyValuePair',['../hash_8h.html#a7007e96d0b254e48465c7b9bb6d179de',1,'hash.h']]]
 ];

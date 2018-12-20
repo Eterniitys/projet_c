@@ -1,1 +1,3 @@
+Symphonie
+============
 .. doxygenfile:: symphonie.h

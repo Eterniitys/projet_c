@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['data',['data',['../symphonie_8h.html#a961aac8cc82ee7789a9288daa6c25602',1,'symphonie.h']]],
-  ['deletechildren',['deleteChildren',['../symphonie_8h.html#abf67d882cbea8b20d80544fe5f604e4a',1,'symphonie.h']]]
+  ['eow',['eow',['../struct__StringBool.html#a107dddb18b71440f00a640eef3836974',1,'_StringBool']]]
 ];
