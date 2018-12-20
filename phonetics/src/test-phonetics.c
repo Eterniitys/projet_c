@@ -25,20 +25,19 @@
 int main(void){
 
 	char* string = "lampadaire";
-	
+
 	Tree* tree_phon = NULL;
 	Tree* tree_syll = NULL;
 	Hashmap* hashmap = NULL;
-	parser_read("../../Lexique382.csv", &tree_phon, &tree_syll, &hashmap);
-	
+	parser_read("../../Lexique382_short.csv", &tree_phon, &tree_syll, &hashmap);
+
 	char** syllables = syllabicate(tree_syll, string);
 	char ** phonetics = fill_phonetics(syllables,hashmap);
 	char * string_phon=tab_to_string(phonetics);
-	
+
 	assert(strcmp(string_phon,"l@padERRe")==0);
-	
-	hashmap_destroy(hashmap);
-	tree_destroy(tree_phon);
-	tree_destroy(tree_syll);
+
+	parser_destroy_generated_structures(tree_phon, tree_syll, hashmap);
+
 	return EXIT_SUCCESS;
 }
