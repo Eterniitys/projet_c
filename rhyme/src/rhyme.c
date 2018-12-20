@@ -85,7 +85,7 @@ List* cutList(List* list, int count)
 	int i=0;
 	while(i<count && list_count(list)>i)
 	{
-		list_add(aList,list_get(list,i));
+		list_add(aList,((Word*)list_get(list,i))->_word);
 		i++;
 	}
 	return aList;
