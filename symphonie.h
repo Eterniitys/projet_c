@@ -21,7 +21,9 @@ extern void callback_about (GtkMenuItem *itemAbout, gpointer user_data);
 
 extern void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data);
 
-extern void on___glade_unnamed_23_search_changed();
+extern void on_SearchEntry_search_changed();
+
+//extern void on_setNumberResultsButton_clicked(self, button);
 
 extern void deleteChildren();
 

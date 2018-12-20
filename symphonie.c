@@ -8,6 +8,11 @@
 #include <parser.h>
 
 
+#include <word.h>
+#include <string.h>
+#include <list.h>
+
+
 //Main code of the graphical interface
 /*
  *Initializing the Gtk Library
@@ -21,8 +26,8 @@
  */
 int main(int argc, char *argv []) {
 
-	GtkWidget *main_window = NULL;
-	GtkWidget *start_window = NULL;
+	GtkWindow *main_window = NULL;
+	GtkWindow *start_window = NULL;
 	GError *error = NULL;
 	gchar *filename = NULL;
 
@@ -105,9 +110,9 @@ void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data)
  *If there is at least one search character in the search bar you run
  *Creating the table that populates the flow_box
  */
-void on___glade_unnamed_23_search_changed() {
+void on_SearchEntry_search_changed() {
 
-	GtkWidget *entry = NULL;
+	GtkEntry *entry = NULL;
 
 	entry = (GtkEntry*)GTK_WIDGET (gtk_builder_get_object (data.builder, "SearchEntry"));
 	GtkEntryBuffer *buffer = gtk_entry_get_buffer (entry);
@@ -187,6 +192,11 @@ void on___glade_unnamed_23_search_changed() {
 		insertChildren(tab);		 
 	}
 }
+
+
+/*void on_setNumberResultsButton_clicked(self, button){
+	printf("on_setNumberResultsButton_clicked\n");
+}*/
 
 
 //Code to populate the flow_box
