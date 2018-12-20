@@ -11,7 +11,12 @@
 #include <word.h>
 #include <string.h>
 #include <list.h>
+#include <rhyme.h>
 
+SGlobalData data;
+Tree* root_phon;
+Tree* root_syll;
+Hashmap* map_syl_phon;
 
 //Main code of the graphical interface
 /*
@@ -58,6 +63,7 @@ int main(int argc, char *argv []) {
 
 	gtk_window_close(start_window);
 	main_window = (GtkWindow*)GTK_WIDGET(gtk_builder_get_object (data.builder, "MainWindow"));
+        
 	gtk_widget_show_all ((GtkWidget*)main_window);
 
 	gtk_main();
@@ -124,91 +130,39 @@ void on_SearchEntry_search_changed() {
 		char** syllables = syllabicate(root_syll, mot);
 		char ** phonetics = fill_phonetics(syllables,map_syl_phon);
 		char * string_phon = tab_to_string(phonetics);
-
-		char* tab[] = { 
-			"Perlis",
-			"Wilkes",
-			"Hamming",
-			"Minsky",
-			"Wilkinson",
-			"McCarthy",
-			"Dijkstra",
-			"Bachman",
-			"Knuth",
-			"Newell et Simon",
-			"Perlis",
-			"Wilkes",
-			"Hamming",
-			"Minsky",
-			"Wilkinson",
-			"McCarthy",
-			"Dijkstra",
-			"Bachman",
-			"Knuth",
-			"Newell et Simon",
-			"Perlis",
-			"Wilkes",
-			"Hamming",
-			"Minsky",
-			"Wilkinson",
-			"McCarthy",
-			"Dijkstra",
-			"Bachman",
-			"Knuth",
-			"Newell et Simon",
-			"Perlis",
-			"Wilkes",
-			"Hamming",
-			"Minsky",
-			"Wilkinson",
-			"McCarthy",
-			"Dijkstra",
-			"Bachman",
-			"Knuth",
-			"Newell et Simon",
-			"Perlis",
-			"Wilkes",
-			"Hamming",
-			"Minsky",
-			"Wilkinson",
-			"McCarthy",
-			"Dijkstra",
-			"Bachman",
-			"Knuth",
-			"Newell et Simon",
-			"Perlis",
-			"Wilkes",
-			"Hamming",
-			"Minsky",
-			"Wilkinson",
-			"McCarthy",
-			"Dijkstra",
-			"Bachman",
-			"Knuth",
-			"Newell et Simon",
-			NULL
-		};
 		
-		insertChildren(tab);		 
+		List* liste = match_word(root_phon, 20, string_phon);
+
+		
+		
+		insertChildren(liste);		 
 	}
 }
 
 
-/*void on_setNumberResultsButton_clicked(self, button){
+void on_setNumberResultsButton_clicked(){
 	printf("on_setNumberResultsButton_clicked\n");
-}*/
+}
+
+void on_closePreference_clicked(/*gpointer user_data*/){
+	/*SGlobalData *data = (SGlobalData*) user_data;
+	GtkWidget *dialog = NULL;
+
+	dialog =  GTK_WIDGET (gtk_builder_get_object (data->builder, "PreferenceWindow"));
+	gtk_widget_hide (dialog);*/
+	printf("on_closePreference_clicked\n");
+}
 
 
 //Code to populate the flow_box
-void insertChildren(char* tab[]) {
+void insertChildren(List* liste) {
 
 	GtkWidget *flow_box = NULL;
 	flow_box = GTK_WIDGET (gtk_builder_get_object (data.builder, "FlowBox"));
 
-	int i = 0;
-	while(tab[i]!=NULL){
+	for(int i = 0; i < list_count(liste); i++){
 		GtkWidget * gtk_flow_box_child_new ();
-		char* str = tab[i];
+		char* str = (char*)list_get(liste,i);
 		GtkWidget *label = gtk_label_new (str);
 		gtk_flow_box_insert ((GtkFlowBox*)flow_box, label, i);
 		gtk_widget_show(label);

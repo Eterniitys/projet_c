@@ -12,10 +12,6 @@ typedef struct {
 	GtkBuilder *builder;
 	gpointer user_data;
 } SGlobalData;
-SGlobalData data;
-Tree* root_phon;
-Tree* root_syll;
-Hashmap* map_syl_phon;
 
 extern void callback_about (GtkMenuItem *itemAbout, gpointer user_data);
 
@@ -23,7 +19,9 @@ extern void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer use
 
 extern void on_SearchEntry_search_changed();
 
-//extern void on_setNumberResultsButton_clicked(self, button);
+extern void on_setNumberResultsButton_clicked();
+
+extern void on_closePreference_clicked(/*gpointer user_data*/);
 
 extern void deleteChildren();
 
