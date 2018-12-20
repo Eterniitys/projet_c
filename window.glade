@@ -12,7 +12,6 @@
 Grégoire Bourasseau, Kévin Dapp, Flavien Labbé,
 Clément Lombardini, Tony Papin, Loïc Lagrolle,
 Kévin Maitre, Julien Castan</property>
-    <property name="documenters">Kilian Guillaume et Johan Guerrero</property>
     <property name="logo">symphonie.png</property>
     <property name="license_type">mit-x11</property>
     <child>
@@ -69,7 +68,7 @@ Kévin Maitre, Julien Castan</property>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Symphonie</property>
+            <property name="label" translatable="yes">Symphonie - Chargement</property>
           </object>
           <packing>
             <property name="expand">False</property>
