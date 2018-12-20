@@ -8,8 +8,8 @@
  * Allows the hashing of string
  *
  */
-#ifndef _HASH_
-#define _HASH_
+#ifndef _HASH_H_
+#define _HASH_H_
 
 typedef struct _KeyValuePair KeyValuePair;
 
@@ -26,32 +26,11 @@ struct _Hashmap {
 };
 
 /**
- *\fn int xora(int a, int b)
- *
- *\return a xor operation between a and b
- */
-int xora(int a, int b);
-
-/**
- *\fn void rpl(Hashmap* map)
- *
- * Allow a tables per cent view
- */
-void rpl(Hashmap* map);
-
-/**
  *\fn unsigned char hash (const char * string)
  *
  *\return a hash of string between 0 and 255
  */
 extern unsigned char hash (const char * string);
-
-/**
- *\fn void _new_tab(Hashmap* map)
- *
- *\ create a new hash table
- */
-void _new_tab(Hashmap* map);
 
 /**
  *\fn Hashmap* hashmap_new(void)
@@ -77,4 +56,4 @@ extern void* hashmap_get(Hashmap* map, char* key);
  */
 extern  void hashmap_destroy(Hashmap* map, void (*freeFunc)(void*));
 
-#endif /* _HASH_ */
+#endif /* _HASH_H_ */

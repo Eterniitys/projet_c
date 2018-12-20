@@ -13,8 +13,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "hash.h"
+#include "hash.inc"
 
-int xor(int a, int b){
+int xora(int a, int b){
 	return a^b;
 }
 
@@ -37,7 +38,7 @@ unsigned char hash (const char * string){
 	int val[] = {19,46,7,123};
 	int i;
 	for (i=0;i<strlen(string);i++){
-		val[i%4] = xor(val[i%4],string[(i+1)%4]);
+		val[i%4] = xora(val[i%4],string[(i+1)%4]);
 	}
 	int result = 0;
 	for (i=0;i<4;i++){

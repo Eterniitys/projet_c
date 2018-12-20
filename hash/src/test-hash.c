@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include "hash.h"
+#include "hash.inc"
 
 
 int main(void){

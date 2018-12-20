@@ -13,6 +13,7 @@
 #include <assert.h>
 
 #include "hash.h"
+#include "hash.inc"
 
 void noop_free(void* a){}
 

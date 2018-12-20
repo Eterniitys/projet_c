@@ -13,6 +13,7 @@
 #include <assert.h>
 
 #include "hash.h"
+#include "hash.inc"
 
 //void _new_tab(Hashmap* map);
 void noop_free(void* a) {}
