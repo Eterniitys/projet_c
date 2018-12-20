@@ -18,7 +18,7 @@ Tree* root_phon;
 Tree* root_syll;
 Hashmap* map_syl_phon;
 
-//Main code of the graphical interface
+
 /*
  *Initializing the Gtk Library
  *Opening the main window file
@@ -72,7 +72,7 @@ int main(int argc, char *argv []) {
 
 
 
-//Code of the window : A propos
+
 /*
  *Casting the user_data pointer to retrieve our data
  *Retrieving the "AboutWindow" window
@@ -89,7 +89,7 @@ void callback_about (GtkMenuItem *itemAbout, gpointer user_data) {
 }
 
 
-//Code of the window : Préférences
+
 /*
  *Casting the user_data pointer to retrieve our data
  *Retrieving the "PreferenceWindow" window
@@ -108,7 +108,7 @@ void on_itemPreference_activate(GtkMenuItem *itemPreference, gpointer user_data)
 
 
 
-//Code executed each time the text of the field is modified : SearchEntry
+
 /*
  *Retrieving the widget from the search bar
  *Recovering the string typed in the search bar
@@ -138,15 +138,8 @@ void on_SearchEntry_search_changed() {
 }
 
 
-void on_setNumberResultsButton_clicked(gpointer user_data){
+void on_setNumberResultsButton_clicked(){
 	printf("on_setNumberResultsButton_clicked\n");
-	/*SGlobalData *data = (SGlobalData*) user_data;
-	GtkSpinButton *entryNumber = NULL;
-
-	entryNumber = (GtkSpinButton*)GTK_WIDGET (gtk_builder_get_object (data.builder, "spinNumber"));
-	
-	int number = gtk_spin_button_get_value_as_int(entryNumber);
-	printf("%d",number);*/
 }
 
 void on_closePreference_clicked(){
@@ -154,7 +147,7 @@ void on_closePreference_clicked(){
 }
 
 
-//Code to populate the flow_box
+
 void insertChildren(List* liste) {
 
 	GtkWidget *flow_box = NULL;
@@ -171,7 +164,7 @@ void insertChildren(List* liste) {
 }
 
 
-//Code for removing children from the flow_box before adding the new ones
+
 void deleteChildren() {
 
 	GtkContainer *flow_box = NULL;

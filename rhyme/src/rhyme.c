@@ -18,9 +18,7 @@ char tab[40];
  */
 char *wordCompar;
 
-/**
- *afficher un arbre
- */
+
 void print_tree(Tree* node, int level) {
 	char_word* struc;
 	if(node){
@@ -38,11 +36,7 @@ void print_tree(Tree* node, int level) {
 	}
 }
 
-/**
- * \fn void reverse_string(char * word)
- *
- * \return void - reverse a string
- */
+
 void reverse_string(char * word){
 	int i=0;
 	int len = strlen(word);
@@ -54,9 +48,7 @@ void reverse_string(char * word){
 	}
 }
 
-/**
- *conpare 2 list
- */
+
 int compare (void* word1, void*word2)
 {
 	char* un = ((Word*)word1)->_pronunc;
@@ -76,9 +68,7 @@ int compare (void* word1, void*word2)
 	return score == 0 ? strcmp(un, two) : score ;
 }
 
-/**
- *limit to 20 values
- */
+
 List* cutList(List* list, int count)
 {
 	List * aList=list_new(NULL);
@@ -144,9 +134,7 @@ List* treeToList(Tree* tree,List* list, int stage)
 	return list;
 }
 
-/**
- *afficher la liste final en fonction d'un seuil de caractère correspondant donné
- */
+
 void finalList(Tree* tree, List* list, char* word, int cpt, int threshold)
 {
 	if(cpt==0) {

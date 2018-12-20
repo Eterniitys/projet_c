@@ -28,26 +28,90 @@ struct _ScoreSyllPhon {
 	int score;
 };
 
-
+/**
+ * \fn void* list_get(List* list, int index)
+ *
+ * \return seed - return the list who has 'index' position.
+ */
 extern void* list_get(List* list, int index);
 
+/**
+ * \fn List* list_add(List* list, void* pointer)
+ *
+ * \return list - add 'pointer' at the end of the list unless the list is lock
+ */
 extern List* list_add(List* list, void* pointer);
 
+/**
+ * \fn List* list_remove(List* list, int index)
+ *
+ * \return list - remove an element of the list
+ */
 extern List* list_remove(List* list, int index);
 
+/**
+ * \fn int list_count(List* list)
+ *
+ * \return list->count - return the counter
+ */
 extern int list_count(List* list);
 
+/**
+ * \fn void* list_find(List* list, void* object)
+ *
+ * \return output - return a list who contain 'object' type.
+ */
 extern void* list_find(List* list, void* pointer);
 
+/**
+ * \fn void list_lock(List* list)
+ *
+ * \return  - lock the list size to his actual size
+ */
 extern void list_lock(List* list);
 
+/**
+ * \fn void list_unlock(List* list)
+ *
+ * \return  - unlock the list size
+ */
 extern void list_unlock(List* list);
 
+/**
+ * \fn bool list_is_locked(List* list)
+ *
+ * \return list->lock - return true if the the list is lock and false if not
+ */
 extern bool list_is_locked(List* list);
 
+/**
+ * \fn void list_destroy(List* list, _freeFunc elm_free)
+ *
+ * \return  - free the list
+ */
 extern void list_destroy(List* list, _freeFunc free);
 
+/**
+ * \fn sList* list_new(_compFunc function)
+ *
+ * \return list - return pointer on empty list
+ */
 extern List* list_new(_compFunc comp);
+
+/**
+ * \fn void _list_qs(List* list, int A, int B)
+ *
+ * \return  - if the list is lock, sort it in its place
+ */
+void _list_qs(List* list, int A, int B);
+
+/**
+ * \fn static List* _list_init(List* list)
+ *
+ * \return list - init the list (variable, malloc the list)
+ */
+static List* _list_init(List* list);
+
 
 #endif /* _LIST_H_ */
 
