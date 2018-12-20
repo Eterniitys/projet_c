@@ -88,7 +88,10 @@ void tree_unlock(Tree *tree){
 
 Tree* tree_find_child(Tree *tree,void *child){
 	Tree temp = {0};
+	printf("%p\n",child);
 	(&temp)->_struc = child;
+	if (!tree->_children)
+		return NULL;
 	return (Tree*)list_find(tree->_children, &temp);
 }
 
@@ -106,10 +109,4 @@ int tree_get_depth(Tree *tree){
 	max++;
 	return max;
 }
-
-
-
-
-
-
 

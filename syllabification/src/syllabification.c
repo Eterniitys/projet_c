@@ -76,12 +76,12 @@ char** get_better_match(Tree* root){
 	char** output = malloc(sizeof(char*)*(depth+1));
 	int i = 0;
 	Tree * tmp = root;
-	do {
+	while (i < depth){
 		tmp = tree_get_child(tmp,0);
 		output[i] = ((StringBool*)tree_get_node(tmp))->string;
 		//printf("syllabe %d : %s\n",i+1,output[i]);
 		i++;
-	} while (i < depth);
+	}
 	output[i] = NULL;
 	//print_tree_j(root,0);
 	return output;
@@ -114,16 +114,18 @@ void gen_syllables(Tree* root, Tree* syll_tree, const char* word) {
 }
 
 void recursive(Tree* node, Tree* syll_tree, const char* word, int index) {
-	//fprintf(stderr, "\t%d-%c\n",index,word[index]);
+	fprintf(stderr, "\t%d-%c\n",index,word[index]);
 	if (word[index]=='\0')
 		return;
 
 	char_word newWord;
 	newWord.character = word[index];
+	newWord.string = NULL;
+	newWord.counter_syll = 0;
 	Tree* child = tree_find_child(syll_tree, &newWord);
 
 	if (!child) {
-		//fprintf(stderr, "pas d'enfants pour %s\n", word+index);
+		fprintf(stderr, "pas d'enfants pour %s\n", word+index);
 		return;
 	}
 

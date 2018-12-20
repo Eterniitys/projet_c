@@ -124,17 +124,31 @@ void on_SearchEntry_search_changed() {
 	entry = (GtkEntry*)GTK_WIDGET (gtk_builder_get_object (data.builder, "SearchEntry"));
 	GtkEntryBuffer *buffer = gtk_entry_get_buffer (entry);
 	const char* mot = gtk_entry_buffer_get_text(buffer);
+	fprintf(stderr, "%s\n", mot);
+	int i = 0;
+	while (mot[i]) {
+		fprintf(stderr, "%c %d\n", mot[i]);
+		i++;
+	}
 
 	deleteChildren();
 
 	if (mot[0] != '\0'){
 		char** syllables = syllabicate(root_syll, mot);
+		if (!syllables)
+			return;
 		char ** phonetics = fill_phonetics(syllables,map_syl_phon);
+		if (!phonetics)
+			return;
 		char * string_phon = tab_to_string(phonetics);
-		
+		if (!string_phon)
+			return;
+
 		List* liste = match_word(root_phon, nbResults, string_phon);
-		
-		insertChildren(liste);		 
+		if (!liste)
+			return;
+
+		insertChildren(liste);
 	}
 }
 

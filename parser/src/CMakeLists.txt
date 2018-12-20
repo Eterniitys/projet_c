@@ -90,6 +90,12 @@ add_dependencies(test-fill_hash parser)
 target_link_libraries(test-fill_hash parser list)
 valgrind_test(test-fill_hash ./test-fill_hash)
 
+add_executable(test-null_tree test-null_tree.c)
+add_dependencies(test-null_tree parser)
+target_link_libraries(test-null_tree parser list)
+valgrind_test(test-null_tree ./test-null_tree)
+
+
 #Allowed tests
 enable_testing()
 

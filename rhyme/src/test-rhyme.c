@@ -18,7 +18,7 @@ int main(void) {
 
 
 	char* para=malloc(sizeof(char)*7);
-	strcpy(para,"amÂ§");
+	strcpy(para,"be");
 	reverse_string(para);
 	char* para2="§Â";
 
