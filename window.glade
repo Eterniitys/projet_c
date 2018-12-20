@@ -298,6 +298,18 @@ Kévin Maitre, Julien Castan</property>
           </packing>
         </child>
         <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Phonétisation : yudeguoz</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkFlowBox" id="FlowBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -306,7 +318,7 @@ Kévin Maitre, Julien Castan</property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>
