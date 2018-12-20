@@ -35,10 +35,7 @@ char*  height_score_phon ( List * list){
 	return score.syllPhon;
 }
 
-/**
-*\fn char ** fill_phonetics(char ** tab_phon,char **syllables,Hashmap * hashmap)
-*\return tab_phon - return a fill tab with phonetics
-*/
+
 char ** fill_phonetics(char **syllables,Hashmap * hashmap){
 	char **tab_phon = malloc(sizeof(char**)*15);
 	int i=0;
@@ -56,10 +53,7 @@ char ** fill_phonetics(char **syllables,Hashmap * hashmap){
 	return tab_phon;
 }
 
-/**
-*\fn char * tab_to_string(char ** tab)
-*\return string - return a string (convert string tab in only one string)
-*/
+
 char * tab_to_string(char ** tab){
 	int i=0;
 	char * string=malloc(sizeof(char*)*50);
