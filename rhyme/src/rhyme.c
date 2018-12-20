@@ -79,34 +79,7 @@ List* cutList(List* list, int count)
 	return aList;
 }
 
-/**
- *put tree in list
- */
- /*
-List* arbreEnList(Tree* tree,List* list, int stage)
-{
-	//on veut parcourir tout l'arbre et recuperer chaque mots
 
-	for(int i =0; i< tree_child_count(tree); i++ )
-	{
-		Tree* enfant=tree_get_child(tree,i);
-		//on recupère le pointeur
-		char_word* mot=(char_word*)tree_get_node(enfant);
-		tab[stage]=mot->character;
-		tab[stage+1]='\0';
-		//on test le pointeur si il est pas NULL on ajoute le mot a la liste
-		if(mot && mot->string)
-		{
-			Word* bidon=malloc(sizeof(Word));
-			bidon->_word= mot->string;
-			bidon->_pronunc = malloc(sizeof(char)*strlen(tab)+1);
-			strcpy(bidon->_pronunc , tab);
-			list_add(list,bidon);
-		}
-		arbreEnList(enfant,list,stage+1);
-	}
-	return list;
-}*/
 List* treeToList(Tree* tree,List* list, int stage)
 {
 	//browse all of the tree to get every word
@@ -166,6 +139,7 @@ void finalList(Tree* tree, List* list, char* word, int cpt, int threshold)
 	list_lock(list);
 	return;
 }
+
 
 List* match_word(Tree* tree, int count, char* word) {
 	List* output = list_new(&compare);
