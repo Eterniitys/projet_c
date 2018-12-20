@@ -10,9 +10,10 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "tree.h"
 #include <stdbool.h>
 
+#include "tree.h"
+#include "tree.inc"
 
 int main(void){
 

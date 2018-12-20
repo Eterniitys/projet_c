@@ -11,6 +11,7 @@
 #include <assert.h>
 
 #include "tree.h"
+#include "tree.inc"
 
 /**
  * Function to compare int (local)

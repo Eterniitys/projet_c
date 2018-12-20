@@ -13,8 +13,7 @@
 #include <stdbool.h>
 
 #include "tree.h"
-
-
+#include "tree.inc"
 
 
 void * tree_get_node(Tree *root){

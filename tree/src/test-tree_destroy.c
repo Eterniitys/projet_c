@@ -11,6 +11,7 @@
 #include <assert.h>
 
 #include "tree.h"
+#include "tree.inc"
 
 int compare_int (void * nb1,void * nb2){
 	return *(int*)nb1-*(int*)nb2;
