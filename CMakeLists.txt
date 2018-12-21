@@ -12,11 +12,11 @@ set(FILES window.glade symphonie.png Lexique382.csv)
 
 
 
-
+add_subdirectory(docs)
 
 foreach(dir IN LISTS DIR)
 	include_directories ("${PROJECT_SOURCE_DIR}/${dir}/src")
-	add_subdirectory (${dir}/src) 
+	add_subdirectory (${dir}/src)
 endforeach(dir)
 
 
